@@ -4,43 +4,133 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Radar Numérico</title>
-<meta name="description" content="Radar Numérico: análises com números sobre eleições, futebol e outros temas.">
+<meta name="description" content="Radar Numérico: projeções, simulações e cálculos estatísticos sobre futebol e política, por Augusto Pellegrini.">
+<meta property="og:title" content="Radar Numérico">
+<meta property="og:description" content="Apuração das Eleições 2026 em tempo real: quem estaria eleito agora.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#16243A;--ink-2:#3A4A63;--mute:#6B7686;--line:#DCE1E8;--panel:#F2F4F7;--paper:#FFFFFF;--verde:#1E8A5A}
+:root{--ink:#16243A;--ink-2:#3A4A63;--mute:#6B7686;--line:#DCE1E8;--panel:#F2F4F7;--paper:#FFFFFF;--verde:#1E8A5A;--amar:#F2C230;--yt:#C4302B}
 *{box-sizing:border-box}
 html{font-family:"Archivo",system-ui,sans-serif;color:var(--ink);background:var(--paper)}
 body{margin:0;line-height:1.5}
-.wrap{max-width:860px;margin:0 auto;padding:0 20px}
-header{padding:56px 0 24px;border-bottom:1px solid var(--line)}
-h1{margin:0;font-size:clamp(36px,7vw,64px);font-weight:800;font-stretch:85%;letter-spacing:-.02em;line-height:1}
-header p{margin:12px 0 0;color:var(--ink-2);font-size:17px;max-width:60ch}
-main{padding:32px 0 48px}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+.topo{background:var(--ink);color:#E8EDF4}
+.topo .wrap{display:flex;align-items:center;gap:6px 18px;flex-wrap:wrap;min-height:48px}
+.topo .marca{color:#fff;font-weight:800;font-stretch:90%;font-size:17px;text-decoration:none;margin-right:auto}
+.topo a.it{color:#E8EDF4;text-decoration:none;font-size:14px;padding:12px 2px}
+.topo a.it:hover{color:#fff;text-decoration:underline}
+header.hero{padding-top:48px;padding-bottom:28px;border-bottom:1px solid var(--line)}
+h1{margin:0;font-size:clamp(38px,7vw,66px);font-weight:800;font-stretch:85%;letter-spacing:-.02em;line-height:1}
+header.hero p{margin:12px 0 0;color:var(--ink-2);font-size:18px;max-width:62ch}
+main{padding-top:28px;padding-bottom:40px}
+section{margin-bottom:40px}
 h2{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);margin:0 0 12px}
-a.card{display:block;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:20px 22px;background:var(--paper);transition:border-color .15s,background .15s}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+a.card{display:flex;flex-direction:column;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:18px 20px;background:var(--paper);transition:border-color .15s,background .15s}
 a.card:hover{border-color:var(--ink);background:var(--panel)}
-a.card b{display:block;font-size:22px;font-weight:700;font-stretch:90%}
-a.card span{display:block;color:var(--ink-2);margin-top:4px}
-a.card em{display:inline-block;margin-top:12px;font-style:normal;font-weight:600;color:var(--verde)}
-footer{border-top:1px solid var(--line);padding:18px 0 40px;font-size:13px;color:var(--mute)}
+a.card b{font-size:20px;font-weight:700;font-stretch:90%;line-height:1.15}
+a.card span{color:var(--ink-2);margin-top:6px;font-size:15px}
+a.card em{margin-top:auto;padding-top:12px;font-style:normal;font-weight:600;color:var(--verde)}
+a.card.destaque{grid-column:1 / -1;border:2px solid var(--ink);background:#FFFBEA}
+a.card.destaque b{font-size:clamp(22px,3.4vw,30px)}
+a.card.destaque .ao{display:inline-block;background:var(--amar);color:var(--ink);font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 9px;border-radius:10px;margin-bottom:8px;align-self:flex-start}
+a.card.yt em{color:var(--yt)}
+.video{position:relative;aspect-ratio:16/9;background:var(--panel);border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video .sem{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--mute);font-size:15px;padding:20px;text-align:center}
+.vlink{margin:8px 0 0;font-size:14px}.vlink a{color:var(--yt);font-weight:600;text-decoration:none}
+.sobre{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;max-width:70ch}
+.sobre p{margin:0 0 12px;font-size:17px;color:var(--ink-2)}
+.sobre p:first-child{color:var(--ink);font-size:19px}
+.sobre a{color:var(--ink);font-weight:600}
+footer{border-top:1px solid var(--line);padding-top:18px;padding-bottom:40px;font-size:13px;color:var(--mute)}
+footer a{color:var(--ink-2)}
 :focus-visible{outline:2px solid var(--verde);outline-offset:2px}
+@media (max-width:760px){.cards{grid-template-columns:minmax(0,1fr)}header.hero{padding-top:32px;padding-bottom:22px}}
 </style>
 </head>
 <body>
-<header class="wrap">
+<div class="topo"><div class="wrap">
+  <a class="marca" href="/">Radar Numérico</a>
+  <a class="it" href="/apuracao2026/">Eleições 2026</a>
+  <a class="it" id="lnk-copa-nav" href="#">Copa do Mundo</a>
+  <a class="it" id="lnk-yt-nav" href="#" target="_blank" rel="noopener">YouTube</a>
+  <a class="it" href="#sobre">Sobre</a>
+</div></div>
+
+<header class="hero wrap">
   <h1>Radar Numérico</h1>
-  <p>Análises com números, sem torcida.</p>
+  <p>Projeções, simulações e cálculos estatísticos sobre futebol e política. Análises com números, sem torcida.</p>
 </header>
+
 <main class="wrap">
-  <h2>Projetos</h2>
-  <a class="card" href="/apuracao2026/">
-    <b>Eleições 2026 · Quem estaria eleito agora</b>
-    <span>Apuração em tempo real de Deputado Federal nas 27 UFs: quociente eleitoral, quociente partidário, sobras e quantos votos faltam para cada partido ganhar ou perder uma cadeira.</span>
-    <em>Abrir a apuração →</em>
-  </a>
+  <section>
+    <h2>Projetos</h2>
+    <div class="cards">
+      <a class="card destaque" href="/apuracao2026/">
+        <span class="ao">Ao vivo · 4 de outubro</span>
+        <b>Eleições 2026 · Quem estaria eleito agora</b>
+        <span>Apuração em tempo real a partir dos dados do TSE: Câmara dos Deputados com quociente eleitoral, sobras e cláusula de barreira, Assembleias, Senado, Governadores e Presidente. Mostra quem estaria eleito se a apuração terminasse agora.</span>
+        <em>Abrir a apuração →</em>
+      </a>
+      <a class="card" id="lnk-copa" href="#">
+        <b>Probabilidades da Copa do Mundo</b>
+        <span>Vídeo com as chances de cada seleção, calculadas por simulação.</span>
+        <em>Assistir →</em>
+      </a>
+      <a class="card yt" id="lnk-yt" href="#" target="_blank" rel="noopener">
+        <b>Canal no YouTube</b>
+        <span>Vídeos com as projeções e análises do Radar Numérico.</span>
+        <em>Abrir o canal →</em>
+      </a>
+      <a class="card" href="#sobre">
+        <b>Sobre o Radar Numérico</b>
+        <span>Quem faz as análises e como entrar em contato.</span>
+        <em>Ler →</em>
+      </a>
+    </div>
+  </section>
+
+  <section id="copa">
+    <h2>Probabilidades da Copa do Mundo</h2>
+    <div class="video" id="video"><div class="sem">Vídeo em breve no canal do YouTube.</div></div>
+    <p class="vlink"><a id="lnk-video" href="#" target="_blank" rel="noopener">Assistir no YouTube →</a></p>
+  </section>
+
+  <section id="sobre">
+    <h2>Sobre</h2>
+    <div class="sobre">
+      <p>Radar Numérico é um site e canal do YouTube onde são feitas projeções, simulações e cálculos estatísticos sobre futebol e política.</p>
+      <p>As projeções e análises são feitas pelo economista Augusto Pellegrini.</p>
+      <p>Augusto é formado em economia pela UFRJ e possui mais de 20 anos de experiência fazendo modelagem de dados. Iniciou sua carreira na IBM, onde trabalhou 5 anos no departamento de Market Insights. Trabalhou no setor de energia fazendo modelagem de preços. Atualmente é empresário da área de gastronomia e presta consultoria para empresas na área de previsão de demanda e implementação de IA em restaurantes.</p>
+      <p>Contato: <a href="mailto:eusouocaradosnumeros@gmail.com">eusouocaradosnumeros@gmail.com</a></p>
+    </div>
+  </section>
 </main>
-<footer class="wrap">Radar Numérico · radarnumerico.com.br</footer>
+
+<footer class="wrap">Radar Numérico · radarnumerico.com.br · projeto apartidário · <a href="mailto:eusouocaradosnumeros@gmail.com">contato</a></footer>
+
+<script>
+/* ====== LINKS: troque aqui ====== */
+const LINKS = {
+  youtube: "https://www.youtube.com/@radarnumerico",
+  copa: "#copa",
+  video: "https://www.youtube.com/watch?v=PhTHOpX3dD4"
+};
+/* ================================= */
+(function () {
+  const set = (ids, url) => ids.forEach((id) => { const a = document.getElementById(id); if (!a) return; if (url) a.href = url; else a.style.display = "none"; });
+  set(["lnk-yt", "lnk-yt-nav"], LINKS.youtube);
+  set(["lnk-copa", "lnk-copa-nav"], LINKS.copa);
+  if (LINKS.copa && /^https?:/.test(LINKS.copa)) ["lnk-copa", "lnk-copa-nav"].forEach((id) => { const a = document.getElementById(id); a.target = "_blank"; a.rel = "noopener"; });
+  const m = String(LINKS.video).match(/(?:v=|youtu\.be\/|embed\/|shorts\/|live\/)([\w-]{11})/);
+  const box = document.getElementById("video");
+  if (m) box.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${m[1]}" title="Probabilidades da Copa do Mundo — Radar Numérico" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
+  else box.closest("section").style.display = "none";
+  set(["lnk-video"], LINKS.video);
+})();
+</script>
 </body>
 </html>
