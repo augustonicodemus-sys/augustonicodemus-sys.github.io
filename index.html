@@ -7,6 +7,9 @@
 <meta name="description" content="Radar Numérico: projeções, simulações e cálculos estatísticos sobre futebol e política, por Augusto Pellegrini.">
 <meta property="og:title" content="Radar Numérico">
 <meta property="og:description" content="Apuração das Eleições 2026 em tempo real: quem estaria eleito agora.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:image" content="https://radarnumerico.com.br/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet">
@@ -18,10 +21,15 @@ body{margin:0;line-height:1.5}
 .wrap{max-width:960px;margin:0 auto;padding:0 20px}
 .topo{background:var(--ink);color:#E8EDF4}
 .topo .wrap{display:flex;align-items:center;gap:6px 18px;flex-wrap:wrap;min-height:48px}
-.topo .marca{color:#fff;font-weight:800;font-stretch:90%;font-size:17px;text-decoration:none;margin-right:auto}
+.topo .marca{color:#fff;font-weight:800;font-stretch:90%;font-size:17px;text-decoration:none;margin-right:auto;display:inline-flex;align-items:center;gap:8px}
+.topo .marca img{display:block;height:32px;width:auto}
+header.hero .logo{width:150px;height:auto;flex:none}
+.redes{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:15px}
+.redes a{color:var(--ink);font-weight:600;text-decoration:none;border:1px solid var(--line);border-radius:18px;padding:5px 12px}
+.redes a:hover{border-color:var(--ink);background:var(--panel)}
 .topo a.it{color:#E8EDF4;text-decoration:none;font-size:14px;padding:12px 2px}
 .topo a.it:hover{color:#fff;text-decoration:underline}
-header.hero{padding-top:48px;padding-bottom:28px;border-bottom:1px solid var(--line)}
+header.hero{display:flex;align-items:center;gap:28px;padding-top:36px;padding-bottom:28px;border-bottom:1px solid var(--line)}
 h1{margin:0;font-size:clamp(38px,7vw,66px);font-weight:800;font-stretch:85%;letter-spacing:-.02em;line-height:1}
 header.hero p{margin:12px 0 0;color:var(--ink-2);font-size:18px;max-width:62ch}
 main{padding-top:28px;padding-bottom:40px}
@@ -48,21 +56,26 @@ a.card.yt em{color:var(--yt)}
 footer{border-top:1px solid var(--line);padding-top:18px;padding-bottom:40px;font-size:13px;color:var(--mute)}
 footer a{color:var(--ink-2)}
 :focus-visible{outline:2px solid var(--verde);outline-offset:2px}
-@media (max-width:760px){.cards{grid-template-columns:minmax(0,1fr)}header.hero{padding-top:32px;padding-bottom:22px}}
+@media (max-width:760px){.cards{grid-template-columns:minmax(0,1fr)}header.hero{padding-top:24px;padding-bottom:22px;gap:16px}header.hero .logo{width:84px;align-self:flex-start}.redes .h{display:none}.redes a{white-space:nowrap}}
 </style>
 </head>
 <body>
 <div class="topo"><div class="wrap">
-  <a class="marca" href="/">Radar Numérico</a>
+  <a class="marca" href="/"><img src="logo.png" alt="" width="28" height="32">Radar Numérico</a>
   <a class="it" href="/apuracao2026/">Eleições 2026</a>
   <a class="it" id="lnk-copa-nav" href="#">Copa do Mundo</a>
   <a class="it" id="lnk-yt-nav" href="#" target="_blank" rel="noopener">YouTube</a>
+  <a class="it" href="https://www.instagram.com/radarnumerico/" target="_blank" rel="noopener">Instagram</a>
   <a class="it" href="#sobre">Sobre</a>
 </div></div>
 
 <header class="hero wrap">
-  <h1>Radar Numérico</h1>
-  <p>Projeções, simulações e cálculos estatísticos sobre futebol e política. Análises com números, sem torcida.</p>
+  <img class="logo" src="logo.png" alt="Logo Radar Numérico" width="212" height="240">
+  <div>
+    <h1>Radar Numérico</h1>
+    <p>Projeções, simulações e cálculos estatísticos sobre futebol e política. Análises com números, sem torcida.</p>
+    <p class="redes"><a id="lnk-yt-hero" href="https://www.youtube.com/@radarnumerico" target="_blank" rel="noopener">▶ YouTube<span class="h"> @radarnumerico</span></a><a href="https://www.instagram.com/radarnumerico/" target="_blank" rel="noopener">◎ Instagram<span class="h"> @radarnumerico</span></a></p>
+  </div>
 </header>
 
 <main class="wrap">
@@ -105,12 +118,12 @@ footer a{color:var(--ink-2)}
       <p>Radar Numérico é um site e canal do YouTube onde são feitas projeções, simulações e cálculos estatísticos sobre futebol e política.</p>
       <p>As projeções e análises são feitas pelo economista Augusto Pellegrini.</p>
       <p>Augusto é formado em economia pela UFRJ e possui mais de 20 anos de experiência fazendo modelagem de dados. Iniciou sua carreira na IBM, onde trabalhou 5 anos no departamento de Market Insights. Trabalhou no setor de energia fazendo modelagem de preços. Atualmente é empresário da área de gastronomia e presta consultoria para empresas na área de previsão de demanda e implementação de IA em restaurantes.</p>
-      <p>Contato: <a href="mailto:eusouocaradosnumeros@gmail.com">eusouocaradosnumeros@gmail.com</a></p>
+      <p>Contato: <a href="mailto:eusouocaradosnumeros@gmail.com">eusouocaradosnumeros@gmail.com</a><br>YouTube: <a href="https://www.youtube.com/@radarnumerico" target="_blank" rel="noopener">@radarnumerico</a> · Instagram: <a href="https://www.instagram.com/radarnumerico/" target="_blank" rel="noopener">@radarnumerico</a></p>
     </div>
   </section>
 </main>
 
-<footer class="wrap">Radar Numérico · radarnumerico.com.br · projeto apartidário · <a href="mailto:eusouocaradosnumeros@gmail.com">contato</a></footer>
+<footer class="wrap">Radar Numérico · radarnumerico.com.br · projeto apartidário · <a href="https://www.instagram.com/radarnumerico/" target="_blank" rel="noopener">Instagram</a> · <a href="mailto:eusouocaradosnumeros@gmail.com">contato</a></footer>
 
 <script>
 /* ====== LINKS: troque aqui ====== */
