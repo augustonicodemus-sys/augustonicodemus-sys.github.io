@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://radarnumerico.com.br/sitemap.xml
