@@ -3,13 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Radar Numérico</title>
-<meta name="description" content="Radar Numérico: projeções, simulações e cálculos estatísticos sobre futebol e política, por Augusto Pellegrini.">
-<meta property="og:title" content="Radar Numérico">
-<meta property="og:description" content="Apuração das Eleições 2026 em tempo real: quem estaria eleito agora.">
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>Radar Numérico · Eleições 2026: resultados e apuração em tempo real</title>
+<meta name="description" content="Acompanhe os resultados e a apuração das Eleições 2026 em tempo real: 2º turno de Presidente e governadores, mapa por cidade e comparação com 2022.">
+<link rel="canonical" href="https://radarnumerico.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Radar Numérico">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Radar Numérico · Eleições 2026 em tempo real">
+<meta property="og:description" content="Acompanhe os resultados e a apuração das Eleições 2026 em tempo real: 2º turno de Presidente e governadores, mapa por cidade e comparação com 2022.">
+<meta property="og:url" content="https://radarnumerico.com.br/">
 <meta property="og:image" content="https://radarnumerico.com.br/logo.png">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet">
@@ -17,150 +22,68 @@
 :root{--ink:#16243A;--ink-2:#3A4A63;--mute:#6B7686;--line:#DCE1E8;--panel:#F2F4F7;--paper:#FFFFFF;--verde:#1E8A5A;--amar:#F2C230;--yt:#C4302B}
 *{box-sizing:border-box}
 html{font-family:"Archivo",system-ui,sans-serif;color:var(--ink);background:var(--paper)}
-body{margin:0;line-height:1.5}
+body{margin:0;line-height:1.55}
 .wrap{max-width:960px;margin:0 auto;padding:0 20px}
-.topo{background:var(--ink);color:#E8EDF4}
-.topo .wrap{display:flex;align-items:center;gap:6px 18px;flex-wrap:wrap;min-height:48px}
-.topo .marca{color:#fff;font-weight:800;font-stretch:90%;font-size:17px;text-decoration:none;margin-right:auto;display:inline-flex;align-items:center;gap:8px}
-.topo .marca img{display:block;height:32px;width:auto}
-header.hero .logo{width:150px;height:auto;flex:none}
-.redes{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:15px}
-.redes a{color:var(--ink);font-weight:600;text-decoration:none;border:1px solid var(--line);border-radius:18px;padding:5px 12px}
-.redes a:hover{border-color:var(--ink);background:var(--panel)}
-.topo a.it{color:#E8EDF4;text-decoration:none;font-size:14px;padding:12px 2px}
-.topo a.it:hover{color:#fff;text-decoration:underline}
-header.hero{display:flex;align-items:center;gap:28px;padding-top:36px;padding-bottom:28px;border-bottom:1px solid var(--line)}
-h1{margin:0;font-size:clamp(38px,7vw,66px);font-weight:800;font-stretch:85%;letter-spacing:-.02em;line-height:1}
-header.hero p{margin:12px 0 0;color:var(--ink-2);font-size:18px;max-width:62ch}
-main{padding-top:28px;padding-bottom:40px}
-section{margin-bottom:40px}
-h2{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);margin:0 0 12px}
-.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-a.card{display:flex;flex-direction:column;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:18px 20px;background:var(--paper);transition:border-color .15s,background .15s}
-a.card:hover{border-color:var(--ink);background:var(--panel)}
-a.card b{font-size:20px;font-weight:700;font-stretch:90%;line-height:1.15}
-a.card span{color:var(--ink-2);margin-top:6px;font-size:15px}
-a.card em{margin-top:auto;padding-top:12px;font-style:normal;font-weight:600;color:var(--verde)}
-a.card.destaque{grid-column:1 / -1;border:2px solid var(--ink);background:#FFFBEA}
-a.card.destaque b{font-size:clamp(22px,3.4vw,30px)}
-a.card.destaque .ao{display:inline-block;background:var(--amar);color:var(--ink);font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 9px;border-radius:10px;margin-bottom:8px;align-self:flex-start}
-a.card.yt em{color:var(--yt)}
-.video{position:relative;aspect-ratio:16/9;background:var(--panel);border-radius:8px;overflow:hidden;border:1px solid var(--line)}
-.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.video .sem{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--mute);font-size:15px;padding:20px;text-align:center}
-.vlink{margin:8px 0 0;font-size:14px}.vlink a{color:var(--yt);font-weight:600;text-decoration:none}
-.sobre{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;max-width:70ch}
-.sobre p{margin:0 0 12px;font-size:17px;color:var(--ink-2)}
-.sobre p:first-child{color:var(--ink);font-size:19px}
-.sobre a{color:var(--ink);font-weight:600}
-footer{border-top:1px solid var(--line);padding-top:18px;padding-bottom:40px;font-size:13px;color:var(--mute)}
+a{color:var(--ink)}
+footer.wrap{border-top:1px solid var(--line);padding-top:18px;padding-bottom:40px;font-size:13px;color:var(--mute)}
 footer a{color:var(--ink-2)}
 :focus-visible{outline:2px solid var(--verde);outline-offset:2px}
-@media (max-width:760px){.cards{grid-template-columns:minmax(0,1fr)}header.hero{padding-top:24px;padding-bottom:22px;gap:16px}header.hero .logo{width:84px;align-self:flex-start}.redes .h{display:none}.redes a{white-space:nowrap}}
+.hero{padding-top:44px;padding-bottom:12px}
+.kick{display:inline-block;background:var(--amar);color:var(--ink);font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin:0 0 14px}
+h1{margin:0;font-size:clamp(34px,6.4vw,60px);font-weight:800;font-stretch:85%;letter-spacing:-.02em;line-height:1.02;max-width:16ch}
+.hero p.sub{margin:14px 0 0;color:var(--ink-2);font-size:19px;max-width:58ch}
+.chamada{display:block;margin:28px 0 18px;text-decoration:none;color:var(--ink);border:2px solid var(--ink);border-radius:12px;background:#FFFBEA;padding:22px 24px;transition:background .15s}
+.chamada:hover{background:#FFF4CC}
+.chamada>b{display:block;font-size:clamp(22px,3.4vw,30px);font-weight:800;font-stretch:90%;line-height:1.15}
+.chamada>span{display:block;margin-top:8px;color:var(--ink-2);font-size:16px}
+.chamada .falta{margin-top:10px;font-size:15px;color:var(--ink)}
+.chamada em{display:inline-block;margin-top:14px;font-style:normal;font-weight:700;background:var(--ink);color:#fff;border-radius:22px;padding:9px 18px}
+.mais{display:flex;flex-wrap:wrap;gap:8px 10px;margin:0 0 48px;padding:0;list-style:none}
+.mais a{display:inline-block;border:1px solid var(--line);border-radius:18px;padding:6px 14px;font-size:14.5px;font-weight:600;text-decoration:none}
+.mais a:hover{border-color:var(--ink);background:var(--panel)}
+.mais li.t{font-size:14px;color:var(--mute);align-self:center;font-weight:400}
+@media (max-width:600px){.hero{padding-top:26px}h1{font-size:32px}.hero p.sub{font-size:17px}.chamada{padding:18px;margin-top:22px}}
 </style>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1556752564782456" crossorigin="anonymous"></script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RDGZ8VSS5R"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-RDGZ8VSS5R");</script>
+<link rel="stylesheet" href="/menu.css?v=1">
+<script src="/menu.js?v=1" defer></script>
 </head>
 <body>
-<div class="topo"><div class="wrap">
-  <a class="marca" href="/"><img src="logo.png" alt="" width="28" height="32">Radar Numérico</a>
-  <a class="it" href="/apuracao2026/2turno/">2º turno</a>
-  <a class="it" href="/apuracao2026/">Eleições 2026</a>
-  <a class="it" href="/eleicoes/?ano=2022">Eleições 2022</a>
-  <a class="it" href="/eleicoes/?ano=comp">Comparar 2022 × 2026</a>
-  <a class="it" id="lnk-copa-nav" href="#">Copa do Mundo</a>
-  <a class="it" id="lnk-yt-nav" href="#" target="_blank" rel="noopener">YouTube</a>
-  <a class="it" href="https://www.instagram.com/radarnumerico/" target="_blank" rel="noopener">Instagram</a>
-  <a class="it" href="#sobre">Sobre</a>
-</div></div>
-
-<header class="hero wrap">
-  <img class="logo" src="logo.png" alt="Logo Radar Numérico" width="212" height="240">
-  <div>
-    <h1>Radar Numérico</h1>
-    <p>Projeções, simulações e cálculos estatísticos sobre futebol e política. Análises com números, sem torcida.</p>
-    <p class="redes"><a id="lnk-yt-hero" href="https://www.youtube.com/@radarnumerico" target="_blank" rel="noopener">▶ YouTube<span class="h"> @radarnumerico</span></a><a href="https://www.instagram.com/radarnumerico/" target="_blank" rel="noopener">◎ Instagram<span class="h"> @radarnumerico</span></a></p>
-  </div>
-</header>
-
+<!--menu--><header class="rn-topo"><div class="rn-in"><a class="rn-marca" href="/" title="Página inicial do Radar Numérico"><img src="/logo.png" alt="" width="22" height="25">Radar Numérico</a><button class="rn-abrir" type="button" aria-expanded="false" aria-controls="rn-menu"><span class="rn-ham" aria-hidden="true"></span>Menu</button><nav class="rn-menu" id="rn-menu" aria-label="Menu do site"><ul class="rn-n1"><li class="rn-g"><button class="rn-t" type="button" aria-expanded="false" aria-controls="rn-p0">Eleições 2026<i aria-hidden="true"></i></button><div class="rn-painel" id="rn-p0"><div class="rn-col"><p class="rn-h">1º turno · resultados</p><ul><li><a href="/eleicoes/?ano=2026&amp;cargo=dep_federal">Deputados Federais</a></li><li><a href="/eleicoes/?ano=2026&amp;cargo=dep_estadual">Deputados Estaduais</a></li><li><a href="/eleicoes/?ano=2026&amp;cargo=senador">Senadores</a></li><li><a href="/eleicoes/?ano=2026&amp;cargo=governador">Governadores</a></li><li><a href="/eleicoes/?ano=2026&amp;cargo=presidente">Presidente</a></li><li><a href="/apuracao2026/">Câmara: cadeiras e quociente</a></li></ul></div><div class="rn-col"><p class="rn-h">2º turno · apuração ao vivo</p><ul><li><a href="/apuracao2026/2turno/">Painel do 2º turno</a></li><li><a href="/apuracao2026/2turno/presidente.html">Presidente</a></li><li class="rn-ufs"><span>Governadores</span><a href="/apuracao2026/2turno/governador-ac.html" title="Governadores Acre">AC</a><a href="/apuracao2026/2turno/governador-am.html" title="Governadores Amazonas">AM</a><a href="/apuracao2026/2turno/governador-df.html" title="Governadores Distrito Federal">DF</a><a href="/apuracao2026/2turno/governador-es.html" title="Governadores Espírito Santo">ES</a><a href="/apuracao2026/2turno/governador-rj.html" title="Governadores Rio de Janeiro">RJ</a><a href="/apuracao2026/2turno/governador-rn.html" title="Governadores Rio Grande do Norte">RN</a><a href="/apuracao2026/2turno/governador-to.html" title="Governadores Tocantins">TO</a></li></ul></div><div class="rn-col"><p class="rn-h">Mais</p><ul><li><a href="/apuracao2026/favoritos.html">★ Meus candidatos</a></li><li><a href="/eleicoes/?ano=comp">Comparar com 2022</a></li></ul></div></div></li><li class="rn-g"><button class="rn-t" type="button" aria-expanded="false" aria-controls="rn-p1">Eleições 2022<i aria-hidden="true"></i></button><div class="rn-painel" id="rn-p1"><div class="rn-col"><p class="rn-h">1º turno · resultados</p><ul><li><a href="/eleicoes/?ano=2022&amp;cargo=dep_federal">Deputados Federais</a></li><li><a href="/eleicoes/?ano=2022&amp;cargo=dep_estadual">Deputados Estaduais</a></li><li><a href="/eleicoes/?ano=2022&amp;cargo=senador">Senadores</a></li><li><a href="/eleicoes/?ano=2022&amp;cargo=governador">Governadores</a></li><li><a href="/eleicoes/?ano=2022&amp;cargo=presidente">Presidente</a></li></ul></div><div class="rn-col"><p class="rn-h">2º turno · resultados</p><ul><li><a href="/eleicoes/?ano=2022&amp;cargo=governador&amp;turno=2">Governadores</a></li><li><a href="/eleicoes/?ano=2022&amp;cargo=presidente&amp;turno=2">Presidente</a></li></ul></div></div></li><li class="rn-g"><button class="rn-t" type="button" aria-expanded="false" aria-controls="rn-p2">Futebol<i aria-hidden="true"></i></button><div class="rn-painel" id="rn-p2"><div class="rn-col"><ul><li><a href="/futebol/copa-2026/">Copa do Mundo 2026</a></li></ul></div></div></li><li class="rn-g"><a class="rn-t" href="/sobre/">Sobre</a></li></ul></nav></div></header><!--/menu-->
 <main class="wrap">
-  <section>
-    <h2>Projetos</h2>
-    <div class="cards">
-      <a class="card destaque" href="/apuracao2026/2turno/">
-        <span class="ao">Ao vivo · domingo, 25 de outubro</span>
-        <b>Eleições 2026 · 2º turno: Presidente e 7 governadores</b>
-        <span>Flávio Bolsonaro × Lula e os governos de AC, AM, DF, ES, RJ, RN e TO: o que está em jogo depois do 1º turno e, no dia 25, a apuração ao vivo com quanto falta para cada um virar.</span>
-        <em>Abrir o 2º turno →</em>
-      </a>
-      <a class="card" href="/apuracao2026/">
-        <b>1º turno 2026 · Câmara, Senado e Assembleias</b>
-        <span>Quem foi eleito, quociente eleitoral, sobras e cláusula de barreira, a partir dos dados do TSE.</span>
-        <em>Abrir o 1º turno →</em>
-      </a>
-      <a class="card" href="/eleicoes/">
-        <b>Explorador de eleições por cidade · 2022 × 2026</b>
-        <span>Presidente, Governador, Senador e Deputados nos 5.570 municípios, no mapa. Compare 2022 com 2026 e veja onde o voto mudou.</span>
-        <em>Abrir o explorador →</em>
-      </a>
-      <a class="card" id="lnk-copa" href="#">
-        <b>Probabilidades da Copa do Mundo</b>
-        <span>Vídeo com as chances de cada seleção, calculadas por simulação.</span>
-        <em>Assistir →</em>
-      </a>
-      <a class="card yt" id="lnk-yt" href="#" target="_blank" rel="noopener">
-        <b>Canal no YouTube</b>
-        <span>Vídeos com as projeções e análises do Radar Numérico.</span>
-        <em>Abrir o canal →</em>
-      </a>
-      <a class="card" href="#sobre">
-        <b>Sobre o Radar Numérico</b>
-        <span>Quem faz as análises e como entrar em contato.</span>
-        <em>Ler →</em>
-      </a>
-    </div>
+  <section class="hero">
+    <p class="kick">Eleições 2026</p>
+    <h1>Acompanhe resultados e apuração em tempo real</h1>
+    <p class="sub">Números do TSE explicados: quem estaria eleito agora, quanto falta apurar e quanto o 2º colocado precisa para virar. Sem torcida.</p>
   </section>
-
-  <section id="copa">
-    <h2>Probabilidades da Copa do Mundo</h2>
-    <div class="video" id="video"><div class="sem">Vídeo em breve no canal do YouTube.</div></div>
-    <p class="vlink"><a id="lnk-video" href="#" target="_blank" rel="noopener">Assistir no YouTube →</a></p>
-  </section>
-
-  <section id="sobre">
-    <h2>Sobre</h2>
-    <div class="sobre">
-      <p>Radar Numérico é um site e canal do YouTube onde são feitas projeções, simulações e cálculos estatísticos sobre futebol e política.</p>
-      <p>As projeções e análises são feitas pelo economista Augusto Pellegrini.</p>
-      <p>Augusto é formado em economia pela UFRJ e possui mais de 20 anos de experiência fazendo modelagem de dados. Iniciou sua carreira na IBM, onde trabalhou 5 anos no departamento de Market Insights. Trabalhou no setor de energia fazendo modelagem de preços. Atualmente é empresário da área de gastronomia e presta consultoria para empresas na área de previsão de demanda e implementação de IA em restaurantes.</p>
-      <p>Contato: <a href="mailto:eusouocaradosnumeros@gmail.com">eusouocaradosnumeros@gmail.com</a><br>YouTube: <a href="https://www.youtube.com/@radarnumerico" target="_blank" rel="noopener">@radarnumerico</a> · Instagram: <a href="https://www.instagram.com/radarnumerico/" target="_blank" rel="noopener">@radarnumerico</a></p>
-    </div>
-  </section>
+  <a class="chamada" href="/apuracao2026/2turno/">
+    <b>2º turno ao vivo · domingo, 25 de outubro</b>
+    <span>Flávio Bolsonaro × Lula para Presidente e a disputa pelo governo de AC, AM, DF, ES, RJ, RN e TO, com o mapa cidade por cidade.</span>
+    <span class="falta" id="falta"></span>
+    <em>Abrir o 2º turno →</em>
+  </a>
+  <ul class="mais">
+    <li class="t">Também:</li>
+    <li><a href="/eleicoes/?ano=2026&amp;cargo=presidente">Resultados do 1º turno por cidade</a></li>
+    <li><a href="/eleicoes/?ano=comp">Comparar 2026 com 2022</a></li>
+    <li><a href="/eleicoes/?ano=2022&amp;cargo=presidente">Eleições 2022</a></li>
+  </ul>
 </main>
-
-<footer class="wrap">Radar Numérico · radarnumerico.com.br · projeto apartidário · <a href="https://www.instagram.com/radarnumerico/" target="_blank" rel="noopener">Instagram</a> · <a href="/contato.html">Contato</a> · <a href="/privacidade.html">Política de privacidade</a></footer>
-
+<footer class="wrap">Radar Numérico · radarnumerico.com.br · projeto apartidário · <a href="/sobre/">Sobre e contato</a> · <a href="https://www.instagram.com/radarnumerico/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.youtube.com/@radarnumerico" target="_blank" rel="noopener">YouTube</a> · <a href="/privacidade.html">Política de privacidade</a></footer>
 <script>
-/* ====== LINKS: troque aqui ====== */
-const LINKS = {
-  youtube: "https://www.youtube.com/@radarnumerico",
-  copa: "#copa",
-  video: "https://www.youtube.com/watch?v=PhTHOpX3dD4"
-};
-/* ================================= */
 (function () {
-  const set = (ids, url) => ids.forEach((id) => { const a = document.getElementById(id); if (!a) return; if (url) a.href = url; else a.style.display = "none"; });
-  set(["lnk-yt", "lnk-yt-nav"], LINKS.youtube);
-  set(["lnk-copa", "lnk-copa-nav"], LINKS.copa);
-  if (LINKS.copa && /^https?:/.test(LINKS.copa)) ["lnk-copa", "lnk-copa-nav"].forEach((id) => { const a = document.getElementById(id); a.target = "_blank"; a.rel = "noopener"; });
-  const m = String(LINKS.video).match(/(?:v=|youtu\.be\/|embed\/|shorts\/|live\/)([\w-]{11})/);
-  const box = document.getElementById("video");
-  if (m) box.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${m[1]}" title="Probabilidades da Copa do Mundo — Radar Numérico" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
-  else box.closest("section").style.display = "none";
-  set(["lnk-video"], LINKS.video);
+  var el = document.getElementById("falta"); if (!el) return;
+  function at() {
+    var ms = new Date("2026-10-25T17:00:00-03:00") - Date.now();
+    if (ms <= 0) { el.innerHTML = "<b>Urnas fechadas:</b> apuração em andamento."; return; }
+    var d = Math.floor(ms / 864e5), h = Math.floor(ms % 864e5 / 36e5);
+    el.innerHTML = "Urnas fecham às 17h (Brasília). Faltam <b>" + (d ? d + (d > 1 ? " dias e " : " dia e ") : "") + h + " h</b>.";
+  }
+  at(); setInterval(at, 60000);
 })();
 </script>
 </body>
