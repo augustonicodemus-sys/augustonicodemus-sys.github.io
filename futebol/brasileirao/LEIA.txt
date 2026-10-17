@@ -1,0 +1,1 @@
+Pagina Probabilidades do Brasileirao 2026 (/futebol/brasileirao/). Gerada por Campeonato Brasileiro/gerar_site_futebol.py; nao editar index.html a mao.
