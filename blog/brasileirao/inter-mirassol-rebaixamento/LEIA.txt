@@ -1,0 +1,1 @@
+Blog do Radar Numerico. Paginas geradas por Blog/gerar_blog.py a partir de Blog/posts/*.md; nao editar os index.html a mao.
