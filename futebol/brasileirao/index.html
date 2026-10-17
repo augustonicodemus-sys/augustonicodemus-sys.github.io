@@ -681,13 +681,16 @@ renderTime(sel.value);
       const img = montar(c, modo === 'story' ? 'story' : 'post');
       const blob = await new Promise(r => img.toBlob(r, 'image/png'));
       const file = new File([blob], modo === 'story' ? 'radar-numerico-story.png' : 'radar-numerico.png', {type: 'image/png'});
-      if (navigator.canShare && navigator.canShare({files: [file]})) {
-        await navigator.share({files: [file], title: texto, text: `${texto} ${SITE_URL}`}); return;
+      const movel = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || matchMedia('(pointer: coarse)').matches;
+      if (movel && navigator.canShare && navigator.canShare({files: [file]})) {
+        try { await navigator.share({files: [file], title: texto, text: `${texto} ${SITE_URL}`}); return; }
+        catch (e) { if (e && e.name === 'AbortError') return; console.warn('share falhou, baixando a imagem', e); }
       }
       if (modo === 'whats') { baixar(blob, file.name); window.open(`https://wa.me/?text=${encodeURIComponent(`${texto} ${SITE_URL}`)}`, '_blank'); toast('Imagem salva e WhatsApp aberto: anexe a imagem na conversa.'); return; }
       baixar(blob, file.name); toast('Imagem do story salva. Abra o Instagram e poste no Story.');
     } catch (e) {
       if (e && e.name === 'AbortError') return;
+      console.warn('compartilhar', e);
       toast('Não deu para gerar a imagem neste navegador.');
     } finally { btn.disabled = false; btn.innerHTML = rot; }
   }
