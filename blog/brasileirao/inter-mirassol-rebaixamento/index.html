@@ -45,6 +45,11 @@ article ul{margin:0 0 14px;padding-left:22px}article li{margin-bottom:6px}articl
 .barras.dupla{grid-template-columns:minmax(96px,150px) 1fr 190px}.barras.dupla .trilhos{display:grid;row-gap:2px}.barras.dupla .trilho{height:11px}
 .barras.dupla .fill{background:var(--verm)}.barras.dupla .fill.antes{background:#F9B5B0}.barras.dupla .val{display:flex;flex-wrap:wrap;align-items:center;gap:2px 6px;font-size:14px}.barras.dupla .val small{color:var(--mute);font-weight:500}
 .barras.dupla .val small::after{content:" →";}
+.barras.dupla.pos .fill{background:var(--azul)}.barras.dupla.pos .fill.antes{background:#B9C3FF}
+.cen{display:grid;gap:12px}.cen .cc{background:#fff;padding:10px 12px;border-radius:6px}.cen .ct{font-weight:800;font-size:15px;margin-bottom:6px}.cen .ct small{color:var(--mute);font-weight:500;font-size:12px}
+.cen .cr{display:grid;grid-template-columns:1fr auto;gap:2px 8px;align-items:center;padding:7px 0;border-top:1px solid var(--hair);font-size:14px}.cen .cr .n{font-weight:600}.cen .cr .n small{display:block;color:var(--mute);font-weight:500;font-size:12px;margin-left:24px}
+.cen .cr .p{font-weight:800;font-size:19px;font-variant-numeric:tabular-nums;text-align:right}.cen .cr .chip{grid-column:2;justify-self:end}
+.cen .cr.ruim .chip{background:var(--upbg);color:var(--upfg)}.cen .cr.bom .chip{background:var(--downbg);color:var(--downfg)}.cen .cr.neutro .chip{background:var(--panel);color:var(--mute)}
 .chip{display:inline-block;font-weight:700;font-size:11.5px;padding:1px 6px;border-radius:3px;white-space:nowrap}.chip.ruim{background:var(--upbg);color:var(--upfg)}.chip.bom{background:var(--downbg);color:var(--downfg)}.chip.neutro{background:#fff;color:var(--mute)}
 .torcer{display:grid;grid-template-columns:1fr 1fr;gap:14px}.torcer .jogo{background:#fff;padding:10px 12px;border-radius:6px}.torcer .jt{font-weight:800;font-size:15px;margin-bottom:8px}
 .torcer .res{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;padding:6px 0;border-top:1px solid var(--hair);font-size:14px}.torcer .res .r small{color:var(--mute);display:block;font-size:12px}.torcer .res .p{font-weight:800;font-size:17px;font-variant-numeric:tabular-nums}
@@ -60,7 +65,7 @@ svg.pos .p1,.legenda i.p1{fill:var(--azul);background:var(--azul)}svg.pos .g6,.l
 .cta{background:var(--panel);border-left:4px solid var(--verde);padding:12px 16px;margin:26px 0;font-size:16px}.cta a{font-weight:700}
 .lista .post{padding:18px 0;border-top:1px solid var(--line)}.lista .post:first-child{border-top:0}.lista h2{margin:4px 0 6px;font-size:22px;font-weight:800;font-stretch:90%;letter-spacing:-.015em;line-height:1.2}.lista h2 a{text-decoration:none}.lista h2 a:hover{text-decoration:underline}
 .lista .post p{margin:0 0 6px;font-size:16px;color:var(--ink2)}.lista .meta{font-size:13px;color:var(--mute)}
-@media (max-width:640px){.barras{grid-template-columns:minmax(84px,118px) 1fr 54px;font-size:13.5px}.barras.dupla{grid-template-columns:minmax(80px,104px) 1fr 120px}.torcer{grid-template-columns:1fr}.prox .pj{grid-template-columns:1fr}.graf{padding:12px 12px 10px;margin-left:-8px;margin-right:-8px}}
+@media (max-width:640px){.barras{grid-template-columns:minmax(84px,118px) 1fr 54px;font-size:13.5px}.barras.dupla{grid-template-columns:minmax(80px,104px) 1fr 120px}.torcer{grid-template-columns:1fr}.cen{grid-template-columns:1fr!important}.prox .pj{grid-template-columns:1fr}.graf{padding:12px 12px 10px;margin-left:-8px;margin-right:-8px}}
 </style>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1556752564782456" crossorigin="anonymous"></script>
@@ -102,7 +107,7 @@ svg.pos .p1,.legenda i.p1{fill:var(--azul);background:var(--azul)}svg.pos .g6,.l
 <h2>O quadro geral do rebaixamento</h2>
 <p>Chapecoense (100%) e Remo (99,2%) estão praticamente rebaixados. A briga real é pelas outras duas vagas, entre Grêmio (77,6%), Internacional (52,6%), Corinthians (32,3%), Vitória (13,1%) e Mirassol (10,2%). Vasco e Botafogo aparecem com menos de 6%.</p>
 <div class="cta">Todos os times, atualizados depois de cada jogo: <a href="/futebol/brasileirao/">probabilidades do Brasileirão 2026</a> — chance de título, Libertadores e rebaixamento, com a matriz "para quem torcer na rodada".</div>
-<div class="fim"><p><b>Como calculamos:</b> um algoritmo desenvolvido pelo economista Augusto Pellegrini estima a força de cada time e a probabilidade de cada placar dos jogos que faltam; a partir daí, 100 mil simulações do restante do campeonato dão as chances de cada posição na tabela. Texto gerado a partir dos números do modelo e revisado pela equipe. Fonte: Radar Numérico.</p>
+<div class="fim"><p><b>Como calculamos:</b> um algoritmo desenvolvido pelo economista Augusto Pellegrini estima a força de cada time e a probabilidade de cada placar dos jogos que faltam; a partir daí, 100 mil simulações do restante do campeonato dão as chances de cada posição na tabela. Fonte: Radar Numérico.</p>
 <p>Números deste artigo: modelo atualizado em 17/10/2026 às 11h21, após Mirassol 2×0 Internacional.</p></div>
 </article>
 </main>
