@@ -1,0 +1,1 @@
+Pasta do artigo de fechamento da rodada 31 (19/10/2026). Gerado por Blog/gerar_blog.py.
