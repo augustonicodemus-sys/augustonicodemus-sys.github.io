@@ -1,0 +1,747 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="max-image-preview:large">
+<title>Champions League 2026/27: chances de título e classificação</title>
+<meta name="description" content="Probabilidades da Champions 2026/27 por simulação: chance de título, de ir direto às oitavas, de jogar o playoff e as finais mais prováveis.">
+<link rel="canonical" href="https://radarnumerico.com.br/futebol/champions-league/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Radar Numérico">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Champions League 2026/27: chances de título e classificação">
+<meta property="og:description" content="Probabilidades da Champions 2026/27 por simulação: chance de título, de ir direto às oitavas, de jogar o playoff e as finais mais prováveis.">
+<meta property="og:url" content="https://radarnumerico.com.br/futebol/champions-league/">
+<meta property="og:image" content="https://radarnumerico.com.br/futebol/champions-league/og.png?v=202610210844">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://radarnumerico.com.br/futebol/champions-league/", "url": "https://radarnumerico.com.br/futebol/champions-league/", "name": "Champions League 2026/27: chances de título e classificação", "description": "Probabilidades da Champions 2026/27 por simulação: chance de título, de ir direto às oitavas, de jogar o playoff e as finais mais prováveis.", "inLanguage": "pt-BR", "dateModified": "2026-10-21T08:44:49-03:00", "isPartOf": {"@type": "WebSite", "name": "Radar Numérico", "url": "https://radarnumerico.com.br/"}, "about": {"@type": "Thing", "name": "Champions League 2026/27"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Radar Numérico", "item": "https://radarnumerico.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Champions League 2026/27: probabilidades", "item": "https://radarnumerico.com.br/futebol/champions-league/"}]}]}</script>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet">
+<script src="html2canvas.min.js" defer></script>
+<style>
+/* Layout: casca do site (Archivo, tokens do radarnumerico.com.br) + gráficos na paleta semântica do guia de design.
+   Coluna única de leitura (máx. 960px), gráficos do mais simples ao mais detalhado. */
+:root{
+  --ink:#16243A; --ink2:#3A4A63; --mute:#6B7686;
+  --bg:#FFFFFF; --panel:#F2F4F7; --line:#DCE1E8;
+  --marca:#1E8A5A; --marca2:#F2C230;
+  --azul:#2F4BFF; --verde:#06C25A; --amarelo:#FFC93C; --vermclaro:#FF8A80; --verm:#FF453A;
+  --trilho:#EEF1F6; --hair:#E7EAF0; --neutro:#9AA6B8; --azulclaro:#EAEEFF;
+  --upbg:#FFE3E0; --upfg:#B3261E; --downbg:#DDF7E7; --downfg:#0B7A3B;
+  --fonte:"Archivo",Arial,Helvetica,sans-serif;
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fonte);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 56px}
+
+/* cabeçalho */
+header.pg{padding-block:28px 8px}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--marca)}
+h1{font-size:clamp(26px,4.4vw,38px);line-height:1.12;letter-spacing:-.02em;margin:6px 0 10px;text-wrap:balance;font-weight:800}
+.selo{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:var(--mute)}
+.selo b{color:var(--ink2);font-weight:600}
+
+/* manchetes */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0 8px}
+.tile{background:var(--panel);padding:14px 16px;border-top:3px solid var(--azul);min-width:0}
+.tile.z4{border-top-color:var(--verm)} .tile.g6{border-top-color:var(--verde)}
+.tile .lab{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.tile .num{font-size:30px;font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:4px 0 2px;font-variant-numeric:tabular-nums}
+.tile .num small{font-size:14px;font-weight:600;color:var(--mute);margin-left:6px;letter-spacing:0}
+.tile .txt{font-size:13.5px;color:var(--ink2);line-height:1.4}
+.var{display:inline-block;font-weight:700;font-size:13px;padding:1px 6px;margin-left:4px;vertical-align:middle;letter-spacing:0}
+.var.up{background:var(--upbg);color:var(--upfg)} .var.down{background:var(--downbg);color:var(--downfg)}
+
+/* seções e gráficos */
+section.g{padding-block:28px 6px;border-top:1px solid var(--hair);margin-top:22px}
+section.g:first-of-type{border-top:0;margin-top:0}
+h2{font-size:22px;letter-spacing:-.015em;margin:0 0 4px;font-weight:800;text-wrap:balance}
+.sub{font-size:14.5px;color:var(--ink2);margin:0 0 18px;max-width:68ch}
+.nota{font-size:13px;color:var(--mute);margin:12px 0 0;max-width:72ch}
+.nota b{color:var(--ink2)}
+
+/* escudo */
+.esc{display:inline-block;width:18px;height:18px;vertical-align:-4px;margin-right:6px;position:relative;flex:none}
+.esc i{position:absolute;inset:0;border-radius:50%;background:var(--trilho);color:var(--mute);font:700 6.5px/18px var(--fonte);text-align:center;letter-spacing:.02em;font-style:normal;outline:1px solid var(--hair);outline-offset:-1px}
+.esc img{position:absolute;inset:0;width:18px;height:18px;object-fit:contain;background:var(--bg);border-radius:50%}
+/* componente A — barra horizontal simples */
+.barras{display:grid;grid-template-columns:minmax(96px,150px) 1fr 58px;row-gap:6px;column-gap:10px;align-items:center;font-size:14.5px}
+.barras .nome{text-align:right;color:var(--ink);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.barras .nome .esc{margin-right:5px}
+.barras .nome small{color:var(--mute);font-weight:400;font-size:12px;margin-right:6px;font-variant-numeric:tabular-nums}
+.barras .trilho{background:var(--trilho);height:22px;position:relative}
+.barras .fill{height:100%;background:var(--azul);min-width:2px;transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.barras.neg .fill{background:var(--verm)}
+.barras .val{font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink);text-align:left}
+.barras .val.zero{color:var(--mute);font-weight:500}
+.barras .resto{grid-column:1/-1;color:var(--mute);font-size:13px;padding-top:4px;border-top:1px dashed var(--hair);margin-top:4px}
+.trilho[data-tip]{cursor:default}
+.barras .trilho:hover .fill{filter:brightness(.92)}
+
+/* barras por pontuação */
+.barras.pts .nome{font-weight:700;font-variant-numeric:tabular-nums}
+.barras.pts .nome small{margin-left:4px;margin-right:0}
+.barras .marco{grid-column:1/-1;font-size:12.5px;color:var(--mute);display:flex;gap:8px;align-items:center;margin:2px 0}
+.barras .marco::after{content:"";flex:1;border-top:1px dashed var(--line)}
+
+/* bloco do time */
+.timebar{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-bottom:18px}
+.timebar label{font-weight:700;font-size:15px}
+select{font:inherit;font-weight:600;font-size:16px;padding:10px 40px 10px 14px;border:1.5px solid var(--line);background:var(--bg) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'><path d='M1 1l6 6 6-6' fill='none' stroke='%236B7686' stroke-width='2'/></svg>") no-repeat right 14px center;color:var(--ink);appearance:none;min-width:220px}
+select:focus{outline:2px solid var(--azul);outline-offset:2px}
+.cartao{display:grid;grid-template-columns:1.2fr repeat(4,1fr);gap:10px;margin-bottom:22px}
+.cartao>div{background:var(--panel);padding:12px 14px;min-width:0}
+.cartao .nm{font-size:20px;font-weight:800;letter-spacing:-.01em;line-height:1.15}
+.cartao .nm .esc{width:24px;height:24px;vertical-align:-4px}.cartao .nm .esc i{line-height:24px;font-size:8px}.cartao .nm .esc img{width:24px;height:24px}
+.cartao .ln{font-size:13px;color:var(--mute);margin-top:4px;font-variant-numeric:tabular-nums}
+.cartao .ln b{color:var(--ink2);font-weight:600}
+.cartao .k{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.cartao .v{font-size:24px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.15;margin-top:2px}
+.cartao .d{font-size:12px;color:var(--mute);margin-top:2px}
+.cartao>div.c1{border-top:3px solid var(--azul)} .cartao>div.c2{border-top:3px solid var(--verde)} .cartao>div.c3{border-top:3px solid var(--amarelo)} .cartao>div.c4{border-top:3px solid var(--verm)}
+
+h3{font-size:17px;margin:26px 0 2px;font-weight:800;letter-spacing:-.01em}
+.sub3{font-size:13.5px;color:var(--ink2);margin:0 0 14px}
+
+/* componente colunas (histograma / posição) */
+.cols{display:flex;align-items:flex-end;gap:3px;height:214px;padding-top:40px;border-bottom:1.5px solid var(--line);position:relative}
+.cols .c{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;position:relative}
+.cols .b{width:100%;background:var(--azul);min-height:0;position:relative;transition:height .55s cubic-bezier(.2,.7,.2,1),background .3s;display:flex;flex-direction:column}
+.cols .b.zero{min-height:0}
+.cols .r{position:absolute;bottom:100%;margin-bottom:3px;font-size:10.5px;font-weight:700;color:var(--ink2);font-variant-numeric:tabular-nums;white-space:nowrap;left:50%;transform:translateX(-50%)}
+.cols .seg{width:100%}
+.cols .r.ant{display:none}
+.cols .c:hover .b{filter:brightness(.9)}
+.cols .media.dir span{left:auto;right:6px}
+.eixo{display:flex;gap:3px;margin-top:6px;font-size:11.5px;color:var(--mute);font-variant-numeric:tabular-nums}
+.eixo span{flex:1;text-align:center;min-width:0;overflow:hidden}
+.eixo span.atual{color:var(--ink);font-weight:800}
+.eixo span.atual::after{content:"";display:block;width:0;height:0;border:5px solid transparent;border-bottom-color:var(--ink);margin:-2px auto 0;transform:translateY(-10px)}
+.legenda{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--ink2);margin-top:10px}
+.legenda i{display:inline-block;width:12px;height:12px;vertical-align:-2px;margin-right:6px}
+.cols .media{position:absolute;top:0;bottom:0;border-left:2px dashed var(--ink2);pointer-events:none;transition:left .55s}
+.cols .media span{position:absolute;top:4px;left:6px;font-size:11.5px;font-weight:700;color:var(--ink2);white-space:nowrap}
+.pos-b.p1{background:var(--azul)} .pos-b.g6{background:var(--verde)} .pos-b.sula{background:var(--amarelo)} .pos-b.meio{background:var(--neutro)} .pos-b.z4{background:var(--verm)}
+
+/* tooltip */
+/* matriz "para quem torcer" */
+.ctrl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 14px;margin-bottom:18px}
+.ctrl label{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.ctrl select{width:100%;min-width:0;font-size:14.5px;padding:9px 34px 9px 12px}
+.mtz{display:grid;gap:4px;font-variant-numeric:tabular-nums}
+.mtz .h{font-size:12.5px;color:var(--ink2);font-weight:600;padding:6px 8px;background:var(--panel);text-align:center;line-height:1.3}
+.mtz .h small{display:block;color:var(--mute);font-weight:500}
+.mtz .rh{text-align:left}
+.mtz .cel{padding:12px 10px;border:1.5px solid var(--hair);text-align:center;min-width:0;position:relative}
+.mtz .cel .p{font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.mtz .cel .d{font-size:12px;margin-top:4px;color:var(--mute)}
+.mtz .cel .chip{display:inline-block;font-weight:700;padding:1px 6px;margin-top:5px;font-size:12px}
+.mtz .cel.bom{border-color:var(--verde)} .mtz .cel.ruim{border-color:var(--verm)}
+.mtz .cel.bom .chip{background:var(--downbg);color:var(--downfg)} .mtz .cel.ruim .chip{background:var(--upbg);color:var(--upfg)}
+.mtz .cel.neutro .chip{background:var(--panel);color:var(--mute)}
+.mtz .canto{background:transparent}
+.leitura{font-size:14.5px;color:var(--ink);margin:14px 0 0;max-width:72ch;background:var(--panel);padding:10px 14px;border-left:3px solid var(--azul)}
+.leitura b{font-weight:800}
+
+/* análises detalhadas */
+.cap{margin-top:40px;padding-top:26px;border-top:3px solid var(--ink)}
+.cap .kicker{color:var(--ink2)}
+.svgwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.svgwrap svg{display:block;width:100%;height:auto;min-width:560px;font-family:var(--fonte)}
+.faixa text{fill:var(--ink)} .faixa .eixo-t{fill:var(--mute);font-size:11px} .faixa .nome{font-size:12.5px}
+.faixa .zona-p1{fill:var(--azulclaro)} .faixa .zona-g6{fill:var(--downbg);opacity:.55} .faixa .zona-sula{fill:var(--amarelo);opacity:.18} .faixa .zona-z4{fill:var(--upbg);opacity:.6}
+.faixa .fina{stroke:var(--neutro);stroke-width:1.2} .faixa .grossa{stroke:var(--azul);stroke-width:8} .faixa .med{fill:var(--bg);stroke:var(--ink);stroke-width:1.6}
+.faixa .atual{stroke:var(--ink);stroke-width:1.8} .faixa .hit{fill:transparent}
+.faixa .hit:hover + .grossa{stroke:var(--ink2)}
+.evo text{fill:var(--mute);font-size:11px} .evo .grid{stroke:var(--hair);stroke-width:1} .evo .lin{fill:none;stroke-width:2.2;stroke-linejoin:round}
+.evo .rot{font-size:12px;font-weight:700} .evo .cross{stroke:var(--ink2);stroke-width:1;stroke-dasharray:3 3;opacity:0}
+.legline{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--ink2);margin:8px 0 0}
+.legline i{display:inline-block;width:14px;height:3px;vertical-align:3px;margin-right:6px}
+.evo-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.evo-grid>div{min-width:0}
+.evo-grid>.larga{grid-column:1/-1}
+.svgwrap svg.evo{min-width:0}
+
+/* corrida de barras */
+.race{position:relative;height:calc(20 * 27px);margin-top:10px}
+.race{--dur:.2s}
+.race .row{position:absolute;left:0;right:0;height:24px;display:grid;grid-template-columns:132px 1fr 42px;align-items:center;gap:8px;transition:top var(--dur) cubic-bezier(.2,.7,.2,1)}
+.race .row .nm{font-size:13px;font-weight:600;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;justify-content:flex-end;gap:0}
+.race .row .nm small{color:var(--mute);font-weight:500;margin-right:5px;font-variant-numeric:tabular-nums}
+.race .row .bar{height:20px;background:var(--azul);transition:width var(--dur) linear;min-width:2px}
+.race .row .bar{background:var(--azul)}
+.race .row .pt{font-weight:800;font-variant-numeric:tabular-nums;font-size:13.5px}
+.racehead{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;margin-top:4px}
+.racehead .rod{font-size:22px;font-weight:800;letter-spacing:-.02em} .racehead .jogo{font-size:13.5px;color:var(--ink2)} .racehead .jogo b{color:var(--ink)}
+.racectl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+.btn{font:inherit;font-weight:700;font-size:13.5px;padding:8px 14px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.btn:hover{background:var(--panel)} .btn.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn:focus-visible{outline:2px solid var(--azul);outline-offset:2px}
+.prog{flex:1;min-width:120px;height:4px;background:var(--trilho);position:relative}
+.prog i{position:absolute;left:0;top:0;bottom:0;background:var(--azul);transition:width .45s linear}
+
+@media (max-width:640px){
+  .ctrl{grid-template-columns:1fr 1fr}
+  .mtz .cel .p{font-size:18px} .mtz .h{font-size:11px;padding:5px 4px} .mtz .cel{padding:8px 4px}
+  .evo-grid{grid-template-columns:1fr}
+  .race .row{grid-template-columns:92px 1fr 36px} .race .row .nm{font-size:12px}
+}
+/* compartilhar */
+.share{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0 0}
+.share span{font-size:12px;color:var(--mute);margin-right:2px}
+.share a,.share button{font:inherit;font-size:12.5px;font-weight:700;padding:6px 11px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.share a:hover,.share button:hover{background:var(--panel)}
+.share svg{width:14px;height:14px;fill:currentColor}
+.share .wa{color:#128C7E} .share .ig{color:#C13584}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;font-size:13.5px;max-width:92vw;opacity:0;transition:opacity .2s;pointer-events:none;z-index:60}
+#tip{position:fixed;z-index:50;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12.5px;padding:6px 9px;border-radius:0;max-width:260px;opacity:0;transition:opacity .12s;font-variant-numeric:tabular-nums;line-height:1.35}
+#tip b{font-weight:700}
+
+.metod{border-top:1px solid var(--line);margin-top:30px;padding-block:20px;font-size:13px;color:var(--mute)}
+.metod p{margin:0 0 6px;max-width:80ch}
+.metod .marca{color:var(--ink);font-weight:800;font-size:14px}
+.lede{font-size:17px;line-height:1.5;color:var(--ink2);margin:14px 0 0;max-width:72ch}
+.lede b{color:var(--ink);font-weight:700}
+.blog-chamada{margin:14px 0 0;font-size:15px;color:var(--ink2);background:var(--panel);border-left:3px solid var(--marca);padding:8px 12px;max-width:72ch}
+.blog-chamada a{color:var(--ink);font-weight:700}
+footer.site{border-top:1px solid var(--line);padding-top:18px;padding-bottom:40px;margin-top:10px;font-size:13px;color:var(--mute)}
+footer.site a{color:var(--ink2)}
+:focus-visible{outline:2px solid var(--marca);outline-offset:2px}
+
+@media (max-width:640px){
+  .tiles{grid-template-columns:1fr}
+  .cartao{grid-template-columns:1fr 1fr}
+  .cartao>div:first-child{grid-column:1/-1}
+  .barras{grid-template-columns:minmax(84px,118px) 1fr 54px;font-size:13.5px}
+  .cols{height:184px}
+  .cols .r{font-size:10px}
+  .eixo{font-size:10px}
+  .cols.denso .r:not(.big){display:none!important}
+  .eixo.denso span:not(.e5){visibility:hidden}
+}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important} }
+
+:root{--e0:#E3E7EE;--e1:#C2CBD9;--e2:#9CB0EC;--e3:#6A84F5;--e4:#2F4BFF;--e5:#16243A;--e6:#F2C230}
+.leg2{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--ink2);margin:0 0 12px}
+.leg2 i{display:inline-block;width:12px;height:12px;vertical-align:-2px;margin-right:6px}
+/* gráfico-assinatura: até onde cada time vai */
+.trilha{display:grid;grid-template-columns:minmax(110px,170px) 1fr 52px;row-gap:5px;column-gap:10px;align-items:center;font-size:14px}
+.trilha .nome{text-align:right;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.trilha .nome small{color:var(--mute);font-weight:400;font-size:12px;margin-right:6px;font-variant-numeric:tabular-nums}
+.trilha .st{display:flex;height:20px;cursor:default}
+.trilha .st i{display:block;height:100%;font-style:normal;font-size:10.5px;font-weight:700;line-height:20px;text-align:center;overflow:hidden;white-space:nowrap;color:#fff;font-variant-numeric:tabular-nums}
+.trilha .st i.cl{color:var(--ink2)}
+.trilha .st:hover{filter:brightness(.95)}
+.trilha .val{font-weight:800;font-variant-numeric:tabular-nums}
+.trilha .val.zero{color:var(--mute);font-weight:500}
+.trilha .cab{font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--mute)}
+.trilha .cab.r{text-align:left}
+.seg-ctrl{display:inline-flex;flex-wrap:wrap;border:1.5px solid var(--line);margin:0 0 14px}
+.seg-ctrl button{font:inherit;font-size:13.5px;font-weight:600;padding:7px 12px;border:0;background:var(--bg);color:var(--ink2);cursor:pointer}
+.seg-ctrl button.on{background:var(--ink);color:#fff}
+.trilha.liga{grid-template-columns:minmax(110px,170px) 1fr}
+/* finais */
+.fins{display:grid;gap:10px}
+.fin{display:grid;grid-template-columns:72px 1fr;gap:4px 14px;align-items:center;background:var(--panel);padding:12px 14px}
+.fin .q{font-size:24px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;grid-row:span 3}
+.fin .duelo{display:flex;justify-content:space-between;gap:8px;font-weight:700;font-size:15px}
+.fin .duelo span:last-child .esc{margin-right:0;margin-left:6px}
+.fin .bar{display:flex;height:12px}
+.fin .bar i{display:block;height:100%}
+.fin .pp{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.fin .pp span:nth-child(2){color:var(--mute)}
+/* confrontos dos playoffs */
+.conf{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:10px}
+.conf>div{background:var(--panel);padding:12px 14px;min-width:0}
+.conf .k{font-size:12px;font-weight:600;color:var(--mute)}
+.conf .q{font-size:22px;font-weight:800;letter-spacing:-.02em;margin:2px 0 8px}
+.conf .q small{font-size:12.5px;font-weight:600;color:var(--mute);letter-spacing:0;margin-left:4px}
+.conf .duelo{display:grid;grid-template-columns:1fr auto 1fr;gap:6px;align-items:center;font-size:13.5px;font-weight:600}
+.conf .duelo .d2{text-align:right}
+.conf .duelo .d2 .esc,.jg .m .esc{margin-right:0;margin-left:6px}
+.conf .duelo .x{color:var(--mute);font-weight:500}
+.conf .bar{display:flex;height:10px;margin-top:6px}
+.conf .bar i{display:block;height:100%}
+.conf .pp{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink2);margin-top:4px;font-variant-numeric:tabular-nums}
+/* jogos de hoje */
+.jg{display:grid;grid-template-columns:minmax(0,1fr) minmax(120px,1.4fr) minmax(0,1fr);gap:4px 10px;align-items:center;font-size:13.5px;padding:10px 0;border-bottom:1px solid var(--hair)}
+.jg .m{text-align:right;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .jg .v{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.jg .b3{display:flex;height:22px;font-size:11.5px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums}
+.jg .b3 i{display:flex;align-items:center;justify-content:center;font-style:normal;overflow:hidden}
+.jg .qd{grid-column:1/-1;font-size:12px;color:var(--mute);text-align:center}
+.jg .imp{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12.5px;color:var(--ink2);margin-top:4px}
+.jg .imp>div{background:var(--panel);padding:6px 10px;font-variant-numeric:tabular-nums}
+.jg .imp b{color:var(--ink)}
+.jg .imp .t{font-weight:700;color:var(--ink);display:block;font-size:12px}
+/* mapa de encontros */
+.hmwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.hm{display:grid;gap:2px;font-variant-numeric:tabular-nums;min-width:680px}
+.hm>div{font-size:11px;text-align:center;padding:5px 0;min-width:0}
+.hm .rh{text-align:right;padding-right:8px;font-weight:600;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hm .ch{font-weight:700;font-size:10.5px;color:var(--ink2);writing-mode:vertical-rl;transform:rotate(180deg);padding:6px 0;text-align:left;white-space:nowrap}
+.hm .cel{cursor:default;font-weight:600}
+.hm .diag{background:var(--panel)}
+/* bloco do time */
+.cartao2{display:grid;grid-template-columns:1.4fr repeat(6,1fr);gap:8px;margin-bottom:22px}
+.cartao2>div{background:var(--panel);padding:10px 12px;min-width:0;border-top:3px solid var(--line)}
+.cartao2 .nm{font-size:19px;font-weight:800;letter-spacing:-.01em;line-height:1.15}
+.cartao2 .nm .esc{width:24px;height:24px;vertical-align:-4px}.cartao2 .nm .esc i{line-height:24px;font-size:8px}.cartao2 .nm .esc img{width:24px;height:24px}
+.cartao2 .ln{font-size:13px;color:var(--mute);margin-top:4px;font-variant-numeric:tabular-nums}
+.cartao2 .ln b{color:var(--ink2);font-weight:600}
+.cartao2 .k{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--mute)}
+.cartao2 .v{font-size:22px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.15;margin-top:2px}
+.cartao2 .d{font-size:11.5px;color:var(--mute);margin-top:2px}
+.pos-b.t8{background:var(--verde)} .pos-b.po{background:var(--amarelo)} .pos-b.out{background:var(--neutro)}
+.cols.denso{gap:2px} .cols.denso .r{font-size:9.5px}
+.eixo.denso{gap:2px;font-size:9.5px}
+.eixo.denso span{overflow:visible;white-space:nowrap}
+.ns{display:none}
+.adv{display:grid;grid-template-columns:minmax(110px,170px) 1fr 52px;row-gap:5px;column-gap:10px;align-items:center;font-size:14px}
+.adv .nome{text-align:right;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.adv .st{display:flex;height:16px;background:var(--trilho)} .adv .st i{display:block;height:100%}
+.adv .val{font-weight:700;font-variant-numeric:tabular-nums}
+/* tabela */
+.tabwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table.tb{border-collapse:collapse;width:100%;min-width:880px;font-size:13.5px;font-variant-numeric:tabular-nums}
+table.tb th{font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--mute);text-align:right;padding:6px 8px;border-bottom:1.5px solid var(--line);vertical-align:bottom;line-height:1.2;cursor:pointer;user-select:none}
+table.tb th.l{text-align:left}
+table.tb th.on{color:var(--ink)}
+table.tb td{padding:6px 8px;border-bottom:1px solid var(--hair);text-align:right;white-space:nowrap}
+table.tb td.l{text-align:left;font-weight:600}
+table.tb td.p{position:relative;min-width:62px}
+table.tb td.p span{position:relative;z-index:1}
+table.tb td.p b{position:absolute;left:8px;bottom:3px;height:4px;max-width:calc(100% - 16px);z-index:0}
+table.tb td.zero{color:var(--mute)}
+table.tb tr.z-t8 td:first-child{box-shadow:inset 3px 0 var(--verde)} table.tb tr.z-po td:first-child{box-shadow:inset 3px 0 var(--amarelo)} table.tb tr.z-out td:first-child{box-shadow:inset 3px 0 var(--neutro)}
+table.tb tr.corte td{border-bottom:2px solid var(--ink2)}
+@media (max-width:640px){
+  .trilha,.adv{grid-template-columns:minmax(84px,112px) 1fr 44px;font-size:12.5px;column-gap:8px}
+  .trilha.liga{grid-template-columns:minmax(84px,112px) 1fr}
+  .trilha .st i{font-size:0}
+  .cartao2{grid-template-columns:repeat(3,1fr)} .cartao2>div:first-child{grid-column:1/-1}
+  .jg{grid-template-columns:minmax(0,1fr) 1.3fr minmax(0,1fr);font-size:12.5px}
+  .jg .imp{grid-template-columns:1fr}
+  .fin{grid-template-columns:56px 1fr} .fin .q{font-size:19px}
+  .cols.denso .r{display:none}
+  .nl{display:none} .ns{display:inline}
+  .fin .duelo{font-size:13.5px}
+  .hm{min-width:560px} .hm .rh{font-size:11px}
+}
+</style>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1556752564782456" crossorigin="anonymous"></script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RDGZ8VSS5R"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-RDGZ8VSS5R");</script>
+<link rel="stylesheet" href="/menu.css?v=4">
+<script src="/menu.js?v=4" defer></script>
+</head>
+<body>
+<!--menu--><header class="rn-topo"><div class="rn-in"><a class="rn-marca" href="/" title="Página inicial do Radar Numérico"><img src="/logo.png" alt="" width="22" height="25">Radar Numérico</a><button class="rn-abrir" type="button" aria-expanded="false" aria-controls="rn-menu"><span class="rn-ham" aria-hidden="true"></span>Menu</button><nav class="rn-menu" id="rn-menu" aria-label="Menu do site"><ul class="rn-n1"><li class="rn-g"><button class="rn-t" type="button" aria-expanded="false" aria-controls="rn-p0">Eleições 2026<i aria-hidden="true"></i></button><div class="rn-painel" id="rn-p0"><div class="rn-col"><p class="rn-h">1º turno · resultados</p><ul><li><a href="/apuracao2026/">Deputados Federais</a></li><li><a href="/apuracao2026/estaduais.html">Deputados Estaduais</a></li><li><a href="/apuracao2026/senado.html">Senadores</a></li><li><a href="/apuracao2026/governadores.html">Governadores</a></li><li><a href="/apuracao2026/2turno/presidente.html?turno=1">Presidente</a></li><li><a href="/eleicoes/?ano=2026&amp;cargo=presidente">Detalhamento por município</a></li></ul></div><div class="rn-col"><p class="rn-h">2º turno · apuração ao vivo</p><ul><li><a href="/apuracao2026/2turno/">Painel do 2º turno</a></li><li><a href="/apuracao2026/2turno/presidente.html">Presidente</a></li><li class="rn-ufs"><span>Governadores</span><a href="/apuracao2026/2turno/governador-ac.html" title="Governadores Acre">AC</a><a href="/apuracao2026/2turno/governador-am.html" title="Governadores Amazonas">AM</a><a href="/apuracao2026/2turno/governador-df.html" title="Governadores Distrito Federal">DF</a><a href="/apuracao2026/2turno/governador-es.html" title="Governadores Espírito Santo">ES</a><a href="/apuracao2026/2turno/governador-rj.html" title="Governadores Rio de Janeiro">RJ</a><a href="/apuracao2026/2turno/governador-rn.html" title="Governadores Rio Grande do Norte">RN</a><a href="/apuracao2026/2turno/governador-to.html" title="Governadores Tocantins">TO</a></li></ul></div><div class="rn-col"><p class="rn-h">Mais</p><ul><li><a href="/apuracao2026/favoritos.html">★ Meus candidatos</a></li><li><a href="/eleicoes/?ano=comp">Comparar com 2022</a></li></ul></div></div></li><li class="rn-g"><button class="rn-t" type="button" aria-expanded="false" aria-controls="rn-p1">Eleições 2022<i aria-hidden="true"></i></button><div class="rn-painel" id="rn-p1"><div class="rn-col"><p class="rn-h">1º turno · resultados</p><ul><li><a href="/eleicoes/?ano=2022&amp;cargo=dep_federal">Deputados Federais</a></li><li><a href="/eleicoes/?ano=2022&amp;cargo=dep_estadual">Deputados Estaduais</a></li><li><a href="/eleicoes/?ano=2022&amp;cargo=senador">Senadores</a></li><li><a href="/eleicoes/?ano=2022&amp;cargo=governador">Governadores</a></li><li><a href="/eleicoes/?ano=2022&amp;cargo=presidente">Presidente</a></li></ul></div><div class="rn-col"><p class="rn-h">2º turno · resultados</p><ul><li><a href="/eleicoes/?ano=2022&amp;cargo=governador&amp;turno=2">Governadores</a></li><li><a href="/eleicoes/?ano=2022&amp;cargo=presidente&amp;turno=2">Presidente</a></li></ul></div></div></li><li class="rn-g"><button class="rn-t" type="button" aria-expanded="false" aria-controls="rn-p2">Futebol<i aria-hidden="true"></i></button><div class="rn-painel" id="rn-p2"><div class="rn-col"><p class="rn-h">Brasileirão 2026</p><ul><li><a href="/futebol/brasileirao/">Chance de título</a></li><li><a href="/futebol/brasileirao/#s-liber">Chance de Libertadores</a></li><li><a href="/futebol/brasileirao/#s-z4">Chance de rebaixamento</a></li><li><a href="/futebol/brasileirao/#s-time">Analise as probabilidades do seu time</a></li><li><a href="/blog/#brasileirao">Últimas notícias (blog)</a></li></ul></div><div class="rn-col"><p class="rn-h">Copas 2026</p><ul><li><a href="/futebol/libertadores/">Libertadores</a></li><li><a href="/futebol/copa-do-brasil/">Copa do Brasil</a></li><li><a href="/futebol/sul-americana/">Sul-Americana</a></li></ul></div><div class="rn-col"><p class="rn-h">Copa do Mundo 2026</p><ul><li><a href="/futebol/copa-2026/">Probabilidades de cada seleção</a></li></ul></div></div></li><li class="rn-g"><a class="rn-t" href="/blog/">Blog</a></li><li class="rn-g"><a class="rn-t" href="/sobre/">Sobre</a></li></ul></nav></div></header><!--/menu-->
+
+<main class="wrap">
+<header class="pg">
+  <div class="kicker">Futebol · Champions League</div>
+  <h1>Champions League 2026/27: chances de título e classificação</h1>
+  <div class="selo" id="selo"><span>Atualizado em <b>21/10/2026 às 08h44</b></span><span>45 jogos disputados, 99 a disputar na fase de liga</span></div>
+  <p class="lede">As probabilidades são calculadas por uma simulação dos 99 jogos que faltam, na fase de liga e em todo o mata-mata. Atualizamos a cada rodada. As probabilidades de cada jogo são calculadas com base num algoritmo que mede a força de cada time.</p>
+</header>
+
+<section class="g" id="s-trilha">
+  <h2>Até onde cada time vai</h2>
+  <p class="sub">Os 36 times e a probabilidade de cada desfecho na temporada, da eliminação na fase de liga (à esquerda) ao título (à direita). Cada barra soma 100%.</p>
+  <div class="seg-ctrl" id="ord-trilha"><button data-o="campeao" class="on">Por chance de título</button><button data-o="pos">Pela classificação atual</button></div>
+  <div class="leg2" id="leg-trilha"></div>
+  <div class="trilha" id="g-trilha"></div>
+</section>
+
+<section class="g" id="s-titulo">
+  <h2>Chance de título</h2>
+  <p class="sub">Probabilidade de ganhar a final em Madri, no Metropolitano, em 5 de junho de 2027. As barras estão na escala do favorito.</p>
+  <div class="barras" id="g-titulo"></div>
+</section>
+
+<section class="g" id="s-liga">
+  <h2>Oitavas direto, playoff ou eliminação</h2>
+  <p class="sub">Chance de terminar a fase de liga entre os 8 primeiros (vaga direta nas oitavas), do 9º ao 24º (playoff) ou do 25º ao 36º (eliminado), na ordem da classificação atual.</p>
+  <div class="leg2"><span><i style="background:var(--verde)"></i>Top 8: direto às oitavas</span><span><i style="background:var(--amarelo)"></i>9º ao 24º: playoff</span><span><i style="background:var(--neutro)"></i>25º ao 36º: eliminado</span></div>
+  <div class="trilha liga" id="g-liga"></div>
+  <p class="nota">Como funciona: cada time faz 8 jogos contra 8 adversários diferentes, numa tabela única de 36. Os 8 primeiros vão direto às oitavas. Do 9º ao 24º jogam o playoff em ida e volta (9º/10º contra 23º/24º, 11º/12º contra 21º/22º e assim por diante), com a volta na casa do mais bem colocado. Do 25º para baixo, fim da linha — não há vaga na Liga Europa.</p>
+</section>
+
+<section class="g" id="s-hoje">
+  <h2 id="h-hoje">Jogos de hoje</h2>
+  <p class="sub" id="sub-hoje"></p>
+  <div id="jogos"></div>
+  <div class="leg2" style="margin-top:12px"><span><i style="background:var(--azul)"></i>Vitória do mandante</span><span><i style="background:var(--neutro)"></i>Empate</span><span><i style="background:var(--verm)"></i>Vitória do visitante</span></div>
+</section>
+
+<section class="g" id="s-finais">
+  <h2>Finais mais prováveis</h2>
+  <p class="sub">Os duelos que mais aparecem na final das simulações, e quem levanta a taça em cada um.</p>
+  <div class="fins" id="fins"></div>
+</section>
+
+<section class="g" id="s-confrontos">
+  <h2>Prováveis confrontos do playoff</h2>
+  <p class="sub">Os duelos do playoff (fevereiro de 2027) que mais aparecem nas simulações e a chance de cada lado avançar às oitavas. O primeiro nome é o mais bem colocado, que decide em casa.</p>
+  <div class="conf" id="conf"></div>
+</section>
+
+<section class="g" id="s-encontros">
+  <h2>Quem pode cruzar com quem no mata-mata</h2>
+  <p class="sub">Chance (em %) de cada par se enfrentar em alguma fase do mata-mata — playoff, oitavas, quartas, semifinal ou final —, entre os 16 times com mais chance de título.</p>
+  <div class="hmwrap"><div class="hm" id="hm"></div></div>
+</section>
+
+<section class="g" id="s-time">
+  <h2>Analise a situação do seu time</h2>
+  <p class="sub">Escolha o clube e veja onde ele deve terminar a fase de liga, até onde vai e quem deve enfrentar.</p>
+  <div class="timebar"><label for="sel-time">Time</label><select id="sel-time"></select></div>
+  <div class="cartao2" id="cartao"></div>
+
+  <h3>Em que posição deve terminar a fase de liga?</h3>
+  <p class="sub3" id="sub-pos"></p>
+  <div class="cols denso" id="h-pos"></div>
+  <div class="eixo denso" id="e-pos"></div>
+  <div class="legenda"><span><i style="background:var(--verde)"></i>Top 8</span><span><i style="background:var(--amarelo)"></i>Playoff</span><span><i style="background:var(--neutro)"></i>Eliminado</span></div>
+
+  <h3>Com quantos pontos?</h3>
+  <p class="sub3" id="sub-pts"></p>
+  <div class="cols" id="h-pts"></div>
+  <div class="eixo" id="e-pts"></div>
+
+  <h3>Adversários mais prováveis no mata-mata</h3>
+  <p class="sub3" id="sub-adv"></p>
+  <div class="leg2" id="leg-adv"></div>
+  <div class="adv" id="adv"></div>
+</section>
+
+<section class="g" id="s-pontos">
+  <h2>Quantos pontos precisa fazer?</h2>
+  <p class="sub">Para cada pontuação final, a chance de um time que termina com ela ficar entre os 8 primeiros ou entre os 24 primeiros. Calculada sobre todos os times em todas as simulações.</p>
+  <h3>Para ir direto às oitavas (top 8)</h3>
+  <div class="barras pts" id="g-pt-8"></div>
+  <h3>Para pelo menos jogar o playoff (top 24)</h3>
+  <div class="barras pts" id="g-pt-24"></div>
+  <p class="nota" id="n-pontos"></p>
+</section>
+
+<section class="g" id="s-paises">
+  <h2>De que país sai o campeão?</h2>
+  <p class="sub">Soma das chances de título dos times de cada país.</p>
+  <div class="barras" id="g-paises"></div>
+</section>
+
+<section class="g" id="s-tabela">
+  <h2>Classificação com as probabilidades</h2>
+  <p class="sub">Tabela atual da fase de liga, a força de cada time na régua do Radar (1 a 100) e a chance de chegar a cada fase. Toque no nome da coluna para ordenar.</p>
+  <div class="tabwrap"><table class="tb" id="tb"></table></div>
+</section>
+
+<div class="metod">
+  <p class="marca">Radar Numérico</p>
+  <p id="rodape">Probabilidades da Champions League 2026/27 atualizadas em 21/10/2026 às 08h44, com 45 jogos disputados.</p>
+  <p>Como calculamos: um algoritmo desenvolvido pelo economista Augusto Pellegrini estima a força de cada time a partir das cotações de jogos de ligas nacionais, copas e torneios internacionais dos últimos 12 meses — a mesma régua do Radar para todos os clubes. Com ela calculamos a probabilidade de cada placar dos jogos que faltam e simulamos 100 mil vezes a fase de liga, os sorteios e o mata-mata completo, com prorrogação e pênaltis. Fonte: Radar Numérico.</p>
+</div>
+</main>
+<style>.vt{margin:8px auto 4px}.vt h2{font-size:18px;margin:0 0 10px;color:var(--ink,#16243A)}.vt ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}.vt a{display:block;padding:10px 12px;border:1px solid var(--line,#DCE1E8);border-radius:8px;background:var(--panel,#F2F4F7);text-decoration:none;color:var(--ink,#16243A)}.vt a:hover{border-color:var(--azul,#2F4BFF)}.vt b{display:block;font-size:15px}.vt span{display:block;font-size:13px;color:var(--mute,#6B7686);margin-top:2px}</style><nav class="vt wrap" aria-label="Outras probabilidades do Radar Numérico"><h2>Veja também</h2><ul><li><a href="/futebol/brasileirao/"><b>Brasileirão 2026</b><span>chance de título, Libertadores e rebaixamento de cada time</span></a></li><li><a href="/futebol/libertadores/"><b>Libertadores 2026</b><span>chance de cada time ser campeão</span></a></li><li><a href="/futebol/copa-do-brasil/"><b>Copa do Brasil 2026</b><span>chance de cada time ser campeão</span></a></li><li><a href="/futebol/sul-americana/"><b>Sul-Americana 2026</b><span>chance de cada time ser campeão</span></a></li><li><a href="/futebol/serie-b/"><b>Série B 2026</b><span>chance de acesso, título e rebaixamento</span></a></li><li><a href="/blog/"><b>Blog do Radar</b><span>o que mudou depois de cada rodada</span></a></li></ul></nav>
+<footer class="site wrap">Radar Numérico · radarnumerico.com.br · projeto apartidário · <a href="/sobre/">Sobre e contato</a> · <a href="https://www.instagram.com/radarnumerico/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.youtube.com/@radarnumerico" target="_blank" rel="noopener">YouTube</a> · <a href="/privacidade.html">Política de privacidade</a></footer>
+<div id="tip" role="tooltip"></div>
+<div id="toast" role="status"></div>
+
+<script>
+const D = {"gerado_em":"2026-10-21T08:44:49-03:00","n_sim":100000,"matriz_corte":"2026-10-20 22:33","parametros":{"h":0.597332632855205,"nu":0.7153651096137019,"a":10.813198652487275,"gols":{"mu":1.037860834530737,"b":0.06877541176777371,"n":1031,"rmse":0.07610016865120606}},"n_jogados":45,"n_restantes":99,"ultimo":{"data":"2026-10-20"},"rodada_atual":3,"ordem":["PSG","Liverpool","Stuttgart","Aston Villa","Barcelona","Manchester City","Sporting","Arsenal","Real Madrid","Betis","Borussia Dortmund","Bayern de Munique","Roma","Shakhtar Donetsk","Atlético de Madrid","PSV","Como","Manchester United","Villarreal","Club Brugge","Lens","Napoli","RB Leipzig","Feyenoord","Sabah","Bodø/Glimt","AEK Atenas","Fenerbahçe","Viking","Slavia Praga","Inter de Milão","LASK","Porto","Lille","Galatasaray","Slovan Bratislava"],"times":{"Barcelona":{"od":"Barcelona","sigla":"BAR","slug":"barcelona","cores":["#A50044","#004D98"],"forca":78.2,"pos":5,"J":3,"V":2,"E":0,"D":1,"GP":11,"GC":6,"Pts":6,"GF":6,"SG":5,"top8":0.788,"playoff":0.2116,"fora":0.0004,"top24":0.9996,"oitavas":0.9779,"quartas":0.7871,"semi":0.5423,"final":0.3503,"campeao":0.2027,"etapas":[0.0004,0.0217,0.1908,0.2449,0.192,0.1476,0.2027],"dist_pos":[0.0711,0.1199,0.1294,0.1215,0.1077,0.0964,0.0799,0.0622,0.0494,0.041,0.0316,0.0247,0.0182,0.0132,0.009,0.0071,0.0056,0.004,0.0029,0.0018,0.0013,0.0009,0.0005,0.0004,0.0002,0.0001,0.0001,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"pts_dist":{"9":0.0012,"10":0.0043,"11":0.0106,"12":0.0203,"13":0.0463,"14":0.0674,"15":0.0884,"16":0.1651,"17":0.1188,"18":0.1457,"19":0.2008,"21":0.1306},"pts_medio":17.13128,"pts_p5":13,"pts_p95":21,"pos_media":5.8632,"vence_po":0.8975,"pais":"ESP"},"Bayern de Munique":{"od":"Bayern Munich","sigla":"BAY","slug":"bayern","cores":["#DC052D","#FFFFFF"],"forca":78.1,"pos":12,"J":2,"V":1,"E":1,"D":0,"GP":8,"GC":3,"Pts":4,"GF":3,"SG":5,"top8":0.6931,"playoff":0.3041,"fora":0.0028,"top24":0.9972,"oitavas":0.966,"quartas":0.7658,"semi":0.5239,"final":0.336,"campeao":0.1935,"etapas":[0.0028,0.0312,0.2002,0.2419,0.1879,0.1425,0.1935],"dist_pos":[0.07,0.0883,0.0974,0.0954,0.0992,0.0952,0.0806,0.067,0.0595,0.0515,0.0426,0.0349,0.0257,0.0199,0.0162,0.0134,0.0116,0.0086,0.0065,0.0046,0.0032,0.0027,0.0018,0.0013,0.0011,0.0006,0.0005,0.0003,0.0002,0.0001,0.0,0.0,0.0,0.0,0.0,0.0],"pts_dist":{"7":0.0006,"8":0.0021,"9":0.005,"10":0.0108,"11":0.0239,"12":0.041,"13":0.0575,"14":0.1038,"15":0.112,"16":0.1166,"17":0.1709,"18":0.0974,"19":0.0985,"20":0.1106,"22":0.0491},"pts_medio":16.49829,"pts_p5":12,"pts_p95":20,"pos_media":6.93716,"vence_po":0.8973,"pais":"GER"},"Manchester City":{"od":"Man City","sigla":"MCI","slug":"manchester-city","cores":["#6CABDD","#1C2C5B"],"forca":76.3,"pos":6,"J":3,"V":2,"E":0,"D":1,"GP":9,"GC":5,"Pts":6,"GF":2,"SG":4,"top8":0.581,"playoff":0.4151,"fora":0.004,"top24":0.996,"oitavas":0.9439,"quartas":0.7025,"semi":0.4468,"final":0.2621,"campeao":0.1426,"etapas":[0.004,0.0521,0.2414,0.2557,0.1847,0.1196,0.1426],"dist_pos":[0.0224,0.0457,0.0633,0.0796,0.0903,0.0953,0.0952,0.0891,0.0769,0.0638,0.0548,0.0454,0.0391,0.0303,0.0242,0.0192,0.0163,0.0129,0.0101,0.0072,0.0058,0.0042,0.0029,0.002,0.0016,0.0011,0.0005,0.0004,0.0002,0.0001,0.0,0.0,0.0,0.0,0.0,0.0],"pts_dist":{"7":0.0008,"8":0.0023,"9":0.0063,"10":0.0178,"11":0.0312,"12":0.0477,"13":0.0978,"14":0.1041,"15":0.1232,"16":0.1989,"17":0.0868,"18":0.1345,"19":0.1032,"21":0.0454},"pts_medio":15.7435,"pts_p5":11,"pts_p95":19,"pos_media":8.383890000000001,"vence_po":0.8744,"pais":"ENG"},"Arsenal":{"od":"Arsenal","sigla":"ARS","slug":"arsenal","cores":["#EF0107","#FFFFFF"],"forca":76.0,"pos":8,"J":2,"V":2,"E":0,"D":0,"GP":4,"GC":0,"Pts":6,"GF":1,"SG":4,"top8":0.8633,"playoff":0.1364,"fora":0.0002,"top24":0.9998,"oitavas":0.9839,"quartas":0.7657,"semi":0.492,"final":0.2864,"campeao":0.1527,"etapas":[0.0002,0.0158,0.2183,0.2736,0.2056,0.1337,0.1527],"dist_pos":[0.1845,0.1481,0.1298,0.1134,0.0982,0.0787,0.0631,0.0474,0.0356,0.027,0.0208,0.0158,0.0113,0.0078,0.0052,0.0038,0.0032,0.0021,0.0015,0.001,0.0006,0.0002,0.0003,0.0001,0.0001,0.0001,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"pts_dist":{"10":0.0018,"11":0.0043,"12":0.0093,"13":0.0223,"14":0.0394,"15":0.0568,"16":0.1069,"17":0.1135,"18":0.1244,"19":0.1883,"20":0.0836,"21":0.1183,"22":0.0929,"24":0.0377},"pts_medio":18.43786,"pts_p5":14,"pts_p95":22,"pos_media":4.687860000000001,"vence_po":0.8841,"pais":"ENG"},"PSG":{"od":"PSG","sigla":"PSG","slug":"psg","cores":["#004170","#DA291C"],"forca":72.9,"pos":1,"J":3,"V":3,"E":0,"D":0,"GP":14,"GC":5,"Pts":9,"GF":4,"SG":9,"top8":0.8934,"playoff":0.1065,"fora":0.0001,"top24":0.9999,"oitavas":0.9838,"quartas":0.7198,"semi":0.4118,"final":0.2046,"campeao":0.0942,"etapas":[0.0001,0.0162,0.2639,0.3081,0.2071,0.1105,0.0942],"dist_pos":[0.229,0.1692,0.1351,0.1089,0.0879,0.0701,0.0539,0.0393,0.0289,0.0214,0.0165,0.0118,0.0089,0.006,0.0041,0.003,0.0022,0.0014,0.0009,0.0007,0.0004,0.0002,0.0001,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"pts_dist":{"10":0.0011,"11":0.0032,"12":0.0076,"13":0.022,"14":0.0348,"15":0.0533,"16":0.1027,"17":0.1059,"18":0.1215,"19":0.1757,"20":0.097,"21":0.1079,"22":0.1146,"24":0.0525},"pts_medio":18.66937,"pts_p5":14,"pts_p95":24,"pos_media":4.1771899999999995,"vence_po":0.8481,"pais":"FRA"},"Real Madrid":{"od":"Real Madrid","sigla":"RMA","slug":"real-madrid","cores":["#FFFFFF","#FEBE10"],"forca":72.5,"pos":9,"J":2,"V":2,"E":0,"D":0,"GP":6,"GC":4,"Pts":6,"GF":4,"SG":2,"top8":0.9038,"playoff":0.0959,"fora":0.0002,"top24":0.9998,"oitavas":0.9839,"quartas":0.7144,"semi":0.3965,"final":0.1929,"campeao":0.0884,"etapas":[0.0002,0.0158,0.2696,0.3178,0.2036,0.1045,0.0884],"dist_pos":[0.2181,0.1765,0.1424,0.1172,0.0911,0.0708,0.0511,0.0366,0.0268,0.0195,0.0144,0.0104,0.0077,0.0047,0.0039,0.0027,0.0017,0.0013,0.0009,0.0007,0.0005,0.0002,0.0003,0.0001,0.0001,0.0,0.0001,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"pts_dist":{"10":0.0009,"11":0.0025,"12":0.0057,"13":0.0136,"14":0.0275,"15":0.0411,"16":0.0809,"17":0.1041,"18":0.1101,"19":0.2038,"20":0.0923,"21":0.153,"22":0.1146,"24":0.0496},"pts_medio":18.97343,"pts_p5":14,"pts_p95":22,"pos_media":4.1012,"vence_po":0.8351,"pais":"ESP"},"Liverpool":{"od":"Liverpool","sigla":"LIV","slug":"liverpool","cores":["#C8102E","#00B2A9"],"forca":69.4,"pos":2,"J":3,"V":3,"E":0,"D":0,"GP":12,"GC":7,"Pts":9,"GF":6,"SG":5,"top8":0.8534,"playoff":0.1463,"fora":0.0003,"top24":0.9997,"oitavas":0.9687,"quartas":0.632,"semi":0.297,"final":0.1193,"campeao":0.0464,"etapas":[0.0003,0.0311,0.3367,0.335,0.1776,0.0729,0.0464],"dist_pos":[0.151,0.1486,0.1325,0.1233,0.1022,0.079,0.0642,0.0528,0.0393,0.0288,0.0206,0.0158,0.012,0.0091,0.0063,0.0046,0.0034,0.002,0.0017,0.001,0.0008,0.0005,0.0003,0.0001,0.0002,0.0001,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"pts_dist":{"10":0.0015,"11":0.004,"12":0.009,"13":0.0245,"14":0.0399,"15":0.0592,"16":0.1108,"17":0.111,"18":0.1261,"19":0.1825,"20":0.0845,"21":0.1102,"22":0.0971,"24":0.0395},"pts_medio":18.41848,"pts_p5":14,"pts_p95":22,"pos_media":4.89464,"vence_po":0.7878,"pais":"ENG"},"Inter de Milão":{"od":"Inter Milan","sigla":"INT","slug":"inter","cores":["#0068A8","#111111"],"forca":68.1,"pos":31,"J":2,"V":0,"E":0,"D":2,"GP":4,"GC":6,"Pts":0,"GF":1,"SG":-2,"top8":0.1477,"playoff":0.7597,"fora":0.0926,"top24":0.9074,"oitavas":0.6926,"quartas":0.3229,"semi":0.1383,"final":0.0518,"campeao":0.0192,"etapas":[0.0926,0.2147,0.3698,0.1845,0.0866,0.0326,0.0192],"dist_pos":[0.0002,0.0016,0.006,0.0128,0.0194,0.0269,0.0371,0.0438,0.0503,0.0542,0.0574,0.0612,0.0622,0.0591,0.0557,0.0542,0.0507,0.0488,0.0467,0.0423,0.0353,0.0306,0.0273,0.0235,0.0209,0.0182,0.0145,0.0114,0.0087,0.0067,0.0046,0.0038,0.0021,0.0011,0.0005,0.0003],"pts_dist":{"3":0.0007,"4":0.0029,"5":0.0064,"6":0.0133,"7":0.0302,"8":0.0475,"9":0.0658,"10":0.1097,"11":0.1168,"12":0.1201,"13":0.1689,"14":0.0894,"15":0.0917,"16":0.0954,"18":0.0407},"pts_medio":12.21635,"pts_p5":7,"pts_p95":16,"pos_media":15.27652,"vence_po":0.7173,"pais":"ITA"},"Manchester United":{"od":"Man Utd","sigla":"MUN","slug":"manchester-united","cores":["#DA291C","#FBE122"],"forca":68.0,"pos":18,"J":2,"V":1,"E":0,"D":1,"GP":4,"GC":2,"Pts":3,"GF":0,"SG":2,"top8":0.1914,"playoff":0.7154,"fora":0.0932,"top24":0.9067,"oitavas":0.7045,"quartas":0.334,"semi":0.1434,"final":0.0532,"campeao":0.0201,"etapas":[0.0932,0.2022,0.3705,0.1906,0.0902,0.0331,0.0201],"dist_pos":[0.003,0.0076,0.0132,0.02,0.0264,0.0331,0.0419,0.0462,0.0514,0.0534,0.0562,0.0568,0.0554,0.0534,0.0506,0.0477,0.0468,0.0447,0.0424,0.0392,0.0352,0.031,0.0268,0.0243,0.021,0.0188,0.0152,0.0116,0.0087,0.0065,0.0048,0.0034,0.002,0.0008,0.0004,0.0001],"pts_dist":{"4":0.0027,"5":0.006,"6":0.0129,"7":0.0297,"8":0.0444,"9":0.0621,"10":0.1002,"11":0.1097,"12":0.1099,"13":0.1399,"14":0.1049,"15":0.0858,"16":0.0926,"17":0.0361,"18":0.0318,"19":0.024,"21":0.0068},"pts_medio":12.61055,"pts_p5":7,"pts_p95":18,"pos_media":14.79167,"vence_po":0.7173,"pais":"ENG"},"Atlético de Madrid":{"od":"Atletico Madrid","sigla":"ATM","slug":"atletico-de-madrid","cores":["#CB3524","#FFFFFF"],"forca":65.4,"pos":15,"J":3,"V":1,"E":1,"D":1,"GP":4,"GC":3,"Pts":4,"GF":2,"SG":1,"top8":0.2227,"playoff":0.7363,"fora":0.0409,"top24":0.9591,"oitavas":0.7218,"quartas":0.3041,"semi":0.1121,"final":0.035,"campeao":0.0117,"etapas":[0.0409,0.2373,0.4177,0.192,0.077,0.0234,0.0117],"dist_pos":[0.001,0.0057,0.0126,0.0196,0.0297,0.0411,0.0541,0.059,0.0632,0.0666,0.0737,0.0748,0.0677,0.0587,0.0519,0.0473,0.0453,0.0425,0.0373,0.0324,0.0254,0.0192,0.0164,0.0139,0.0121,0.0098,0.0071,0.0047,0.003,0.0019,0.0011,0.0007,0.0004,0.0001,0.0,0.0],"pts_dist":{"5":0.0009,"6":0.0033,"7":0.0088,"8":0.0262,"9":0.0391,"10":0.0658,"11":0.1194,"12":0.111,"13":0.1322,"14":0.1842,"15":0.0794,"16":0.1064,"17":0.088,"19":0.0351},"pts_medio":13.30612,"pts_p5":9,"pts_p95":17,"pos_media":13.21168,"vence_po":0.6778,"pais":"ESP"},"Como":{"od":"Como","sigla":"COM","slug":"como","cores":["#1B4D9B","#FFFFFF"],"forca":62.6,"pos":17,"J":2,"V":1,"E":0,"D":1,"GP":6,"GC":4,"Pts":3,"GF":2,"SG":2,"top8":0.0848,"playoff":0.7369,"fora":0.1782,"top24":0.8218,"oitavas":0.5113,"quartas":0.1691,"semi":0.0531,"final":0.0143,"campeao":0.0042,"etapas":[0.1782,0.3104,0.3423,0.116,0.0388,0.0101,0.0042],"dist_pos":[0.0007,0.0021,0.0043,0.0067,0.0105,0.0146,0.02,0.0259,0.0311,0.0373,0.0387,0.0435,0.048,0.0517,0.0515,0.0521,0.052,0.052,0.0534,0.0514,0.0489,0.0444,0.0429,0.0381,0.0345,0.0309,0.0275,0.0236,0.0192,0.0145,0.0108,0.0082,0.0053,0.0027,0.0008,0.0003],"pts_dist":{"3":0.0012,"4":0.0072,"5":0.0131,"6":0.0274,"7":0.0595,"8":0.0731,"9":0.095,"10":0.1398,"11":0.1216,"12":0.1151,"13":0.1314,"14":0.0708,"15":0.0588,"16":0.053,"17":0.0119,"18":0.0139,"19":0.0062,"21":0.001},"pts_medio":11.25729,"pts_p5":7,"pts_p95":16,"pos_media":17.81496,"vence_po":0.5787,"pais":"ITA"},"Roma":{"od":"Roma","sigla":"ROM","slug":"roma","cores":["#8E1F2F","#F0BC42"],"forca":62.3,"pos":13,"J":3,"V":1,"E":1,"D":1,"GP":8,"GC":5,"Pts":4,"GF":1,"SG":3,"top8":0.0597,"playoff":0.7718,"fora":0.1685,"top24":0.8315,"oitavas":0.4975,"quartas":0.1561,"semi":0.0482,"final":0.0122,"campeao":0.0035,"etapas":[0.1685,0.334,0.3414,0.108,0.0359,0.0087,0.0035],"dist_pos":[0.0002,0.0008,0.0019,0.0031,0.0063,0.0112,0.016,0.02,0.0237,0.0326,0.042,0.0496,0.0511,0.0495,0.0523,0.0542,0.06,0.0638,0.0626,0.0561,0.0487,0.0434,0.042,0.0401,0.0371,0.0331,0.0269,0.0205,0.0154,0.0118,0.0102,0.0074,0.0041,0.0016,0.0004,0.0],"pts_dist":{"4":0.0036,"5":0.0153,"6":0.0238,"7":0.0474,"8":0.097,"9":0.097,"10":0.1287,"11":0.1781,"12":0.1017,"13":0.1179,"14":0.1061,"15":0.0265,"16":0.0364,"17":0.0163,"19":0.0041},"pts_medio":11.03396,"pts_p5":7,"pts_p95":16,"pos_media":18.03125,"vence_po":0.5672,"pais":"ITA"},"Aston Villa":{"od":"Aston Villa","sigla":"AVL","slug":"aston-villa","cores":["#670E36","#95BFE5"],"forca":61.7,"pos":4,"J":2,"V":2,"E":0,"D":0,"GP":9,"GC":2,"Pts":6,"GF":3,"SG":7,"top8":0.4691,"playoff":0.522,"fora":0.0089,"top24":0.9911,"oitavas":0.7914,"quartas":0.3207,"semi":0.093,"final":0.0221,"campeao":0.0063,"etapas":[0.0089,0.1997,0.4707,0.2276,0.071,0.0158,0.0063],"dist_pos":[0.027,0.0388,0.0495,0.058,0.0664,0.0735,0.079,0.077,0.0744,0.0706,0.0626,0.0565,0.0503,0.0417,0.0337,0.0288,0.0243,0.0207,0.0169,0.0134,0.0103,0.0076,0.0058,0.0043,0.0029,0.0023,0.0015,0.0011,0.0006,0.0003,0.0001,0.0001,0.0001,0.0,0.0,0.0],"pts_dist":{"7":0.0024,"8":0.0057,"9":0.0138,"10":0.0359,"11":0.0508,"12":0.0747,"13":0.1211,"14":0.118,"15":0.124,"16":0.1553,"17":0.087,"18":0.08,"19":0.0763,"20":0.018,"21":0.0241,"22":0.0103,"24":0.0022},"pts_medio":15.08856,"pts_p5":10,"pts_p95":20,"pos_media":9.60568,"vence_po":0.6174,"pais":"ENG"},"Borussia Dortmund":{"od":"Borussia Dortmund","sigla":"BVB","slug":"borussia-dortmund","cores":["#FDE100","#111111"],"forca":61.4,"pos":11,"J":3,"V":2,"E":0,"D":1,"GP":5,"GC":4,"Pts":6,"GF":2,"SG":1,"top8":0.171,"playoff":0.7854,"fora":0.0436,"top24":0.9564,"oitavas":0.6237,"quartas":0.2061,"semi":0.0593,"final":0.0139,"campeao":0.0035,"etapas":[0.0436,0.3326,0.4176,0.1468,0.0454,0.0104,0.0035],"dist_pos":[0.0014,0.0041,0.0091,0.016,0.0227,0.0294,0.038,0.0503,0.0596,0.0616,0.0631,0.0608,0.0648,0.0655,0.0662,0.0602,0.0544,0.0481,0.0414,0.0379,0.0331,0.0277,0.0232,0.0175,0.0129,0.0095,0.0073,0.0057,0.0038,0.0027,0.0012,0.0004,0.0001,0.0,0.0,0.0],"pts_dist":{"6":0.0027,"7":0.0111,"8":0.0188,"9":0.0412,"10":0.0915,"11":0.094,"12":0.1337,"13":0.1835,"14":0.1039,"15":0.1249,"16":0.1106,"17":0.0241,"18":0.0404,"19":0.0158,"21":0.0039},"pts_medio":13.16996,"pts_p5":9,"pts_p95":18,"pos_media":14.12209,"vence_po":0.5765,"pais":"GER"},"Sporting":{"od":"Sporting CP","sigla":"SCP","slug":"sporting","cores":["#008057","#FFFFFF"],"forca":61.1,"pos":7,"J":2,"V":2,"E":0,"D":0,"GP":5,"GC":1,"Pts":6,"GF":2,"SG":4,"top8":0.2931,"playoff":0.6812,"fora":0.0257,"top24":0.9743,"oitavas":0.695,"quartas":0.2442,"semi":0.0673,"final":0.0155,"campeao":0.0042,"etapas":[0.0257,0.2794,0.4508,0.1769,0.0518,0.0113,0.0042],"dist_pos":[0.0078,0.0165,0.0243,0.0331,0.0414,0.0506,0.0551,0.0643,0.0672,0.0686,0.0661,0.0644,0.061,0.0596,0.0532,0.0473,0.0396,0.0356,0.0296,0.0249,0.0222,0.0173,0.014,0.0106,0.0083,0.0063,0.0038,0.0029,0.0021,0.0011,0.0007,0.0004,0.0001,0.0,0.0,0.0],"pts_dist":{"6":0.0014,"7":0.0056,"8":0.0112,"9":0.0266,"10":0.0606,"11":0.0739,"12":0.1051,"13":0.158,"14":0.1199,"15":0.1218,"16":0.1314,"17":0.0616,"18":0.0553,"19":0.0427,"20":0.0088,"21":0.0111,"22":0.0044,"24":0.0008},"pts_medio":14.09467,"pts_p5":10,"pts_p95":19,"pos_media":12.11269,"vence_po":0.5899,"pais":"POR"},"Stuttgart":{"od":"Stuttgart","sigla":"VFB","slug":"stuttgart","cores":["#FFFFFF","#E32219"],"forca":59.5,"pos":3,"J":3,"V":2,"E":1,"D":0,"GP":7,"GC":2,"Pts":7,"GF":3,"SG":5,"top8":0.373,"playoff":0.6122,"fora":0.0148,"top24":0.9852,"oitavas":0.7181,"quartas":0.2434,"semi":0.0591,"final":0.0115,"campeao":0.0029,"etapas":[0.0148,0.2671,0.4747,0.1843,0.0476,0.0086,0.0029],"dist_pos":[0.0089,0.0182,0.0313,0.0415,0.0527,0.0676,0.075,0.0778,0.0734,0.0747,0.0723,0.0663,0.0569,0.0473,0.0407,0.0358,0.0311,0.0278,0.0244,0.0196,0.0151,0.0111,0.0085,0.0072,0.0053,0.004,0.0025,0.0017,0.0008,0.0004,0.0001,0.0,0.0,0.0,0.0,0.0],"pts_dist":{"7":0.0021,"8":0.0102,"9":0.0179,"10":0.037,"11":0.0782,"12":0.0868,"13":0.113,"14":0.1651,"15":0.1136,"16":0.1213,"17":0.1283,"18":0.0385,"19":0.0516,"20":0.0285,"22":0.0077},"pts_medio":14.55146,"pts_p5":10,"pts_p95":19,"pos_media":10.91001,"vence_po":0.5637,"pais":"GER"},"Napoli":{"od":"Napoli","sigla":"NAP","slug":"napoli","cores":["#12A0D7","#FFFFFF"],"forca":59.1,"pos":22,"J":3,"V":1,"E":0,"D":2,"GP":5,"GC":7,"Pts":3,"GF":1,"SG":-2,"top8":0.041,"playoff":0.821,"fora":0.138,"top24":0.862,"oitavas":0.4456,"quartas":0.1109,"semi":0.028,"final":0.0056,"campeao":0.0014,"etapas":[0.138,0.4164,0.3347,0.083,0.0224,0.0042,0.0014],"dist_pos":[0.0,0.0002,0.0007,0.002,0.0034,0.0055,0.0108,0.0184,0.0278,0.0345,0.0375,0.0421,0.0509,0.0618,0.068,0.0702,0.0663,0.0604,0.0563,0.0575,0.0551,0.0509,0.0431,0.0386,0.031,0.027,0.0218,0.0178,0.0135,0.0097,0.0067,0.0047,0.0029,0.002,0.0008,0.0001],"pts_dist":{"4":0.0026,"5":0.0059,"6":0.0142,"7":0.0415,"8":0.056,"9":0.0929,"10":0.1696,"11":0.1116,"12":0.1686,"13":0.1728,"14":0.0369,"15":0.0884,"16":0.0309,"18":0.0077},"pts_medio":11.37087,"pts_p5":7,"pts_p95":15,"pos_media":17.89384,"vence_po":0.4928,"pais":"ITA"},"RB Leipzig":{"od":"RB Leipzig","sigla":"RBL","slug":"rb-leipzig","cores":["#FFFFFF","#DD0741"],"forca":57.9,"pos":23,"J":2,"V":1,"E":0,"D":1,"GP":2,"GC":4,"Pts":3,"GF":1,"SG":-2,"top8":0.0378,"playoff":0.6874,"fora":0.2748,"top24":0.7252,"oitavas":0.3432,"quartas":0.0786,"semi":0.0173,"final":0.0033,"campeao":0.0008,"etapas":[0.2748,0.382,0.2646,0.0613,0.0141,0.0024,0.0008],"dist_pos":[0.0002,0.0006,0.0016,0.0027,0.0042,0.0058,0.0091,0.0136,0.0173,0.0206,0.0239,0.0291,0.0336,0.0403,0.0459,0.0496,0.0508,0.0513,0.0533,0.0531,0.0547,0.0565,0.0553,0.052,0.0485,0.0435,0.0393,0.0361,0.0308,0.0252,0.0196,0.0143,0.0093,0.0054,0.0023,0.0004],"pts_dist":{"3":0.0016,"4":0.0092,"5":0.0158,"6":0.0357,"7":0.0768,"8":0.0878,"9":0.1177,"10":0.1661,"11":0.1183,"12":0.1174,"13":0.1176,"14":0.0491,"15":0.0421,"16":0.0296,"17":0.0059,"18":0.0063,"19":0.0024},"pts_medio":10.59763,"pts_p5":6,"pts_p95":15,"pos_media":20.19544,"vence_po":0.4443,"pais":"GER"},"Porto":{"od":"Porto","sigla":"POR","slug":"porto","cores":["#003893","#FFFFFF"],"forca":57.7,"pos":33,"J":3,"V":0,"E":0,"D":3,"GP":2,"GC":6,"Pts":0,"GF":2,"SG":-4,"top8":0.0015,"playoff":0.3669,"fora":0.6316,"top24":0.3684,"oitavas":0.1508,"quartas":0.0329,"semi":0.007,"final":0.0013,"campeao":0.0003,"etapas":[0.6316,0.2176,0.118,0.0259,0.0057,0.001,0.0003],"dist_pos":[0.0,0.0,0.0,0.0,0.0,0.0002,0.0004,0.0009,0.0019,0.0021,0.0032,0.005,0.0078,0.0116,0.0157,0.0182,0.0209,0.0233,0.0278,0.0355,0.0431,0.0471,0.0499,0.0539,0.0567,0.062,0.0644,0.0663,0.064,0.0599,0.058,0.0562,0.0503,0.0399,0.0331,0.0209],"pts_dist":{"0":0.0025,"1":0.01,"2":0.0174,"3":0.0358,"4":0.0774,"5":0.0853,"6":0.1119,"7":0.1693,"8":0.113,"9":0.1207,"10":0.1323,"11":0.0348,"12":0.0554,"13":0.0264,"15":0.0075},"pts_medio":7.56324,"pts_p5":3,"pts_p95":12,"pos_media":26.12721,"vence_po":0.407,"pais":"POR"},"Villarreal":{"od":"Villarreal","sigla":"VIL","slug":"villarreal","cores":["#FFE667","#005187"],"forca":57.0,"pos":19,"J":3,"V":1,"E":0,"D":2,"GP":8,"GC":8,"Pts":3,"GF":5,"SG":0,"top8":0.035,"playoff":0.7218,"fora":0.2432,"top24":0.7568,"oitavas":0.3424,"quartas":0.0727,"semi":0.0155,"final":0.0025,"campeao":0.0005,"etapas":[0.2432,0.4143,0.2697,0.0572,0.013,0.002,0.0005],"dist_pos":[0.0,0.0002,0.0009,0.0019,0.0035,0.0059,0.009,0.0136,0.0185,0.0218,0.0262,0.0337,0.0393,0.0444,0.0462,0.0499,0.0528,0.0545,0.057,0.0612,0.0587,0.0554,0.0531,0.0491,0.0462,0.0419,0.0381,0.0323,0.0267,0.0205,0.0147,0.0099,0.0065,0.0041,0.002,0.0004],"pts_dist":{"3":0.0015,"4":0.0082,"5":0.0139,"6":0.0418,"7":0.0924,"8":0.0902,"9":0.1257,"10":0.1754,"11":0.1093,"12":0.1159,"13":0.1159,"14":0.0354,"15":0.0425,"16":0.0248,"18":0.0071},"pts_medio":10.36844,"pts_p5":6,"pts_p95":15,"pos_media":19.74828,"vence_po":0.4259,"pais":"ESP"},"Betis":{"od":"Real Betis","sigla":"BET","slug":"betis","cores":["#0BB363","#FFFFFF"],"forca":54.8,"pos":10,"J":2,"V":2,"E":0,"D":0,"GP":6,"GC":4,"Pts":6,"GF":3,"SG":2,"top8":0.1691,"playoff":0.7722,"fora":0.0586,"top24":0.9414,"oitavas":0.4879,"quartas":0.1076,"semi":0.0187,"final":0.0027,"campeao":0.0005,"etapas":[0.0586,0.4534,0.3804,0.0889,0.016,0.0022,0.0005],"dist_pos":[0.0031,0.0062,0.0108,0.0162,0.0234,0.0285,0.0354,0.0455,0.0533,0.0593,0.0602,0.0602,0.0601,0.0611,0.0618,0.0592,0.0546,0.0473,0.0422,0.0368,0.0352,0.0317,0.0275,0.0218,0.0162,0.013,0.01,0.0074,0.0052,0.0037,0.0019,0.0008,0.0003,0.0,0.0,0.0],"pts_dist":{"6":0.0032,"7":0.0138,"8":0.0224,"9":0.0468,"10":0.0953,"11":0.0956,"12":0.1277,"13":0.1704,"14":0.1121,"15":0.1088,"16":0.1009,"17":0.038,"18":0.0338,"19":0.0215,"20":0.0035,"21":0.0048,"22":0.0013},"pts_medio":13.15009,"pts_p5":9,"pts_p95":18,"pos_media":14.46932,"vence_po":0.4129,"pais":"ESP"},"Lens":{"od":"Lens","sigla":"RCL","slug":"lens","cores":["#FFD600","#E31B23"],"forca":54.4,"pos":21,"J":2,"V":1,"E":0,"D":1,"GP":3,"GC":4,"Pts":3,"GF":3,"SG":-1,"top8":0.0195,"playoff":0.544,"fora":0.4366,"top24":0.5634,"oitavas":0.2113,"quartas":0.038,"semi":0.0066,"final":0.0009,"campeao":0.0002,"etapas":[0.4366,0.3521,0.1733,0.0314,0.0057,0.0008,0.0002],"dist_pos":[0.0001,0.0002,0.0008,0.0012,0.0021,0.0034,0.0046,0.007,0.0104,0.0121,0.0146,0.0178,0.0226,0.026,0.0307,0.0338,0.0357,0.0392,0.0409,0.0457,0.0501,0.0529,0.0559,0.0555,0.0561,0.055,0.0543,0.0534,0.0505,0.0461,0.0386,0.0316,0.0255,0.0165,0.0076,0.0014],"pts_dist":{"3":0.0088,"4":0.0313,"5":0.0429,"6":0.0723,"7":0.1225,"8":0.1173,"9":0.1257,"10":0.151,"11":0.0951,"12":0.0807,"13":0.0743,"14":0.0314,"15":0.0235,"16":0.016,"17":0.0029,"18":0.0029,"19":0.0011},"pts_medio":9.39327,"pts_p5":5,"pts_p95":14,"pos_media":22.78053,"vence_po":0.3527,"pais":"FRA"},"Fenerbahçe":{"od":"Fenerbahce","sigla":"FEN","slug":"fenerbahce","cores":["#163962","#FFED00"],"forca":54.2,"pos":28,"J":3,"V":0,"E":2,"D":1,"GP":3,"GC":9,"Pts":2,"GF":0,"SG":-6,"top8":0.0041,"playoff":0.4032,"fora":0.5927,"top24":0.4073,"oitavas":0.1386,"quartas":0.023,"semi":0.0039,"final":0.0005,"campeao":0.0,"etapas":[0.5927,0.2688,0.1155,0.0192,0.0034,0.0004,0.0],"dist_pos":[0.0,0.0,0.0,0.0002,0.0005,0.0007,0.001,0.0017,0.0031,0.0056,0.0083,0.0098,0.01,0.0122,0.0157,0.0217,0.0275,0.0326,0.0349,0.0364,0.0376,0.0424,0.0483,0.0569,0.0638,0.062,0.062,0.0596,0.058,0.0609,0.0592,0.0554,0.0442,0.0344,0.0238,0.0092],"pts_dist":{"2":0.008,"3":0.0295,"4":0.0408,"5":0.0706,"6":0.1253,"7":0.111,"8":0.1322,"9":0.1636,"10":0.0894,"11":0.0886,"12":0.0799,"13":0.0203,"14":0.0255,"15":0.0126,"17":0.0028},"pts_medio":8.36415,"pts_p5":4,"pts_p95":13,"pos_media":25.31586,"vence_po":0.3334,"pais":"TUR"},"Lille":{"od":"Lille","sigla":"LIL","slug":"lille","cores":["#E01E13","#20325F"],"forca":53.4,"pos":34,"J":2,"V":0,"E":0,"D":2,"GP":2,"GC":6,"Pts":0,"GF":0,"SG":-4,"top8":0.003,"playoff":0.3078,"fora":0.6892,"top24":0.3108,"oitavas":0.0978,"quartas":0.0164,"semi":0.0024,"final":0.0003,"campeao":0.0001,"etapas":[0.6892,0.213,0.0814,0.0139,0.0021,0.0002,0.0001],"dist_pos":[0.0,0.0,0.0,0.0001,0.0002,0.0003,0.0008,0.0014,0.0022,0.0028,0.0036,0.0053,0.007,0.01,0.0124,0.0146,0.0161,0.0197,0.0222,0.0275,0.0334,0.0394,0.0434,0.0483,0.0527,0.0555,0.0629,0.0683,0.0726,0.0704,0.0694,0.0661,0.062,0.0498,0.0352,0.0245],"pts_dist":{"0":0.0018,"1":0.0086,"2":0.0163,"3":0.0421,"4":0.0907,"5":0.0936,"6":0.1261,"7":0.1698,"8":0.1148,"9":0.1098,"10":0.1058,"11":0.0441,"12":0.0359,"13":0.0268,"14":0.0053,"15":0.0056,"16":0.0023},"pts_medio":7.37646,"pts_p5":3,"pts_p95":12,"pos_media":26.84918,"vence_po":0.3081,"pais":"FRA"},"Galatasaray":{"od":"Galatasaray","sigla":"GAL","slug":"galatasaray","cores":["#A90432","#FDB912"],"forca":53.2,"pos":35,"J":2,"V":0,"E":0,"D":2,"GP":2,"GC":7,"Pts":0,"GF":1,"SG":-5,"top8":0.0029,"playoff":0.2925,"fora":0.7046,"top24":0.2954,"oitavas":0.095,"quartas":0.0146,"semi":0.0024,"final":0.0002,"campeao":0.0,"etapas":[0.7046,0.2004,0.0804,0.0122,0.0021,0.0002,0.0],"dist_pos":[0.0,0.0,0.0,0.0001,0.0002,0.0004,0.0009,0.0013,0.0024,0.0032,0.0037,0.0045,0.0069,0.0097,0.0121,0.0148,0.0167,0.0189,0.0218,0.0265,0.0304,0.0367,0.0405,0.0435,0.0483,0.052,0.0565,0.06,0.0654,0.0673,0.066,0.0697,0.0682,0.0622,0.0545,0.0344],"pts_dist":{"0":0.0047,"1":0.0183,"2":0.0284,"3":0.0498,"4":0.0912,"5":0.1002,"6":0.1142,"7":0.1492,"8":0.1123,"9":0.0984,"10":0.101,"11":0.0486,"12":0.0381,"13":0.0296,"14":0.0058,"15":0.0071,"16":0.0024},"pts_medio":7.22637,"pts_p5":2,"pts_p95":12,"pos_media":27.27567,"vence_po":0.3148,"pais":"TUR"},"PSV":{"od":"PSV Eindhoven","sigla":"PSV","slug":"psv","cores":["#ED1C24","#FFFFFF"],"forca":52.3,"pos":16,"J":3,"V":1,"E":1,"D":1,"GP":2,"GC":2,"Pts":4,"GF":1,"SG":0,"top8":0.0269,"playoff":0.6693,"fora":0.3039,"top24":0.6962,"oitavas":0.2375,"quartas":0.0351,"semi":0.0049,"final":0.0005,"campeao":0.0001,"etapas":[0.3039,0.4587,0.2024,0.0303,0.0044,0.0004,0.0001],"dist_pos":[0.0001,0.0002,0.0007,0.0012,0.0024,0.0044,0.0075,0.0104,0.0131,0.0163,0.0243,0.0288,0.0331,0.0364,0.0391,0.0419,0.0459,0.0538,0.06,0.059,0.0566,0.0553,0.0534,0.0522,0.0526,0.0508,0.0471,0.0392,0.0309,0.026,0.0211,0.0175,0.0115,0.0054,0.0017,0.0001],"pts_dist":{"4":0.0089,"5":0.032,"6":0.0413,"7":0.075,"8":0.1351,"9":0.1145,"10":0.1365,"11":0.1655,"12":0.0837,"13":0.0883,"14":0.0727,"15":0.0143,"16":0.023,"17":0.0078,"19":0.0016},"pts_medio":10.17979,"pts_p5":6,"pts_p95":14,"pos_media":20.74771,"vence_po":0.3147,"pais":"NED"},"Bodø/Glimt":{"od":"Bodo/Glimt","sigla":"BOD","slug":"bodo-glimt","cores":["#FFDD00","#111111"],"forca":51.7,"pos":26,"J":3,"V":1,"E":0,"D":2,"GP":4,"GC":9,"Pts":3,"GF":3,"SG":-5,"top8":0.0152,"playoff":0.5795,"fora":0.4053,"top24":0.5947,"oitavas":0.1847,"quartas":0.0254,"semi":0.0032,"final":0.0003,"campeao":0.0001,"etapas":[0.4053,0.41,0.1593,0.0222,0.0029,0.0003,0.0001],"dist_pos":[0.0,0.0,0.0003,0.0006,0.0017,0.0024,0.0036,0.0066,0.0108,0.013,0.0156,0.0174,0.0215,0.0283,0.0329,0.0377,0.0396,0.0431,0.0442,0.0463,0.0532,0.0584,0.0586,0.0591,0.055,0.0522,0.0507,0.0492,0.0467,0.0425,0.0354,0.0282,0.0217,0.0149,0.0072,0.0017],"pts_dist":{"3":0.0059,"4":0.0226,"5":0.0325,"6":0.062,"7":0.1146,"8":0.1081,"9":0.1301,"10":0.1669,"11":0.0983,"12":0.0947,"13":0.087,"14":0.0262,"15":0.0298,"16":0.0169,"18":0.0044},"pts_medio":9.662,"pts_p5":5,"pts_p95":15,"pos_media":22.50567,"vence_po":0.2925,"pais":"NOR"},"Club Brugge":{"od":"Club Brugge","sigla":"BRU","slug":"club-brugge","cores":["#0062B1","#111111"],"forca":50.9,"pos":20,"J":2,"V":1,"E":0,"D":1,"GP":6,"GC":6,"Pts":3,"GF":4,"SG":0,"top8":0.0217,"playoff":0.5514,"fora":0.4268,"top24":0.5732,"oitavas":0.1782,"quartas":0.024,"semi":0.003,"final":0.0003,"campeao":0.0,"etapas":[0.4268,0.395,0.1542,0.0211,0.0027,0.0003,0.0],"dist_pos":[0.0,0.0003,0.0008,0.0014,0.0024,0.0036,0.005,0.0082,0.011,0.013,0.0164,0.0184,0.0236,0.0273,0.0317,0.0332,0.0375,0.0397,0.0438,0.0469,0.0498,0.0515,0.0533,0.0543,0.0546,0.0559,0.0543,0.0524,0.0498,0.0427,0.0381,0.0309,0.0246,0.0154,0.0067,0.0016],"pts_dist":{"3":0.0095,"4":0.033,"5":0.0459,"6":0.0726,"7":0.125,"8":0.1169,"9":0.1237,"10":0.146,"11":0.0968,"12":0.0793,"13":0.0719,"14":0.0314,"15":0.0236,"16":0.0161,"17":0.0035,"18":0.0034,"19":0.0013},"pts_medio":9.3606,"pts_p5":5,"pts_p95":14,"pos_media":22.56903,"vence_po":0.2838,"pais":"BEL"},"Feyenoord":{"od":"Feyenoord","sigla":"FEY","slug":"feyenoord","cores":["#E5001C","#FFFFFF"],"forca":50.1,"pos":24,"J":2,"V":1,"E":0,"D":1,"GP":4,"GC":7,"Pts":3,"GF":1,"SG":-3,"top8":0.0262,"playoff":0.5623,"fora":0.4116,"top24":0.5884,"oitavas":0.1784,"quartas":0.0227,"semi":0.0024,"final":0.0003,"campeao":0.0001,"etapas":[0.4116,0.41,0.1558,0.0202,0.0021,0.0003,0.0001],"dist_pos":[0.0001,0.0004,0.0011,0.0017,0.0031,0.0045,0.006,0.0094,0.013,0.0158,0.0183,0.0212,0.0241,0.029,0.0332,0.0355,0.0396,0.0398,0.0425,0.0441,0.048,0.0516,0.0529,0.0535,0.0508,0.0508,0.0485,0.0477,0.0455,0.0427,0.038,0.0314,0.0259,0.0181,0.01,0.0022],"pts_dist":{"3":0.0077,"4":0.0279,"5":0.0404,"6":0.0635,"7":0.109,"8":0.1092,"9":0.1179,"10":0.1422,"11":0.1059,"12":0.0853,"13":0.084,"14":0.0416,"15":0.0295,"16":0.0222,"17":0.0056,"18":0.005,"19":0.0024},"pts_medio":9.74148,"pts_p5":5,"pts_p95":15,"pos_media":22.32888,"vence_po":0.2708,"pais":"NED"},"AEK Atenas":{"od":"AEK Athens","sigla":"AEK","slug":"aek","cores":["#FFDE00","#111111"],"forca":48.0,"pos":27,"J":3,"V":1,"E":0,"D":2,"GP":3,"GC":8,"Pts":3,"GF":2,"SG":-5,"top8":0.0009,"playoff":0.2057,"fora":0.7934,"top24":0.2066,"oitavas":0.0436,"quartas":0.0045,"semi":0.0005,"final":0.0,"campeao":0.0,"etapas":[0.7934,0.163,0.0391,0.004,0.0005,0.0,0.0],"dist_pos":[0.0,0.0,0.0,0.0,0.0001,0.0001,0.0002,0.0005,0.0007,0.0012,0.0016,0.002,0.0031,0.0047,0.0065,0.0085,0.01,0.0118,0.0129,0.0157,0.022,0.0291,0.0346,0.0413,0.0447,0.0477,0.0539,0.0671,0.0795,0.0897,0.0929,0.0874,0.0879,0.078,0.0512,0.0135],"pts_dist":{"3":0.0565,"4":0.1224,"5":0.0993,"6":0.1594,"7":0.1923,"8":0.1004,"9":0.1051,"10":0.0878,"11":0.0292,"12":0.026,"13":0.0152,"14":0.0026,"15":0.0027,"16":0.0009},"pts_medio":7.0106,"pts_p5":3,"pts_p95":11,"pos_media":28.4292,"vence_po":0.2074,"pais":"GRE"},"Slavia Praga":{"od":"Slavia Prague","sigla":"SLA","slug":"slavia-praga","cores":["#FFFFFF","#E30613"],"forca":46.7,"pos":30,"J":3,"V":0,"E":1,"D":2,"GP":4,"GC":7,"Pts":1,"GF":2,"SG":-3,"top8":0.0,"playoff":0.0416,"fora":0.9584,"top24":0.0416,"oitavas":0.0078,"quartas":0.0008,"semi":0.0001,"final":0.0,"campeao":0.0,"etapas":[0.9584,0.0338,0.0071,0.0007,0.0001,0.0,0.0],"dist_pos":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0001,0.0001,0.0001,0.0002,0.0004,0.0005,0.0008,0.0012,0.0019,0.0029,0.0039,0.0052,0.0064,0.0078,0.0103,0.0153,0.0217,0.0276,0.0331,0.0412,0.0506,0.0692,0.0946,0.1218,0.1373,0.1919,0.1541],"pts_dist":{"1":0.0935,"2":0.1658,"3":0.112,"4":0.1759,"5":0.1849,"6":0.0816,"7":0.0847,"8":0.0609,"9":0.0155,"10":0.0158,"11":0.0073,"12":0.0008,"13":0.0011},"pts_medio":4.3634,"pts_p5":1,"pts_p95":8,"pos_media":32.34785,"vence_po":0.1877,"pais":"CZE"},"LASK":{"od":"LASK Linz","sigla":"LAS","slug":"lask","cores":["#111111","#FFFFFF"],"forca":43.9,"pos":32,"J":2,"V":0,"E":0,"D":2,"GP":3,"GC":7,"Pts":0,"GF":0,"SG":-4,"top8":0.0003,"playoff":0.1331,"fora":0.8666,"top24":0.1334,"oitavas":0.0192,"quartas":0.0013,"semi":0.0001,"final":0.0,"campeao":0.0,"etapas":[0.8666,0.1142,0.0179,0.0012,0.0,0.0,0.0],"dist_pos":[0.0,0.0,0.0,0.0,0.0,0.0001,0.0001,0.0002,0.0003,0.0004,0.0007,0.0009,0.0015,0.0024,0.003,0.0043,0.0055,0.0062,0.0084,0.0118,0.0154,0.0194,0.0247,0.0283,0.0332,0.0388,0.045,0.0544,0.0662,0.0742,0.0827,0.0914,0.1032,0.1016,0.0909,0.0851],"pts_dist":{"0":0.0098,"1":0.0347,"2":0.0459,"3":0.0979,"4":0.1619,"5":0.1194,"6":0.1437,"7":0.1551,"8":0.0758,"9":0.0682,"10":0.0529,"11":0.0142,"12":0.0125,"13":0.0062,"14":0.0007,"15":0.001},"pts_medio":5.77723,"pts_p5":2,"pts_p95":10,"pos_media":30.1046,"vence_po":0.1421,"pais":"AUT"},"Shakhtar Donetsk":{"od":"Shakhtar Donetsk","sigla":"SHA","slug":"shakhtar","cores":["#F26522","#111111"],"forca":41.5,"pos":14,"J":2,"V":1,"E":1,"D":0,"GP":4,"GC":2,"Pts":4,"GF":1,"SG":2,"top8":0.0057,"playoff":0.4143,"fora":0.5799,"top24":0.4201,"oitavas":0.0571,"quartas":0.0032,"semi":0.0002,"final":0.0,"campeao":0.0,"etapas":[0.5799,0.3629,0.054,0.003,0.0002,0.0,0.0],"dist_pos":[0.0,0.0001,0.0001,0.0002,0.0006,0.001,0.0014,0.0024,0.0034,0.0049,0.0073,0.0097,0.0124,0.0139,0.0163,0.0194,0.0233,0.0295,0.036,0.0404,0.0439,0.0474,0.0512,0.0554,0.0628,0.0701,0.0736,0.0703,0.0646,0.0608,0.0543,0.0495,0.0395,0.0237,0.009,0.0018],"pts_dist":{"4":0.0393,"5":0.0963,"6":0.09,"7":0.1421,"8":0.1847,"9":0.116,"10":0.1166,"11":0.101,"12":0.0444,"13":0.034,"14":0.0226,"15":0.0063,"16":0.0041,"17":0.0019},"pts_medio":8.46795,"pts_p5":5,"pts_p95":13,"pos_media":24.91624,"vence_po":0.124,"pais":"UKR"},"Viking":{"od":"Viking","sigla":"VIK","slug":"viking","cores":["#00529F","#FFFFFF"],"forca":39.4,"pos":29,"J":2,"V":0,"E":1,"D":1,"GP":4,"GC":6,"Pts":1,"GF":1,"SG":-2,"top8":0.0005,"playoff":0.1538,"fora":0.8457,"top24":0.1543,"oitavas":0.0151,"quartas":0.0006,"semi":0.0,"final":0.0,"campeao":0.0,"etapas":[0.8457,0.1392,0.0145,0.0006,0.0,0.0,0.0],"dist_pos":[0.0,0.0,0.0,0.0,0.0001,0.0,0.0002,0.0002,0.0003,0.0006,0.0009,0.0013,0.002,0.0026,0.0035,0.0046,0.0068,0.0095,0.0125,0.0152,0.0174,0.0211,0.0248,0.0308,0.0386,0.0465,0.0578,0.0642,0.0687,0.0753,0.0869,0.0978,0.0953,0.0865,0.082,0.046],"pts_dist":{"1":0.0176,"2":0.0552,"3":0.0614,"4":0.1212,"5":0.1811,"6":0.122,"7":0.1422,"8":0.1382,"9":0.0571,"10":0.0526,"11":0.0339,"12":0.0075,"13":0.0065,"14":0.0027},"pts_medio":6.17322,"pts_p5":2,"pts_p95":11,"pos_media":29.41473,"vence_po":0.0948,"pais":"NOR"},"Sabah":{"od":"Sabah Baku","sigla":"SAB","slug":"sabah","cores":["#1D3E8A","#FFFFFF"],"forca":32.6,"pos":25,"J":3,"V":1,"E":0,"D":2,"GP":3,"GC":6,"Pts":3,"GF":0,"SG":-3,"top8":0.0,"playoff":0.0262,"fora":0.9738,"top24":0.0262,"oitavas":0.0012,"quartas":0.0001,"semi":0.0,"final":0.0,"campeao":0.0,"etapas":[0.9738,0.025,0.0011,0.0001,0.0,0.0,0.0],"dist_pos":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0001,0.0001,0.0002,0.0003,0.0006,0.0008,0.0009,0.0017,0.0025,0.0039,0.0062,0.0088,0.0106,0.0134,0.018,0.0272,0.0426,0.0609,0.08,0.0954,0.1273,0.2021,0.2208,0.0756],"pts_dist":{"3":0.2745,"4":0.2801,"5":0.1059,"6":0.1656,"7":0.1059,"8":0.0261,"9":0.0273,"10":0.0111,"11":0.0016,"12":0.0014},"pts_medio":4.81398,"pts_p5":3,"pts_p95":8,"pos_media":32.55448,"vence_po":0.0447,"pais":"AZE"},"Slovan Bratislava":{"od":"Slovan Bratislava","sigla":"SLO","slug":"slovan-bratislava","cores":["#3C8DDE","#FFFFFF"],"forca":31.5,"pos":36,"J":3,"V":0,"E":0,"D":3,"GP":1,"GC":13,"Pts":0,"GF":1,"SG":-12,"top8":0.0,"playoff":0.0092,"fora":0.9908,"top24":0.0092,"oitavas":0.0004,"quartas":0.0,"semi":0.0,"final":0.0,"campeao":0.0,"etapas":[0.9908,0.0088,0.0004,0.0,0.0,0.0,0.0],"dist_pos":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0001,0.0001,0.0002,0.0004,0.0003,0.0004,0.0009,0.0014,0.0022,0.0031,0.0039,0.0052,0.0067,0.0102,0.0151,0.0248,0.0338,0.0431,0.0581,0.0963,0.1671,0.5265],"pts_dist":{"0":0.1207,"1":0.1908,"2":0.1185,"3":0.1824,"4":0.1736,"5":0.0703,"6":0.0708,"7":0.0458,"8":0.0118,"9":0.0095,"10":0.0043,"11":0.0007,"12":0.0006},"pts_medio":3.00665,"pts_p5":0,"pts_p95":7,"pos_media":34.50459,"vence_po":0.0444,"pais":"SVK"}},"playoffs":[{"a":"Atlético de Madrid","b":"PSV","p":0.0301,"pa":0.8011},{"a":"Borussia Dortmund","b":"Napoli","p":0.029,"pa":0.5744},{"a":"Borussia Dortmund","b":"RB Leipzig","p":0.0288,"pa":0.5984},{"a":"Atlético de Madrid","b":"Villarreal","p":0.0287,"pa":0.7091},{"a":"Borussia Dortmund","b":"PSV","p":0.0287,"pa":0.7247},{"a":"Atlético de Madrid","b":"Napoli","p":0.0287,"pa":0.6544},{"a":"Sporting","b":"PSV","p":0.0282,"pa":0.7278},{"a":"Borussia Dortmund","b":"Villarreal","p":0.028,"pa":0.6177},{"a":"Atlético de Madrid","b":"RB Leipzig","p":0.0279,"pa":0.6978},{"a":"Betis","b":"Villarreal","p":0.0279,"pa":0.435},{"a":"Borussia Dortmund","b":"Roma","p":0.0274,"pa":0.4809},{"a":"Sporting","b":"Villarreal","p":0.0272,"pa":0.6291}],"finais":[{"a":"Barcelona","b":"Bayern de Munique","p":0.0754,"pa":0.5013,"p_prorr":0.2616,"p_pen":0.1133},{"a":"Barcelona","b":"Arsenal","p":0.0623,"pa":0.5321,"p_prorr":0.2595,"p_pen":0.1188},{"a":"Bayern de Munique","b":"Arsenal","p":0.0593,"pa":0.5355,"p_prorr":0.2679,"p_pen":0.1283},{"a":"Barcelona","b":"Manchester City","p":0.0565,"pa":0.5294,"p_prorr":0.2554,"p_pen":0.1173},{"a":"Bayern de Munique","b":"Manchester City","p":0.0537,"pa":0.525,"p_prorr":0.261,"p_pen":0.1235},{"a":"Manchester City","b":"Arsenal","p":0.0428,"pa":0.5085,"p_prorr":0.2651,"p_pen":0.1403},{"a":"Barcelona","b":"PSG","p":0.0428,"pa":0.6037,"p_prorr":0.2638,"p_pen":0.1171},{"a":"Bayern de Munique","b":"PSG","p":0.0411,"pa":0.6033,"p_prorr":0.2784,"p_pen":0.119},{"a":"Barcelona","b":"Real Madrid","p":0.041,"pa":0.5938,"p_prorr":0.2529,"p_pen":0.1078},{"a":"Bayern de Munique","b":"Real Madrid","p":0.0374,"pa":0.6026,"p_prorr":0.2519,"p_pen":0.1105}],"encontros":{"times":["Barcelona","Bayern de Munique","Arsenal","Manchester City","PSG","Real Madrid","Liverpool","Manchester United","Inter de Milão","Atlético de Madrid","Aston Villa","Sporting","Como","Roma","Borussia Dortmund","Stuttgart"],"m":[[0.0,0.2878,0.2538,0.2624,0.2121,0.2042,0.1706,0.1328,0.1326,0.12,0.103,0.0975,0.086,0.0839,0.0936,0.088],[0.2878,0.0,0.262,0.256,0.2173,0.2074,0.1742,0.1303,0.1303,0.1194,0.1023,0.0936,0.0853,0.0801,0.09,0.0891],[0.2538,0.262,0.0,0.2309,0.1776,0.1794,0.1447,0.1285,0.1308,0.1153,0.095,0.0889,0.0837,0.0842,0.0935,0.082],[0.2624,0.256,0.2309,0.0,0.2011,0.1989,0.1662,0.12,0.1173,0.1092,0.1001,0.0925,0.0775,0.078,0.0854,0.0875],[0.2121,0.2173,0.1776,0.2011,0.0,0.138,0.1207,0.1212,0.1229,0.1118,0.0902,0.0869,0.0804,0.0808,0.0896,0.0781],[0.2042,0.2074,0.1794,0.1989,0.138,0.0,0.1162,0.1206,0.1228,0.1099,0.087,0.085,0.0806,0.0816,0.0885,0.0775],[0.1706,0.1742,0.1447,0.1662,0.1207,0.1162,0.0,0.1069,0.1107,0.1001,0.0796,0.0791,0.0765,0.076,0.0813,0.0732],[0.1328,0.1303,0.1285,0.12,0.1212,0.1206,0.1069,0.0,0.0765,0.0747,0.0761,0.071,0.0591,0.0597,0.0668,0.069],[0.1326,0.1303,0.1308,0.1173,0.1229,0.1228,0.1107,0.0765,0.0,0.0737,0.0754,0.0702,0.0591,0.0593,0.0674,0.0676],[0.12,0.1194,0.1153,0.1092,0.1118,0.1099,0.1001,0.0747,0.0737,0.0,0.0717,0.0664,0.0606,0.0588,0.0644,0.0668],[0.103,0.1023,0.095,0.1001,0.0902,0.087,0.0796,0.0761,0.0754,0.0717,0.0,0.0646,0.0614,0.0611,0.0634,0.0638],[0.0975,0.0936,0.0889,0.0925,0.0869,0.085,0.0791,0.071,0.0702,0.0664,0.0646,0.0,0.0578,0.0591,0.0622,0.0609],[0.086,0.0853,0.0837,0.0775,0.0804,0.0806,0.0765,0.0591,0.0591,0.0606,0.0614,0.0578,0.0,0.0506,0.0573,0.058],[0.0839,0.0801,0.0842,0.078,0.0808,0.0816,0.076,0.0597,0.0593,0.0588,0.0611,0.0591,0.0506,0.0,0.0576,0.0583],[0.0936,0.09,0.0935,0.0854,0.0896,0.0885,0.0813,0.0668,0.0674,0.0644,0.0634,0.0622,0.0573,0.0576,0.0,0.0614],[0.088,0.0891,0.082,0.0875,0.0781,0.0775,0.0732,0.069,0.0676,0.0668,0.0638,0.0609,0.058,0.0583,0.0614,0.0]]},"adversarios":{"Barcelona":[{"t":"Bayern de Munique","p":0.2878,"f":[0.001,0.0429,0.0851,0.0835,0.0754]},{"t":"Manchester City","p":0.2624,"f":[0.0011,0.056,0.0796,0.0692,0.0565]},{"t":"Arsenal","p":0.2538,"f":[0.0003,0.029,0.0823,0.0799,0.0623]},{"t":"PSG","p":0.2121,"f":[0.0002,0.0243,0.0781,0.0666,0.0428]},{"t":"Real Madrid","p":0.2042,"f":[0.0002,0.0234,0.0779,0.0616,0.041]},{"t":"Liverpool","p":0.1706,"f":[0.0003,0.0276,0.072,0.0471,0.0235]},{"t":"Manchester United","p":0.1328,"f":[0.0073,0.0574,0.0364,0.0211,0.0106]},{"t":"Inter de Milão","p":0.1326,"f":[0.0076,0.0597,0.0342,0.0209,0.0103]}],"Bayern de Munique":[{"t":"Barcelona","p":0.2878,"f":[0.001,0.0429,0.0851,0.0835,0.0754]},{"t":"Arsenal","p":0.262,"f":[0.0003,0.0374,0.0902,0.0748,0.0593]},{"t":"Manchester City","p":0.256,"f":[0.0028,0.0558,0.0734,0.0702,0.0537]},{"t":"PSG","p":0.2173,"f":[0.0004,0.0332,0.0798,0.0628,0.0411]},{"t":"Real Madrid","p":0.2074,"f":[0.0003,0.0326,0.0775,0.0596,0.0374]},{"t":"Liverpool","p":0.1742,"f":[0.0008,0.0362,0.0708,0.0435,0.023]},{"t":"Inter de Milão","p":0.1303,"f":[0.0121,0.0553,0.033,0.02,0.0099]},{"t":"Manchester United","p":0.1303,"f":[0.009,0.0578,0.0323,0.0216,0.0096]}],"Manchester City":[{"t":"Barcelona","p":0.2624,"f":[0.0011,0.056,0.0796,0.0692,0.0565]},{"t":"Bayern de Munique","p":0.256,"f":[0.0028,0.0558,0.0734,0.0702,0.0537]},{"t":"Arsenal","p":0.2309,"f":[0.0009,0.0461,0.0777,0.0633,0.0428]},{"t":"PSG","p":0.2011,"f":[0.0007,0.0435,0.0763,0.0514,0.0292]},{"t":"Real Madrid","p":0.1989,"f":[0.0006,0.0433,0.0771,0.0509,0.027]},{"t":"Liverpool","p":0.1662,"f":[0.0011,0.0454,0.0669,0.0358,0.0171]},{"t":"Manchester United","p":0.12,"f":[0.0157,0.0502,0.0286,0.0173,0.0083]},{"t":"Inter de Milão","p":0.1173,"f":[0.0157,0.0496,0.0285,0.0164,0.0072]}],"Arsenal":[{"t":"Bayern de Munique","p":0.262,"f":[0.0003,0.0374,0.0902,0.0748,0.0593]},{"t":"Barcelona","p":0.2538,"f":[0.0003,0.029,0.0823,0.0799,0.0623]},{"t":"Manchester City","p":0.2309,"f":[0.0009,0.0461,0.0777,0.0633,0.0428]},{"t":"Real Madrid","p":0.1794,"f":[0.0,0.0162,0.073,0.0579,0.0323]},{"t":"PSG","p":0.1776,"f":[0.0001,0.0182,0.0667,0.0586,0.0339]},{"t":"Liverpool","p":0.1447,"f":[0.0001,0.021,0.0629,0.0417,0.019]},{"t":"Inter de Milão","p":0.1308,"f":[0.0047,0.0641,0.0354,0.019,0.0076]},{"t":"Manchester United","p":0.1285,"f":[0.0042,0.0624,0.0359,0.0183,0.0078]}],"PSG":[{"t":"Bayern de Munique","p":0.2173,"f":[0.0004,0.0332,0.0798,0.0628,0.0411]},{"t":"Barcelona","p":0.2121,"f":[0.0002,0.0243,0.0781,0.0666,0.0428]},{"t":"Manchester City","p":0.2011,"f":[0.0007,0.0435,0.0763,0.0514,0.0292]},{"t":"Arsenal","p":0.1776,"f":[0.0001,0.0182,0.0667,0.0586,0.0339]},{"t":"Real Madrid","p":0.138,"f":[0.0001,0.0129,0.0577,0.046,0.0213]},{"t":"Inter de Milão","p":0.1229,"f":[0.0038,0.0664,0.0333,0.0142,0.0052]},{"t":"Manchester United","p":0.1212,"f":[0.0036,0.0622,0.035,0.0154,0.0051]},{"t":"Liverpool","p":0.1207,"f":[0.0001,0.0172,0.0565,0.0341,0.0129]}],"Real Madrid":[{"t":"Bayern de Munique","p":0.2074,"f":[0.0003,0.0326,0.0775,0.0596,0.0374]},{"t":"Barcelona","p":0.2042,"f":[0.0002,0.0234,0.0779,0.0616,0.041]},{"t":"Manchester City","p":0.1989,"f":[0.0006,0.0433,0.0771,0.0509,0.027]},{"t":"Arsenal","p":0.1794,"f":[0.0,0.0162,0.073,0.0579,0.0323]},{"t":"PSG","p":0.138,"f":[0.0001,0.0129,0.0577,0.046,0.0213]},{"t":"Inter de Milão","p":0.1228,"f":[0.0035,0.0682,0.0327,0.0134,0.005]},{"t":"Manchester United","p":0.1206,"f":[0.0032,0.0636,0.0344,0.0146,0.0048]},{"t":"Liverpool","p":0.1162,"f":[0.0001,0.0158,0.0568,0.0323,0.0112]}],"Liverpool":[{"t":"Bayern de Munique","p":0.1742,"f":[0.0008,0.0362,0.0708,0.0435,0.023]},{"t":"Barcelona","p":0.1706,"f":[0.0003,0.0276,0.072,0.0471,0.0235]},{"t":"Manchester City","p":0.1662,"f":[0.0011,0.0454,0.0669,0.0358,0.0171]},{"t":"Arsenal","p":0.1447,"f":[0.0001,0.021,0.0629,0.0417,0.019]},{"t":"PSG","p":0.1207,"f":[0.0001,0.0172,0.0565,0.0341,0.0129]},{"t":"Real Madrid","p":0.1162,"f":[0.0001,0.0158,0.0568,0.0323,0.0112]},{"t":"Inter de Milão","p":0.1107,"f":[0.0042,0.0689,0.0251,0.0097,0.0027]},{"t":"Manchester United","p":0.1069,"f":[0.0043,0.0606,0.0292,0.0099,0.0028]}],"Inter de Milão":[{"t":"Barcelona","p":0.1326,"f":[0.0076,0.0597,0.0342,0.0209,0.0103]},{"t":"Arsenal","p":0.1308,"f":[0.0047,0.0641,0.0354,0.019,0.0076]},{"t":"Bayern de Munique","p":0.1303,"f":[0.0121,0.0553,0.033,0.02,0.0099]},{"t":"PSG","p":0.1229,"f":[0.0038,0.0664,0.0333,0.0142,0.0052]},{"t":"Real Madrid","p":0.1228,"f":[0.0035,0.0682,0.0327,0.0134,0.005]},{"t":"Manchester City","p":0.1173,"f":[0.0157,0.0496,0.0285,0.0164,0.0072]},{"t":"Liverpool","p":0.1107,"f":[0.0042,0.0689,0.0251,0.0097,0.0027]},{"t":"Manchester United","p":0.0765,"f":[0.0349,0.0223,0.0133,0.005,0.0011]}],"Manchester United":[{"t":"Barcelona","p":0.1328,"f":[0.0073,0.0574,0.0364,0.0211,0.0106]},{"t":"Bayern de Munique","p":0.1303,"f":[0.009,0.0578,0.0323,0.0216,0.0096]},{"t":"Arsenal","p":0.1285,"f":[0.0042,0.0624,0.0359,0.0183,0.0078]},{"t":"PSG","p":0.1212,"f":[0.0036,0.0622,0.035,0.0154,0.0051]},{"t":"Real Madrid","p":0.1206,"f":[0.0032,0.0636,0.0344,0.0146,0.0048]},{"t":"Manchester City","p":0.12,"f":[0.0157,0.0502,0.0286,0.0173,0.0083]},{"t":"Liverpool","p":0.1069,"f":[0.0043,0.0606,0.0292,0.0099,0.0028]},{"t":"Inter de Milão","p":0.0765,"f":[0.0349,0.0223,0.0133,0.005,0.0011]}],"Atlético de Madrid":[{"t":"Barcelona","p":0.12,"f":[0.005,0.0585,0.0328,0.0167,0.0069]},{"t":"Bayern de Munique","p":0.1194,"f":[0.0066,0.0622,0.028,0.0161,0.0065]},{"t":"Arsenal","p":0.1153,"f":[0.003,0.06,0.0333,0.0139,0.0051]},{"t":"PSG","p":0.1118,"f":[0.0025,0.0617,0.0324,0.012,0.0032]},{"t":"Real Madrid","p":0.1099,"f":[0.0022,0.0612,0.0323,0.0108,0.0035]},{"t":"Manchester City","p":0.1092,"f":[0.0122,0.0526,0.0255,0.0138,0.005]},{"t":"Liverpool","p":0.1001,"f":[0.0037,0.0597,0.0268,0.0082,0.0017]},{"t":"Manchester United","p":0.0747,"f":[0.0309,0.0271,0.012,0.004,0.0008]}],"Como":[{"t":"Barcelona","p":0.086,"f":[0.009,0.0482,0.018,0.0082,0.0025]},{"t":"Bayern de Munique","p":0.0853,"f":[0.0147,0.043,0.017,0.0079,0.0028]},{"t":"Arsenal","p":0.0837,"f":[0.007,0.0506,0.0171,0.0067,0.0022]},{"t":"Real Madrid","p":0.0806,"f":[0.0043,0.0532,0.0164,0.0054,0.0013]},{"t":"PSG","p":0.0804,"f":[0.0041,0.0536,0.0164,0.0049,0.0014]},{"t":"Manchester City","p":0.0775,"f":[0.0199,0.035,0.0147,0.006,0.002]},{"t":"Liverpool","p":0.0765,"f":[0.0072,0.0505,0.0144,0.0037,0.0007]},{"t":"Aston Villa","p":0.0614,"f":[0.0256,0.0283,0.0063,0.0011,0.0001]}],"Roma":[{"t":"Arsenal","p":0.0842,"f":[0.0065,0.0527,0.0168,0.0064,0.0018]},{"t":"Barcelona","p":0.0839,"f":[0.0109,0.0467,0.0164,0.0073,0.0026]},{"t":"Real Madrid","p":0.0816,"f":[0.0043,0.0565,0.0147,0.0048,0.0012]},{"t":"PSG","p":0.0808,"f":[0.0045,0.0562,0.0139,0.0051,0.0012]},{"t":"Bayern de Munique","p":0.0801,"f":[0.0147,0.041,0.0157,0.0066,0.0022]},{"t":"Manchester City","p":0.078,"f":[0.0214,0.035,0.0143,0.0058,0.0015]},{"t":"Liverpool","p":0.076,"f":[0.0075,0.0528,0.0119,0.0033,0.0005]},{"t":"Aston Villa","p":0.0611,"f":[0.0268,0.0275,0.0058,0.0009,0.0001]}],"Aston Villa":[{"t":"Barcelona","p":0.103,"f":[0.002,0.048,0.035,0.0139,0.0042]},{"t":"Bayern de Munique","p":0.1023,"f":[0.004,0.0483,0.0323,0.0135,0.0041]},{"t":"Manchester City","p":0.1001,"f":[0.0059,0.0523,0.0281,0.0109,0.003]},{"t":"Arsenal","p":0.095,"f":[0.0014,0.0425,0.0353,0.0124,0.0034]},{"t":"PSG","p":0.0902,"f":[0.0006,0.0421,0.0359,0.0097,0.002]},{"t":"Real Madrid","p":0.087,"f":[0.001,0.0404,0.0341,0.0095,0.002]},{"t":"Liverpool","p":0.0796,"f":[0.0016,0.0418,0.0283,0.0066,0.0013]},{"t":"Manchester United","p":0.0761,"f":[0.0194,0.0409,0.0124,0.003,0.0004]}],"Borussia Dortmund":[{"t":"Barcelona","p":0.0936,"f":[0.0071,0.0517,0.0225,0.0094,0.0029]},{"t":"Arsenal","p":0.0935,"f":[0.0034,0.0583,0.0216,0.008,0.0022]},{"t":"Bayern de Munique","p":0.09,"f":[0.0112,0.0474,0.0207,0.0082,0.0026]},{"t":"PSG","p":0.0896,"f":[0.0037,0.0567,0.0218,0.0063,0.0011]},{"t":"Real Madrid","p":0.0885,"f":[0.0035,0.0573,0.0206,0.006,0.0012]},{"t":"Manchester City","p":0.0854,"f":[0.0154,0.0433,0.0174,0.0072,0.0021]},{"t":"Liverpool","p":0.0813,"f":[0.0047,0.0545,0.0173,0.0041,0.0007]},{"t":"Inter de Milão","p":0.0674,"f":[0.0392,0.0178,0.0084,0.0017,0.0002]}],"Sporting":[{"t":"Barcelona","p":0.0975,"f":[0.0031,0.0559,0.0256,0.01,0.0029]},{"t":"Bayern de Munique","p":0.0936,"f":[0.0077,0.0486,0.0244,0.0102,0.0027]},{"t":"Manchester City","p":0.0925,"f":[0.0097,0.0524,0.0202,0.008,0.0023]},{"t":"Arsenal","p":0.0889,"f":[0.0028,0.0488,0.0262,0.0087,0.0024]},{"t":"PSG","p":0.0869,"f":[0.0024,0.0495,0.0266,0.0069,0.0015]},{"t":"Real Madrid","p":0.085,"f":[0.0021,0.0497,0.0253,0.0064,0.0014]},{"t":"Liverpool","p":0.0791,"f":[0.0031,0.0489,0.0218,0.0047,0.0006]},{"t":"Manchester United","p":0.071,"f":[0.0292,0.0295,0.0097,0.0023,0.0003]}],"Stuttgart":[{"t":"Bayern de Munique","p":0.0891,"f":[0.0056,0.0485,0.0242,0.0086,0.0022]},{"t":"Barcelona","p":0.088,"f":[0.003,0.0484,0.0258,0.0085,0.0023]},{"t":"Manchester City","p":0.0875,"f":[0.0082,0.0508,0.0199,0.0068,0.0018]},{"t":"Arsenal","p":0.082,"f":[0.0022,0.0437,0.0269,0.0078,0.0015]},{"t":"PSG","p":0.0781,"f":[0.0016,0.0416,0.0276,0.0061,0.0012]},{"t":"Real Madrid","p":0.0775,"f":[0.0013,0.043,0.0262,0.0062,0.0009]},{"t":"Liverpool","p":0.0732,"f":[0.0022,0.0438,0.0223,0.0043,0.0006]},{"t":"Manchester United","p":0.069,"f":[0.0236,0.0341,0.009,0.0022,0.0002]}],"Napoli":[{"t":"PSG","p":0.0721,"f":[0.0059,0.0523,0.0108,0.0027,0.0004]},{"t":"Bayern de Munique","p":0.0706,"f":[0.0161,0.0385,0.0111,0.0038,0.0011]},{"t":"Barcelona","p":0.0705,"f":[0.0103,0.0428,0.0117,0.0047,0.0011]},{"t":"Arsenal","p":0.0705,"f":[0.0067,0.0486,0.0111,0.0034,0.0008]},{"t":"Real Madrid","p":0.07,"f":[0.0046,0.0523,0.0101,0.0025,0.0005]},{"t":"Liverpool","p":0.0672,"f":[0.0077,0.0483,0.0088,0.0021,0.0003]},{"t":"Manchester City","p":0.0652,"f":[0.0209,0.0301,0.0102,0.0033,0.0008]},{"t":"Atlético de Madrid","p":0.0594,"f":[0.0425,0.0118,0.0043,0.0008,0.0001]}],"RB Leipzig":[{"t":"Manchester City","p":0.0561,"f":[0.0227,0.024,0.007,0.0019,0.0005]},{"t":"Barcelona","p":0.0557,"f":[0.0114,0.0322,0.0086,0.0029,0.0006]},{"t":"Bayern de Munique","p":0.0555,"f":[0.0155,0.029,0.008,0.0024,0.0005]},{"t":"Arsenal","p":0.055,"f":[0.0073,0.0364,0.0085,0.0022,0.0006]},{"t":"PSG","p":0.0535,"f":[0.0055,0.0379,0.008,0.0018,0.0003]},{"t":"Liverpool","p":0.0516,"f":[0.0078,0.0362,0.0062,0.0012,0.0002]},{"t":"Real Madrid","p":0.0514,"f":[0.0046,0.0384,0.0066,0.0017,0.0002]},{"t":"Atlético de Madrid","p":0.051,"f":[0.0377,0.0099,0.0029,0.0004,0.0001]}],"Porto":[{"t":"Manchester City","p":0.0308,"f":[0.016,0.0111,0.0027,0.0009,0.0001]},{"t":"Bayern de Munique","p":0.03,"f":[0.0122,0.013,0.0034,0.0011,0.0002]},{"t":"Atlético de Madrid","p":0.0294,"f":[0.0234,0.0043,0.0015,0.0002,0.0]},{"t":"Stuttgart","p":0.0292,"f":[0.0204,0.0077,0.001,0.0,0.0]},{"t":"Barcelona","p":0.0286,"f":[0.009,0.0149,0.0035,0.001,0.0003]},{"t":"Aston Villa","p":0.028,"f":[0.0182,0.0084,0.0013,0.0001,0.0]},{"t":"Sporting","p":0.0279,"f":[0.0214,0.0053,0.001,0.0001,0.0]},{"t":"Arsenal","p":0.0271,"f":[0.0056,0.017,0.0033,0.0009,0.0002]}],"Villarreal":[{"t":"Bayern de Munique","p":0.0561,"f":[0.0168,0.0294,0.0071,0.0024,0.0005]},{"t":"Manchester City","p":0.0553,"f":[0.0218,0.0245,0.0067,0.0019,0.0003]},{"t":"Barcelona","p":0.0552,"f":[0.0118,0.0327,0.0079,0.0023,0.0005]},{"t":"Arsenal","p":0.0548,"f":[0.0076,0.0372,0.0075,0.0021,0.0004]},{"t":"Real Madrid","p":0.0527,"f":[0.0051,0.0391,0.0069,0.0014,0.0002]},{"t":"Atlético de Madrid","p":0.0514,"f":[0.0388,0.0096,0.0026,0.0004,0.0001]},{"t":"PSG","p":0.0511,"f":[0.0051,0.0379,0.0065,0.0014,0.0002]},{"t":"Sporting","p":0.0503,"f":[0.036,0.0119,0.002,0.0003,0.0]}],"Betis":[{"t":"Bayern de Munique","p":0.0639,"f":[0.0104,0.0395,0.0108,0.0027,0.0006]},{"t":"Manchester City","p":0.0617,"f":[0.0154,0.0342,0.0092,0.0025,0.0004]},{"t":"Barcelona","p":0.06,"f":[0.0073,0.038,0.0113,0.0029,0.0005]},{"t":"Arsenal","p":0.0596,"f":[0.0034,0.0425,0.011,0.0023,0.0004]},{"t":"Manchester United","p":0.0586,"f":[0.0355,0.0185,0.004,0.0005,0.0]},{"t":"Inter de Milão","p":0.0585,"f":[0.0369,0.0167,0.0042,0.0006,0.0001]},{"t":"PSG","p":0.0583,"f":[0.0039,0.0404,0.0117,0.0021,0.0003]},{"t":"Borussia Dortmund","p":0.0578,"f":[0.0403,0.0149,0.0024,0.0002,0.0]}],"Lens":[{"t":"Manchester City","p":0.0398,"f":[0.0205,0.015,0.0034,0.0008,0.0001]},{"t":"Atlético de Madrid","p":0.0384,"f":[0.0306,0.0061,0.0014,0.0002,0.0]},{"t":"Borussia Dortmund","p":0.038,"f":[0.0317,0.0052,0.001,0.0001,0.0]},{"t":"Stuttgart","p":0.0378,"f":[0.0267,0.0097,0.0013,0.0001,0.0]},{"t":"Bayern de Munique","p":0.0376,"f":[0.0146,0.0179,0.0038,0.0012,0.0002]},{"t":"Aston Villa","p":0.0369,"f":[0.0237,0.0118,0.0013,0.0001,0.0]},{"t":"Sporting","p":0.0363,"f":[0.0275,0.0077,0.001,0.0001,0.0]},{"t":"Betis","p":0.0363,"f":[0.0314,0.0044,0.0005,0.0,0.0]}],"Fenerbahçe":[{"t":"Sporting","p":0.0293,"f":[0.0237,0.0048,0.0007,0.0001,0.0]},{"t":"Manchester City","p":0.0288,"f":[0.0158,0.0104,0.0021,0.0004,0.0001]},{"t":"Aston Villa","p":0.0282,"f":[0.0195,0.008,0.0006,0.0001,0.0]},{"t":"Atlético de Madrid","p":0.0281,"f":[0.0239,0.0033,0.0008,0.0,0.0]},{"t":"Stuttgart","p":0.0279,"f":[0.0212,0.0061,0.0006,0.0,0.0]},{"t":"Borussia Dortmund","p":0.0274,"f":[0.0238,0.0031,0.0006,0.0,0.0]},{"t":"Bayern de Munique","p":0.0274,"f":[0.012,0.0122,0.0025,0.0006,0.0001]},{"t":"Barcelona","p":0.0259,"f":[0.0095,0.0133,0.0025,0.0006,0.0001]}],"Lille":[{"t":"Manchester City","p":0.0232,"f":[0.0135,0.0081,0.0013,0.0003,0.0]},{"t":"Stuttgart","p":0.0231,"f":[0.0185,0.0042,0.0004,0.0,0.0]},{"t":"Atlético de Madrid","p":0.0227,"f":[0.0193,0.0028,0.0006,0.0,0.0]},{"t":"Sporting","p":0.0224,"f":[0.0181,0.0038,0.0004,0.0001,0.0]},{"t":"Aston Villa","p":0.022,"f":[0.0156,0.0058,0.0006,0.0,0.0]},{"t":"Bayern de Munique","p":0.0212,"f":[0.011,0.008,0.0017,0.0003,0.0001]},{"t":"Borussia Dortmund","p":0.021,"f":[0.0183,0.0023,0.0004,0.0,0.0]},{"t":"Manchester United","p":0.0194,"f":[0.0163,0.0026,0.0005,0.0,0.0]}],"Galatasaray":[{"t":"Stuttgart","p":0.0213,"f":[0.0175,0.0034,0.0003,0.0,0.0]},{"t":"Aston Villa","p":0.0211,"f":[0.0162,0.0045,0.0004,0.0,0.0]},{"t":"Atlético de Madrid","p":0.021,"f":[0.0175,0.0029,0.0005,0.0001,0.0]},{"t":"Sporting","p":0.0207,"f":[0.0169,0.0035,0.0004,0.0,0.0]},{"t":"Manchester City","p":0.0207,"f":[0.0118,0.0072,0.0014,0.0003,0.0]},{"t":"Borussia Dortmund","p":0.0196,"f":[0.0169,0.0023,0.0004,0.0,0.0]},{"t":"Bayern de Munique","p":0.0193,"f":[0.0092,0.0084,0.0013,0.0003,0.0001]},{"t":"Inter de Milão","p":0.019,"f":[0.0164,0.002,0.0005,0.0001,0.0]}],"PSV":[{"t":"Atlético de Madrid","p":0.0473,"f":[0.0401,0.0058,0.0012,0.0001,0.0]},{"t":"Borussia Dortmund","p":0.0456,"f":[0.0392,0.0055,0.0009,0.0,0.0]},{"t":"Sporting","p":0.0447,"f":[0.0349,0.0088,0.0009,0.0001,0.0]},{"t":"Inter de Milão","p":0.0442,"f":[0.0378,0.0051,0.0012,0.0001,0.0]},{"t":"Stuttgart","p":0.0434,"f":[0.0334,0.0091,0.0008,0.0,0.0]},{"t":"Manchester City","p":0.0418,"f":[0.0213,0.0168,0.0031,0.0006,0.0001]},{"t":"Aston Villa","p":0.0415,"f":[0.0265,0.0135,0.0014,0.0001,0.0]},{"t":"Betis","p":0.0413,"f":[0.0361,0.0048,0.0003,0.0,0.0]}],"Bodø/Glimt":[{"t":"Atlético de Madrid","p":0.0408,"f":[0.0356,0.0042,0.001,0.0001,0.0]},{"t":"Borussia Dortmund","p":0.0386,"f":[0.034,0.004,0.0005,0.0,0.0]},{"t":"Sporting","p":0.0379,"f":[0.0305,0.0067,0.0006,0.0,0.0]},{"t":"Stuttgart","p":0.0372,"f":[0.0289,0.0078,0.0006,0.0,0.0]},{"t":"Manchester City","p":0.0372,"f":[0.0209,0.0138,0.0021,0.0004,0.0]},{"t":"Aston Villa","p":0.037,"f":[0.0255,0.0104,0.001,0.0001,0.0]},{"t":"Betis","p":0.0361,"f":[0.032,0.0038,0.0003,0.0,0.0]},{"t":"Manchester United","p":0.0361,"f":[0.0297,0.0051,0.0012,0.0001,0.0]}],"Club Brugge":[{"t":"Atlético de Madrid","p":0.0374,"f":[0.0312,0.0055,0.0007,0.0,0.0]},{"t":"Sporting","p":0.0365,"f":[0.0295,0.0063,0.0006,0.0001,0.0]},{"t":"Borussia Dortmund","p":0.0364,"f":[0.0315,0.0043,0.0006,0.0,0.0]},{"t":"Stuttgart","p":0.0358,"f":[0.028,0.0072,0.0006,0.0,0.0]},{"t":"Manchester City","p":0.0351,"f":[0.0193,0.0132,0.0023,0.0003,0.0001]},{"t":"Inter de Milão","p":0.0351,"f":[0.0303,0.0037,0.0009,0.0001,0.0]},{"t":"Manchester United","p":0.0347,"f":[0.0284,0.0051,0.001,0.0002,0.0]},{"t":"Betis","p":0.0342,"f":[0.0303,0.0036,0.0003,0.0,0.0]}],"Feyenoord":[{"t":"Borussia Dortmund","p":0.0377,"f":[0.0327,0.0044,0.0005,0.0,0.0]},{"t":"Atlético de Madrid","p":0.0371,"f":[0.0314,0.005,0.0007,0.0001,0.0]},{"t":"Sporting","p":0.0369,"f":[0.0293,0.007,0.0006,0.0,0.0]},{"t":"Betis","p":0.0363,"f":[0.0327,0.0034,0.0001,0.0,0.0]},{"t":"Stuttgart","p":0.0355,"f":[0.0268,0.0081,0.0005,0.0,0.0]},{"t":"Inter de Milão","p":0.0352,"f":[0.0307,0.0036,0.0009,0.0001,0.0]},{"t":"Aston Villa","p":0.0351,"f":[0.0241,0.0101,0.0008,0.0,0.0]},{"t":"Manchester City","p":0.0347,"f":[0.0193,0.013,0.002,0.0003,0.0]}],"AEK Atenas":[{"t":"Stuttgart","p":0.0148,"f":[0.0122,0.0025,0.0001,0.0,0.0]},{"t":"Atlético de Madrid","p":0.0145,"f":[0.0131,0.0013,0.0001,0.0,0.0]},{"t":"Sporting","p":0.0143,"f":[0.0126,0.0017,0.0001,0.0,0.0]},{"t":"Aston Villa","p":0.0137,"f":[0.0109,0.0027,0.0001,0.0,0.0]},{"t":"Manchester City","p":0.0137,"f":[0.01,0.0033,0.0003,0.0,0.0]},{"t":"Betis","p":0.0132,"f":[0.0122,0.0009,0.0001,0.0,0.0]},{"t":"Borussia Dortmund","p":0.0128,"f":[0.0118,0.0009,0.0001,0.0,0.0]},{"t":"Manchester United","p":0.0128,"f":[0.0115,0.0012,0.0001,0.0,0.0]}],"Slavia Praga":[{"t":"Stuttgart","p":0.0032,"f":[0.0027,0.0004,0.0001,0.0,0.0]},{"t":"Aston Villa","p":0.0031,"f":[0.0028,0.0003,0.0,0.0,0.0]},{"t":"Sporting","p":0.0031,"f":[0.0028,0.0003,0.0,0.0,0.0]},{"t":"Manchester City","p":0.0029,"f":[0.0021,0.0007,0.0,0.0,0.0]},{"t":"Atlético de Madrid","p":0.0029,"f":[0.0025,0.0003,0.0001,0.0,0.0]},{"t":"Betis","p":0.0027,"f":[0.0025,0.0002,0.0,0.0,0.0]},{"t":"Bayern de Munique","p":0.0027,"f":[0.0019,0.0007,0.0001,0.0,0.0]},{"t":"Borussia Dortmund","p":0.0026,"f":[0.0024,0.0002,0.0,0.0,0.0]}],"LASK":[{"t":"Stuttgart","p":0.0095,"f":[0.0083,0.0011,0.0001,0.0,0.0]},{"t":"Sporting","p":0.0091,"f":[0.0083,0.0008,0.0,0.0,0.0]},{"t":"Atlético de Madrid","p":0.009,"f":[0.0083,0.0007,0.0,0.0,0.0]},{"t":"Borussia Dortmund","p":0.0088,"f":[0.0084,0.0004,0.0,0.0,0.0]},{"t":"Aston Villa","p":0.0087,"f":[0.0073,0.0013,0.0001,0.0,0.0]},{"t":"Betis","p":0.0086,"f":[0.0081,0.0004,0.0,0.0,0.0]},{"t":"Manchester United","p":0.0084,"f":[0.0078,0.0006,0.0001,0.0,0.0]},{"t":"Manchester City","p":0.0082,"f":[0.0068,0.0013,0.0001,0.0,0.0]}],"Shakhtar Donetsk":[{"t":"Atlético de Madrid","p":0.027,"f":[0.025,0.0018,0.0001,0.0,0.0]},{"t":"Sporting","p":0.0269,"f":[0.0251,0.0018,0.0001,0.0,0.0]},{"t":"Borussia Dortmund","p":0.0257,"f":[0.0245,0.0012,0.0,0.0,0.0]},{"t":"Betis","p":0.0245,"f":[0.0232,0.0014,0.0,0.0,0.0]},{"t":"Stuttgart","p":0.024,"f":[0.0218,0.0022,0.0001,0.0,0.0]},{"t":"Inter de Milão","p":0.0239,"f":[0.0226,0.0011,0.0002,0.0,0.0]},{"t":"Manchester United","p":0.0233,"f":[0.0217,0.0015,0.0001,0.0,0.0]},{"t":"Aston Villa","p":0.0231,"f":[0.0194,0.0035,0.0001,0.0,0.0]}],"Viking":[{"t":"Stuttgart","p":0.0109,"f":[0.01,0.0009,0.0,0.0,0.0]},{"t":"Sporting","p":0.0101,"f":[0.0096,0.0006,0.0,0.0,0.0]},{"t":"Atlético de Madrid","p":0.0101,"f":[0.0097,0.0003,0.0,0.0,0.0]},{"t":"Aston Villa","p":0.01,"f":[0.0093,0.0007,0.0,0.0,0.0]},{"t":"Borussia Dortmund","p":0.0094,"f":[0.009,0.0004,0.0,0.0,0.0]},{"t":"Inter de Milão","p":0.0092,"f":[0.0089,0.0003,0.0,0.0,0.0]},{"t":"Betis","p":0.0092,"f":[0.0089,0.0003,0.0,0.0,0.0]},{"t":"Manchester United","p":0.0086,"f":[0.0081,0.0005,0.0,0.0,0.0]}],"Sabah":[{"t":"Sporting","p":0.0021,"f":[0.002,0.0,0.0,0.0,0.0]},{"t":"Stuttgart","p":0.002,"f":[0.0019,0.0001,0.0,0.0,0.0]},{"t":"Borussia Dortmund","p":0.0019,"f":[0.0019,0.0,0.0,0.0,0.0]},{"t":"Atlético de Madrid","p":0.0017,"f":[0.0016,0.0001,0.0,0.0,0.0]},{"t":"Manchester City","p":0.0017,"f":[0.0015,0.0001,0.0,0.0,0.0]},{"t":"Aston Villa","p":0.0017,"f":[0.0016,0.0001,0.0,0.0,0.0]},{"t":"Betis","p":0.0015,"f":[0.0015,0.0,0.0,0.0,0.0]},{"t":"Manchester United","p":0.0015,"f":[0.0015,0.0,0.0,0.0,0.0]}],"Slovan Bratislava":[]},"hoje":[{"m":"Como","v":"Manchester United","data":"2026-10-21","hora":"13:45","vm":0.3858,"e":0.2632,"vv":0.3509,"etot":2.9863,"placar":"1-1","p_placar":0.1225,"mercado":[0.441,0.253,0.306],"impacto":{"Como":{"vm":{"top8":0.1668,"top24":0.9485,"campeao":0.0057},"e":{"top8":0.0507,"top24":0.8107,"campeao":0.0042},"vv":{"top8":0.0205,"top24":0.6912,"campeao":0.0025}},"Manchester United":{"vm":{"top8":0.0794,"top24":0.8355,"campeao":0.0167},"e":{"top8":0.1498,"top24":0.9123,"campeao":0.0187},"vv":{"top8":0.3451,"top24":0.9807,"campeao":0.0249}}}},{"m":"Lille","v":"Galatasaray","data":"2026-10-21","hora":"13:45","vm":0.4829,"e":0.2547,"vv":0.2624,"etot":3.06,"placar":"1-1","p_placar":0.118,"mercado":[0.437,0.253,0.31],"impacto":{"Lille":{"vm":{"top8":0.0058,"top24":0.4697,"campeao":0.0001},"e":{"top8":0.0005,"top24":0.2098,"campeao":0.0},"vv":{"top8":0.0002,"top24":0.1174,"campeao":0.0}},"Galatasaray":{"vm":{"top8":0.0003,"top24":0.1698,"campeao":0.0},"e":{"top8":0.001,"top24":0.2792,"campeao":0.0},"vv":{"top8":0.0095,"top24":0.5426,"campeao":0.0}}}},{"m":"Aston Villa","v":"Viking","data":"2026-10-21","hora":"16:00","vm":0.7943,"e":0.1502,"vv":0.0555,"etot":3.5054,"placar":"2-0","p_placar":0.1169,"mercado":[0.799,0.131,0.07],"impacto":{"Aston Villa":{"vm":{"top8":0.5276,"top24":0.9989,"campeao":0.0068},"e":{"top8":0.2706,"top24":0.9714,"campeao":0.0045},"vv":{"top8":0.174,"top24":0.933,"campeao":0.003}},"Viking":{"vm":{"top8":0.0001,"top24":0.1201,"campeao":0.0},"e":{"top8":0.0005,"top24":0.2207,"campeao":0.0},"vv":{"top8":0.0068,"top24":0.4597,"campeao":0.0}}}},{"m":"Club Brugge","v":"Lens","data":"2026-10-21","hora":"16:00","vm":0.4189,"e":0.2617,"vv":0.3195,"etot":3.109,"placar":"1-1","p_placar":0.1198,"mercado":[0.485,0.229,0.286],"impacto":{"Club Brugge":{"vm":{"top8":0.0432,"top24":0.781,"campeao":0.0},"e":{"top8":0.0092,"top24":0.5029,"campeao":0.0},"vv":{"top8":0.0037,"top24":0.3574,"campeao":0.0}},"Lens":{"vm":{"top8":0.0039,"top24":0.3909,"campeao":0.0001},"e":{"top8":0.01,"top24":0.5396,"campeao":0.0001},"vv":{"top8":0.0476,"top24":0.8094,"campeao":0.0003}}}},{"m":"Bayern de Munique","v":"Arsenal","data":"2026-10-21","hora":"16:00","vm":0.5158,"e":0.2491,"vv":0.2351,"etot":3.086,"placar":"1-1","p_placar":0.1155,"mercado":[0.475,0.25,0.275],"impacto":{"Bayern de Munique":{"vm":{"top8":0.837,"top24":0.9998,"campeao":0.2059},"e":{"top8":0.6107,"top24":0.9976,"campeao":0.1868},"vv":{"top8":0.4663,"top24":0.9911,"campeao":0.1735}},"Arsenal":{"vm":{"top8":0.7984,"top24":0.9996,"campeao":0.1465},"e":{"top8":0.8928,"top24":1.0,"campeao":0.1558},"vv":{"top8":0.974,"top24":1.0,"campeao":0.1632}}}},{"m":"Inter de Milão","v":"Shakhtar Donetsk","data":"2026-10-21","hora":"16:00","vm":0.8312,"e":0.1294,"vv":0.0394,"etot":3.6294,"placar":"2-0","p_placar":0.1181,"mercado":[0.796,0.13,0.074],"impacto":{"Inter de Milão":{"vm":{"top8":0.1703,"top24":0.9363,"campeao":0.0204},"e":{"top8":0.0433,"top24":0.7935,"campeao":0.014},"vv":{"top8":0.0164,"top24":0.6727,"campeao":0.0098}},"Shakhtar Donetsk":{"vm":{"top8":0.0032,"top24":0.3794,"campeao":0.0},"e":{"top8":0.0101,"top24":0.559,"campeao":0.0},"vv":{"top8":0.0447,"top24":0.8224,"campeao":0.0}}}},{"m":"Real Madrid","v":"RB Leipzig","data":"2026-10-21","hora":"16:00","vm":0.7084,"e":0.191,"vv":0.1006,"etot":3.841,"placar":"2-1","p_placar":0.0868,"mercado":[0.784,0.131,0.085],"impacto":{"Real Madrid":{"vm":{"top8":0.9521,"top24":1.0,"campeao":0.0908},"e":{"top8":0.8306,"top24":0.9996,"campeao":0.0859},"vv":{"top8":0.705,"top24":0.9983,"campeao":0.0766}},"RB Leipzig":{"vm":{"top8":0.0177,"top24":0.6764,"campeao":0.0008},"e":{"top8":0.0484,"top24":0.7937,"campeao":0.0008},"vv":{"top8":0.1588,"top24":0.9368,"campeao":0.0011}}}},{"m":"Betis","v":"Feyenoord","data":"2026-10-21","hora":"16:00","vm":0.5601,"e":0.2396,"vv":0.2003,"etot":3.2914,"placar":"1-1","p_placar":0.1084,"mercado":[0.624,0.193,0.183],"impacto":{"Betis":{"vm":{"top8":0.248,"top24":0.992,"campeao":0.0007},"e":{"top8":0.0874,"top24":0.9175,"campeao":0.0004},"vv":{"top8":0.0432,"top24":0.8266,"campeao":0.0002}},"Feyenoord":{"vm":{"top8":0.0078,"top24":0.4841,"campeao":0.0},"e":{"top8":0.0225,"top24":0.6255,"campeao":0.0001},"vv":{"top8":0.0825,"top24":0.8396,"campeao":0.0002}}}},{"m":"Sporting","v":"LASK","data":"2026-10-21","hora":"16:00","vm":0.7403,"e":0.177,"vv":0.0827,"etot":3.3359,"placar":"2-0","p_placar":0.1144,"mercado":[0.803,0.128,0.069],"impacto":{"Sporting":{"vm":{"top8":0.3512,"top24":0.9944,"campeao":0.0047},"e":{"top8":0.1466,"top24":0.9396,"campeao":0.0028},"vv":{"top8":0.0845,"top24":0.8688,"campeao":0.0027}},"LASK":{"vm":{"top8":0.0,"top24":0.0939,"campeao":0.0},"e":{"top8":0.0002,"top24":0.175,"campeao":0.0},"vv":{"top8":0.0029,"top24":0.3981,"campeao":0.0}}}}],"pontos_corte":{"top8":{"0":0.0,"1":0.0,"2":0.0,"3":0.0,"4":0.0,"5":0.0,"6":0.0,"7":0.0,"8":0.0,"9":0.0,"10":0.0,"11":0.0,"12":0.0,"13":0.0007,"14":0.0377,"15":0.2654,"16":0.7463,"17":0.9797,"18":0.9984,"19":1.0,"20":1.0,"21":1.0,"22":1.0,"24":1.0},"top24":{"0":0.0,"1":0.0,"2":0.0,"3":0.0,"4":0.0,"5":0.0,"6":0.0,"7":0.0064,"8":0.1606,"9":0.6476,"10":0.9681,"11":0.9999,"12":1.0,"13":1.0,"14":1.0,"15":1.0,"16":1.0,"17":1.0,"18":1.0,"19":1.0,"20":1.0,"21":1.0,"22":1.0,"24":1.0}},"etapas":["Eliminado na 1ª fase","Eliminado no playoff","Eliminado nas oitavas","Eliminado nas quartas","Eliminado na semifinal","Vice-campeão","Campeão"],"paises":[{"sigla":"ENG","nome":"Inglaterra","campeao":0.3681,"final":0.7431,"semi":1.4722,"times":["Manchester City","Arsenal","Liverpool","Manchester United","Aston Villa"]},{"sigla":"ESP","nome":"Espanha","campeao":0.3038,"final":0.5834,"semi":1.0851,"times":["Barcelona","Real Madrid","Atlético de Madrid","Villarreal","Betis"]},{"sigla":"GER","nome":"Alemanha","campeao":0.2007,"final":0.3647,"semi":0.6596,"times":["Bayern de Munique","Borussia Dortmund","Stuttgart","RB Leipzig"]},{"sigla":"FRA","nome":"França","campeao":0.0945,"final":0.2058,"semi":0.4208,"times":["PSG","Lens","Lille"]},{"sigla":"ITA","nome":"Itália","campeao":0.0283,"final":0.0839,"semi":0.2676,"times":["Inter de Milão","Como","Roma","Napoli"]},{"sigla":"POR","nome":"Portugal","campeao":0.0045,"final":0.0168,"semi":0.0743,"times":["Sporting","Porto"]},{"sigla":"NED","nome":"Holanda","campeao":0.0002,"final":0.0008,"semi":0.0073,"times":["PSV","Feyenoord"]},{"sigla":"NOR","nome":"Noruega","campeao":0.0001,"final":0.0003,"semi":0.0032,"times":["Bodø/Glimt","Viking"]},{"sigla":"TUR","nome":"Turquia","campeao":0.0,"final":0.0007,"semi":0.0063,"times":["Fenerbahçe","Galatasaray"]},{"sigla":"BEL","nome":"Bélgica","campeao":0.0,"final":0.0003,"semi":0.003,"times":["Club Brugge"]},{"sigla":"GRE","nome":"Grécia","campeao":0.0,"final":0.0,"semi":0.0005,"times":["AEK Atenas"]},{"sigla":"CZE","nome":"Rep. Tcheca","campeao":0.0,"final":0.0,"semi":0.0001,"times":["Slavia Praga"]},{"sigla":"AUT","nome":"Áustria","campeao":0.0,"final":0.0,"semi":0.0001,"times":["LASK"]},{"sigla":"UKR","nome":"Ucrânia","campeao":0.0,"final":0.0,"semi":0.0002,"times":["Shakhtar Donetsk"]},{"sigla":"AZE","nome":"Azerbaijão","campeao":0.0,"final":0.0,"semi":0.0,"times":["Sabah"]},{"sigla":"SVK","nome":"Eslováquia","campeao":0.0,"final":0.0,"semi":0.0,"times":["Slovan Bratislava"]}],"SIGLA":{"Barcelona":"BAR","Bayern de Munique":"BAY","Manchester City":"MCI","Arsenal":"ARS","PSG":"PSG","Real Madrid":"RMA","Liverpool":"LIV","Inter de Milão":"INT","Manchester United":"MUN","Atlético de Madrid":"ATM","Como":"COM","Roma":"ROM","Aston Villa":"AVL","Borussia Dortmund":"BVB","Sporting":"SCP","Stuttgart":"VFB","Napoli":"NAP","RB Leipzig":"RBL","Porto":"POR","Villarreal":"VIL","Betis":"BET","Lens":"RCL","Fenerbahçe":"FEN","Lille":"LIL","Galatasaray":"GAL","PSV":"PSV","Bodø/Glimt":"BOD","Club Brugge":"BRU","Feyenoord":"FEY","AEK Atenas":"AEK","Slavia Praga":"SLA","LASK":"LAS","Shakhtar Donetsk":"SHA","Viking":"VIK","Sabah":"SAB","Slovan Bratislava":"SLO"},"SLUG":{"Barcelona":"barcelona","Bayern de Munique":"bayern","Manchester City":"manchester-city","Arsenal":"arsenal","PSG":"psg","Real Madrid":"real-madrid","Liverpool":"liverpool","Inter de Milão":"inter","Manchester United":"manchester-united","Atlético de Madrid":"atletico-de-madrid","Como":"como","Roma":"roma","Aston Villa":"aston-villa","Borussia Dortmund":"borussia-dortmund","Sporting":"sporting","Stuttgart":"stuttgart","Napoli":"napoli","RB Leipzig":"rb-leipzig","Porto":"porto","Villarreal":"villarreal","Betis":"betis","Lens":"lens","Fenerbahçe":"fenerbahce","Lille":"lille","Galatasaray":"galatasaray","PSV":"psv","Bodø/Glimt":"bodo-glimt","Club Brugge":"club-brugge","Feyenoord":"feyenoord","AEK Atenas":"aek","Slavia Praga":"slavia-praga","LASK":"lask","Shakhtar Donetsk":"shakhtar","Viking":"viking","Sabah":"sabah","Slovan Bratislava":"slovan-bratislava"},"CORES":{"Barcelona":["#A50044","#004D98"],"Bayern de Munique":["#DC052D","#FFFFFF"],"Manchester City":["#6CABDD","#1C2C5B"],"Arsenal":["#EF0107","#FFFFFF"],"PSG":["#004170","#DA291C"],"Real Madrid":["#FFFFFF","#FEBE10"],"Liverpool":["#C8102E","#00B2A9"],"Inter de Milão":["#0068A8","#111111"],"Manchester United":["#DA291C","#FBE122"],"Atlético de Madrid":["#CB3524","#FFFFFF"],"Como":["#1B4D9B","#FFFFFF"],"Roma":["#8E1F2F","#F0BC42"],"Aston Villa":["#670E36","#95BFE5"],"Borussia Dortmund":["#FDE100","#111111"],"Sporting":["#008057","#FFFFFF"],"Stuttgart":["#FFFFFF","#E32219"],"Napoli":["#12A0D7","#FFFFFF"],"RB Leipzig":["#FFFFFF","#DD0741"],"Porto":["#003893","#FFFFFF"],"Villarreal":["#FFE667","#005187"],"Betis":["#0BB363","#FFFFFF"],"Lens":["#FFD600","#E31B23"],"Fenerbahçe":["#163962","#FFED00"],"Lille":["#E01E13","#20325F"],"Galatasaray":["#A90432","#FDB912"],"PSV":["#ED1C24","#FFFFFF"],"Bodø/Glimt":["#FFDD00","#111111"],"Club Brugge":["#0062B1","#111111"],"Feyenoord":["#E5001C","#FFFFFF"],"AEK Atenas":["#FFDE00","#111111"],"Slavia Praga":["#FFFFFF","#E30613"],"LASK":["#111111","#FFFFFF"],"Shakhtar Donetsk":["#F26522","#111111"],"Viking":["#00529F","#FFFFFF"],"Sabah":["#1D3E8A","#FFFFFF"],"Slovan Bratislava":["#3C8DDE","#FFFFFF"]},"CURTO":{"Barcelona":"Barcelona","Bayern de Munique":"Bayern","Manchester City":"Man. City","Arsenal":"Arsenal","PSG":"PSG","Real Madrid":"Real Madrid","Liverpool":"Liverpool","Inter de Milão":"Inter","Manchester United":"Man. United","Atlético de Madrid":"Atlético","Como":"Como","Roma":"Roma","Aston Villa":"Aston Villa","Borussia Dortmund":"Dortmund","Sporting":"Sporting","Stuttgart":"Stuttgart","Napoli":"Napoli","RB Leipzig":"RB Leipzig","Porto":"Porto","Villarreal":"Villarreal","Betis":"Betis","Lens":"Lens","Fenerbahçe":"Fenerbahçe","Lille":"Lille","Galatasaray":"Galatasaray","PSV":"PSV","Bodø/Glimt":"Bodø/Glimt","Club Brugge":"Club Brugge","Feyenoord":"Feyenoord","AEK Atenas":"AEK Atenas","Slavia Praga":"Slavia Praga","LASK":"LASK","Shakhtar Donetsk":"Shakhtar","Viking":"Viking","Sabah":"Sabah","Slovan Bratislava":"Slovan"}};
+const T = D.times, ORD = D.ordem;
+const $ = s => document.querySelector(s);
+const SLUG = D.SLUG, SIGLA = D.SIGLA, CORES = D.CORES, ESC_DIR = 'escudos/';
+const claro = hex => { const n = parseInt(hex.slice(1), 16); return (0.299 * (n >> 16) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255)) > 160; };
+const corTxt = t => claro(CORES[t][0]) ? '#15171C' : '#FFFFFF';
+const esc = t => `<span class="esc" title="${t}"><i data-anel="${CORES[t][1]}" style="background:${CORES[t][0]};color:${corTxt(t)};box-shadow:inset 0 0 0 2px ${CORES[t][1]}">${SIGLA[t]}</i><img src="${ESC_DIR}${SLUG[t]}.png" alt="" loading="lazy" onerror="this.remove()"></span>`;
+const pct = (p, casas = 1) => { const v = p * 100; if (v >= 99.95) return '100%'; if (v > 0 && v < 0.05) return '<0,1%'; return v.toFixed(casas).replace('.', ',') + '%'; };
+const rot = v => (v >= 0.0995 ? Math.round(v * 100) : (v * 100).toFixed(1).replace('.', ',')) + '%';
+const dataBR = iso => { const [y, m, dd] = iso.slice(0, 10).split('-'); return `${dd}/${m}/${y}`; };
+const horaBR = iso => iso.slice(11, 16).replace(':', 'h');
+const q = s => s.replace(/"/g, '&quot;');
+const posAt = t => ORD.indexOf(t) + 1;
+const nm = t => D.CURTO[t] !== t ? `<span class="nl">${t}</span><span class="ns">${D.CURTO[t]}</span>` : t;
+const num1 = v => v.toFixed(1).replace('.', ',');
+
+/* tooltip */
+const tip = $('#tip');
+document.addEventListener('mousemove', ev => {
+  const el = ev.target.closest('[data-tip]');
+  if (!el) { tip.style.opacity = 0; return; }
+  tip.innerHTML = el.dataset.tip; tip.style.opacity = 1;
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  let x = ev.clientX + 14, y = ev.clientY - h - 10;
+  if (x + w > innerWidth - 8) x = ev.clientX - w - 14; if (y < 8) y = ev.clientY + 18;
+  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+});
+
+/* 1. até onde cada time vai (barra 100% empilhada) */
+const ETL = ['Cai na 1ª fase', 'Cai no playoff', 'Cai nas oitavas', 'Cai nas quartas', 'Cai na semifinal', 'Vice-campeão', 'Campeão'];
+const ECOR = [0, 1, 2, 3, 4, 5, 6].map(k => `var(--e${k})`);
+$('#leg-trilha').innerHTML = ETL.map((n, k) => `<span><i style="background:${ECOR[k]}"></i>${n}</span>`).join('');
+let ordTrilha = 'campeao';
+function trilha() {
+  const lista = ORD.slice().sort((a, b) => ordTrilha === 'pos' ? posAt(a) - posAt(b) :
+    (T[b].campeao - T[a].campeao || T[b].final - T[a].final || T[b].semi - T[a].semi || T[b].quartas - T[a].quartas || T[b].oitavas - T[a].oitavas || T[b].top24 - T[a].top24));
+  let h = `<div></div><div class="cab">← sai cedo · · · vai longe →</div><div class="cab r">Título</div>`;
+  for (const t of lista) {
+    const x = T[t], E = x.etapas;
+    const tipx = `<b>${t}</b> · ${posAt(t)}º, ${x.Pts} pts<br>` + ETL.map((n, k) => `${n}: ${pct(E[k])}`).reverse().join('<br>');
+    h += `<div class="nome"><small>${posAt(t)}º</small>${esc(t)}${nm(t)}</div><div class="st" data-tip="${q(tipx)}">` +
+      E.map((v, k) => v > 0 ? `<i class="${k < 2 ? 'cl' : ''}" style="width:${v * 100}%;background:${ECOR[k]}">${v >= 0.09 ? rot(v) : ''}</i>` : '').join('') +
+      `</div><div class="val${x.campeao < 0.0005 ? ' zero' : ''}">${x.campeao < 0.0005 ? '<0,1%' : pct(x.campeao)}</div>`;
+  }
+  $('#g-trilha').innerHTML = h;
+}
+$('#ord-trilha').addEventListener('click', ev => { const b = ev.target.closest('button'); if (!b) return;
+  ordTrilha = b.dataset.o; $('#ord-trilha').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); trilha(); });
+trilha();
+
+/* 2. chance de título */
+(() => {
+  const lista = ORD.slice().sort((a, b) => T[b].campeao - T[a].campeao);
+  const mostra = lista.filter(t => T[t].campeao >= 0.001), fora = lista.filter(t => !mostra.includes(t));
+  const esc100 = 1 / Math.min(1, T[lista[0]].campeao * 1.15);
+  $('#g-titulo').innerHTML = mostra.map(t => { const x = T[t];
+    const tipx = `<b>${t}</b><br>título: ${pct(x.campeao, 2)}<br>chega à final: ${pct(x.final)}<br>chega à semifinal: ${pct(x.semi)}`;
+    return `<div class="nome">${esc(t)}${nm(t)}</div><div class="trilho" data-tip="${q(tipx)}"><div class="fill" style="width:${Math.max(x.campeao * esc100 * 100, 0.3)}%;background:var(--e6)"></div></div><div class="val">${pct(x.campeao)}</div>`; }).join('') +
+    (fora.length ? `<div class="resto">Menos de 0,1% de chance: ${fora.join(', ')}.</div>` : '');
+})();
+
+/* 3. fase de liga */
+(() => {
+  $('#g-liga').innerHTML = ORD.map(t => { const x = T[t];
+    const tipx = `<b>${t}</b> · ${posAt(t)}º, ${x.Pts} pts em ${x.J} jogos<br>top 8: ${pct(x.top8)}<br>playoff (9º–24º): ${pct(x.playoff)}<br>eliminado (25º–36º): ${pct(x.fora)}<br>posição média: ${num1(x.pos_media)}º`;
+    const seg = (v, c, cl) => v > 0 ? `<i class="${cl}" style="width:${v * 100}%;background:${c}">${v >= 0.09 ? rot(v) : ''}</i>` : '';
+    return `<div class="nome"><small>${posAt(t)}º</small>${esc(t)}${nm(t)}</div><div class="st" data-tip="${q(tipx)}">${seg(x.top8, 'var(--verde)', '')}${seg(x.playoff, 'var(--amarelo)', 'cl')}${seg(x.fora, 'var(--neutro)', '')}</div>`; }).join('');
+})();
+
+/* 4. jogos de hoje */
+(() => {
+  const J = D.hoje; if (!J.length) { $('#s-hoje').style.display = 'none'; return; }
+  const [y, m, dd] = J[0].data.split('-');
+  $('#h-hoje').textContent = `Jogos de hoje (${dd}/${m}) — ${D.rodada_atual}ª rodada`;
+  $('#sub-hoje').textContent = 'A probabilidade de cada resultado segundo o modelo, o placar mais provável e quanto muda a chance de cada time conforme o resultado.';
+  const linha = (t, imp, lado) => {
+    const I = imp[t]; const ks = lado === 'm' ? ['vm', 'e', 'vv'] : ['vv', 'e', 'vm'];
+    const opts = [['top8', 'top 8'], ['top24', 'top 24'], ['campeao', 'título']];
+    let best = opts[0], d0 = -1;
+    for (const o of opts) { const d = (I[ks[0]] ? I[ks[0]][o[0]] : 0) - (I[ks[2]] ? I[ks[2]][o[0]] : 0); if (d > d0 + 0.01) { d0 = d; best = o; } }
+    const k = best[0];
+    const f = s => I[s] ? `<b>${pct(I[s][k], 0)}</b>` : '–';
+    return `<div><span class="t">${t}: chance de ${best[1]} hoje ${pct(T[t][k], 0)}</span>se vencer ${f(ks[0])} · se empatar ${f(ks[1])} · se perder ${f(ks[2])}</div>`;
+  };
+  $('#jogos').innerHTML = J.map(j => {
+    const mk = j.mercado ? `<br><span style="opacity:.75">mercado: ${pct(j.mercado[0], 0)} / ${pct(j.mercado[1], 0)} / ${pct(j.mercado[2], 0)}</span>` : '';
+    return `<div class="jg"><div class="m">${nm(j.m)}${esc(j.m)}</div>
+     <div class="b3" data-tip="${q(`<b>${j.m} × ${j.v}</b><br>${j.m}: ${pct(j.vm)}<br>empate: ${pct(j.e)}<br>${j.v}: ${pct(j.vv)}${mk}`)}"><i style="width:${j.vm * 100}%;background:var(--azul)">${j.vm >= 0.12 ? rot(j.vm) : ''}</i><i style="width:${j.e * 100}%;background:var(--neutro)">${j.e >= 0.12 ? rot(j.e) : ''}</i><i style="width:${j.vv * 100}%;background:var(--verm)">${j.vv >= 0.12 ? rot(j.vv) : ''}</i></div>
+     <div class="v">${esc(j.v)}${nm(j.v)}</div><div class="qd">${j.hora.replace(':', 'h')} (Brasília) · placar mais provável ${j.placar.replace('-', '×')} (${pct(j.p_placar, 0)}) · ${num1(j.etot)} gols esperados</div>
+     <div class="imp">${linha(j.m, j.impacto, 'm')}${linha(j.v, j.impacto, 'v')}</div></div>`; }).join('');
+})();
+
+/* 5. finais */
+(() => {
+  const F = D.finais.slice(0, 5);
+  $('#fins').innerHTML = F.map(f => `<div class="fin"><div class="q">${pct(f.p)}</div>
+    <div class="duelo"><span>${esc(f.a)}${f.a}</span><span>${f.b}${esc(f.b)}</span></div>
+    <div class="bar" data-tip="${q(`<b>${f.a} × ${f.b}</b><br>acontece em ${pct(f.p)} das simulações<br>${f.a} campeão: ${pct(f.pa)}<br>${f.b} campeão: ${pct(1 - f.pa)}<br>vai à prorrogação: ${pct(f.p_prorr, 0)} · pênaltis: ${pct(f.p_pen, 0)}`)}"><i style="width:${f.pa * 100}%;background:var(--e6)"></i><i style="flex:1;background:var(--e5)"></i></div>
+    <div class="pp"><span>${pct(f.pa, 0)} campeão</span><span>prorrogação ${pct(f.p_prorr, 0)}</span><span>${pct(1 - f.pa, 0)} campeão</span></div></div>`).join('') +
+    `<p class="nota">Somadas, as cinco finais mais prováveis aparecem em ${pct(F.reduce((s, f) => s + f.p, 0), 0)} das simulações: a Champions ainda está muito aberta.</p>`;
+})();
+
+/* 6. playoff */
+(() => {
+  $('#conf').innerHTML = D.playoffs.slice(0, 6).map(c => {
+    const a = c.pa, b = 1 - a;
+    return `<div><div class="k">Decide em casa: ${c.a}</div><div class="q">${pct(c.p)}<small>de chance de acontecer</small></div>
+      <div class="duelo"><div>${esc(c.a)}${c.a}</div><div class="x">×</div><div class="d2">${c.b}${esc(c.b)}</div></div>
+      <div class="bar"><i style="width:${a * 100}%;background:var(--verde)"></i><i style="flex:1;background:var(--neutro)"></i></div>
+      <div class="pp"><span>${pct(a, 0)} passa</span><span>${pct(b, 0)} passa</span></div></div>`; }).join('');
+})();
+
+/* 7. mapa de encontros */
+(() => {
+  const E = D.encontros, N = E.times.length, mx = Math.max(...E.m.flat());
+  let h = `<div></div>` + E.times.map(t => `<div class="ch">${D.CURTO[t]}</div>`).join('');
+  E.times.forEach((a, i) => {
+    h += `<div class="rh">${esc(a)}${nm(a)}</div>`;
+    E.times.forEach((b, k) => {
+      if (i === k) { h += `<div class="diag"></div>`; return; }
+      const v = E.m[i][k], al = Math.pow(v / mx, 0.7);
+      const cor = `rgba(47,75,255,${(0.05 + 0.95 * al).toFixed(3)})`, tx = al > 0.45 ? '#fff' : 'var(--ink2)';
+      h += `<div class="cel" style="background:${cor};color:${tx}" data-tip="${q(`<b>${a} × ${b}</b><br>se enfrentam no mata-mata em ${pct(v)} das simulações`)}">${v >= 0.0095 ? Math.round(v * 100) : ''}</div>`;
+    });
+  });
+  $('#hm').style.gridTemplateColumns = `${innerWidth < 640 ? 96 : 150}px repeat(${N}, minmax(26px,1fr))`;
+  $('#hm').innerHTML = h;
+})();
+
+/* 8. bloco do time */
+const sel = $('#sel-time');
+sel.innerHTML = ORD.map(t => `<option value="${t}">${posAt(t)}º · ${t}</option>`).join('');
+const FASEN = ['Playoff', 'Oitavas', 'Quartas', 'Semifinal', 'Final'];
+const FCOR = ['var(--e1)', 'var(--e2)', 'var(--e3)', 'var(--e4)', 'var(--e6)'];
+$('#leg-adv').innerHTML = FASEN.map((n, k) => `<span><i style="background:${FCOR[k]}"></i>${n}</span>`).join('');
+function renderTime(t) {
+  const x = T[t], p = posAt(t);
+  const box = (k, v, d, cor) => `<div style="border-top-color:${cor}"><div class="k">${k}</div><div class="v">${pct(v)}</div><div class="d">${d}</div></div>`;
+  $('#cartao').innerHTML = `<div><div class="nm">${esc(t)}${t}</div><div class="ln"><b>${p}º</b> · <b>${x.Pts}</b> pts em ${x.J} jogos</div><div class="ln">${x.V}V ${x.E}E ${x.D}D · saldo ${x.SG > 0 ? '+' : ''}${x.SG} · força ${num1(x.forca)}</div></div>` +
+    box('Top 8', x.top8, 'direto às oitavas', 'var(--verde)') + box('Oitavas', x.oitavas, `via playoff: ${pct(x.oitavas - x.top8, 0)}`, 'var(--e2)') +
+    box('Quartas', x.quartas, '', 'var(--e3)') + box('Semifinal', x.semi, '', 'var(--e4)') + box('Final', x.final, '', 'var(--e5)') + box('Título', x.campeao, '', 'var(--e6)');
+  const dp = x.dist_pos, mx = Math.max(...dp); let hp = '', ep = '';
+  dp.forEach((v, i) => { const pos = i + 1, cls = pos <= 8 ? 't8' : pos <= 24 ? 'po' : 'out';
+    hp += `<div class="c" data-tip="<b>${pos}º lugar</b><br>${pct(v)} das simulações"><div class="b pos-b ${cls}${v ? '' : ' zero'}" style="height:${v / mx * 100}%"><span class="r"${v < 0.02 ? ' style="display:none"' : ''}>${Math.round(v * 100)}</span></div></div>`;
+    const lab = (pos === p || (innerWidth < 640 ? [1, 8, 16, 24, 36] : [1, 8, 9, 16, 24, 25, 32, 36]).includes(pos)) && !(Math.abs(pos - p) <= 1 && pos !== p && innerWidth < 640);
+    ep += `<span class="e5${pos === p ? ' atual' : ''}">${lab ? pos : ''}</span>`; });
+  $('#h-pos').innerHTML = hp; $('#e-pos').innerHTML = ep;
+  const modo = dp.indexOf(mx) + 1;
+  $('#sub-pos').textContent = `Posição mais provável: ${modo}º (${pct(mx)}); média ${num1(x.pos_media)}º. Top 8 em ${pct(x.top8)}, playoff em ${pct(x.playoff)}, eliminação em ${pct(x.fora)}. A seta marca a posição atual (${p}º); os números sobre as colunas estão em %.`;
+  const pd = x.pts_dist, maxp = Math.max(...Object.values(pd)); let h = '', e = '';
+  for (let k = 0; k <= 24; k++) { const v = pd[k] || 0;
+    h += `<div class="c" data-tip="<b>${k} pontos</b><br>${pct(v)} das simulações"><div class="b${v ? '' : ' zero'}" style="height:${v / maxp * 100}%"><span class="r${v >= 0.06 ? ' big' : ''}"${v < 0.01 ? ' style="display:none"' : ''}>${rot(v)}</span></div></div>`;
+    e += `<span>${k}</span>`; }
+  const mp = ((x.pts_medio + 0.5) / 25) * 100;
+  $('#h-pts').innerHTML = h + `<div class="media${mp > 70 ? ' dir' : ''}" style="left:${mp}%"><span>média ${num1(x.pts_medio)}</span></div>`;
+  $('#e-pts').innerHTML = e;
+  $('#sub-pts').textContent = `Em 90% das simulações termina a fase de liga entre ${x.pts_p5} e ${x.pts_p95} pontos. Hoje tem ${x.Pts}, faltando ${8 - x.J} jogos.`;
+  const A = D.adversarios[t] || [], amx = A.length ? A[0].p : 1;
+  $('#adv').innerHTML = A.map(a => `<div class="nome">${esc(a.t)}${nm(a.t)}</div><div class="st" data-tip="${q(`<b>${t} × ${a.t}</b><br>se enfrentam em ${pct(a.p)} das simulações<br>` + FASEN.map((n, k) => `${n}: ${pct(a.f[k])}`).join('<br>'))}">` +
+    a.f.map((v, k) => v > 0 ? `<i style="width:${v / amx * 100}%;background:${FCOR[k]}"></i>` : '').join('') + `</div><div class="val">${pct(a.p)}</div>`).join('');
+  $('#sub-adv').textContent = A.length ? `Chance de cruzar com cada time em alguma fase do mata-mata; a cor mostra em qual fase. O mais provável é ${A[0].t} (${pct(A[0].p)}).` : 'Quase nunca chega ao mata-mata nas simulações.';
+}
+sel.addEventListener('change', () => renderTime(sel.value));
+sel.value = ORD.slice().sort((a, b) => T[b].campeao - T[a].campeao)[0]; renderTime(sel.value);
+
+/* 9. pontos necessários */
+(() => {
+  function grafico(el, pc, cor, verbo) {
+    const pts = Object.keys(pc).map(Number).sort((a, b) => b - a);
+    const meio = pts.filter(p => pc[p] >= 0.0005 && pc[p] <= 0.9995);
+    const topo = Math.min(meio[0] + 2, pts[0]), base = Math.max(meio[meio.length - 1] - 2, pts[pts.length - 1]);
+    let html = '';
+    for (let p = topo; p >= base; p--) { if (pc[p] === undefined) continue; const v = pc[p];
+      const txt = v >= 0.9995 ? `${verbo} em todas as simulações` : v < 0.0005 ? `quase nunca ${verbo}` : `${pct(v, 1)} dos times que terminam com ${p} pontos ${verbo}`;
+      html += `<div class="nome">${p} <small>pts</small></div><div class="trilho" data-tip="<b>${p} pontos</b><br>${txt}"><div class="fill" style="width:${Math.max(v * 100, 0.3)}%;background:${cor}"></div></div><div class="val${v < 0.0005 ? ' zero' : ''}">${pct(v)}</div>`; }
+    $(el).innerHTML = html;
+  }
+  const PC = D.pontos_corte;
+  grafico('#g-pt-8', PC.top8, 'var(--verde)', 'ficam no top 8');
+  grafico('#g-pt-24', PC.top24, 'var(--amarelo)', 'ficam no top 24');
+  const asc = o => Object.keys(o).map(Number).sort((a, b) => a - b), prim = (o, l) => asc(o).find(p => o[p] >= l);
+  $('#n-pontos').innerHTML = `Leitura: com <b>${prim(PC.top8, 0.5)} pontos</b> a vaga direta nas oitavas fica mais provável que não, e com <b>${prim(PC.top8, 0.95)}</b> ela é quase certa. Para o playoff, <b>${prim(PC.top24, 0.5)} pontos</b> já deixam o time mais perto de dentro que de fora, e com <b>${prim(PC.top24, 0.95)}</b> a vaga é quase garantida.`;
+})();
+
+/* 10. países */
+(() => {
+  $('#g-paises').innerHTML = D.paises.filter(p => p.campeao >= 0.0005).map(p => `<div class="nome">${p.nome}</div><div class="trilho" data-tip="${q(`<b>${p.nome}</b><br>título: ${pct(p.campeao)}<br>times: ${p.times.join(', ')}`)}"><div class="fill" style="width:${p.campeao * 100}%;background:var(--e6)"></div></div><div class="val">${pct(p.campeao)}</div>`).join('');
+})();
+
+/* 11. tabela */
+(() => {
+  const COLS = [['pos', '#', 0], ['nome', 'Time', 0], ['Pts', 'Pts', 0], ['J', 'J', 0], ['SG', 'SG', 0], ['forca', 'Força', 0],
+    ['top8', 'Top 8', 'var(--verde)'], ['playoff', 'Playoff', 'var(--amarelo)'], ['fora', 'Elimin.', 'var(--neutro)'],
+    ['oitavas', 'Oitavas', 'var(--e2)'], ['quartas', 'Quartas', 'var(--e3)'], ['semi', 'Semi', 'var(--e4)'], ['final', 'Final', 'var(--e5)'], ['campeao', 'Título', 'var(--e6)']];
+  let ord = 'pos', asc = true;
+  const val = (t, k) => k === 'pos' ? posAt(t) : k === 'nome' ? t : T[t][k];
+  function render() {
+    const lista = ORD.slice().sort((a, b) => { const va = val(a, ord), vb = val(b, ord); return (va > vb ? 1 : va < vb ? -1 : posAt(a) - posAt(b)) * (asc ? 1 : -1); });
+    let h = '<thead><tr>' + COLS.map(([k, n]) => `<th class="${k === 'nome' ? 'l' : ''}${k === ord ? ' on' : ''}" data-k="${k}">${n}${k === ord ? (asc ? ' ▲' : ' ▼') : ''}</th>`).join('') + '</tr></thead><tbody>';
+    for (const t of lista) { const x = T[t], p = posAt(t), z = p <= 8 ? 'z-t8' : p <= 24 ? 'z-po' : 'z-out';
+      h += `<tr class="${z}${ord === 'pos' && asc && (p === 8 || p === 24) ? ' corte' : ''}"><td>${p}º</td><td class="l">${esc(t)}${t}</td><td><b>${x.Pts}</b></td><td>${x.J}</td><td>${x.SG > 0 ? '+' : ''}${x.SG}</td><td>${num1(x.forca)}</td>` +
+        COLS.slice(6).map(([k, , cor]) => { const v = x[k]; return v < 0.0005 ? '<td class="p zero">–</td>' : `<td class="p"><b style="width:calc((100% - 16px) * ${v});background:${cor}"></b><span>${pct(v)}</span></td>`; }).join('') + '</tr>'; }
+    $('#tb').innerHTML = h + '</tbody>';
+    $('#tb').querySelectorAll('th').forEach(th => th.addEventListener('click', () => { const k = th.dataset.k; if (k === ord) asc = !asc; else { ord = k; asc = ['pos', 'nome'].includes(k); } render(); }));
+  }
+  render();
+})();
+
+/* ===================== compartilhar (WhatsApp / Story) ===================== */
+(() => {
+  const SITE_URL = 'https://radarnumerico.com.br/futebol/champions-league/';
+  const toastEl = $('#toast'); let tt = null;
+  const toast = m => { toastEl.textContent = m; toastEl.style.opacity = 1; clearTimeout(tt); tt = setTimeout(() => toastEl.style.opacity = 0, 3200); };
+  const icoWa = '<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.1.6 2.8.5a2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.5-.3z"/></svg>';
+  const icoIg = '<svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM21.9 7.9c-.1-1.6-.4-3-1.6-4.2S17.7 2.2 16.1 2.1C14.5 2 9.5 2 7.9 2.1 6.3 2.2 4.9 2.5 3.7 3.7S2.2 6.3 2.1 7.9C2 9.5 2 14.5 2.1 16.1c.1 1.6.4 3 1.6 4.2s2.6 1.5 4.2 1.6c1.6.1 6.6.1 8.2 0 1.6-.1 3-.4 4.2-1.6s1.5-2.6 1.6-4.2c.1-1.6.1-6.6 0-8.2zm-2.2 10a3.3 3.3 0 0 1-1.9 1.9c-1.3.5-4.4.4-5.8.4s-4.5.1-5.8-.4a3.3 3.3 0 0 1-1.9-1.9c-.5-1.3-.4-4.4-.4-5.8s-.1-4.5.4-5.8a3.3 3.3 0 0 1 1.9-1.9c1.3-.5 4.4-.4 5.8-.4s4.5-.1 5.8.4a3.3 3.3 0 0 1 1.9 1.9c.5 1.3.4 4.4.4 5.8s.1 4.5-.4 5.8z"/></svg>';
+  async function capturar(sec) {
+    const svgOrig = sec.querySelectorAll('svg *');
+    // captura na largura de celular (560 px) para a imagem preencher o story
+    return html2canvas(sec, {backgroundColor: getComputedStyle(document.body).backgroundColor, scale: 2, useCORS: true, logging: false, windowWidth: 600,
+      ignoreElements: e => e.classList && (e.classList.contains('share') || e.classList.contains('racectl')),
+      onclone: doc => { const el = doc.getElementById(sec.id); el.style.width = '560px'; el.style.paddingTop = '8px';
+        const okSrc = new Set([...sec.querySelectorAll('.esc img')].filter(i => i.complete && i.naturalWidth > 0).map(i => i.src));
+        el.querySelectorAll('.esc img').forEach(i => { if (!okSrc.has(i.src)) i.remove(); });
+        // html2canvas pinta box-shadow inset como preenchimento: na cópia, o anel do círculo vira borda
+        el.querySelectorAll('.esc i').forEach(i => { i.style.boxShadow = 'none'; i.style.border = '2px solid ' + i.dataset.anel; i.style.lineHeight = (i.closest('.cartao') ? 20 : 14) + 'px'; });
+        // ajustes só na cópia que vira imagem: sem rolagem nos SVGs, nomes inteiros nas barras, selects viram texto
+        const st = doc.createElement('style'); st.textContent = '.svgwrap{overflow:visible!important}.svgwrap svg{min-width:0!important}.barras{grid-template-columns:150px 1fr 58px!important}.ctrl select{display:none}.ctrl .fake{font-weight:600;font-size:14.5px;padding:9px 12px;border:1.5px solid #DCE1E8;background:#fff;color:#16243A}'; doc.head.appendChild(st);
+        el.querySelectorAll('svg[viewBox]').forEach(sv => { const vb = sv.getAttribute('viewBox').split(' ').map(Number); const w = 528; sv.setAttribute('width', w); sv.setAttribute('height', Math.round(w * vb[3] / vb[2])); sv.style.width = w + 'px'; sv.style.height = Math.round(w * vb[3] / vb[2]) + 'px'; });
+        el.querySelectorAll('.ctrl select').forEach(se => { const f = doc.createElement('div'); f.className = 'fake'; f.textContent = se.options[se.selectedIndex] ? se.options[se.selectedIndex].text : ''; se.parentNode.appendChild(f); });
+        const cl = el.querySelectorAll('svg *');
+        svgOrig.forEach((o, i) => { const c = cl[i]; if (!c) return; const st = getComputedStyle(o);
+          ['fill', 'stroke', 'stroke-width', 'stroke-dasharray', 'font-size', 'font-weight', 'font-family', 'opacity'].forEach(pr => c.style.setProperty(pr, st.getPropertyValue(pr))); }); }});
+  }
+  function montar(c, formato) {
+    const [W, H] = formato === 'story' ? [1080, 1920] : [1080, 1350];
+    const out = document.createElement('canvas'); out.width = W; out.height = H; const g = out.getContext('2d');
+    g.fillStyle = '#FFFFFF'; g.fillRect(0, 0, W, H);
+    g.fillStyle = '#16243A'; g.font = '800 46px Archivo, Arial, sans-serif'; g.fillText('Radar Numérico', 72, 120);
+    g.fillStyle = '#6B7686'; g.font = '500 27px Archivo, Arial, sans-serif'; g.fillText(`Champions League 2026/27 · atualizado em ${dataBR(D.gerado_em)}, após ${D.ultimo_jogo.m} ${D.ultimo_jogo.gm}×${D.ultimo_jogo.gv} ${D.ultimo_jogo.v}`, 72, 164);
+    const top = 220, maxH = (formato === 'story' ? 1920 - 300 : 1350 - 220) - top - 40;
+    const s = Math.min(936 / c.width, maxH / c.height); const w = c.width * s, h = c.height * s;
+    g.drawImage(c, (W - w) / 2, top + (formato === 'story' ? (maxH - h) / 2 : 0), w, h);
+    g.fillStyle = '#16243A'; g.font = '700 30px Archivo, Arial, sans-serif'; g.fillText('radarnumerico.com.br/futebol/champions-league', 72, H - 110);
+    g.fillStyle = '#6B7686'; g.font = '26px Archivo, Arial, sans-serif'; g.fillText('@radarnumerico · probabilidades atualizadas a cada jogo', 72, H - 68);
+    return out;
+  }
+  const baixar = (blob, nome) => { const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = nome; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000); };
+  async function compartilhar(sec, modo, btn) {
+    const titulo = sec.querySelector('h2').textContent.trim();
+    const texto = `${titulo} — Champions League 2026/27, pelo Radar Numérico`;
+    btn.disabled = true; const rot = btn.innerHTML; btn.innerHTML = 'gerando…';
+    try { window.gtag && gtag('event', 'share', {method: modo, content_type: 'grafico', item_id: sec.id}); } catch (e) {}
+    try {
+      if (typeof html2canvas !== 'function') throw new Error('sem html2canvas');
+      const c = await capturar(sec);
+      const img = montar(c, modo === 'story' ? 'story' : 'post');
+      const blob = await new Promise(r => img.toBlob(r, 'image/png'));
+      const file = new File([blob], modo === 'story' ? 'radar-numerico-story.png' : 'radar-numerico.png', {type: 'image/png'});
+      const movel = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || matchMedia('(pointer: coarse)').matches;
+      if (movel && navigator.canShare && navigator.canShare({files: [file]})) {
+        try { await navigator.share({files: [file], title: texto, text: `${texto} ${SITE_URL}`}); return; }
+        catch (e) { if (e && e.name === 'AbortError') return; console.warn('share falhou, baixando a imagem', e); }
+      }
+      if (modo === 'whats') { baixar(blob, file.name); window.open(`https://wa.me/?text=${encodeURIComponent(`${texto} ${SITE_URL}`)}`, '_blank'); toast('Imagem salva e WhatsApp aberto: anexe a imagem na conversa.'); return; }
+      baixar(blob, file.name); toast('Imagem do story salva. Abra o Instagram e poste no Story.');
+    } catch (e) {
+      if (e && e.name === 'AbortError') return;
+      console.warn('compartilhar', e);
+      toast('Não deu para gerar a imagem neste navegador.');
+    } finally { btn.disabled = false; btn.innerHTML = rot; }
+  }
+  window.RN = {capturar, montar, compartilhar};
+  document.querySelectorAll('section.g').forEach(sec => {
+    const row = document.createElement('div'); row.className = 'share';
+    row.innerHTML = `<span>Compartilhar:</span><button type="button" class="wa">${icoWa}WhatsApp</button><button type="button" class="ig">${icoIg}Story do Instagram</button>`;
+    row.querySelector('.wa').addEventListener('click', e => compartilhar(sec, 'whats', e.currentTarget));
+    row.querySelector('.ig').addEventListener('click', e => compartilhar(sec, 'story', e.currentTarget));
+    sec.appendChild(row);
+  });
+})();
+
+
+$('#rodape').textContent = `Probabilidades da Champions League 2026/27 atualizadas em ${dataBR(D.gerado_em)} às ${horaBR(D.gerado_em)}, com ${D.n_jogados} jogos disputados na fase de liga. Atualizamos depois de cada rodada.`;
+</script>
+
+</body>
+</html>
