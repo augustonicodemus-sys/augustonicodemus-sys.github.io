@@ -43,6 +43,10 @@
     if (/\/futebol\/libertadores\//.test(p)) return "Chances de título, finais mais prováveis e chaveamento da Libertadores 2026 no Radar Numérico 👇";
     if (/\/futebol\/copa-do-brasil\//.test(p)) return "Chances de título, finais mais prováveis e chaveamento da Copa do Brasil 2026 no Radar Numérico 👇";
     if (/\/futebol\/sul-americana\//.test(p)) return "Chances de título, finais mais prováveis e chaveamento da Sul-Americana 2026 no Radar Numérico 👇";
+    if (/\/futebol\/serie-b\//.test(p)) return "Chances de acesso, título e rebaixamento da Série B 2026, time a time, no Radar Numérico 👇";
+    if (/\/futebol\/champions-league\//.test(p)) return "Chances de título de cada time na Champions League 2026/27 no Radar Numérico 👇";
+    if (/\/futebol\/ranking-mundial\//.test(p)) return "Ranking mundial dos times de futebol pela força de cada um, no Radar Numérico 👇";
+    if (/\/blog\//.test(p)) return "Leia no blog do Radar Numérico 👇";
     return "Veja no Radar Numérico 👇";
   }
   function botaoCompartilhar(topo) {
