@@ -23,6 +23,13 @@
 .rn-ufs span{font-size:14.5px;width:100%;margin-bottom:2px}
 .rn-col .rn-ufs a{display:inline-block;margin:0;padding:3px 8px;border:1px solid #DCE1E8;border-radius:12px;font-size:13px;font-weight:600}
 .rn-col .rn-ufs a[aria-current="page"]{background:var(--rn-amar);border-color:var(--rn-amar);box-shadow:none}
+/* 24/10/2026: submenus por ano (Eleições 2026 / 2022) e linhas por país (Futebol · Europa) */
+.rn-ano{display:flex;flex-direction:column;gap:4px}
+.rn-painel:has(.rn-ano){grid-auto-flow:row;gap:12px}
+.rn-ano+.rn-ano{border-top:1px solid #E3E7ED;padding-top:12px}
+.rn-ano-h{margin:0 0 4px;font-size:13px;font-weight:800;color:#16243A;letter-spacing:-.005em}
+.rn-ano-c{display:flex;gap:24px}
+.rn-col .rn-ufs{max-width:300px}
 .rn-topo a:focus-visible,.rn-topo button:focus-visible{outline:2px solid var(--rn-amar);outline-offset:-2px}
 
 .rn-comp{position:relative;order:5;margin-left:12px}
@@ -66,6 +73,10 @@
   .rn-ufs span{color:var(--rn-ink);font-size:15.5px;padding:4px 0 2px}
   .rn-col .rn-ufs a{border-color:#3A4A63;padding:6px 11px;font-size:14px}
   .rn-col .rn-ufs a[aria-current="page"]{color:#16243A}
+  .rn-ano+.rn-ano{border-left:0;padding-left:0;border-top:1px solid #2C3C57;padding-top:8px;margin-top:6px}
+  .rn-ano-h{color:#fff;font-size:15px;margin:6px 0 0}
+  .rn-ano-c{flex-direction:column;gap:0}
+  .rn-col .rn-ufs{max-width:none}
 }
 @media (max-width:479px){
   .rn-in{padding:0 10px}
