@@ -1092,7 +1092,9 @@ renderTime(sel.value);
   }
   window.RN = {capturar, montar, compartilhar};
   document.querySelectorAll('section.g').forEach(sec => {
-    const fonte = document.createElement('p'); fonte.className = 'fonte'; fonte.textContent = 'Fonte: radarnumerico.com.br';
+    const fonte = document.createElement('p'); fonte.className = 'fonte';
+    const u = D.ultimo_jogo;  /* data, hora e último jogo em todo gráfico (24/10/2026) */
+    fonte.textContent = `Fonte: radarnumerico.com.br · atualizado em ${dataBR(D.gerado_em).slice(0, 5)} às ${horaBR(D.gerado_em)}, após ${u.m} ${u.gm}×${u.gv} ${u.v}`;
     sec.appendChild(fonte);  /* fonte em todo gráfico, para os prints (24/10/2026) */
     const row = document.createElement('div'); row.className = 'share';
     row.innerHTML = `<span>Compartilhar:</span><button type="button" class="wa">${icoWa}WhatsApp</button><button type="button" class="ig">${icoIg}Story do Instagram</button>`;
