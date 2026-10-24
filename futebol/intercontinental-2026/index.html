@@ -473,6 +473,13 @@ table.mzf td.bc{color:#fff}
   <div class="leg2"><span><i style="background:var(--azul)"></i>Vitória do 1º time</span><span><i style="background:var(--neutro)"></i>Empate (prorrogação e pênaltis)</span><span><i style="background:var(--verm)"></i>Vitória do 2º time</span></div>
 </section>
 
+<section class="g" id="s-matriz">
+  <h2>Matriz das finais</h2>
+  <p class="sub">O PSG, campeão da Champions League, já está na final. Cada linha é um adversário possível: a chance de a final ser contra ele e, dentro dessa chance, quem fica com o título. Quanto mais azul, mais provável.</p>
+  <div class="mzw"><table class="mzf" id="mzf" style="min-width:0"></table></div>
+  <p class="nota" id="n-matriz"></p>
+</section>
+
 <section class="g" id="s-finais">
   <h2>Jogos possíveis em cada fase</h2>
   <p class="sub">Os confrontos que podem acontecer no Dérbi das Américas, na Copa Challenger e na final, com a chance de cada um e de cada lado vencer.</p>
@@ -627,6 +634,27 @@ document.addEventListener('mousemove', ev => {
   $('#jogos').innerHTML = `<div class="jg"><div class="m">${j.m}${esc(j.m)}</div>
      <div class="b3" data-tip="${q(`<b>${j.m} × ${j.v}</b><br>${j.m}: ${pct(j.vm)}<br>empate: ${pct(j.e)}<br>${j.v}: ${pct(j.vv)}`)}"><i style="width:${j.vm * 100}%;background:var(--azul)">${rot(j.vm)}</i><i style="width:${j.e * 100}%;background:var(--neutro)">${rot(j.e)}</i><i style="width:${j.vv * 100}%;background:var(--verm)">${rot(j.vv)}</i></div>
      <div class="v">${esc(j.v)}${j.v}</div><div class="qd">campeão da Libertadores e vaga no Mundial: ${j.m} ${pct(j.pm, 0)} · ${j.v} ${pct(1 - j.pm, 0)}</div></div>`;
+})();
+
+/* matriz das finais: PSG já na final × cada adversário possível */
+(() => {
+  const F = D.jogos.final.slice().sort((x, y) => y.p - x.p);
+  const L = F.map(j => ({ adv: j.v, fin: j.p, psg: j.p * j.pm, ad: j.p * (1 - j.pm) }));
+  const mx = Math.max(...L.map(r => r.fin));
+  const cor = v => `color-mix(in srgb, var(--azul) ${Math.round(8 + 92 * Math.pow(v / mx, 0.8))}%, var(--panel))`;
+  const cel = (v, tip) => `<td class="${v / mx > 0.45 ? 'bc' : ''}" style="background:${cor(v)}" data-tip="${q(tip)}">${v < 0.0005 ? '<0,1%' : pct(v)}</td>`;
+  let h = `<thead><tr><th class="ax">Adversário ↓</th><th>A final é<br>PSG × adversário</th><th>${esc('PSG')}<br>PSG campeão</th><th>Adversário<br>campeão</th></tr></thead><tbody>`;
+  L.forEach(r => {
+    h += `<tr><th class="rl">${esc(r.adv)}${r.adv === 'Mamelodi Sundowns' ? 'Sundowns' : r.adv}</th>` +
+      cel(r.fin, `<b>PSG × ${r.adv}</b><br>${pct(r.fin, 2)} de chance de ser a final`) +
+      cel(r.psg, `<b>PSG × ${r.adv}</b><br>final e título do PSG: ${pct(r.psg, 2)}<br>(PSG vence ${pct(r.psg / r.fin, 0)} dessa final)`) +
+      cel(r.ad, `<b>PSG × ${r.adv}</b><br>final e título do ${r.adv}: ${pct(r.ad, 2)}<br>(${r.adv} vence ${pct(r.ad / r.fin, 0)} dessa final)`) + '</tr>';
+  });
+  const s = k => L.reduce((a, r) => a + r[k], 0);
+  h += `<tr><th class="mg" style="text-align:right">total</th><td class="mg">${pct(s('fin'))}</td><td class="mg">${pct(s('psg'))}</td><td class="mg">${pct(s('ad'))}</td></tr>`;
+  $('#mzf').innerHTML = h + '</tbody>';
+  const b = L[0];
+  $('#n-matriz').textContent = `Final mais provável: PSG × ${b.adv} (${pct(b.fin)}). O título fica com um time de fora da Europa em ${pct(s('ad'))} das vezes. O mais forte deles é o ${L.slice().sort((x, y) => y.ad - x.ad)[0].adv}, com ${pct(L.slice().sort((x, y) => y.ad - x.ad)[0].ad)}.`;
 })();
 
 /* jogos possíveis */
