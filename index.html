@@ -4,46 +4,112 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="max-image-preview:large">
-<title>Radar Numérico · Eleições 2026: resultados e apuração em tempo real</title>
-<meta name="description" content="Acompanhe os resultados e a apuração das Eleições 2026 em tempo real: 2º turno de Presidente e governadores, mapa por cidade e comparação com 2022.">
+<title>Radar Numérico: probabilidades do Brasileirão, das copas e do futebol</title>
+<meta name="description" content="Chances de título, Libertadores e rebaixamento no Brasileirão, na Copa do Brasil, na Libertadores, na Champions e nas ligas europeias, ranking mundial de clubes e eleições, calculados por simulação.">
 <link rel="canonical" href="https://radarnumerico.com.br/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Radar Numérico">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:title" content="Radar Numérico · Eleições 2026 em tempo real">
-<meta property="og:description" content="Acompanhe os resultados e a apuração das Eleições 2026 em tempo real: 2º turno de Presidente e governadores, mapa por cidade e comparação com 2022.">
+<meta property="og:title" content="Radar Numérico: probabilidades do Brasileirão, das copas e do futebol">
+<meta property="og:description" content="Chances de título, Libertadores e rebaixamento no Brasileirão, na Copa do Brasil, na Libertadores, na Champions e nas ligas europeias, ranking mundial de clubes e eleições, calculados por simulação.">
 <meta property="og:url" content="https://radarnumerico.com.br/">
-<meta property="og:image" content="https://radarnumerico.com.br/logo.png">
+<meta property="og:image" content="https://radarnumerico.com.br/futebol/brasileirao/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#16243A;--ink-2:#3A4A63;--mute:#6B7686;--line:#DCE1E8;--panel:#F2F4F7;--paper:#FFFFFF;--verde:#1E8A5A;--amar:#F2C230;--yt:#C4302B}
+:root{--ink:#16243A;--ink-2:#3A4A63;--mute:#6B7686;--line:#DCE1E8;--panel:#F2F4F7;--paper:#FFFFFF;--navy:#16243A;
+--verde:#1E8A5A;--amar:#F2C230;--g-azul:#2F4BFF;--g-verde:#06C25A;--g-verm:#FF453A;--trilho:#E3E8EF}
 *{box-sizing:border-box}
-html{font-family:"Archivo",system-ui,sans-serif;color:var(--ink);background:var(--paper)}
-body{margin:0;line-height:1.55}
-.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+html{font-family:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper)}
+body{margin:0;line-height:1.5;background:var(--paper)}
 a{color:var(--ink)}
+:focus-visible{outline:2px solid var(--verde);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+main.wrap{display:flex;flex-direction:column;gap:52px;padding-block:26px 56px}
+h1{margin:0;font-size:clamp(28px,4vw,42px);font-weight:800;font-stretch:85%;letter-spacing:-.02em;line-height:1.05;text-wrap:balance}
+.lead{margin:8px 0 0;color:var(--ink-2);font-size:17px;max-width:70ch}
+h2{margin:0;font-size:clamp(22px,2.6vw,28px);font-weight:800;font-stretch:88%;letter-spacing:-.01em;line-height:1.1}
+.cab{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:18px}
+.cab a{font-size:14.5px;font-weight:700;text-decoration:none;white-space:nowrap}
+.cab a:hover{text-decoration:underline}
+.cab p{margin:4px 0 0;color:var(--ink-2);font-size:14.5px}
+.grupo{display:flex;flex-direction:column;gap:12px}
+.grupo+.grupo{margin-top:26px}
+.gt{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-2)}
+.gt::after{content:"";flex:1;height:1px;background:var(--line)}
+.gs{display:grid;gap:14px}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.gr{display:flex;flex-direction:column;text-decoration:none;color:var(--ink);background:var(--panel);border-radius:10px;padding:13px 14px 11px;min-width:0}
+.gr:hover{background:#E8ECF2}
+.gr h3{margin:0 0 9px;font-size:15.5px;font-weight:800;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.gr h3 span{font-size:12.5px;font-weight:700;color:var(--ink-2);white-space:nowrap}
+.ln{display:grid;grid-template-columns:minmax(0,104px) minmax(0,1fr) 50px;gap:8px;align-items:center;font-size:14px;font-variant-numeric:tabular-nums;padding:2.5px 0}
+.ln b{font-weight:700;line-height:1.15;overflow-wrap:anywhere}
+.tr{height:12px;background:var(--trilho);border-radius:2px;overflow:hidden}
+.tr i{display:block;height:100%}
+.azul i{background:var(--g-azul)}.verde i{background:var(--g-verde)}.verm i{background:var(--g-verm)}
+.ln .v{text-align:right;font-weight:800}
+.gr .nota{margin:auto 0 0;padding-top:8px;font-size:12px;color:var(--mute);line-height:1.35}
+.botoes{display:flex;flex-wrap:wrap;gap:8px 10px}
+.bt{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:700;font-size:14.5px;border-radius:22px;padding:8px 16px}
+.bt:hover{background:#24375A}
+.bt.claro{background:none;color:var(--ink);border:1px solid var(--line)}
+.bt.claro:hover{border-color:var(--ink);background:var(--panel)}
+/* blog */
+.blog{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.ar{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:var(--ink)}
+.ar img{display:block;width:100%;height:auto;aspect-ratio:1200/630;border-radius:8px;background:var(--navy)}
+.ar .m{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.ar h3{margin:0;font-size:18px;font-weight:800;line-height:1.2;text-wrap:balance}
+.ar:hover h3{text-decoration:underline}
+/* ranking */
+.rk{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.rk h3{margin:0 0 4px;font-size:17px;font-weight:800}
+.rk ol{list-style:none;margin:0;padding:0}
+.rk li{display:grid;grid-template-columns:42px 32px minmax(0,1fr) minmax(60px,34%) 38px;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.rk .pos{font-size:21px;font-weight:800;font-stretch:80%;text-align:right;line-height:1}
+.rk .pos small{display:block;font-size:10px;font-weight:600;color:var(--mute);letter-spacing:.04em;text-transform:uppercase;font-stretch:100%;margin-top:2px}
+.rk .esc{width:32px;height:32px;object-fit:contain;display:block}
+.rk .sig{width:32px;height:32px;border-radius:50%;background:var(--panel);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--ink-2)}
+.rk .nm b{display:block;font-size:15.5px;line-height:1.15}
+.rk .nm span{font-size:12.5px;color:var(--mute)}
+.rk .f{font-weight:800;text-align:right;font-size:15px}
+.rk .tr{height:9px}.rk .tr i{background:var(--navy)}.rk .br .tr i{background:var(--verde)}
+.rk-nota{margin:14px 0 0;font-size:13px;color:var(--mute);max-width:80ch}
+/* seções */
+.sec{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px 20px}
+.cd{display:flex;flex-direction:column;gap:7px;text-decoration:none;color:var(--ink)}
+.cd img{display:block;width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;border-radius:8px;background:var(--navy)}
+.cd .tema{font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--verde)}
+.cd .tema.pol{color:#9A6A00}
+.cd h3{margin:0;font-size:17px;font-weight:800;line-height:1.2}
+.cd p{margin:0;font-size:14px;color:var(--ink-2)}
+.cd:hover h3{text-decoration:underline}
+.mais{display:flex;flex-wrap:wrap;gap:8px 10px;margin:20px 0 0;padding:0;list-style:none;align-items:center}
+.mais li.t{font-size:14px;color:var(--mute)}
+.mais a{display:inline-block;border:1px solid var(--line);border-radius:18px;padding:5px 13px;font-size:14px;font-weight:600;text-decoration:none}
+.mais a:hover{border-color:var(--ink);background:var(--panel)}
 footer.wrap{border-top:1px solid var(--line);padding-top:18px;padding-bottom:40px;font-size:13px;color:var(--mute)}
 footer a{color:var(--ink-2)}
-:focus-visible{outline:2px solid var(--verde);outline-offset:2px}
-.hero{padding-top:44px;padding-bottom:12px}
-.kick{display:inline-block;background:var(--amar);color:var(--ink);font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin:0 0 14px}
-h1{margin:0;font-size:clamp(34px,6.4vw,60px);font-weight:800;font-stretch:85%;letter-spacing:-.02em;line-height:1.02;max-width:16ch}
-.hero p.sub{margin:14px 0 0;color:var(--ink-2);font-size:19px;max-width:58ch}
-.chamada{display:block;margin:28px 0 18px;text-decoration:none;color:var(--ink);border:2px solid var(--ink);border-radius:12px;background:#FFFBEA;padding:22px 24px;transition:background .15s}
-.chamada:hover{background:#FFF4CC}
-.chamada>b{display:block;font-size:clamp(22px,3.4vw,30px);font-weight:800;font-stretch:90%;line-height:1.15}
-.chamada>span{display:block;margin-top:8px;color:var(--ink-2);font-size:16px}
-.chamada .falta{margin-top:10px;font-size:15px;color:var(--ink)}
-.chamada em{display:inline-block;margin-top:14px;font-style:normal;font-weight:700;background:var(--ink);color:#fff;border-radius:22px;padding:9px 18px}
-.mais{display:flex;flex-wrap:wrap;gap:8px 10px;margin:0 0 48px;padding:0;list-style:none}
-.mais a{display:inline-block;border:1px solid var(--line);border-radius:18px;padding:6px 14px;font-size:14.5px;font-weight:600;text-decoration:none}
-.mais a:hover{border-color:var(--ink);background:var(--panel)}
-.mais li.t{font-size:14px;color:var(--mute);align-self:center;font-weight:400}
-@media (max-width:600px){.hero{padding-top:26px}h1{font-size:32px}.hero p.sub{font-size:17px}.chamada{padding:18px;margin-top:22px}}
+@media (max-width:980px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.sec{grid-template-columns:repeat(2,minmax(0,1fr))}.rk{grid-template-columns:1fr;gap:28px}}
+@media (max-width:720px){
+  main.wrap{gap:42px;padding-top:18px}
+  /* no celular, cada grupo de gráficos vira uma fileira que desliza para o lado */
+  .gs.g3,.gs.g4{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-right:calc(-1*max(20px,env(safe-area-inset-right,0px)));padding-right:20px;padding-bottom:4px;scrollbar-width:none}
+  .gs::-webkit-scrollbar{display:none}
+  .gs .gr{flex:0 0 82%;scroll-snap-align:start}
+  .blog{grid-template-columns:1fr;gap:0}
+  .ar{display:grid;grid-template-columns:minmax(0,1fr) 112px;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+  .ar img{grid-column:2;grid-row:1/3;width:112px}
+  .ar h3{font-size:16px}
+}
+@media (max-width:420px){.sec{gap:18px 12px}.cd h3{font-size:15.5px}.cd p{font-size:13px}.rk li{grid-template-columns:36px 28px minmax(0,1fr) 64px 34px;gap:8px}.rk .esc,.rk .sig{width:28px;height:28px}}
 </style>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1556752564782456" crossorigin="anonymous"></script>
@@ -52,40 +118,51 @@ h1{margin:0;font-size:clamp(34px,6.4vw,60px);font-weight:800;font-stretch:85%;le
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-RDGZ8VSS5R");</script>
 <link rel="stylesheet" href="/menu.css?v=7">
 <script src="/menu.js?v=7" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "name": "Radar Numérico", "url": "https://radarnumerico.com.br/", "inLanguage": "pt-BR"}, {"@type": "Organization", "name": "Radar Numérico", "url": "https://radarnumerico.com.br/", "logo": "https://radarnumerico.com.br/logo.png", "sameAs": ["https://www.instagram.com/radarnumerico/", "https://www.youtube.com/@radarnumerico"]}]}</script>
 </head>
 <body>
 <!--menu--><header class="rn-topo"><div class="rn-in"><a class="rn-marca" href="/" title="Página inicial do Radar Numérico"><img src="/logo.png" alt="" width="22" height="25">Radar Numérico</a><button class="rn-abrir" type="button" aria-expanded="false" aria-controls="rn-menu"><span class="rn-ham" aria-hidden="true"></span>Menu</button><nav class="rn-menu" id="rn-menu" aria-label="Menu do site"><ul class="rn-n1"><li class="rn-g"><button class="rn-t" type="button" aria-expanded="false" aria-controls="rn-p0">Futebol<i aria-hidden="true"></i></button><div class="rn-painel" id="rn-p0"><div class="rn-col"><p class="rn-h">Brasil</p><ul><li><a href="/futebol/brasileirao/">Brasileirão: chance de título</a></li><li><a href="/futebol/brasileirao/#s-liber">Brasileirão: Libertadores</a></li><li><a href="/futebol/brasileirao/#s-z4">Brasileirão: rebaixamento</a></li><li><a href="/futebol/serie-b/">Série B: chance de acesso</a></li><li><a href="/futebol/copa-do-brasil/">Copa do Brasil</a></li></ul></div><div class="rn-col"><p class="rn-h">América do Sul</p><ul><li><a href="/futebol/libertadores/">Libertadores</a></li><li><a href="/futebol/sul-americana/">Sul-Americana</a></li></ul></div><div class="rn-col"><p class="rn-h">Europa</p><ul><li><a href="/futebol/champions-league/">Champions League 2026/27</a></li><li class="rn-sub">Ligas europeias</li><li><a href="/futebol/premier-league/">Premier League<small>Inglaterra</small></a></li><li><a href="/futebol/la-liga/">La Liga<small>Espanha</small></a></li><li><a href="/futebol/bundesliga/">Bundesliga<small>Alemanha</small></a></li><li><a href="/futebol/serie-a-italiana/">Série A italiana<small>Itália</small></a></li></ul></div><div class="rn-col"><p class="rn-h">Copas nacionais europeias</p><ul><li><a href="/futebol/fa-cup/">FA Cup<small>Inglaterra</small></a></li><li><a href="/futebol/copa-da-liga-inglesa/">Copa da Liga Inglesa</a></li><li><a href="/futebol/copa-do-rei/">Copa do Rei<small>Espanha</small></a></li><li><a href="/futebol/copa-da-alemanha/">Copa da Alemanha</a></li><li><a href="/futebol/copa-da-italia/">Copa da Itália</a></li></ul></div><div class="rn-col"><p class="rn-h">Mundo</p><ul><li><a href="/futebol/ranking-mundial/">Ranking mundial dos times</a></li><li><a href="/futebol/copa-2026/">Copa do Mundo 2026</a></li><li><a href="/futebol/intercontinental-2026/">Mundial de Clubes 2026</a></li></ul></div></div></li><li class="rn-g"><button class="rn-t" type="button" aria-expanded="false" aria-controls="rn-p1">Eleições<i aria-hidden="true"></i></button><div class="rn-painel" id="rn-p1"><div class="rn-ano"><p class="rn-ano-h">Eleições 2026</p><div class="rn-ano-c"><div class="rn-col"><p class="rn-h">1º turno · resultados</p><ul><li><a href="/apuracao2026/">Deputados Federais</a></li><li><a href="/apuracao2026/estaduais.html">Deputados Estaduais</a></li><li><a href="/apuracao2026/senado.html">Senadores</a></li><li><a href="/apuracao2026/governadores.html">Governadores</a></li><li><a href="/apuracao2026/2turno/presidente.html?turno=1">Presidente</a></li><li><a href="/eleicoes/?ano=2026&amp;cargo=presidente">Detalhamento por município</a></li></ul></div><div class="rn-col"><p class="rn-h">2º turno · apuração ao vivo</p><ul><li><a href="/apuracao2026/2turno/">Apuração do 2º turno</a></li><li><a href="/apuracao2026/2turno/presidente.html">Presidente</a></li><li class="rn-ufs"><span>Governadores</span><a href="/apuracao2026/2turno/governador-ac.html" title="Governadores Acre">AC</a><a href="/apuracao2026/2turno/governador-am.html" title="Governadores Amazonas">AM</a><a href="/apuracao2026/2turno/governador-df.html" title="Governadores Distrito Federal">DF</a><a href="/apuracao2026/2turno/governador-es.html" title="Governadores Espírito Santo">ES</a><a href="/apuracao2026/2turno/governador-rj.html" title="Governadores Rio de Janeiro">RJ</a><a href="/apuracao2026/2turno/governador-rn.html" title="Governadores Rio Grande do Norte">RN</a><a href="/apuracao2026/2turno/governador-to.html" title="Governadores Tocantins">TO</a></li></ul></div><div class="rn-col"><p class="rn-h">Mais</p><ul><li><a href="/apuracao2026/favoritos.html">★ Meus candidatos</a></li><li><a href="/eleicoes/?ano=comp">Comparar com 2022</a></li></ul></div></div></div><div class="rn-ano"><p class="rn-ano-h">Eleições 2022</p><div class="rn-ano-c"><div class="rn-col"><p class="rn-h">1º turno · resultados</p><ul><li><a href="/eleicoes/?ano=2022&amp;cargo=dep_federal">Deputados Federais</a></li><li><a href="/eleicoes/?ano=2022&amp;cargo=dep_estadual">Deputados Estaduais</a></li><li><a href="/eleicoes/?ano=2022&amp;cargo=senador">Senadores</a></li><li><a href="/eleicoes/?ano=2022&amp;cargo=governador">Governadores</a></li><li><a href="/eleicoes/?ano=2022&amp;cargo=presidente">Presidente</a></li></ul></div><div class="rn-col"><p class="rn-h">2º turno · resultados</p><ul><li><a href="/eleicoes/?ano=2022&amp;cargo=governador&amp;turno=2">Governadores</a></li><li><a href="/eleicoes/?ano=2022&amp;cargo=presidente&amp;turno=2">Presidente</a></li></ul></div></div></div></div></li><li class="rn-g"><a class="rn-t" href="/blog/">Blog</a></li><li class="rn-g"><a class="rn-t" href="/sobre/">Sobre</a></li></ul></nav></div></header><!--/menu-->
 <main class="wrap">
-  <section class="hero">
-    <p class="kick">Eleições 2026</p>
-    <h1>Acompanhe resultados e apuração em tempo real</h1>
-    <p class="sub">Números do TSE explicados: quem estaria eleito agora, quanto falta apurar e quanto o 2º colocado precisa para virar. Sem torcida.</p>
-  </section>
-  <a class="chamada" href="/apuracao2026/2turno/">
-    <b>Apuração do 2º turno ao vivo · domingo, 25 de outubro</b>
-    <span>Flávio Bolsonaro × Lula para Presidente e a disputa pelo governo de AC, AM, DF, ES, RJ, RN e TO, com o mapa cidade por cidade.</span>
-    <span class="falta" id="falta"></span>
-    <em>Acompanhar a apuração do 2º turno ao vivo →</em>
-  </a>
-  <ul class="mais">
-    <li class="t">Também:</li>
-    <li><a href="/eleicoes/?ano=2026&amp;cargo=presidente">Resultados do 1º turno por cidade</a></li>
-    <li><a href="/eleicoes/?ano=comp">Comparar 2026 com 2022</a></li>
-    <li><a href="/eleicoes/?ano=2022&amp;cargo=presidente">Eleições 2022</a></li>
-  </ul>
+
+<section aria-labelledby="t-num">
+  <div class="cab"><div><h1 id="t-num">Os números agora</h1><p class="lead">Probabilidades do Radar Numérico, calculadas por 100 mil simulações de cada campeonato. Toque em um gráfico para ver tudo.</p></div></div>
+  <div class="grupo">
+    <div class="gt">Brasileirão 2026</div>
+    <div class="gs g3"><a class="gr" href="/futebol/brasileirao/"><h3>Título<span>ver →</span></h3><div class="ln"><b>Flamengo</b><div class="tr azul"><i style="width:87.5%"></i></div><span class="v">87,5%</span></div><div class="ln"><b>Palmeiras</b><div class="tr azul"><i style="width:12.5%"></i></div><span class="v">12,5%</span></div><p class="nota">Atualizado em 31/10, após Coritiba 2 × 0 Vitória</p></a><a class="gr" href="/futebol/brasileirao/#s-liber"><h3>Libertadores<span>ver →</span></h3><div class="ln"><b>Bahia</b><div class="tr verde"><i style="width:94.0%"></i></div><span class="v">94,0%</span></div><div class="ln"><b>Atlético-MG</b><div class="tr verde"><i style="width:85.5%"></i></div><span class="v">85,5%</span></div><div class="ln"><b>Santos</b><div class="tr verde"><i style="width:43.7%"></i></div><span class="v">43,7%</span></div><div class="ln"><b>Grêmio</b><div class="tr verde"><i style="width:38.4%"></i></div><span class="v">38,4%</span></div><div class="ln"><b>Bragantino</b><div class="tr verde"><i style="width:25.7%"></i></div><span class="v">25,7%</span></div><p class="nota">Quem briga pelas últimas vagas (os outros já passam de 95%), contando as que descem das copas</p></a><a class="gr" href="/futebol/brasileirao/#s-z4"><h3>Rebaixamento<span>ver →</span></h3><div class="ln"><b>Grêmio</b><div class="tr verm"><i style="width:51.4%"></i></div><span class="v">51,4%</span></div><div class="ln"><b>Internacional</b><div class="tr verm"><i style="width:48.3%"></i></div><span class="v">48,3%</span></div><div class="ln"><b>Mirassol</b><div class="tr verm"><i style="width:31.2%"></i></div><span class="v">31,2%</span></div><div class="ln"><b>Corinthians</b><div class="tr verm"><i style="width:26.3%"></i></div><span class="v">26,3%</span></div><div class="ln"><b>Vitória</b><div class="tr verm"><i style="width:24.7%"></i></div><span class="v">24,7%</span></div><p class="nota">Chapecoense e Remo já estão praticamente rebaixados</p></a></div>
+    <div class="botoes"><a class="bt" href="/futebol/brasileirao/">Todas as chances do Brasileirão →</a></div>
+  </div>
+  <div class="grupo">
+    <div class="gt">Copas</div>
+    <div class="gs g4"><a class="gr" href="/futebol/copa-do-brasil/"><h3>Copa do Brasil<span>ver →</span></h3><div class="ln"><b>Palmeiras</b><div class="tr azul"><i style="width:54.1%"></i></div><span class="v">54,1%</span></div><div class="ln"><b>Grêmio</b><div class="tr azul"><i style="width:24.6%"></i></div><span class="v">24,6%</span></div><div class="ln"><b>Vasco</b><div class="tr azul"><i style="width:13.8%"></i></div><span class="v">13,8%</span></div><div class="ln"><b>Atlético-MG</b><div class="tr azul"><i style="width:7.5%"></i></div><span class="v">7,5%</span></div><p class="nota">Chance de título · semifinais · atualizado em 02/11</p></a><a class="gr" href="/futebol/libertadores/"><h3>Libertadores<span>ver →</span></h3><div class="ln"><b>Palmeiras</b><div class="tr azul"><i style="width:68.1%"></i></div><span class="v">68,1%</span></div><div class="ln"><b>Estudiantes</b><div class="tr azul"><i style="width:31.9%"></i></div><span class="v">31,9%</span></div><p class="nota">Chance de título · final · atualizado em 02/11</p></a><a class="gr" href="/futebol/intercontinental-2026/"><h3>Mundial de Clubes<span>ver →</span></h3><div class="ln"><b>PSG</b><div class="tr azul"><i style="width:87.2%"></i></div><span class="v">87,2%</span></div><div class="ln"><b>Palmeiras</b><div class="tr azul"><i style="width:6.0%"></i></div><span class="v">6,0%</span></div><div class="ln"><b>Toluca</b><div class="tr azul"><i style="width:5.7%"></i></div><span class="v">5,7%</span></div><div class="ln"><b>Mamelodi Sundowns</b><div class="tr azul"><i style="width:0.7%"></i></div><span class="v">0,7%</span></div><p class="nota">Chance de título · atualizado em 24/10</p></a><a class="gr" href="/futebol/champions-league/"><h3>Champions League<span>ver →</span></h3><div class="ln"><b>Barcelona</b><div class="tr azul"><i style="width:20.7%"></i></div><span class="v">20,7%</span></div><div class="ln"><b>Bayern de Munique</b><div class="tr azul"><i style="width:18.7%"></i></div><span class="v">18,7%</span></div><div class="ln"><b>Arsenal</b><div class="tr azul"><i style="width:15.5%"></i></div><span class="v">15,5%</span></div><div class="ln"><b>Manchester City</b><div class="tr azul"><i style="width:14.1%"></i></div><span class="v">14,1%</span></div><div class="ln"><b>PSG</b><div class="tr azul"><i style="width:9.5%"></i></div><span class="v">9,5%</span></div><p class="nota">Chance de título · antes da 4ª rodada da fase de liga · atualizado em 21/10</p></a></div>
+  </div>
+  <div class="grupo">
+    <div class="gt">Outros campeonatos</div>
+    <div class="gs g3"><a class="gr" href="/futebol/serie-b/"><h3>Série B: acesso<span>ver →</span></h3><div class="ln"><b>Novorizontino</b><div class="tr verde"><i style="width:93.7%"></i></div><span class="v">93,7%</span></div><div class="ln"><b>Juventude</b><div class="tr verde"><i style="width:86.5%"></i></div><span class="v">86,5%</span></div><div class="ln"><b>Vila Nova</b><div class="tr verde"><i style="width:61.2%"></i></div><span class="v">61,2%</span></div><div class="ln"><b>Criciúma</b><div class="tr verde"><i style="width:60.4%"></i></div><span class="v">60,4%</span></div><div class="ln"><b>Fortaleza</b><div class="tr verde"><i style="width:60.1%"></i></div><span class="v">60,1%</span></div><div class="ln"><b>CRB</b><div class="tr verde"><i style="width:21.7%"></i></div><span class="v">21,7%</span></div><p class="nota">Direto ou pelos playoffs · atualizado em 31/10</p></a><a class="gr" href="/futebol/premier-league/"><h3>Premier League<span>ver →</span></h3><div class="ln"><b>Arsenal</b><div class="tr azul"><i style="width:62.3%"></i></div><span class="v">62,3%</span></div><div class="ln"><b>Manchester City</b><div class="tr azul"><i style="width:35.2%"></i></div><span class="v">35,2%</span></div><div class="ln"><b>Liverpool</b><div class="tr azul"><i style="width:1.2%"></i></div><span class="v">1,2%</span></div><div class="ln"><b>Chelsea</b><div class="tr azul"><i style="width:0.8%"></i></div><span class="v">0,8%</span></div><p class="nota">Chance de título · atualizado em 02/11</p></a><a class="gr" href="/futebol/la-liga/"><h3>La Liga<span>ver →</span></h3><div class="ln"><b>Barcelona</b><div class="tr azul"><i style="width:79.5%"></i></div><span class="v">79,5%</span></div><div class="ln"><b>Real Madrid</b><div class="tr azul"><i style="width:18.0%"></i></div><span class="v">18,0%</span></div><div class="ln"><b>Atlético de Madrid</b><div class="tr azul"><i style="width:2.5%"></i></div><span class="v">2,5%</span></div><p class="nota">Chance de título · atualizado em 02/11</p></a></div>
+  </div>
+</section>
+
+<section aria-labelledby="t-blog">
+  <div class="cab"><h2 id="t-blog">Blog</h2><a href="/blog/">Todos os artigos →</a></div>
+  <div class="blog"><a class="ar" href="/blog/copa-do-brasil/vasco-palmeiras-volta-copa-do-brasil/"><img src="/blog/copa-do-brasil/vasco-palmeiras-volta-copa-do-brasil/og.png" alt="" width="600" height="315" loading="lazy"><span class="m">Copa do Brasil · 2 nov</span><h3>Palmeiras vai a 76% de chance de final; Vasco cai para 24%</h3></a><a class="ar" href="/blog/brasileirao/grenal-serie-b/"><img src="/blog/brasileirao/grenal-serie-b/og.png" alt="" width="600" height="315" loading="lazy"><span class="m">Brasileirão · 31 out</span><h3>Grenal na Série B: chance de Inter e Grêmio caírem juntos é de 20%</h3></a><a class="ar" href="/blog/copa-do-brasil/atletico-mg-empate-gremio-copa-do-brasil/"><img src="/blog/copa-do-brasil/atletico-mg-empate-gremio-copa-do-brasil/og.png" alt="" width="600" height="315" loading="lazy"><span class="m">Copa do Brasil · 31 out</span><h3>Copa do Brasil: empate é bom para o Atlético-MG? Final vai a 66%</h3></a></div>
+</section>
+
+<section aria-labelledby="t-rk">
+  <div class="cab"><div><h2 id="t-rk">Ranking mundial de clubes</h2><p>Força de 1 a 100 calculada pelo algoritmo do Radar · 907 times · atualizado em 02/11/2026</p></div></div>
+  <div class="rk">
+    <div><h3>Top 5 do mundo</h3><ol class=""><li><span class="pos">1º</span><img class="esc" src="/escudos/barcelona.png" alt="" width="32" height="32" loading="lazy"><span class="nm"><b>Barcelona</b><span>Espanha</span></span><div class="tr"><i style="width:76.3%"></i></div><span class="f">76,3</span></li><li><span class="pos">2º</span><img class="esc" src="/escudos/bayern-de-munique.png" alt="" width="32" height="32" loading="lazy"><span class="nm"><b>Bayern de Munique</b><span>Alemanha</span></span><div class="tr"><i style="width:74.4%"></i></div><span class="f">74,4</span></li><li><span class="pos">3º</span><img class="esc" src="/escudos/arsenal.png" alt="" width="32" height="32" loading="lazy"><span class="nm"><b>Arsenal</b><span>Inglaterra</span></span><div class="tr"><i style="width:74.4%"></i></div><span class="f">74,4</span></li><li><span class="pos">4º</span><img class="esc" src="/escudos/manchester-city.png" alt="" width="32" height="32" loading="lazy"><span class="nm"><b>Manchester City</b><span>Inglaterra</span></span><div class="tr"><i style="width:74.4%"></i></div><span class="f">74,4</span></li><li><span class="pos">5º</span><img class="esc" src="/escudos/psg.png" alt="" width="32" height="32" loading="lazy"><span class="nm"><b>PSG</b><span>França</span></span><div class="tr"><i style="width:72.1%"></i></div><span class="f">72,1</span></li></ol></div>
+    <div><h3>Top 5 brasileiros</h3><ol class="br"><li><span class="pos">18º<small>mundo</small></span><img class="esc" src="/escudos/flamengo.png" alt="" width="32" height="32" loading="lazy"><span class="nm"><b>Flamengo</b><span>Brasil</span></span><div class="tr"><i style="width:60.4%"></i></div><span class="f">60,4</span></li><li><span class="pos">36º<small>mundo</small></span><img class="esc" src="/escudos/palmeiras.png" alt="" width="32" height="32" loading="lazy"><span class="nm"><b>Palmeiras</b><span>Brasil</span></span><div class="tr"><i style="width:55.4%"></i></div><span class="f">55,4</span></li><li><span class="pos">58º<small>mundo</small></span><img class="esc" src="/escudos/cruzeiro.png" alt="" width="32" height="32" loading="lazy"><span class="nm"><b>Cruzeiro</b><span>Brasil</span></span><div class="tr"><i style="width:50.2%"></i></div><span class="f">50,2</span></li><li><span class="pos">75º<small>mundo</small></span><img class="esc" src="/escudos/fluminense.png" alt="" width="32" height="32" loading="lazy"><span class="nm"><b>Fluminense</b><span>Brasil</span></span><div class="tr"><i style="width:48.6%"></i></div><span class="f">48,6</span></li><li><span class="pos">80º<small>mundo</small></span><img class="esc" src="/escudos/bragantino.png" alt="" width="32" height="32" loading="lazy"><span class="nm"><b>Bragantino</b><span>Brasil</span></span><div class="tr"><i style="width:48.3%"></i></div><span class="f">48,3</span></li></ol></div>
+  </div>
+  <p class="rk-nota">A posição é no ranking mundial. O Flamengo, melhor brasileiro, está 15,9 pontos abaixo do Barcelona. A força é a mesma usada para simular o Brasileirão, as copas e as ligas europeias.</p>
+  <div class="botoes" style="margin-top:16px"><a class="bt" href="/futebol/ranking-mundial/">Ranking completo →</a></div>
+</section>
+
+<section aria-labelledby="t-sec">
+  <div class="cab"><h2 id="t-sec">Seções</h2></div>
+  <div class="sec"><a class="cd" href="/futebol/brasileirao/"><img src="/futebol/brasileirao/og.png" alt="" width="600" height="315" loading="lazy"><span class="tema">Futebol</span><h3>Brasileirão 2026</h3><p>Título, Libertadores e rebaixamento, time a time.</p></a><a class="cd" href="/futebol/copa-do-brasil/"><img src="/futebol/copa-do-brasil/og.png" alt="" width="600" height="315" loading="lazy"><span class="tema">Futebol</span><h3>Copa do Brasil</h3><p>Quem chega à final e quem leva a taça.</p></a><a class="cd" href="/futebol/libertadores/"><img src="/futebol/libertadores/og.png" alt="" width="600" height="315" loading="lazy"><span class="tema">Futebol</span><h3>Libertadores</h3><p>Chance de título e chaveamento.</p></a><a class="cd" href="/futebol/sul-americana/"><img src="/futebol/sul-americana/og.png" alt="" width="600" height="315" loading="lazy"><span class="tema">Futebol</span><h3>Sul-Americana</h3><p>Chance de título e finais mais prováveis.</p></a><a class="cd" href="/futebol/serie-b/"><img src="/futebol/serie-b/og.png" alt="" width="600" height="315" loading="lazy"><span class="tema">Futebol</span><h3>Série B</h3><p>Acesso direto, playoffs, título e rebaixamento.</p></a><a class="cd" href="/futebol/champions-league/"><img src="/futebol/champions-league/og.png" alt="" width="600" height="315" loading="lazy"><span class="tema">Futebol</span><h3>Champions League</h3><p>Fase de liga 2026/27, oitavas e título.</p></a><a class="cd" href="/futebol/intercontinental-2026/"><img src="/futebol/intercontinental-2026/og.png" alt="" width="600" height="315" loading="lazy"><span class="tema">Futebol</span><h3>Mundial de Clubes</h3><p>Dérbi das Américas, Challenger e final.</p></a><a class="cd" href="/eleicoes/"><img src="/eleicoes/og.png" alt="" width="600" height="315" loading="lazy"><span class="tema pol">Política</span><h3>Eleições 2026</h3><p>Resultados de todos os cargos, cidade por cidade, e a comparação com 2022.</p></a></div>
+  <ul class="mais"><li class="t">Também:</li><li><a href="/futebol/premier-league/">Premier League</a></li><li><a href="/futebol/la-liga/">La Liga</a></li><li><a href="/futebol/bundesliga/">Bundesliga</a></li><li><a href="/futebol/serie-a-italiana/">Série A italiana</a></li><li><a href="/futebol/fa-cup/">FA Cup</a></li><li><a href="/futebol/copa-do-rei/">Copa do Rei</a></li><li><a href="/futebol/copa-2026/">Copa do Mundo 2026</a></li></ul>
+</section>
+
 </main>
 <footer class="wrap">Radar Numérico · radarnumerico.com.br · projeto apartidário · <a href="/sobre/">Sobre e contato</a> · <a href="https://www.instagram.com/radarnumerico/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.youtube.com/@radarnumerico" target="_blank" rel="noopener">YouTube</a> · <a href="/privacidade.html">Política de privacidade</a></footer>
-<script>
-(function () {
-  var el = document.getElementById("falta"); if (!el) return;
-  function at() {
-    var ms = new Date("2026-10-25T17:00:00-03:00") - Date.now();
-    if (ms <= 0) { el.innerHTML = "<b>Urnas fechadas:</b> apuração em andamento."; return; }
-    var d = Math.floor(ms / 864e5), h = Math.floor(ms % 864e5 / 36e5);
-    el.innerHTML = "Urnas fecham às 17h (Brasília). Faltam <b>" + (d ? d + (d > 1 ? " dias e " : " dia e ") : "") + h + " h</b>.";
-  }
-  at(); setInterval(at, 60000);
-})();
-</script>
 </body>
 </html>
