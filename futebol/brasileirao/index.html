@@ -377,7 +377,7 @@ table.cl tr:hover td{background:var(--panel)}
   <div class="barras lib" id="g-liber"></div>
   <div class="leg2"><span><i style="background:var(--verde)"></i>vaga própria (G5 ou copa)</span><span><i style="background:var(--verdeclaro)"></i>vaga que desce na tabela</span></div>
   <h3>Até que posição a tabela vai dar vaga na Libertadores?</h3>
-  <p class="sub3">O Brasileirão garante o G5. As outras vagas vêm das copas e, quando caem com quem já está classificado, descem para o próximo da tabela.</p>
+  <p class="sub3">Chance de a vaga chegar até cada posição. O Brasileirão garante o G5; as outras vagas vêm das copas e, quando caem com quem já está classificado, descem para o próximo da tabela.</p>
   <div class="barras corte" id="g-corte"></div>
   <ul class="gat" id="g-gat"></ul>
 </section>
@@ -573,9 +573,14 @@ barras($('#g-titulo'), 'campeao');
     const tipTxt = `<b>${t}</b> · ${T[t].pos}º, ${T[t].Pts} pts<br>${pct(p, 2)} de ir à Libertadores<br>vaga própria (G5 ou copa): ${pct(b)}<br>vaga que desce na tabela: ${pct(r)}<br>só pela posição (G6): ${pct(T[t].g6pos)}` + (ant != null && Math.abs(p - ant) >= 0.0005 ? `<br>antes: ${pct(ant)} (${pp(p - ant)})` : '');
     return `<div class="nome"><small>${T[t].pos}º</small>${esc(t)}${t}</div><div class="trilho" data-tip="${tipTxt.replace(/"/g, '&quot;')}"><div class="fill" style="width:${Math.max(b * 100, 0.3)}%"></div><div class="fill rep" style="width:${r * 100}%"></div></div><div class="val">${pct(p)}</div>`; }).join('')
     + (fora.length ? `<div class="resto">Sem chance real de Libertadores: ${fora.join(', ')}.</div>` : '');
-  const ks = Object.keys(V.corte).map(Number).sort((a, b) => a - b), mx = Math.max(...ks.map(k => V.corte[k]));
-  $('#g-corte').innerHTML = ks.map(k => { const p = V.corte[k];
-    return `<div class="nome">até o ${k}º <small>G${k}</small></div><div class="trilho" data-tip="Em ${pct(p)} das simulações o ${k}º colocado é o último a entrar pela tabela"><div class="fill" style="width:${Math.max(p / mx * 100, 0.3)}%"></div></div><div class="val">${pct(p)}</div>`; }).join('');
+  /* acumulado (07/11/2026, pedido do Augusto): chance de a vaga chegar PELO MENOS até a posição k = soma do corte de k para baixo */
+  const ks = Object.keys(V.corte).map(Number).sort((a, b) => a - b), k0 = D.cortes.libertadores_direto || 5;
+  const acum = k => ks.filter(c => c >= k).reduce((s, c) => s + V.corte[c], 0);
+  const kmax = Math.max(k0, ...ks.filter(k => V.corte[k] >= 0.0005)), linhas = [];
+  for (let k = k0; k <= kmax; k++) linhas.push([k, k <= k0 ? 1 : Math.min(1, acum(k))]);
+  $('#g-corte').innerHTML = linhas.map(([k, p]) => {
+    const tip = k <= k0 ? `O Brasileirão garante o G${k0}: do 1º ao ${k0}º vão à Libertadores` : `Em ${pct(p)} das simulações a vaga chega pelo menos até o ${k}º colocado`;
+    return `<div class="nome">até o ${k}º <small>G${k}</small></div><div class="trilho" data-tip="${tip}"><div class="fill" style="width:${Math.max(p * 100, 0.3)}%"></div></div><div class="val">${p >= 0.9995 ? '100%' : pct(p)}</div>`; }).join('');
   const g = V.gatilhos, L = Object.entries(g.libertadores).filter(([t]) => T[t]), S = Object.entries(g.sul_americana).filter(([t]) => T[t]);
   const fin = Object.entries(g.copa_do_brasil_final).sort((a, b) => b[1] - a[1]);
   $('#g-gat').innerHTML = L.map(([t, p]) => `<li><b>${t}</b> campeão da Libertadores (${pct(p)}): +1 vaga para o Brasil.</li>`).join('')
