@@ -505,7 +505,7 @@ const SLUG = D.SLUG, SIGLA = D.SIGLA, CORES = D.CORES, ESC_DIR = 'escudos/';
 const claro = hex => { const n = parseInt(hex.slice(1), 16); return (0.299 * (n >> 16) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255)) > 160; };
 const corTxt = t => claro(CORES[t][0]) ? '#15171C' : '#FFFFFF';
 const esc = t => CORES[t] ? `<span class="esc" title="${t}"><i data-anel="${CORES[t][1]}" style="background:${CORES[t][0]};color:${corTxt(t)};box-shadow:inset 0 0 0 2px ${CORES[t][1]}">${SIGLA[t]}</i><img src="${ESC_DIR}${SLUG[t]}.png" alt="" loading="lazy" onerror="this.remove()"></span>` : '';
-const pct = (p, casas = 1) => { const v = p * 100; if (v >= 99.95) return '100%'; if (v > 0 && v < 0.05) return '<0,1%'; return v.toFixed(casas).replace('.', ',') + '%'; };
+const pct = (p, casas = 1) => { const v = p * 100; if (v >= 100) return '100%'; if (v >= 99.95) return '>99,9%'; if (v > 0 && v < 0.05) return '<0,1%'; return v.toFixed(casas).replace('.', ',') + '%'; };
 const rot = v => (v >= 0.0995 ? Math.round(v * 100) : (v * 100).toFixed(1).replace('.', ',')) + '%';
 const dataBR = iso => { const [y, m, dd] = iso.slice(0, 10).split('-'); return `${dd}/${m}/${y}`; };
 const horaBR = iso => iso.slice(11, 16).replace(':', 'h');
@@ -568,7 +568,7 @@ document.addEventListener('mousemove', ev => {
   const BW = 168, LH = 15, PAD = 6, GAPY = 12, GAPX = 22, TOP = 26, CAP = 8;
   const el = (tag, at, txt, pai) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); if (txt != null) e.textContent = txt; (pai || svg).appendChild(e); return e; };
   const corta = (t, n) => t.length > n ? t.slice(0, n - 1) + '…' : t;
-  const pp = p => p >= 0.9995 ? '100%' : p < 0.0005 ? '<0,1%' : (p * 100).toFixed(p >= 0.1 ? 0 : 1).replace('.', ',') + '%';
+  const pp = p => p >= 1 ? '100%' : p >= 0.9995 ? '>99,9%' : p < 0.0005 ? '<0,1%' : (p * 100).toFixed(p >= 0.1 && p < 0.995 ? 0 : 1).replace('.', ',') + '%';
   // linhas de uma vaga: lista [time, p]; mostra até CAP times e junta o resto em "outros"
   const linhas = l => { if (!l) return []; const v = l.slice(0, CAP), r = l.slice(CAP).reduce((s, x) => s + x[1], 0); return r > 0.0005 ? v.concat([['outros', r]]) : v; };
   const hVaga = (l, c) => c === 0 ? 20 : LH * (1 + linhas(l).length) + PAD;

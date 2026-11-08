@@ -531,7 +531,7 @@ const SLUG = D.SLUG, SIGLA = D.SIGLA, CORES = D.CORES, ESC_DIR = 'escudos/';
 const claro = hex => { const n = parseInt(hex.slice(1), 16); return (0.299 * (n >> 16) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255)) > 160; };
 const corTxt = t => claro(CORES[t][0]) ? '#15171C' : '#FFFFFF';
 const esc = t => `<span class="esc" title="${t}"><i data-anel="${CORES[t][1]}" style="background:${CORES[t][0]};color:${corTxt(t)};box-shadow:inset 0 0 0 2px ${CORES[t][1]}">${SIGLA[t]}</i><img src="${ESC_DIR}${SLUG[t]}.png" alt="" loading="lazy" onerror="this.remove()"></span>`;
-const pct = (p, casas = 1) => { const v = p * 100; if (v >= 99.95) return '100%'; if (v > 0 && v < 0.05) return '<0,1%'; return v.toFixed(casas).replace('.', ',') + '%'; };
+const pct = (p, casas = 1) => { const v = p * 100; if (v >= 100) return '100%'; if (v >= 99.95) return '>99,9%'; if (v > 0 && v < 0.05) return '<0,1%'; return v.toFixed(casas).replace('.', ',') + '%'; };
 const rot = v => (v >= 0.0995 ? Math.round(v * 100) : (v * 100).toFixed(1).replace('.', ',')) + '%';
 const dataBR = iso => { const [y, m, dd] = iso.slice(0, 10).split('-'); return `${dd}/${m}/${y}`; };
 const horaBR = iso => iso.slice(11, 16).replace(':', 'h');
@@ -644,7 +644,7 @@ sel.value = ORD[0]; renderTime(sel.value);
     const base = Math.max((meio.length ? meio[meio.length - 1] : pts[pts.length - 1]) - 2, pts[pts.length - 1]);
     let html = '';
     for (let p = topo; p >= base; p--) { if (pc[p] === undefined) continue; const v = pc[p];
-      const txt = v >= 0.9995 ? `${verbo} em todas as simulações` : v < 0.0005 ? `não ${verbo.replace('se ', '')} em nenhuma simulação` : `${pct(v, 1)} dos times que terminam com ${p} pontos`;
+      const txt = v >= 1 ? `${verbo} em todas as simulações` : v < 0.0005 ? `não ${verbo.replace('se ', '')} em nenhuma simulação` : `${pct(v, 1)} dos times que terminam com ${p} pontos`;
       html += `<div class="nome">${p} <small>pts</small></div><div class="trilho" data-tip="<b>${p} pontos</b><br>${txt}"><div class="fill" style="width:${Math.max(v * 100, 0.3)}%;background:${cor}"></div></div><div class="val${v < 0.0005 ? ' zero' : ''}">${pct(v)}</div>`; }
     $(el).innerHTML = html;
   }
