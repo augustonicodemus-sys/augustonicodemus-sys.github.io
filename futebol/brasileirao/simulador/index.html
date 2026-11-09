@@ -1,0 +1,772 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="max-image-preview:large">
+<title>Simulador do Brasileirão 2026: título, Libertadores e Z4</title>
+<meta name="description" content="Escolha o placar dos jogos que faltam no Brasileirão 2026 e veja na hora como mudam as chances de título, Libertadores e rebaixamento de cada time.">
+<link rel="canonical" href="https://radarnumerico.com.br/futebol/brasileirao/simulador/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Radar Numérico">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Simulador do Brasileirão 2026: título, Libertadores e Z4">
+<meta property="og:description" content="Escolha o placar dos jogos que faltam no Brasileirão 2026 e veja na hora como mudam as chances de título, Libertadores e rebaixamento de cada time.">
+<meta property="og:url" content="https://radarnumerico.com.br/futebol/brasileirao/simulador/">
+<meta property="og:image" content="https://radarnumerico.com.br/futebol/brasileirao/og.png?v=202611062352">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://radarnumerico.com.br/futebol/brasileirao/simulador/", "url": "https://radarnumerico.com.br/futebol/brasileirao/simulador/", "name": "Simulador do Brasileirão 2026: título, Libertadores e Z4", "description": "Escolha o placar dos jogos que faltam no Brasileirão 2026 e veja na hora como mudam as chances de título, Libertadores e rebaixamento de cada time.", "inLanguage": "pt-BR", "dateModified": "2026-11-06T23:52", "isPartOf": {"@type": "WebSite", "name": "Radar Numérico", "url": "https://radarnumerico.com.br/"}, "about": {"@type": "Thing", "name": "Campeonato Brasileiro Série A 2026"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Radar Numérico", "item": "https://radarnumerico.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Brasileirão 2026: probabilidades", "item": "https://radarnumerico.com.br/futebol/brasileirao/"}, {"@type": "ListItem", "position": 3, "name": "Simulador", "item": "https://radarnumerico.com.br/futebol/brasileirao/simulador/"}]}]}</script>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet">
+<script src="../html2canvas.min.js" defer></script>
+<style>
+/* Layout: casca do site (Archivo, tokens do radarnumerico.com.br) + gráficos na paleta semântica do guia de design.
+   Coluna única de leitura (máx. 960px), gráficos do mais simples ao mais detalhado. */
+:root{
+  --ink:#16243A; --ink2:#3A4A63; --mute:#6B7686;
+  --bg:#FFFFFF; --panel:#F2F4F7; --line:#DCE1E8;
+  --marca:#1E8A5A; --marca2:#F2C230;
+  --azul:#2F4BFF; --verde:#06C25A; --amarelo:#FFC93C; --vermclaro:#FF8A80; --verm:#FF453A;
+  --trilho:#EEF1F6; --hair:#E7EAF0; --neutro:#9AA6B8; --azulclaro:#EAEEFF;
+  --upbg:#FFE3E0; --upfg:#B3261E; --downbg:#DDF7E7; --downfg:#0B7A3B;
+  --fonte:"Archivo",Arial,Helvetica,sans-serif;
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fonte);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 56px}
+
+/* cabeçalho */
+header.pg{padding-block:28px 8px}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--marca)}
+h1{font-size:clamp(26px,4.4vw,38px);line-height:1.12;letter-spacing:-.02em;margin:6px 0 10px;text-wrap:balance;font-weight:800}
+.selo{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:var(--mute)}
+.selo b{color:var(--ink2);font-weight:600}
+
+/* manchetes */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0 8px}
+.tile{background:var(--panel);padding:14px 16px;border-top:3px solid var(--azul);min-width:0}
+.tile.z4{border-top-color:var(--verm)} .tile.g6{border-top-color:var(--verde)}
+.tile .lab{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.tile .num{font-size:30px;font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:4px 0 2px;font-variant-numeric:tabular-nums}
+.tile .num small{font-size:14px;font-weight:600;color:var(--mute);margin-left:6px;letter-spacing:0}
+.tile .txt{font-size:13.5px;color:var(--ink2);line-height:1.4}
+.var{display:inline-block;font-weight:700;font-size:13px;padding:1px 6px;margin-left:4px;vertical-align:middle;letter-spacing:0}
+.var.up{background:var(--upbg);color:var(--upfg)} .var.down{background:var(--downbg);color:var(--downfg)}
+
+/* seções e gráficos */
+section.g{padding-block:28px 6px;border-top:1px solid var(--hair);margin-top:22px}
+section.g:first-of-type{border-top:0;margin-top:0}
+h2{font-size:22px;letter-spacing:-.015em;margin:0 0 4px;font-weight:800;text-wrap:balance}
+.sub{font-size:14.5px;color:var(--ink2);margin:0 0 18px;max-width:68ch}
+.nota{font-size:13px;color:var(--mute);margin:12px 0 0;max-width:72ch}
+.nota b{color:var(--ink2)}
+.fonte{font-size:13px;color:var(--mute);font-style:italic;margin:14px 0 0}  /* fonte em todo gráfico (24/10/2026) */
+
+/* escudo */
+.esc{display:inline-block;width:18px;height:18px;vertical-align:-4px;margin-right:6px;position:relative;flex:none}
+.esc i{position:absolute;inset:0;border-radius:50%;background:var(--trilho);color:var(--mute);font:700 6.5px/18px var(--fonte);text-align:center;letter-spacing:.02em;font-style:normal;outline:1px solid var(--hair);outline-offset:-1px}
+.esc img{position:absolute;inset:0;width:18px;height:18px;object-fit:contain;background:var(--bg);border-radius:50%}
+/* componente A — barra horizontal simples */
+.barras{display:grid;grid-template-columns:minmax(96px,150px) 1fr 58px;row-gap:6px;column-gap:10px;align-items:center;font-size:14.5px}
+.barras .nome{text-align:right;color:var(--ink);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.barras .nome .esc{margin-right:5px}
+.barras .nome small{color:var(--mute);font-weight:400;font-size:12px;margin-right:6px;font-variant-numeric:tabular-nums}
+.barras .trilho{background:var(--trilho);height:22px;position:relative}
+.barras .fill{height:100%;background:var(--azul);min-width:2px;transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.barras.neg .fill{background:var(--verm)}
+.barras .val{font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink);text-align:left}
+.barras .val.zero{color:var(--mute);font-weight:500}
+.barras .resto{grid-column:1/-1;color:var(--mute);font-size:13px;padding-top:4px;border-top:1px dashed var(--hair);margin-top:4px}
+.trilho[data-tip]{cursor:default}
+.barras .trilho:hover .fill{filter:brightness(.92)}
+/* Libertadores com as copas (24/10/2026) */
+:root{--verdeclaro:#8FE3B0}
+.barras.lib .trilho{display:flex}.barras.lib .fill{background:var(--verde)}.barras.lib .fill.rep{background:var(--verdeclaro);min-width:0}
+.barras.corte .fill{background:var(--verde)}
+.leg2{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--ink2);margin:10px 0 0}
+.leg2 i{display:inline-block;width:12px;height:12px;vertical-align:-2px;margin-right:6px}
+ul.gat{margin:14px 0 0;padding:0 0 0 18px;font-size:14px;color:var(--ink2);max-width:72ch}ul.gat li{margin:0 0 6px}ul.gat b{color:var(--ink)}
+
+/* barras por pontuação */
+.barras.pts .nome{font-weight:700;font-variant-numeric:tabular-nums}
+.barras.pts .nome small{margin-left:4px;margin-right:0}
+.barras .marco{grid-column:1/-1;font-size:12.5px;color:var(--mute);display:flex;gap:8px;align-items:center;margin:2px 0}
+.barras .marco::after{content:"";flex:1;border-top:1px dashed var(--line)}
+
+/* bloco do time */
+.timebar{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-bottom:18px}
+.timebar label{font-weight:700;font-size:15px}
+select{font:inherit;font-weight:600;font-size:16px;padding:10px 40px 10px 14px;border:1.5px solid var(--line);background:var(--bg) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'><path d='M1 1l6 6 6-6' fill='none' stroke='%236B7686' stroke-width='2'/></svg>") no-repeat right 14px center;color:var(--ink);appearance:none;min-width:220px}
+select:focus{outline:2px solid var(--azul);outline-offset:2px}
+.cartao{display:grid;grid-template-columns:1.2fr repeat(4,1fr);gap:10px;margin-bottom:22px}
+.cartao>div{background:var(--panel);padding:12px 14px;min-width:0}
+.cartao .nm{font-size:20px;font-weight:800;letter-spacing:-.01em;line-height:1.15}
+.cartao .nm .esc{width:24px;height:24px;vertical-align:-4px}.cartao .nm .esc i{line-height:24px;font-size:8px}.cartao .nm .esc img{width:24px;height:24px}
+.cartao .ln{font-size:13px;color:var(--mute);margin-top:4px;font-variant-numeric:tabular-nums}
+.cartao .ln b{color:var(--ink2);font-weight:600}
+.cartao .k{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.cartao .v{font-size:24px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.15;margin-top:2px}
+.cartao .d{font-size:12px;color:var(--mute);margin-top:2px}
+.cartao>div.c1{border-top:3px solid var(--azul)} .cartao>div.c2{border-top:3px solid var(--verde)} .cartao>div.c3{border-top:3px solid var(--amarelo)} .cartao>div.c4{border-top:3px solid var(--verm)}
+
+h3{font-size:17px;margin:26px 0 2px;font-weight:800;letter-spacing:-.01em}
+.sub3{font-size:13.5px;color:var(--ink2);margin:0 0 14px}
+
+/* componente colunas (histograma / posição) */
+.cols{display:flex;align-items:flex-end;gap:3px;height:214px;padding-top:40px;border-bottom:1.5px solid var(--line);position:relative}
+.cols .c{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;position:relative}
+.cols .b{width:100%;background:var(--azul);min-height:0;position:relative;transition:height .55s cubic-bezier(.2,.7,.2,1),background .3s;display:flex;flex-direction:column}
+.cols .b.zero{min-height:0}
+.cols .r{position:absolute;bottom:100%;margin-bottom:3px;font-size:10.5px;font-weight:700;color:var(--ink2);font-variant-numeric:tabular-nums;white-space:nowrap;left:50%;transform:translateX(-50%)}
+.cols .seg{width:100%}
+.cols .r.ant{display:none}
+.cols .c:hover .b{filter:brightness(.9)}
+.cols .media.dir span{left:auto;right:6px}
+.eixo{display:flex;gap:3px;margin-top:6px;font-size:11.5px;color:var(--mute);font-variant-numeric:tabular-nums}
+.eixo span{flex:1;text-align:center;min-width:0;overflow:hidden}
+.eixo span.atual{color:var(--ink);font-weight:800}
+.eixo span.atual::after{content:"";display:block;width:0;height:0;border:5px solid transparent;border-bottom-color:var(--ink);margin:-2px auto 0;transform:translateY(-10px)}
+.legenda{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--ink2);margin-top:10px}
+.legenda i{display:inline-block;width:12px;height:12px;vertical-align:-2px;margin-right:6px}
+.cols .media{position:absolute;top:0;bottom:0;border-left:2px dashed var(--ink2);pointer-events:none;transition:left .55s}
+.cols .media span{position:absolute;top:4px;left:6px;font-size:11.5px;font-weight:700;color:var(--ink2);white-space:nowrap}
+.pos-b.p1{background:var(--azul)} .pos-b.g6{background:var(--verde)} .pos-b.sula{background:var(--amarelo)} .pos-b.meio{background:var(--neutro)} .pos-b.z4{background:var(--verm)}
+
+/* tooltip */
+/* matriz "para quem torcer" */
+.ctrl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 14px;margin-bottom:18px}
+.ctrl label{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.ctrl select{width:100%;min-width:0;font-size:14.5px;padding:9px 34px 9px 12px}
+.mtz{display:grid;gap:4px;font-variant-numeric:tabular-nums}
+.mtz .h{font-size:12.5px;color:var(--ink2);font-weight:600;padding:6px 8px;background:var(--panel);text-align:center;line-height:1.3}
+.mtz .h small{display:block;color:var(--mute);font-weight:500}
+.mtz .rh{text-align:left}
+.mtz .cel{padding:12px 10px;border:1.5px solid var(--hair);text-align:center;min-width:0;position:relative}
+.mtz .cel .p{font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.mtz .cel .d{font-size:12px;margin-top:4px;color:var(--mute)}
+.mtz .cel .chip{display:inline-block;font-weight:700;padding:1px 6px;margin-top:5px;font-size:12px}
+.mtz .cel.bom{border-color:var(--verde)} .mtz .cel.ruim{border-color:var(--verm)}
+.mtz .cel.bom .chip{background:var(--downbg);color:var(--downfg)} .mtz .cel.ruim .chip{background:var(--upbg);color:var(--upfg)}
+.mtz .cel.neutro .chip{background:var(--panel);color:var(--mute)}
+.mtz .canto{background:transparent}
+.leitura{font-size:14.5px;color:var(--ink);margin:14px 0 0;max-width:72ch;background:var(--panel);padding:10px 14px;border-left:3px solid var(--azul)}
+.leitura b{font-weight:800}
+
+/* análises detalhadas */
+.cap{margin-top:40px;padding-top:26px;border-top:3px solid var(--ink)}
+.cap .kicker{color:var(--ink2)}
+.svgwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.svgwrap svg{display:block;width:100%;height:auto;min-width:560px;font-family:var(--fonte)}
+.faixa text{fill:var(--ink)} .faixa .eixo-t{fill:var(--mute);font-size:11px} .faixa .nome{font-size:12.5px}
+.faixa .zona-p1{fill:var(--azulclaro)} .faixa .zona-g6{fill:var(--downbg);opacity:.55} .faixa .zona-sula{fill:var(--amarelo);opacity:.18} .faixa .zona-z4{fill:var(--upbg);opacity:.6}
+.faixa .fina{stroke:var(--neutro);stroke-width:1.2} .faixa .grossa{stroke:var(--azul);stroke-width:8} .faixa .med{fill:var(--bg);stroke:var(--ink);stroke-width:1.6}
+.faixa .atual{stroke:var(--ink);stroke-width:1.8} .faixa .hit{fill:transparent}
+.faixa .hit:hover + .grossa{stroke:var(--ink2)}
+.evo text{fill:var(--mute);font-size:11px} .evo .grid{stroke:var(--hair);stroke-width:1} .evo .lin{fill:none;stroke-width:2.2;stroke-linejoin:round}
+.evo .rot{font-size:12px;font-weight:700} .evo .cross{stroke:var(--ink2);stroke-width:1;stroke-dasharray:3 3;opacity:0}
+.legline{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--ink2);margin:8px 0 0}
+.legline i{display:inline-block;width:14px;height:3px;vertical-align:3px;margin-right:6px}
+.evo-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.evo-grid>div{min-width:0}
+.evo-grid>.larga{grid-column:1/-1}
+.svgwrap svg.evo{min-width:0}
+
+/* corrida de barras */
+.race{position:relative;height:calc(20 * 27px);margin-top:10px}
+.race{--dur:.2s}
+.race .row{position:absolute;left:0;right:0;height:24px;display:grid;grid-template-columns:132px 1fr 42px;align-items:center;gap:8px;transition:top var(--dur) cubic-bezier(.2,.7,.2,1)}
+.race .row .nm{font-size:13px;font-weight:600;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;justify-content:flex-end;gap:0}
+.race .row .nm small{color:var(--mute);font-weight:500;margin-right:5px;font-variant-numeric:tabular-nums}
+.race .row .bar{height:20px;background:var(--azul);transition:width var(--dur) linear;min-width:2px}
+.race .row .bar{background:var(--azul)}
+.race .row .pt{font-weight:800;font-variant-numeric:tabular-nums;font-size:13.5px}
+.racehead{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;margin-top:4px}
+.racehead .rod{font-size:22px;font-weight:800;letter-spacing:-.02em} .racehead .jogo{font-size:13.5px;color:var(--ink2)} .racehead .jogo b{color:var(--ink)}
+.racectl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+.btn{font:inherit;font-weight:700;font-size:13.5px;padding:8px 14px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.btn:hover{background:var(--panel)} .btn.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn:focus-visible{outline:2px solid var(--azul);outline-offset:2px}
+.prog{flex:1;min-width:120px;height:4px;background:var(--trilho);position:relative}
+.prog i{position:absolute;left:0;top:0;bottom:0;background:var(--azul);transition:width .45s linear}
+
+@media (max-width:640px){
+  .ctrl{grid-template-columns:1fr 1fr}
+  .mtz .cel .p{font-size:18px} .mtz .h{font-size:11px;padding:5px 4px} .mtz .cel{padding:8px 4px}
+  .evo-grid{grid-template-columns:1fr}
+  .race .row{grid-template-columns:92px 1fr 36px} .race .row .nm{font-size:12px}
+}
+/* compartilhar */
+.share{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0 0}
+.share span{font-size:12px;color:var(--mute);margin-right:2px}
+.share a,.share button{font:inherit;font-size:12.5px;font-weight:700;padding:6px 11px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.share a:hover,.share button:hover{background:var(--panel)}
+.share svg{width:14px;height:14px;fill:currentColor}
+.share .wa{color:#128C7E} .share .ig{color:#C13584}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;font-size:13.5px;max-width:92vw;opacity:0;transition:opacity .2s;pointer-events:none;z-index:60}
+#tip{position:fixed;z-index:50;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12.5px;padding:6px 9px;border-radius:0;max-width:260px;opacity:0;transition:opacity .12s;font-variant-numeric:tabular-nums;line-height:1.35}
+#tip b{font-weight:700}
+
+.metod{border-top:1px solid var(--line);margin-top:30px;padding-block:20px;font-size:13px;color:var(--mute)}
+.metod p{margin:0 0 6px;max-width:80ch}
+.metod .marca{color:var(--ink);font-weight:800;font-size:14px}
+.lede{font-size:17px;line-height:1.5;color:var(--ink2);margin:14px 0 0;max-width:72ch}
+.lede b{color:var(--ink);font-weight:700}
+.blog-chamada{margin:14px 0 0;font-size:15px;color:var(--ink2);background:var(--panel);border-left:3px solid var(--marca);padding:8px 12px;max-width:72ch}
+.blog-chamada a{color:var(--ink);font-weight:700}
+footer.site{border-top:1px solid var(--line);padding-top:18px;padding-bottom:40px;margin-top:10px;font-size:13px;color:var(--mute)}
+footer.site a{color:var(--ink2)}
+:focus-visible{outline:2px solid var(--marca);outline-offset:2px}
+
+@media (max-width:640px){
+  .tiles{grid-template-columns:1fr}
+  .cartao{grid-template-columns:1fr 1fr}
+  .cartao>div:first-child{grid-column:1/-1}
+  .barras{grid-template-columns:minmax(84px,118px) 1fr 54px;font-size:13.5px}
+  .cols{height:184px}
+  .cols .r{font-size:10px}
+  .eixo{font-size:10px}
+  .cols.denso .r:not(.big){display:none!important}
+  .eixo.denso span:not(.e5){visibility:hidden}
+}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important} }
+
+/* ===== xG, xP e simulador da tabela (22/10/2026) ===== */
+.xleg{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--ink2);margin:0 0 14px}
+.xleg i{display:inline-block;width:12px;height:12px;vertical-align:-2px;margin-right:6px}
+.xb3{display:flex;height:22px;font-size:11.5px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums;background:var(--trilho)}
+.xb3 i{display:flex;align-items:center;justify-content:center;font-style:normal;overflow:hidden;min-width:0;white-space:nowrap}
+.xb3.sm{height:16px;font-size:10px}
+.xb3.lg{height:32px;font-size:13.5px}
+.rd{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.rdj{border:1.5px solid var(--hair);padding:10px 14px 12px;min-width:0}
+.rdq{font-size:11.5px;color:var(--mute);text-align:center;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.rdl{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:8px;margin:4px 0 8px}
+.rdt{display:flex;align-items:center;gap:7px;min-width:0;font-size:15px;font-weight:700}
+.rdt.v{justify-content:flex-end}
+.rdt span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.rdt .esc,.slt .esc{width:22px;height:22px;margin:0;flex:none}
+.rdt .esc i,.slt .esc i{line-height:22px;font-size:7.5px}
+.rdt .esc img,.slt .esc img{width:22px;height:22px}
+.rdvs{color:var(--mute);font-size:13px;font-weight:600}
+.rdn{display:grid;grid-template-columns:minmax(0,1fr) 52px 52px;column-gap:6px;row-gap:3px;align-items:center;margin-top:9px;font-variant-numeric:tabular-nums}
+.rdn .hd{font-size:10.5px;font-weight:700;color:var(--mute);text-align:center;letter-spacing:.05em}
+.rdk{display:flex;align-items:baseline;gap:7px;min-width:0;font-size:12.5px;color:var(--ink2);white-space:nowrap}
+.rdk b{font-size:13.5px;font-weight:800;color:var(--ink);min-width:20px}
+.rdv{text-align:center;font-size:16px;font-weight:800}
+.ath .esc{width:30px;height:30px;margin:0;vertical-align:middle}
+.ath .esc i{line-height:30px;font-size:9.5px}
+.ath .esc img{width:30px;height:30px}
+.at{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.at.n1{grid-template-columns:minmax(0,420px)} .at.n2{grid-template-columns:repeat(2,minmax(0,1fr))} .at.n3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.atk{border:1.5px solid var(--hair);min-width:0;display:flex;flex-direction:column}
+.ath{display:flex;align-items:center;gap:10px;padding:12px 12px 10px;border-bottom:1.5px solid var(--line);min-width:0}
+.ath>div{min-width:0}
+.ath b{display:block;font-size:16px;font-weight:800;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ath small{display:block;font-size:12px;color:var(--mute);font-variant-numeric:tabular-nums}
+.atcab{display:flex;justify-content:space-between;gap:6px;padding:6px 12px 0;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--mute)}
+.atcab span:last-child{text-align:right}
+.atj{padding:7px 12px 8px;border-bottom:1px solid var(--hair)}
+.atj.ed{cursor:pointer} .atj.ed:hover{background:var(--panel)}
+.atl{display:flex;align-items:center;gap:6px;font-size:13px;margin-bottom:5px;min-width:0}
+.atl .atr{font-size:10.5px;color:var(--mute);font-weight:700;width:26px;flex:none;font-variant-numeric:tabular-nums}
+.atl .esc{margin:0}
+.atl .atn{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600}
+.atl .atc{font-size:10.5px;color:var(--mute);flex:none}
+.atl .atx{font-weight:800;font-size:14px;width:32px;text-align:right;flex:none;font-variant-numeric:tabular-nums}
+.atj.fix .atx{color:var(--azul)}
+.atfix{display:flex;justify-content:space-between;gap:6px;height:16px;align-items:center;padding:0 6px;font-size:10.5px;font-weight:800;font-variant-numeric:tabular-nums;color:#fff}
+.atfix.r3{background:var(--azul)} .atfix.r1{background:var(--neutro)} .atfix.r0{background:var(--verm)}
+.ated{display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin-top:7px;font-size:11.5px;font-weight:700;color:var(--ink2)}
+.ated[hidden]{display:none}
+.ated input,.sli input{width:40px;font:inherit;font-weight:800;font-size:16px;text-align:center;padding:4px 2px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);-moz-appearance:textfield}
+.ated input::-webkit-inner-spin-button,.sli input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.ated input:focus,.sli input:focus{outline:2px solid var(--azul);outline-offset:0;border-color:var(--azul)}
+.ated .lp,.slj .lp{margin-left:auto;font:inherit;font-size:11.5px;font-weight:600;border:0;background:none;color:var(--mute);text-decoration:underline;cursor:pointer;padding:2px}
+.att{margin-top:auto;padding:10px 12px;background:var(--panel);display:grid;gap:3px}
+.att div{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:12.5px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.att b{font-size:15px;font-weight:800;color:var(--ink);white-space:nowrap}
+.att .fin b{font-size:20px;color:var(--azul)}
+.xeq{margin:16px 0 0;background:var(--panel);padding:12px 16px;max-width:760px}
+.xeq .k{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.xeq .eq{font-size:16px;line-height:1.6;color:var(--ink);font-variant-numeric:tabular-nums}
+.xeq .eq b{font-weight:800}
+.xeq .eq span{white-space:nowrap}
+.xeq .eq .op{color:var(--mute);font-weight:600;padding:0 3px}
+.xeq .eq .z{color:var(--mute)}
+.xeq .pe{font-size:13px;color:var(--ink2);margin-top:6px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.simaviso{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;background:var(--azulclaro);border-left:3px solid var(--azul);padding:10px 14px;margin:0 0 14px;font-size:14px;color:var(--ink)}
+.simaviso[hidden]{display:none}
+.simaviso small{display:block;color:var(--ink2);font-size:12.5px}
+.simaviso .btn{margin-left:auto;background:var(--bg)}
+.slh{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:10px 16px;margin:26px 0 12px}
+.slh h3{margin:0}
+.slh select{min-width:200px;font-size:14.5px;padding:8px 34px 8px 12px}
+.sl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px}
+.slj{border:1.5px solid var(--hair);padding:8px 10px;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:6px 8px;align-items:center;min-width:0}
+.slj.fix{border-color:var(--azul)}
+.slj .slq{grid-column:1/-1;display:flex;justify-content:space-between;font-size:11px;color:var(--mute);font-variant-numeric:tabular-nums}
+.slt{display:flex;align-items:center;gap:6px;min-width:0;font-size:13.5px;font-weight:700}
+.slt.m{justify-content:flex-end;text-align:right}
+.slt span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.sli{display:flex;align-items:center;gap:4px;color:var(--mute);font-weight:700}
+.slj .xb3,.slj .atfix{grid-column:1/-1}
+.tbw{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1.5px solid var(--hair)}
+table.cl{width:100%;border-collapse:collapse;font-size:13.5px;font-variant-numeric:tabular-nums;min-width:720px}
+table.cl th{line-height:1.25;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--mute);text-align:right;padding:8px 8px 6px;background:var(--panel);white-space:nowrap}
+table.cl th.l,table.cl td.l{text-align:left}
+table.cl td{padding:6px 8px;border-top:1px solid var(--hair);text-align:right;white-space:nowrap}
+table.cl td.ps{font-weight:800;width:44px;text-align:center;border-left:4px solid transparent}
+table.cl tr.p1 td.ps{border-left-color:var(--azul)} table.cl tr.g6 td.ps{border-left-color:var(--verde)} table.cl tr.sula td.ps{border-left-color:var(--amarelo)} table.cl tr.z4 td.ps{border-left-color:var(--verm)}
+table.cl td.tm{font-weight:700;text-align:left}
+table.cl td.tm .esc{margin-right:7px}
+table.cl td.pt{font-weight:800}
+table.cl td.alt{color:var(--azul)}
+table.cl td.pj{font-weight:700;color:var(--ink2)}
+table.cl td.sep,table.cl th.sep{border-left:1.5px solid var(--line)}
+table.cl tr:hover td{background:var(--panel)}
+.mv{display:inline-block;font-size:10px;font-weight:800;margin-left:3px;min-width:14px}
+.mv.s{color:var(--downfg)} .mv.d{color:var(--upfg)}
+.dl{display:block;font-size:10.5px;font-weight:700}
+.dl.bom{color:var(--downfg)} .dl.ruim{color:var(--upfg)}
+.simlink{margin:-2px 0 12px;font-size:13px} .simlink a{color:var(--ink2);font-weight:600;text-underline-offset:2px}
+@media (max-width:640px){
+  .rd{grid-template-columns:1fr}
+  .at,.at.n3{grid-template-columns:repeat(2,minmax(0,1fr))} .at.n1{grid-template-columns:1fr}
+  .at{gap:8px} .atj{padding:6px 8px 7px} .ath{padding:10px 8px 8px;gap:8px} .att{padding:8px} .atcab{padding:6px 8px 0}
+  .atl{font-size:12px;gap:4px} .atl .atr{width:22px} .atl .atc{display:none} .ath b{font-size:14.5px}
+  .ated input{width:34px}
+  .sl{grid-template-columns:1fr}
+  .xeq .eq{font-size:14.5px}
+}
+</style>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1556752564782456" crossorigin="anonymous"></script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RDGZ8VSS5R"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-RDGZ8VSS5R");</script>
+<link rel="stylesheet" href="/menu.css?v=7">
+<script src="/menu.js?v=7" defer></script>
+</head>
+<body>
+<style>
+.como,.sobre{padding-block:22px 4px;border-top:1px solid var(--hair);margin-top:22px}
+.como h2,.sobre h2{font-size:19px}
+.como ol{margin:8px 0 0;padding:0 0 0 20px;max-width:72ch;font-size:15px;color:var(--ink2)} .como li{margin:0 0 6px} .como b{color:var(--ink)}
+.sobre p,.como p{font-size:15px;color:var(--ink2);margin:8px 0 0;max-width:72ch}
+.sobre a,.como a,.lede a{color:var(--ink);font-weight:600}
+</style>
+<!--menu--><header class="rn-topo"><div class="rn-in"><a class="rn-marca" href="/" title="Página inicial do Radar Numérico"><img src="/logo.png" alt="" width="22" height="25">Radar Numérico</a><button class="rn-abrir" type="button" aria-expanded="false" aria-controls="rn-menu"><span class="rn-ham" aria-hidden="true"></span>Menu</button><nav class="rn-menu" id="rn-menu" aria-label="Menu do site"><ul class="rn-n1"><li class="rn-g"><button class="rn-t" type="button" aria-expanded="false" aria-controls="rn-p0">Futebol<i aria-hidden="true"></i></button><div class="rn-painel" id="rn-p0"><div class="rn-col"><p class="rn-h">Brasil</p><ul><li><a href="/futebol/brasileirao/">Série A: chance de título</a></li><li><a href="/futebol/brasileirao/#s-liber">Série A: chance de Libertadores</a></li><li><a href="/futebol/brasileirao/#s-z4">Série A: chance de rebaixamento</a></li><li><a href="/futebol/brasileirao/simulador/">Série A: simulador de probabilidades</a></li><li><a href="/futebol/serie-b/">Série B: chance de acesso</a></li><li><a href="/futebol/copa-do-brasil/">Copa do Brasil</a></li></ul></div><div class="rn-col"><p class="rn-h">América do Sul</p><ul><li><a href="/futebol/libertadores/">Libertadores</a></li><li><a href="/futebol/sul-americana/">Sul-Americana</a></li></ul></div><div class="rn-col"><p class="rn-h">Europa</p><ul><li><a href="/futebol/champions-league/">Champions League 2026/27</a></li><li class="rn-sub">Ligas europeias</li><li><a href="/futebol/premier-league/">Premier League<small>Inglaterra</small></a></li><li><a href="/futebol/la-liga/">La Liga<small>Espanha</small></a></li><li><a href="/futebol/bundesliga/">Bundesliga<small>Alemanha</small></a></li><li><a href="/futebol/serie-a-italiana/">Série A italiana<small>Itália</small></a></li></ul></div><div class="rn-col"><p class="rn-h">Copas nacionais europeias</p><ul><li><a href="/futebol/fa-cup/">FA Cup<small>Inglaterra</small></a></li><li><a href="/futebol/copa-da-liga-inglesa/">Copa da Liga Inglesa</a></li><li><a href="/futebol/copa-do-rei/">Copa do Rei<small>Espanha</small></a></li><li><a href="/futebol/copa-da-alemanha/">Copa da Alemanha</a></li><li><a href="/futebol/copa-da-italia/">Copa da Itália</a></li></ul></div><div class="rn-col"><p class="rn-h">Mundo</p><ul><li><a href="/futebol/ranking-mundial/">Ranking mundial dos times</a></li><li><a href="/futebol/copa-2026/">Copa do Mundo 2026</a></li><li><a href="/futebol/intercontinental-2026/">Mundial de Clubes 2026</a></li></ul></div></div></li><li class="rn-g"><button class="rn-t" type="button" aria-expanded="false" aria-controls="rn-p1">Eleições<i aria-hidden="true"></i></button><div class="rn-painel" id="rn-p1"><div class="rn-ano"><p class="rn-ano-h">Eleições 2026</p><div class="rn-ano-c"><div class="rn-col"><p class="rn-h">1º turno · resultados</p><ul><li><a href="/apuracao2026/">Deputados Federais</a></li><li><a href="/apuracao2026/estaduais.html">Deputados Estaduais</a></li><li><a href="/apuracao2026/senado.html">Senadores</a></li><li><a href="/apuracao2026/governadores.html">Governadores</a></li><li><a href="/apuracao2026/2turno/presidente.html?turno=1">Presidente</a></li><li><a href="/eleicoes/?ano=2026&amp;cargo=presidente">Detalhamento por município</a></li></ul></div><div class="rn-col"><p class="rn-h">2º turno · apuração ao vivo</p><ul><li><a href="/apuracao2026/2turno/">Apuração do 2º turno</a></li><li><a href="/apuracao2026/2turno/presidente.html">Presidente</a></li><li class="rn-ufs"><span>Governadores</span><a href="/apuracao2026/2turno/governador-ac.html" title="Governadores Acre">AC</a><a href="/apuracao2026/2turno/governador-am.html" title="Governadores Amazonas">AM</a><a href="/apuracao2026/2turno/governador-df.html" title="Governadores Distrito Federal">DF</a><a href="/apuracao2026/2turno/governador-es.html" title="Governadores Espírito Santo">ES</a><a href="/apuracao2026/2turno/governador-rj.html" title="Governadores Rio de Janeiro">RJ</a><a href="/apuracao2026/2turno/governador-rn.html" title="Governadores Rio Grande do Norte">RN</a><a href="/apuracao2026/2turno/governador-to.html" title="Governadores Tocantins">TO</a></li></ul></div><div class="rn-col"><p class="rn-h">Mais</p><ul><li><a href="/apuracao2026/favoritos.html">★ Meus candidatos</a></li><li><a href="/eleicoes/?ano=comp">Comparar com 2022</a></li></ul></div></div></div><div class="rn-ano"><p class="rn-ano-h">Eleições 2022</p><div class="rn-ano-c"><div class="rn-col"><p class="rn-h">1º turno · resultados</p><ul><li><a href="/eleicoes/?ano=2022&amp;cargo=dep_federal">Deputados Federais</a></li><li><a href="/eleicoes/?ano=2022&amp;cargo=dep_estadual">Deputados Estaduais</a></li><li><a href="/eleicoes/?ano=2022&amp;cargo=senador">Senadores</a></li><li><a href="/eleicoes/?ano=2022&amp;cargo=governador">Governadores</a></li><li><a href="/eleicoes/?ano=2022&amp;cargo=presidente">Presidente</a></li></ul></div><div class="rn-col"><p class="rn-h">2º turno · resultados</p><ul><li><a href="/eleicoes/?ano=2022&amp;cargo=governador&amp;turno=2">Governadores</a></li><li><a href="/eleicoes/?ano=2022&amp;cargo=presidente&amp;turno=2">Presidente</a></li></ul></div></div></div></div></li><li class="rn-g"><a class="rn-t" href="/blog/">Blog</a></li><li class="rn-g"><a class="rn-t" href="/sobre/">Sobre</a></li></ul></nav></div></header><!--/menu-->
+
+<main class="wrap">
+<header class="pg">
+  <div class="kicker">Futebol · Campeonato Brasileiro · Simulador</div>
+  <h1>Simulador do Brasileirão 2026: escolha os resultados e veja as chances de título, Libertadores e rebaixamento</h1>
+  <div class="selo" id="selo"><span>Atualizado em <b>06/11/2026 às 23h52</b></span><span>após <b>Vitória 0×3 Fluminense</b> (rodada 34)</span><span>339 jogos disputados, 41 a disputar</span></div>
+  <p class="lede">Escolha o placar dos jogos que faltam e veja na hora como mudam a classificação e as chances de cada time. Hoje, sem nenhum placar escolhido, o <b>Flamengo</b> tem <b>89,5%</b> de chance de título e as maiores chances de cair são de <b>Chapecoense</b> (100%) e <b>Remo</b> (>99,9%).</p>
+</header>
+
+<div class="como">
+  <h2>Como usar</h2>
+  <ol>
+    <li>Escolha a <b>rodada</b>: aparecem os jogos que faltam nela, com a chance de cada resultado.</li>
+    <li><b>Digite o placar</b> dos jogos que quiser. Pode ser um jogo só ou a rodada inteira, e dá para trocar de rodada e continuar.</li>
+    <li>A <b>Classificação</b> logo abaixo se refaz com os seus placares e mostra as novas chances de título, Libertadores, Sul-Americana e rebaixamento, com a mudança em relação a hoje.</li>
+  </ol>
+  <p>Os placares ficam guardados neste navegador até a próxima atualização do Radar; o botão <b>Zerar simulação</b> apaga tudo.</p>
+</div>
+
+<section class="g" id="s-analise">
+  <h2>Escolha os placares</h2>
+  <p class="sub">Escolha a rodada e digite o placar de cada jogo. A classificação e as chances logo abaixo se refazem na hora. Embaixo de cada jogo, a probabilidade de vitória do mandante, empate e vitória do visitante pelo modelo.</p>
+  <div class="simaviso" id="sim-aviso" hidden></div>
+  <div hidden><div class="ctrl" id="at-ctrl"></div>
+  <div class="xleg"><span><i style="background:var(--azul)"></i>Vitória</span><span><i style="background:var(--neutro)"></i>Empate</span><span><i style="background:var(--verm)"></i>Derrota</span></div>
+  <div class="at" id="at"></div>
+  <div class="xeq"><div class="k">Pontuação esperada por jogo</div>
+    <div class="eq"><b>xP</b> <span class="op">=</span> <span>(3 pontos × probabilidade de vitória)</span> <span class="op">+</span> <span>(1 ponto × probabilidade de empate)</span> <span class="op">+</span> <span class="z">(0 pontos × probabilidade de derrota)</span></div>
+    <div class="pe">Somados aos pontos de hoje, os xP dos jogos que faltam dão a projeção final de pontos.</div></div></div>
+  <div class="slh"><h3>Jogos que faltam, por rodada</h3><div><label class="vh" for="sl-rod">Rodada</label><select id="sl-rod"></select></div></div>
+  <div class="sl" id="sl"></div>
+</section>
+
+<section class="g" id="s-classif">
+  <h2>Classificação</h2>
+  <p class="sub" id="cl-sub">A tabela do Brasileirão com a projeção de pontos e as chances de cada time. Cravou placares acima? A tabela já mostra o resultado deles.</p>
+  <div class="simaviso" id="cl-aviso" hidden></div>
+  <div class="tbw"><table class="cl" id="cl"></table></div>
+  <p class="nota"><b>Proj.</b>: pontos esperados ao fim do campeonato · <b>Liberta.</b> e <b>Sul-Am.</b>: com as vagas das copas (o simulador mexe nelas pela variação de G6 e de 7º ao 12º) · <b>Z4</b>: rebaixamento. Com placares simulados, embaixo de cada chance aparece a mudança em relação a hoje.</p>
+</section>
+
+<div class="sobre">
+  <h2>O que o simulador calcula</h2>
+  <p>Para cada jogo que falta, o <a href="/futebol/ranking-mundial/">algoritmo que calcula a força de cada time</a> dá a probabilidade de cada placar. O simulador joga o resto do campeonato milhares de vezes, sorteando esses placares; os jogos em que você cravou um resultado ficam fixos em todas as simulações. A chance de título, de Libertadores ou de rebaixamento é a fração das simulações em que o time termina naquela faixa da tabela.</p>
+  <p>Sem nenhum placar escolhido, os números são os mesmos da <a href="/futebol/brasileirao/">página de probabilidades do Brasileirão</a>, atualizada depois de cada jogo, onde também estão a evolução das chances, a faixa de posições de cada time e para quem torcer na rodada.</p>
+</div>
+
+<div class="metod">
+  <p class="marca">Radar Numérico</p>
+  <p id="rodape">Probabilidades do Campeonato Brasileiro Série A 2026 atualizadas em 06/11/2026 às 23h52, após Vitória 0×3 Fluminense (rodada 34). Atualizamos depois de cada jogo.</p>
+  <p>Como calculamos: um algoritmo desenvolvido pelo economista Augusto Pellegrini estima a força de cada time e a probabilidade de cada placar dos jogos que faltam; a partir daí calculamos as chances de cada posição na tabela. Fonte: Radar Numérico.</p>
+</div>
+</main>
+<style>.vt{margin:8px auto 4px}.vt h2{font-size:18px;margin:0 0 10px;color:var(--ink,#16243A)}.vt ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}.vt a{display:block;padding:10px 12px;border:1px solid var(--line,#DCE1E8);border-radius:8px;background:var(--panel,#F2F4F7);text-decoration:none;color:var(--ink,#16243A)}.vt a:hover{border-color:var(--azul,#2F4BFF)}.vt b{display:block;font-size:15px}.vt span{display:block;font-size:13px;color:var(--mute,#6B7686);margin-top:2px}</style><nav class="vt wrap" aria-label="Outras probabilidades do Radar Numérico"><h2>Veja também</h2><ul><li><a href="/futebol/brasileirao/"><b>Brasileirão 2026</b><span>chance de título, Libertadores e rebaixamento de cada time</span></a></li><li><a href="/futebol/libertadores/"><b>Libertadores 2026</b><span>chance de cada time ser campeão</span></a></li><li><a href="/futebol/copa-do-brasil/"><b>Copa do Brasil 2026</b><span>chance de cada time ser campeão</span></a></li><li><a href="/futebol/sul-americana/"><b>Sul-Americana 2026</b><span>chance de cada time ser campeão</span></a></li><li><a href="/futebol/serie-b/"><b>Série B 2026</b><span>chance de acesso, título e rebaixamento</span></a></li><li><a href="/futebol/champions-league/"><b>Champions League 2026/27</b><span>chance de cada time ser campeão</span></a></li><li><a href="/futebol/ranking-mundial/"><b>Ranking mundial dos times</b><span>a força de cada clube, de 1 a 100</span></a></li><li><a href="/blog/"><b>Blog do Radar</b><span>o que mudou depois de cada rodada</span></a></li></ul></nav>
+<footer class="site wrap">Radar Numérico · radarnumerico.com.br · projeto apartidário · <a href="/sobre/">Sobre e contato</a> · <a href="https://www.instagram.com/radarnumerico/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.youtube.com/@radarnumerico" target="_blank" rel="noopener">YouTube</a> · <a href="/privacidade.html">Política de privacidade</a></footer>
+<div id="tip" role="tooltip"></div>
+<div id="toast" role="status"></div>
+
+<script>
+const D = {"gerado_em":"2026-11-06T23:52","ultimo_jogo":{"rodada":34,"data":"2026-11-06","hora":"20:00","m":"Vitória","v":"Fluminense","gm":0,"gv":3},"ultimos":["Vitória 0×3 Fluminense"],"rodada_atual":35,"n_sim":100000,"n_jogados":339,"n_restantes":41,"ordem":["Flamengo","Palmeiras","Cruzeiro","Fluminense","Athletico-PR","Bahia","Atlético-MG","Bragantino","Santos","São Paulo","Botafogo","Coritiba","Vasco","Mirassol","Vitória","Internacional","Corinthians","Grêmio","Remo","Chapecoense"],"times":{"Flamengo":{"pos":1,"Pts":76,"J":34,"V":23,"E":7,"D":4,"GP":71,"GC":29,"SG":42,"campeao":0.8954,"g4":1.0,"g6":1.0,"g6pos":1.0,"g8":1.0,"lib_base":1.0,"sula":0.0,"z4":0.0,"pts_medio":84.3,"pos_media":1.1,"pts_p5":80.0,"pts_p95":88.0,"ant":{"campeao":0.8962,"z4":0.0,"g6":1.0,"sula":0.0},"dist":[0.8954,0.1046,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"pts_dist":{"77":0.002,"78":0.0041,"79":0.012,"80":0.0375,"81":0.0543,"82":0.0872,"83":0.1831,"84":0.1088,"85":0.1897,"86":0.2,"88":0.1209}},"Palmeiras":{"pos":2,"Pts":73,"J":34,"V":21,"E":10,"D":3,"GP":62,"GC":23,"SG":39,"campeao":0.1046,"g4":1.0,"g6":1.0,"g6pos":1.0,"g8":1.0,"lib_base":1.0,"sula":0.0,"z4":0.0,"pts_medio":80.2,"pos_media":1.9,"pts_p5":76.0,"pts_p95":85.0,"ant":{"campeao":0.1038,"z4":0.0,"g6":1.0,"sula":0.0},"dist":[0.1046,0.8954,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"pts_dist":{"73":0.0014,"74":0.0083,"75":0.016,"76":0.0366,"77":0.0862,"78":0.0894,"79":0.1307,"80":0.2035,"81":0.0992,"82":0.14,"83":0.1301,"85":0.0587}},"Cruzeiro":{"pos":3,"Pts":60,"J":34,"V":18,"E":6,"D":10,"GP":55,"GC":48,"SG":7,"campeao":0.0,"g4":0.9767,"g6":1.0,"g6pos":0.9999,"g8":1.0,"lib_base":0.998,"sula":0.0,"z4":0.0,"pts_medio":66.3,"pos_media":3.2,"pts_p5":62.0,"pts_p95":70.0,"ant":{"campeao":0.0,"z4":0.0,"g6":0.9999,"sula":0.0001},"dist":[0.0,0.0,0.8279,0.1488,0.0212,0.002,0.0001,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"pts_dist":{"60":0.0064,"61":0.0243,"62":0.0353,"63":0.067,"64":0.1293,"65":0.1121,"66":0.141,"67":0.1876,"68":0.0794,"69":0.1022,"70":0.0843,"72":0.0311}},"Fluminense":{"pos":4,"Pts":57,"J":34,"V":16,"E":9,"D":9,"GP":55,"GC":42,"SG":13,"campeao":0.0,"g4":0.75,"g6":0.999,"g6pos":0.9928,"g8":1.0,"lib_base":0.9317,"sula":0.001,"z4":0.0,"pts_medio":62.8,"pos_media":4.2,"pts_p5":59.0,"pts_p95":67.0,"ant":{"campeao":0.0,"z4":0.0,"g6":0.9847,"sula":0.0153},"dist":[0.0,0.0,0.1546,0.5955,0.1816,0.0611,0.0068,0.0005,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"pts_dist":{"57":0.0102,"58":0.0369,"59":0.0481,"60":0.0857,"61":0.1541,"62":0.1169,"63":0.1431,"64":0.1764,"65":0.0654,"66":0.0833,"67":0.0599,"69":0.02}},"Athletico-PR":{"pos":5,"Pts":54,"J":34,"V":15,"E":9,"D":10,"GP":51,"GC":43,"SG":8,"campeao":0.0,"g4":0.1349,"g6":0.9815,"g6pos":0.8781,"g8":0.9956,"lib_base":0.5244,"sula":0.0185,"z4":0.0,"pts_medio":59.5,"pos_media":5.5,"pts_p5":56.0,"pts_p95":63.0,"ant":{"campeao":0.0,"z4":0.0,"g6":0.968,"sula":0.032},"dist":[0.0,0.0,0.0084,0.1265,0.3895,0.3538,0.0944,0.0232,0.004,0.0003,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"pts_dist":{"54":0.0102,"55":0.0392,"56":0.048,"57":0.0993,"58":0.1766,"59":0.1145,"60":0.1698,"61":0.1753,"62":0.0427,"63":0.0813,"64":0.0342,"66":0.0088}},"Bahia":{"pos":6,"Pts":53,"J":34,"V":14,"E":11,"D":9,"GP":50,"GC":45,"SG":5,"campeao":0.0,"g4":0.1266,"g6":0.9605,"g6pos":0.8068,"g8":0.9889,"lib_base":0.4546,"sula":0.0395,"z4":0.0,"pts_medio":59.5,"pos_media":5.7,"pts_p5":55.0,"pts_p95":63.0,"ant":{"campeao":0.0,"z4":0.0,"g6":0.9432,"sula":0.0568},"dist":[0.0,0.0,0.0088,0.1178,0.328,0.3521,0.1391,0.0431,0.0101,0.0009,0.0001,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"pts_dist":{"53":0.0048,"54":0.0194,"55":0.0295,"56":0.0579,"57":0.1207,"58":0.1104,"59":0.1418,"60":0.1925,"61":0.0849,"62":0.109,"63":0.0925,"65":0.0367}},"Atlético-MG":{"pos":7,"Pts":50,"J":34,"V":14,"E":8,"D":12,"GP":44,"GC":40,"SG":4,"campeao":0.0,"g4":0.0107,"g6":0.8263,"g6pos":0.2183,"g8":0.8163,"lib_base":0.5586,"sula":0.1737,"z4":0.0,"pts_medio":55.3,"pos_media":7.4,"pts_p5":51.0,"pts_p95":60.0,"ant":{"campeao":0.0,"z4":0.0,"g6":0.8422,"sula":0.1578},"dist":[0.0,0.0,0.0003,0.0104,0.0619,0.1456,0.3558,0.2422,0.1302,0.0437,0.0092,0.0006,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"pts_dist":{"50":0.0181,"51":0.0563,"52":0.0623,"53":0.1069,"54":0.1731,"55":0.1188,"56":0.138,"57":0.1542,"58":0.0524,"59":0.0648,"60":0.0418,"62":0.0134}},"Bragantino":{"pos":8,"Pts":47,"J":34,"V":13,"E":8,"D":13,"GP":44,"GC":39,"SG":5,"campeao":0.0,"g4":0.0007,"g6":0.4657,"g6pos":0.0566,"g8":0.5437,"lib_base":0.0109,"sula":0.5342,"z4":0.0,"pts_medio":53.0,"pos_media":8.4,"pts_p5":49.0,"pts_p95":57.0,"ant":{"campeao":0.0,"z4":0.0,"g6":0.4208,"sula":0.5789},"dist":[0.0,0.0,0.0,0.0007,0.0102,0.0457,0.2008,0.2863,0.2649,0.1226,0.0522,0.0136,0.0027,0.0003,0.0001,0.0,0.0,0.0,0.0,0.0],"pts_dist":{"47":0.0095,"48":0.0321,"49":0.0448,"50":0.0759,"51":0.1411,"52":0.1167,"53":0.1387,"54":0.1773,"55":0.0748,"56":0.0882,"57":0.0739,"59":0.027}},"Santos":{"pos":9,"Pts":47,"J":34,"V":12,"E":11,"D":11,"GP":50,"GC":49,"SG":1,"campeao":0.0,"g4":0.0003,"g6":0.4157,"g6pos":0.0431,"g8":0.4728,"lib_base":0.0076,"sula":0.5833,"z4":0.0,"pts_medio":53.3,"pos_media":8.7,"pts_p5":49.0,"pts_p95":57.0,"ant":{"campeao":0.0,"z4":0.0,"g6":0.3781,"sula":0.6207},"dist":[0.0,0.0,0.0,0.0003,0.0073,0.0355,0.1595,0.2703,0.2836,0.1471,0.0624,0.0251,0.0076,0.0012,0.0002,0.0001,0.0,0.0,0.0,0.0],"pts_dist":{"47":0.007,"48":0.027,"49":0.0373,"50":0.0666,"51":0.1299,"52":0.1128,"53":0.1364,"54":0.1855,"55":0.0824,"56":0.098,"57":0.0846,"59":0.0321}},"São Paulo":{"pos":10,"Pts":44,"J":34,"V":12,"E":8,"D":14,"GP":39,"GC":39,"SG":0,"campeao":0.0,"g4":0.0,"g6":0.0968,"g6pos":0.003,"g8":0.0991,"lib_base":0.0002,"sula":0.891,"z4":0.0001,"pts_medio":49.8,"pos_media":10.3,"pts_p5":46.0,"pts_p95":54.0,"ant":{"campeao":0.0,"z4":0.0002,"g6":0.0855,"sula":0.9003},"dist":[0.0,0.0,0.0,0.0,0.0002,0.0028,0.024,0.0722,0.161,0.333,0.2156,0.1154,0.0501,0.0194,0.0055,0.0008,0.0001,0.0,0.0,0.0],"pts_dist":{"44":0.0091,"45":0.0348,"46":0.0446,"47":0.0888,"48":0.161,"49":0.117,"50":0.1515,"51":0.1746,"52":0.0618,"53":0.083,"54":0.0559,"56":0.0178}},"Botafogo":{"pos":11,"Pts":42,"J":34,"V":11,"E":9,"D":14,"GP":46,"GC":53,"SG":-7,"campeao":0.0,"g4":0.0,"g6":0.0191,"g6pos":0.0001,"g8":0.0171,"lib_base":0.0,"sula":0.8361,"z4":0.0161,"pts_medio":47.1,"pos_media":12.3,"pts_p5":43.0,"pts_p95":51.0,"ant":{"campeao":0.0,"z4":0.0219,"g6":0.0171,"sula":0.8257},"dist":[0.0,0.0,0.0,0.0,0.0,0.0001,0.0022,0.0148,0.045,0.1063,0.1806,0.2355,0.1714,0.1106,0.0735,0.0439,0.0143,0.0018,0.0,0.0],"pts_dist":{"42":0.0203,"43":0.063,"44":0.0655,"45":0.1122,"46":0.1801,"47":0.1165,"48":0.1346,"49":0.1505,"50":0.0481,"51":0.06,"52":0.0382,"54":0.011}},"Coritiba":{"pos":12,"Pts":42,"J":34,"V":11,"E":9,"D":14,"GP":40,"GC":51,"SG":-11,"campeao":0.0,"g4":0.0,"g6":0.0014,"g6pos":0.0,"g8":0.001,"lib_base":0.0,"sula":0.5744,"z4":0.0696,"pts_medio":45.1,"pos_media":14.1,"pts_p5":42.0,"pts_p95":49.0,"ant":{"campeao":0.0,"z4":0.0953,"g6":0.0015,"sula":0.5451},"dist":[0.0,0.0,0.0,0.0,0.0,0.0,0.0001,0.0009,0.0045,0.0183,0.05,0.1095,0.1909,0.2098,0.1941,0.1522,0.0607,0.0089,0.0,0.0],"pts_dist":{"42":0.1087,"43":0.1856,"44":0.1143,"45":0.1915,"46":0.1863,"47":0.0679,"48":0.076,"49":0.0467,"50":0.0085,"51":0.0107,"52":0.0033}},"Vasco":{"pos":13,"Pts":41,"J":33,"V":11,"E":8,"D":14,"GP":43,"GC":50,"SG":-7,"campeao":0.0,"g4":0.0,"g6":0.0585,"g6pos":0.0014,"g8":0.0639,"lib_base":0.0001,"sula":0.8734,"z4":0.0103,"pts_medio":48.6,"pos_media":11.2,"pts_p5":44.0,"pts_p95":53.0,"ant":{"campeao":0.0,"z4":0.0125,"g6":0.2828,"sula":0.6581},"dist":[0.0,0.0,0.0,0.0,0.0001,0.0013,0.0174,0.0452,0.0885,0.1825,0.2774,0.1752,0.0959,0.0561,0.0325,0.0178,0.0086,0.0016,0.0,0.0],"pts_dist":{"41":0.0024,"42":0.011,"43":0.0193,"44":0.0357,"45":0.0773,"46":0.0899,"47":0.1071,"48":0.1587,"49":0.1224,"50":0.1135,"51":0.1245,"52":0.0471,"53":0.0473,"54":0.034,"56":0.0098}},"Mirassol":{"pos":14,"Pts":40,"J":34,"V":10,"E":10,"D":14,"GP":39,"GC":48,"SG":-9,"campeao":0.0,"g4":0.0,"g6":0.0024,"g6pos":0.0,"g8":0.0014,"lib_base":0.0,"sula":0.5684,"z4":0.1455,"pts_medio":45.1,"pos_media":14.1,"pts_p5":41.0,"pts_p95":49.0,"ant":{"campeao":0.0,"z4":0.1643,"g6":0.0017,"sula":0.5527},"dist":[0.0,0.0,0.0,0.0,0.0,0.0,0.0001,0.0014,0.0055,0.0244,0.069,0.132,0.176,0.1696,0.1518,0.1249,0.0929,0.0525,0.0001,0.0],"pts_dist":{"40":0.0211,"41":0.0617,"42":0.0665,"43":0.1126,"44":0.1776,"45":0.1193,"46":0.1398,"47":0.1481,"48":0.0456,"49":0.0609,"50":0.0364,"52":0.0104}},"Vitória":{"pos":15,"Pts":38,"J":34,"V":10,"E":8,"D":16,"GP":35,"GC":51,"SG":-16,"campeao":0.0,"g4":0.0,"g6":0.0002,"g6pos":0.0,"g8":0.0001,"lib_base":0.0,"sula":0.2332,"z4":0.4605,"pts_medio":42.4,"pos_media":15.9,"pts_p5":39.0,"pts_p95":47.0,"ant":{"campeao":0.0,"z4":0.3206,"g6":0.0016,"sula":0.38},"dist":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0001,0.0007,0.0038,0.0158,0.0346,0.0653,0.1033,0.1342,0.1819,0.2362,0.2233,0.001,0.0],"pts_dist":{"38":0.041,"39":0.0983,"40":0.086,"41":0.1437,"42":0.1965,"43":0.1097,"44":0.1208,"45":0.1119,"46":0.0297,"47":0.0376,"48":0.0197,"50":0.005}},"Internacional":{"pos":16,"Pts":38,"J":34,"V":9,"E":11,"D":14,"GP":38,"GC":42,"SG":-4,"campeao":0.0,"g4":0.0,"g6":0.0001,"g6pos":0.0,"g8":0.0001,"lib_base":0.0,"sula":0.3017,"z4":0.3675,"pts_medio":43.2,"pos_media":15.5,"pts_p5":39.0,"pts_p95":47.0,"ant":{"campeao":0.0,"z4":0.4005,"g6":0.0003,"sula":0.289},"dist":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0001,0.0009,0.0058,0.0257,0.0531,0.0872,0.1265,0.1527,0.1806,0.2079,0.1592,0.0005,0.0],"pts_dist":{"38":0.0167,"39":0.0544,"40":0.0604,"41":0.1132,"42":0.182,"43":0.1182,"44":0.1494,"45":0.1525,"46":0.045,"47":0.0623,"48":0.036,"50":0.01}},"Corinthians":{"pos":17,"Pts":37,"J":34,"V":9,"E":10,"D":15,"GP":36,"GC":42,"SG":-6,"campeao":0.0,"g4":0.0,"g6":0.0003,"g6pos":0.0,"g8":0.0001,"lib_base":0.0,"sula":0.3717,"z4":0.3067,"pts_medio":43.3,"pos_media":15.1,"pts_p5":39.0,"pts_p95":47.0,"ant":{"campeao":0.0,"z4":0.3365,"g6":0.0003,"sula":0.3549},"dist":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0001,0.0008,0.0094,0.0346,0.0813,0.1077,0.1352,0.155,0.1693,0.1597,0.1447,0.0023,0.0],"pts_dist":{"37":0.0063,"38":0.0245,"39":0.0344,"40":0.064,"41":0.1261,"42":0.1128,"43":0.1386,"44":0.1906,"45":0.0814,"46":0.1039,"47":0.0848,"49":0.0326}},"Grêmio":{"pos":18,"Pts":37,"J":34,"V":9,"E":10,"D":15,"GP":38,"GC":47,"SG":-9,"campeao":0.0,"g4":0.0,"g6":0.376,"g6pos":0.0,"g8":0.0001,"lib_base":0.376,"sula":0.0,"z4":0.624,"pts_medio":41.6,"pos_media":16.5,"pts_p5":38.0,"pts_p95":46.0,"ant":{"campeao":0.0,"z4":0.6483,"g6":0.2779,"sula":0.0326},"dist":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0001,0.0001,0.0018,0.0076,0.0241,0.0453,0.068,0.1005,0.1286,0.2189,0.4006,0.0045,0.0],"pts_dist":{"37":0.0325,"38":0.0822,"39":0.0813,"40":0.1356,"41":0.192,"42":0.1127,"43":0.129,"44":0.1249,"45":0.0358,"46":0.0439,"47":0.0238,"49":0.0063}},"Remo":{"pos":19,"Pts":29,"J":34,"V":6,"E":11,"D":17,"GP":37,"GC":57,"SG":-20,"campeao":0.0,"g4":0.0,"g6":0.0,"g6pos":0.0,"g8":0.0,"lib_base":0.0,"sula":0.0,"z4":0.9998,"pts_medio":33.3,"pos_media":19.0,"pts_p5":30.0,"pts_p95":38.0,"ant":{"campeao":0.0,"z4":0.9999,"g6":0.0,"sula":0.0},"dist":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0001,0.0001,0.0008,0.0073,0.9762,0.0154],"pts_dist":{"29":0.0374,"30":0.096,"31":0.0832,"32":0.159,"33":0.2097,"34":0.1036,"35":0.131,"36":0.1052,"37":0.0242,"38":0.0333,"39":0.0144,"41":0.0031}},"Chapecoense":{"pos":20,"Pts":21,"J":33,"V":4,"E":9,"D":20,"GP":33,"GC":68,"SG":-35,"campeao":0.0,"g4":0.0,"g6":0.0,"g6pos":0.0,"g8":0.0,"lib_base":0.0,"sula":0.0,"z4":1.0,"pts_medio":24.8,"pos_media":20.0,"pts_p5":21.0,"pts_p95":29.0,"ant":{"campeao":0.0,"z4":1.0,"g6":0.0,"sula":0.0},"dist":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0154,0.9846],"pts_dist":{"21":0.0665,"22":0.1395,"23":0.1132,"24":0.1551,"25":0.1837,"26":0.103,"27":0.0939,"28":0.0782,"29":0.0274,"30":0.0216,"31":0.013,"32":0.0019,"33":0.0024,"34":0.0007}}},"cortes":{"libertadores_direto":5,"prob_g7":0.0,"sula_ate":14,"z4_de":17,"p_pos":[1.0,1.0,1.0,1.0,1.0,1.0,0.8953,0.5633,0.1784,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]},"restantes_xg":[{"rodada":21,"data":"2026-07-29","hora":"19:30","m":"Chapecoense","v":"Vasco","vm":0.2523,"e":0.2681,"vv":0.4795,"xgm":1.126,"xgv":1.628},{"rodada":35,"data":"2026-11-18","hora":"21:00","m":"Corinthians","v":"Botafogo","vm":0.5004,"e":0.2644,"vv":0.2352,"xgm":1.52,"xgv":0.957},{"rodada":35,"data":"2026-11-18","hora":"21:00","m":"Coritiba","v":"Santos","vm":0.3458,"e":0.278,"vv":0.3762,"xgm":1.23,"xgv":1.294},{"rodada":35,"data":"2026-11-18","hora":"21:00","m":"Cruzeiro","v":"Palmeiras","vm":0.3805,"e":0.2779,"vv":0.3415,"xgm":1.367,"xgv":1.283},{"rodada":35,"data":"2026-11-18","hora":"21:00","m":"Flamengo","v":"Athletico-PR","vm":0.6957,"e":0.2038,"vv":0.1005,"xgm":2.002,"xgv":0.62},{"rodada":35,"data":"2026-11-18","hora":"21:00","m":"Grêmio","v":"Bahia","vm":0.3577,"e":0.2782,"vv":0.3641,"xgm":1.365,"xgv":1.38},{"rodada":35,"data":"2026-11-18","hora":"21:00","m":"Mirassol","v":"Atlético-MG","vm":0.4394,"e":0.2737,"vv":0.2869,"xgm":1.432,"xgv":1.108},{"rodada":35,"data":"2026-11-18","hora":"21:00","m":"Remo","v":"Chapecoense","vm":0.5129,"e":0.262,"vv":0.2251,"xgm":1.741,"xgv":1.092},{"rodada":35,"data":"2026-11-18","hora":"21:00","m":"São Paulo","v":"Fluminense","vm":0.4178,"e":0.2758,"vv":0.3064,"xgm":1.331,"xgv":1.099},{"rodada":35,"data":"2026-11-18","hora":"21:00","m":"Vasco","v":"Internacional","vm":0.505,"e":0.2636,"vv":0.2315,"xgm":1.604,"xgv":1.009},{"rodada":35,"data":"2026-11-18","hora":"21:00","m":"Vitória","v":"Bragantino","vm":0.342,"e":0.2779,"vv":0.3801,"xgm":1.241,"xgv":1.322},{"rodada":36,"data":"2026-11-21","hora":"21:00","m":"Athletico-PR","v":"Remo","vm":0.6285,"e":0.2299,"vv":0.1416,"xgm":1.838,"xgv":0.747},{"rodada":36,"data":"2026-11-21","hora":"21:00","m":"Atlético-MG","v":"Corinthians","vm":0.4498,"e":0.2725,"vv":0.2778,"xgm":1.347,"xgv":0.993},{"rodada":36,"data":"2026-11-21","hora":"21:00","m":"Bahia","v":"Coritiba","vm":0.6301,"e":0.2294,"vv":0.1405,"xgm":1.871,"xgv":0.763},{"rodada":36,"data":"2026-11-21","hora":"21:00","m":"Botafogo","v":"São Paulo","vm":0.4555,"e":0.2717,"vv":0.2728,"xgm":1.486,"xgv":1.094},{"rodada":36,"data":"2026-11-21","hora":"21:00","m":"Bragantino","v":"Vasco","vm":0.4904,"e":0.2663,"vv":0.2433,"xgm":1.587,"xgv":1.049},{"rodada":36,"data":"2026-11-21","hora":"21:00","m":"Chapecoense","v":"Cruzeiro","vm":0.2111,"e":0.2581,"vv":0.5309,"xgm":1.014,"xgv":1.728},{"rodada":36,"data":"2026-11-21","hora":"21:00","m":"Fluminense","v":"Mirassol","vm":0.5589,"e":0.2512,"vv":0.1899,"xgm":1.669,"xgv":0.867},{"rodada":36,"data":"2026-11-21","hora":"21:00","m":"Internacional","v":"Vitória","vm":0.5451,"e":0.2547,"vv":0.2002,"xgm":1.644,"xgv":0.896},{"rodada":36,"data":"2026-11-21","hora":"21:00","m":"Palmeiras","v":"Flamengo","vm":0.3847,"e":0.2778,"vv":0.3375,"xgm":1.44,"xgv":1.336},{"rodada":36,"data":"2026-11-21","hora":"21:00","m":"Santos","v":"Grêmio","vm":0.541,"e":0.2557,"vv":0.2033,"xgm":1.686,"xgv":0.944},{"rodada":37,"data":"2026-11-28","hora":"21:00","m":"Atlético-MG","v":"Vasco","vm":0.4377,"e":0.2739,"vv":0.2884,"xgm":1.44,"xgv":1.121},{"rodada":37,"data":"2026-11-28","hora":"21:00","m":"Botafogo","v":"Bahia","vm":0.4145,"e":0.2761,"vv":0.3094,"xgm":1.54,"xgv":1.306},{"rodada":37,"data":"2026-11-28","hora":"21:00","m":"Chapecoense","v":"Palmeiras","vm":0.1504,"e":0.2345,"vv":0.6151,"xgm":0.855,"xgv":1.926},{"rodada":37,"data":"2026-11-28","hora":"21:00","m":"Corinthians","v":"Grêmio","vm":0.5565,"e":0.2518,"vv":0.1917,"xgm":1.582,"xgv":0.81},{"rodada":37,"data":"2026-11-28","hora":"21:00","m":"Coritiba","v":"Flamengo","vm":0.1442,"e":0.2313,"vv":0.6245,"xgm":0.77,"xgv":1.851},{"rodada":37,"data":"2026-11-28","hora":"21:00","m":"Fluminense","v":"Cruzeiro","vm":0.4446,"e":0.2731,"vv":0.2823,"xgm":1.446,"xgv":1.1},{"rodada":37,"data":"2026-11-28","hora":"21:00","m":"Internacional","v":"Bragantino","vm":0.4162,"e":0.2759,"vv":0.3078,"xgm":1.422,"xgv":1.189},{"rodada":37,"data":"2026-11-28","hora":"21:00","m":"Mirassol","v":"Athletico-PR","vm":0.4271,"e":0.275,"vv":0.2979,"xgm":1.383,"xgv":1.111},{"rodada":37,"data":"2026-11-28","hora":"21:00","m":"São Paulo","v":"Remo","vm":0.6231,"e":0.2318,"vv":0.1451,"xgm":1.823,"xgv":0.755},{"rodada":37,"data":"2026-11-28","hora":"21:00","m":"Vitória","v":"Santos","vm":0.3887,"e":0.2776,"vv":0.3337,"xgm":1.346,"xgv":1.228},{"rodada":38,"data":"2026-12-02","hora":"21:00","m":"Athletico-PR","v":"São Paulo","vm":0.4768,"e":0.2686,"vv":0.2546,"xgm":1.427,"xgv":0.964},{"rodada":38,"data":"2026-12-02","hora":"21:00","m":"Bahia","v":"Atlético-MG","vm":0.5173,"e":0.261,"vv":0.2217,"xgm":1.668,"xgv":1.016},{"rodada":38,"data":"2026-12-02","hora":"21:00","m":"Bragantino","v":"Fluminense","vm":0.4645,"e":0.2705,"vv":0.265,"xgm":1.491,"xgv":1.064},{"rodada":38,"data":"2026-12-02","hora":"21:00","m":"Cruzeiro","v":"Internacional","vm":0.5555,"e":0.252,"vv":0.1924,"xgm":1.7,"xgv":0.902},{"rodada":38,"data":"2026-12-02","hora":"21:00","m":"Flamengo","v":"Chapecoense","vm":0.8239,"e":0.1375,"vv":0.0386,"xgm":2.476,"xgv":0.405},{"rodada":38,"data":"2026-12-02","hora":"21:00","m":"Grêmio","v":"Mirassol","vm":0.4351,"e":0.2742,"vv":0.2907,"xgm":1.454,"xgv":1.144},{"rodada":38,"data":"2026-12-02","hora":"21:00","m":"Palmeiras","v":"Coritiba","vm":0.7301,"e":0.1882,"vv":0.0816,"xgm":2.024,"xgv":0.515},{"rodada":38,"data":"2026-12-02","hora":"21:00","m":"Remo","v":"Corinthians","vm":0.2999,"e":0.2752,"vv":0.4249,"xgm":1.107,"xgv":1.369},{"rodada":38,"data":"2026-12-02","hora":"21:00","m":"Santos","v":"Botafogo","vm":0.4844,"e":0.2673,"vv":0.2483,"xgm":1.623,"xgv":1.102},{"rodada":38,"data":"2026-12-02","hora":"21:00","m":"Vasco","v":"Vitória","vm":0.5778,"e":0.246,"vv":0.1762,"xgm":1.723,"xgv":0.841}],"at_padrao":["Vitória","Internacional","Corinthians","Grêmio"],"sim":{"id":"serie-a-2026","n":20000,"seed":20261016,"grades":[[0.07562,0.09151,0.08483,0.04599,0.0187,0.00608,0.00165,0.00038,8e-05,1e-05,0.0,0.0595,0.12783,0.09536,0.0517,0.02102,0.00684,0.00185,0.00043,9e-05,2e-05,0.0,0.04067,0.06614,0.05267,0.02906,0.01181,0.00384,0.00104,0.00024,5e-05,1e-05,0.0,0.01524,0.02478,0.02015,0.0107,0.00443,0.00144,0.00039,9e-05,2e-05,0.0,0.0,0.00428,0.00696,0.00566,0.00307,0.00122,0.0004,0.00011,3e-05,1e-05,0.0,0.0,0.00096,0.00157,0.00127,0.00069,0.00028,9e-05,3e-05,1e-05,0.0,0.0,0.0,0.00018,0.00029,0.00024,0.00013,5e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,3e-05,5e-05,4e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.09151,0.07129,0.04047,0.01279,0.00303,0.00057,9e-05,1e-05,0.0,0.0,0.0,0.11865,0.12549,0.06099,0.01928,0.00457,0.00087,0.00014,2e-05,0.0,0.0,0.0,0.09974,0.09459,0.04043,0.01453,0.00345,0.00065,0.0001,1e-05,0.0,0.0,0.0,0.0501,0.04752,0.02253,0.00642,0.00173,0.00033,5e-05,1e-05,0.0,0.0,0.0,0.01888,0.0179,0.00849,0.00268,0.00057,0.00012,2e-05,0.0,0.0,0.0,0.0,0.00569,0.0054,0.00256,0.00081,0.00019,3e-05,1e-05,0.0,0.0,0.0,0.0,0.00143,0.00136,0.00064,0.0002,5e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.00031,0.00029,0.00014,4e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,6e-05,6e-05,3e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.08941,0.09336,0.06917,0.02961,0.00951,0.00244,0.00052,0.0001,2e-05,0.0,0.0,0.0882,0.13272,0.08442,0.03614,0.0116,0.00298,0.00064,0.00012,2e-05,0.0,0.0,0.06261,0.08041,0.04689,0.02206,0.00708,0.00182,0.00039,7e-05,1e-05,0.0,0.0,0.02547,0.03271,0.021,0.00817,0.00288,0.00074,0.00016,3e-05,1e-05,0.0,0.0,0.00777,0.00998,0.00641,0.00274,0.0008,0.00023,5e-05,1e-05,0.0,0.0,0.0,0.0019,0.00244,0.00156,0.00067,0.00021,5e-05,1e-05,0.0,0.0,0.0,0.0,0.00039,0.0005,0.00032,0.00014,4e-05,1e-05,0.0,0.0,0.0,0.0,0.0,7e-05,9e-05,6e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0818,0.07882,0.05919,0.02522,0.00806,0.00206,0.00044,8e-05,1e-05,0.0,0.0,0.08476,0.13276,0.08062,0.03435,0.01098,0.00281,0.0006,0.00011,2e-05,0.0,0.0,0.0671,0.08577,0.0521,0.0234,0.00748,0.00191,0.00041,7e-05,1e-05,0.0,0.0,0.03046,0.03895,0.02489,0.01008,0.0034,0.00087,0.00018,3e-05,1e-05,0.0,0.0,0.01037,0.01326,0.00848,0.00361,0.0011,0.0003,6e-05,1e-05,0.0,0.0,0.0,0.00283,0.00361,0.00231,0.00098,0.00032,8e-05,2e-05,0.0,0.0,0.0,0.0,0.00064,0.00082,0.00052,0.00022,7e-05,2e-05,0.0,0.0,0.0,0.0,0.0,0.00013,0.00016,0.0001,4e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,2e-05,3e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.07888,0.03758,0.01481,0.00304,0.00047,6e-05,1e-05,0.0,0.0,0.0,0.0,0.13803,0.0948,0.02951,0.00607,0.00094,0.00012,1e-05,0.0,0.0,0.0,0.0,0.14743,0.09093,0.02625,0.00604,0.00093,0.00012,1e-05,0.0,0.0,0.0,0.0,0.0979,0.06039,0.01862,0.00359,0.00062,8e-05,1e-05,0.0,0.0,0.0,0.0,0.04876,0.03008,0.00928,0.00191,0.00028,4e-05,0.0,0.0,0.0,0.0,0.0,0.01943,0.01198,0.0037,0.00076,0.00012,1e-05,0.0,0.0,0.0,0.0,0.0,0.00645,0.00398,0.00123,0.00025,4e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.00184,0.00113,0.00035,7e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.00046,0.00028,9e-05,2e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0001,6e-05,2e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.07658,0.07606,0.06156,0.02827,0.00974,0.00268,0.00062,0.00012,2e-05,0.0,0.0,0.07515,0.1324,0.08393,0.03854,0.01328,0.00366,0.00084,0.00016,3e-05,0.0,0.0,0.06031,0.08308,0.05605,0.02628,0.00905,0.00249,0.00057,0.00011,2e-05,0.0,0.0,0.02741,0.03776,0.02601,0.0117,0.00411,0.00113,0.00026,5e-05,1e-05,0.0,0.0,0.00934,0.01287,0.00886,0.00407,0.00137,0.00039,9e-05,2e-05,0.0,0.0,0.0,0.00255,0.00351,0.00242,0.00111,0.00038,0.0001,2e-05,1e-05,0.0,0.0,0.0,0.00058,0.0008,0.00055,0.00025,9e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.00011,0.00015,0.00011,5e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,2e-05,3e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.08812,0.07697,0.05013,0.01838,0.00506,0.00111,0.0002,3e-05,0.0,0.0,0.0,0.10256,0.13065,0.07131,0.02615,0.00719,0.00158,0.00029,5e-05,1e-05,0.0,0.0,0.08291,0.09122,0.04608,0.0186,0.00512,0.00113,0.00021,3e-05,0.0,0.0,0.0,0.03931,0.04325,0.0238,0.00801,0.00243,0.00053,0.0001,2e-05,0.0,0.0,0.0,0.01398,0.01538,0.00846,0.0031,0.00078,0.00019,3e-05,1e-05,0.0,0.0,0.0,0.00398,0.00438,0.00241,0.00088,0.00024,5e-05,1e-05,0.0,0.0,0.0,0.0,0.00094,0.00104,0.00057,0.00021,6e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.00019,0.00021,0.00012,4e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,3e-05,4e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.07125,0.05186,0.035,0.01275,0.00348,0.00076,0.00014,2e-05,0.0,0.0,0.0,0.09001,0.12454,0.06095,0.0222,0.00607,0.00133,0.00024,4e-05,1e-05,0.0,0.0,0.08901,0.09728,0.05342,0.01934,0.00528,0.00115,0.00021,3e-05,0.0,0.0,0.0,0.05168,0.05647,0.03086,0.0113,0.00307,0.00067,0.00012,2e-05,0.0,0.0,0.0,0.0225,0.02459,0.01344,0.00489,0.00134,0.00029,5e-05,1e-05,0.0,0.0,0.0,0.00784,0.00857,0.00468,0.0017,0.00047,0.0001,2e-05,0.0,0.0,0.0,0.0,0.00228,0.00249,0.00136,0.00049,0.00014,3e-05,1e-05,0.0,0.0,0.0,0.0,0.00057,0.00062,0.00034,0.00012,3e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.00012,0.00014,7e-05,3e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,2e-05,3e-05,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.09525,0.08778,0.05576,0.02022,0.0055,0.0012,0.00022,3e-05,1e-05,0.0,0.0,0.10824,0.13091,0.07347,0.02663,0.00724,0.00158,0.00029,4e-05,1e-05,0.0,0.0,0.08092,0.08801,0.04228,0.01755,0.00477,0.00104,0.00019,3e-05,0.0,0.0,0.0,0.03554,0.03865,0.02102,0.00673,0.0021,0.00046,8e-05,1e-05,0.0,0.0,0.0,0.01171,0.01273,0.00692,0.00251,0.0006,0.00015,3e-05,0.0,0.0,0.0,0.0,0.00309,0.00335,0.00182,0.00066,0.00018,3e-05,1e-05,0.0,0.0,0.0,0.0,0.00068,0.00074,0.0004,0.00015,4e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.00013,0.00014,7e-05,3e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,2e-05,2e-05,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.08322,0.06328,0.03848,0.01288,0.00323,0.00065,0.00011,2e-05,0.0,0.0,0.0,0.1069,0.1259,0.06142,0.02056,0.00516,0.00104,0.00017,3e-05,0.0,0.0,0.0,0.09582,0.09622,0.04548,0.0164,0.00412,0.00083,0.00014,2e-05,0.0,0.0,0.0,0.05098,0.05119,0.0257,0.0081,0.00219,0.00044,7e-05,1e-05,0.0,0.0,0.0,0.02034,0.02043,0.01026,0.00343,0.00081,0.00018,3e-05,0.0,0.0,0.0,0.0,0.00649,0.00652,0.00327,0.0011,0.00028,5e-05,1e-05,0.0,0.0,0.0,0.0,0.00173,0.00173,0.00087,0.00029,7e-05,2e-05,0.0,0.0,0.0,0.0,0.0,0.00039,0.0004,0.0002,7e-05,2e-05,0.0,0.0,0.0,0.0,0.0,0.0,8e-05,8e-05,4e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.087,0.09106,0.06911,0.03026,0.00994,0.00261,0.00057,0.00011,2e-05,0.0,0.0,0.08481,0.1328,0.08522,0.03731,0.01225,0.00322,0.00071,0.00013,2e-05,0.0,0.0,0.06104,0.08018,0.04847,0.023,0.00755,0.00198,0.00043,8e-05,1e-05,0.0,0.0,0.02509,0.03296,0.02165,0.00872,0.00311,0.00082,0.00018,3e-05,1e-05,0.0,0.0,0.00773,0.01016,0.00667,0.00292,0.00088,0.00025,6e-05,1e-05,0.0,0.0,0.0,0.00191,0.0025,0.00164,0.00072,0.00024,6e-05,1e-05,0.0,0.0,0.0,0.0,0.00039,0.00052,0.00034,0.00015,5e-05,1e-05,0.0,0.0,0.0,0.0,0.0,7e-05,9e-05,6e-05,3e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.08279,0.04772,0.02213,0.00548,0.00102,0.00015,2e-05,0.0,0.0,0.0,0.0,0.13006,0.10852,0.04045,0.01001,0.00186,0.00028,3e-05,0.0,0.0,0.0,0.0,0.12936,0.09602,0.03319,0.00915,0.0017,0.00025,3e-05,0.0,0.0,0.0,0.0,0.07882,0.05851,0.02172,0.005,0.00103,0.00015,2e-05,0.0,0.0,0.0,0.0,0.03602,0.02674,0.00992,0.00246,0.00042,7e-05,1e-05,0.0,0.0,0.0,0.0,0.01317,0.00977,0.00363,0.0009,0.00017,2e-05,0.0,0.0,0.0,0.0,0.0,0.00401,0.00298,0.00111,0.00027,5e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.00105,0.00078,0.00029,7e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.00024,0.00018,7e-05,2e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5e-05,4e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.10124,0.08853,0.05069,0.01654,0.00405,0.00079,0.00013,2e-05,0.0,0.0,0.0,0.12271,0.12788,0.06733,0.02198,0.00538,0.00105,0.00017,2e-05,0.0,0.0,0.0,0.09126,0.08935,0.03748,0.0146,0.00357,0.0007,0.00011,2e-05,0.0,0.0,0.0,0.0404,0.03956,0.01937,0.00542,0.00158,0.00031,5e-05,1e-05,0.0,0.0,0.0,0.01342,0.01314,0.00643,0.0021,0.00044,0.0001,2e-05,0.0,0.0,0.0,0.0,0.00356,0.00349,0.00171,0.00056,0.00014,2e-05,0.0,0.0,0.0,0.0,0.0,0.00079,0.00077,0.00038,0.00012,3e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.00015,0.00015,7e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,3e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.07999,0.04569,0.02179,0.00552,0.00105,0.00016,2e-05,0.0,0.0,0.0,0.0,0.12522,0.10874,0.04058,0.01028,0.00195,0.0003,4e-05,0.0,0.0,0.0,0.0,0.12716,0.09661,0.03468,0.00957,0.00182,0.00028,3e-05,0.0,0.0,0.0,0.0,0.07895,0.05998,0.02278,0.00545,0.00113,0.00017,2e-05,0.0,0.0,0.0,0.0,0.03676,0.02793,0.01061,0.00269,0.00048,8e-05,1e-05,0.0,0.0,0.0,0.0,0.01369,0.0104,0.00395,0.001,0.00019,3e-05,0.0,0.0,0.0,0.0,0.0,0.00425,0.00323,0.00123,0.00031,6e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.00113,0.00086,0.00033,8e-05,2e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.00026,0.0002,8e-05,2e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5e-05,4e-05,2e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.08565,0.07218,0.04679,0.01696,0.00461,0.001,0.00018,3e-05,0.0,0.0,0.0,0.10191,0.12981,0.06911,0.02505,0.00681,0.00148,0.00027,4e-05,1e-05,0.0,0.0,0.08541,0.09287,0.04699,0.0185,0.00503,0.00109,0.0002,3e-05,0.0,0.0,0.0,0.04205,0.04573,0.02486,0.00839,0.00248,0.00054,0.0001,2e-05,0.0,0.0,0.0,0.01553,0.01689,0.00918,0.00333,0.00084,0.0002,4e-05,1e-05,0.0,0.0,0.0,0.00459,0.00499,0.00271,0.00098,0.00027,5e-05,1e-05,0.0,0.0,0.0,0.0,0.00113,0.00123,0.00067,0.00024,7e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.00024,0.00026,0.00014,5e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,4e-05,5e-05,3e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.08205,0.06409,0.04045,0.01408,0.00368,0.00077,0.00013,2e-05,0.0,0.0,0.0,0.10265,0.12726,0.06392,0.02225,0.00581,0.00121,0.00021,3e-05,0.0,0.0,0.0,0.09155,0.09561,0.04733,0.01758,0.00459,0.00096,0.00017,3e-05,0.0,0.0,0.0,0.04822,0.05036,0.0263,0.00868,0.00242,0.00051,9e-05,1e-05,0.0,0.0,0.0,0.01905,0.01989,0.01039,0.00362,0.00089,0.0002,3e-05,1e-05,0.0,0.0,0.0,0.00602,0.00629,0.00328,0.00114,0.0003,6e-05,1e-05,0.0,0.0,0.0,0.0,0.00159,0.00166,0.00086,0.0003,8e-05,2e-05,0.0,0.0,0.0,0.0,0.0,0.00036,0.00037,0.00019,7e-05,2e-05,0.0,0.0,0.0,0.0,0.0,0.0,7e-05,7e-05,4e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.07572,0.09968,0.09671,0.05563,0.024,0.00828,0.00238,0.00059,0.00013,2e-05,0.0,0.05371,0.12325,0.09794,0.05633,0.0243,0.00839,0.00241,0.0006,0.00013,3e-05,0.0,0.03352,0.05783,0.04855,0.02853,0.01231,0.00425,0.00122,0.0003,6e-05,1e-05,0.0,0.01131,0.01952,0.01684,0.00943,0.00415,0.00143,0.00041,0.0001,2e-05,0.0,0.0,0.00286,0.00494,0.00426,0.00245,0.00103,0.00036,0.0001,3e-05,1e-05,0.0,0.0,0.00058,0.001,0.00086,0.0005,0.00021,7e-05,2e-05,1e-05,0.0,0.0,0.0,0.0001,0.00017,0.00015,8e-05,4e-05,1e-05,0.0,0.0,0.0,0.0,0.0,1e-05,2e-05,2e-05,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.08706,0.0595,0.03126,0.00897,0.00193,0.00033,5e-05,1e-05,0.0,0.0,0.0,0.12308,0.11916,0.05181,0.01486,0.0032,0.00055,8e-05,1e-05,0.0,0.0,0.0,0.11258,0.09688,0.0383,0.01232,0.00265,0.00046,6e-05,1e-05,0.0,0.0,0.0,0.06219,0.05352,0.02303,0.00607,0.00146,0.00025,4e-05,0.0,0.0,0.0,0.0,0.02577,0.02218,0.00954,0.00274,0.00054,0.0001,2e-05,0.0,0.0,0.0,0.0,0.00854,0.00735,0.00316,0.00091,0.00019,3e-05,1e-05,0.0,0.0,0.0,0.0,0.00236,0.00203,0.00087,0.00025,5e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.00056,0.00048,0.00021,6e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.00012,0.0001,4e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.08699,0.06126,0.03318,0.00984,0.00219,0.00039,6e-05,1e-05,0.0,0.0,0.0,0.12025,0.12102,0.05418,0.01607,0.00358,0.00064,9e-05,1e-05,0.0,0.0,0.0,0.10875,0.09679,0.03964,0.01312,0.00292,0.00052,8e-05,1e-05,0.0,0.0,0.0,0.05919,0.05268,0.02345,0.0064,0.00159,0.00028,4e-05,1e-05,0.0,0.0,0.0,0.02416,0.02151,0.00957,0.00284,0.00058,0.00012,2e-05,0.0,0.0,0.0,0.0,0.00789,0.00702,0.00313,0.00093,0.00021,3e-05,1e-05,0.0,0.0,0.0,0.0,0.00215,0.00191,0.00085,0.00025,6e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0005,0.00045,0.0002,6e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0001,9e-05,4e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.07489,0.07044,0.05581,0.02484,0.00829,0.00221,0.00049,9e-05,2e-05,0.0,0.0,0.07689,0.13195,0.08031,0.03575,0.01194,0.00319,0.00071,0.00014,2e-05,0.0,0.0,0.06477,0.0865,0.05715,0.02572,0.00859,0.00229,0.00051,0.0001,2e-05,0.0,0.0,0.03107,0.04149,0.02771,0.0122,0.00412,0.0011,0.00024,5e-05,1e-05,0.0,0.0,0.01118,0.01493,0.00997,0.00444,0.00147,0.0004,9e-05,2e-05,0.0,0.0,0.0,0.00322,0.0043,0.00287,0.00128,0.00043,0.00011,3e-05,1e-05,0.0,0.0,0.0,0.00077,0.00103,0.00069,0.00031,0.0001,3e-05,1e-05,0.0,0.0,0.0,0.0,0.00016,0.00021,0.00014,6e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,3e-05,4e-05,3e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0818,0.05755,0.0331,0.01037,0.00244,0.00046,7e-05,1e-05,0.0,0.0,0.0,0.11108,0.12207,0.05557,0.0174,0.00409,0.00077,0.00012,2e-05,0.0,0.0,0.0,0.1039,0.09761,0.04339,0.01461,0.00343,0.00064,0.0001,1e-05,0.0,0.0,0.0,0.05814,0.05462,0.02566,0.0076,0.00192,0.00036,6e-05,1e-05,0.0,0.0,0.0,0.0244,0.02293,0.01077,0.00337,0.00075,0.00015,2e-05,0.0,0.0,0.0,0.0,0.00819,0.0077,0.00362,0.00113,0.00027,5e-05,1e-05,0.0,0.0,0.0,0.0,0.00229,0.00215,0.00101,0.00032,7e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.00055,0.00052,0.00024,8e-05,2e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.00012,0.00011,5e-05,2e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.08689,0.07596,0.05014,0.01862,0.00519,0.00115,0.00021,3e-05,1e-05,0.0,0.0,0.10059,0.13082,0.07173,0.02663,0.00742,0.00165,0.00031,5e-05,1e-05,0.0,0.0,0.08192,0.09125,0.04698,0.01905,0.00531,0.00118,0.00022,3e-05,1e-05,0.0,0.0,0.03906,0.04351,0.02423,0.00832,0.00253,0.00056,0.00011,2e-05,0.0,0.0,0.0,0.01397,0.01556,0.00867,0.00322,0.00083,0.0002,4e-05,1e-05,0.0,0.0,0.0,0.004,0.00445,0.00248,0.00092,0.00026,5e-05,1e-05,0.0,0.0,0.0,0.0,0.00095,0.00106,0.00059,0.00022,6e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.00019,0.00022,0.00012,5e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,3e-05,4e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0713,0.06282,0.04934,0.02149,0.00702,0.00184,0.0004,7e-05,1e-05,0.0,0.0,0.07641,0.13051,0.07602,0.03311,0.01082,0.00283,0.00062,0.00012,2e-05,0.0,0.0,0.06866,0.08972,0.05921,0.02551,0.00833,0.00218,0.00047,9e-05,1e-05,0.0,0.0,0.03526,0.04607,0.0301,0.01324,0.00428,0.00112,0.00024,5e-05,1e-05,0.0,0.0,0.01358,0.01775,0.01159,0.00505,0.00167,0.00043,9e-05,2e-05,0.0,0.0,0.0,0.00419,0.00547,0.00357,0.00156,0.00051,0.00013,3e-05,1e-05,0.0,0.0,0.0,0.00108,0.0014,0.00092,0.0004,0.00013,3e-05,1e-05,0.0,0.0,0.0,0.0,0.00024,0.00031,0.0002,9e-05,3e-05,1e-05,0.0,0.0,0.0,0.0,0.0,5e-05,6e-05,4e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0725,0.10865,0.11527,0.07392,0.03555,0.01368,0.00439,0.00121,0.00029,6e-05,1e-05,0.0423,0.11206,0.09848,0.06315,0.03037,0.01169,0.00375,0.00103,0.00025,5e-05,1e-05,0.02288,0.04401,0.04151,0.02698,0.01298,0.00499,0.0016,0.00044,0.00011,2e-05,0.0,0.00651,0.01253,0.01206,0.00758,0.00369,0.00142,0.00046,0.00013,3e-05,1e-05,0.0,0.00139,0.00268,0.00258,0.00165,0.00078,0.0003,0.0001,3e-05,1e-05,0.0,0.0,0.00024,0.00046,0.00044,0.00028,0.00014,5e-05,2e-05,1e-05,0.0,0.0,0.0,3e-05,6e-05,6e-05,4e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.09622,0.06704,0.03234,0.00862,0.00172,0.00028,4e-05,0.0,0.0,0.0,0.0,0.13787,0.11747,0.05057,0.01348,0.0027,0.00043,6e-05,1e-05,0.0,0.0,0.0,0.11814,0.09449,0.03312,0.01054,0.00211,0.00034,5e-05,1e-05,0.0,0.0,0.0,0.06159,0.04927,0.0197,0.0046,0.0011,0.00018,2e-05,0.0,0.0,0.0,0.0,0.02408,0.01926,0.0077,0.00205,0.00036,7e-05,1e-05,0.0,0.0,0.0,0.0,0.00753,0.00603,0.00241,0.00064,0.00013,2e-05,0.0,0.0,0.0,0.0,0.0,0.00196,0.00157,0.00063,0.00017,3e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.00044,0.00035,0.00014,4e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,9e-05,7e-05,3e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2e-05,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.08082,0.12557,0.12627,0.07757,0.03574,0.01317,0.00404,0.00106,0.00024,5e-05,1e-05,0.04689,0.10964,0.09672,0.05941,0.02737,0.01009,0.0031,0.00082,0.00019,4e-05,1e-05,0.02248,0.04143,0.03488,0.02275,0.01048,0.00386,0.00119,0.00031,7e-05,2e-05,0.0,0.00574,0.01058,0.00975,0.00547,0.00268,0.00099,0.0003,8e-05,2e-05,0.0,0.0,0.0011,0.00203,0.00187,0.00115,0.00048,0.00019,6e-05,2e-05,0.0,0.0,0.0,0.00017,0.00031,0.00029,0.00018,8e-05,3e-05,1e-05,0.0,0.0,0.0,0.0,2e-05,4e-05,4e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.08776,0.07584,0.04914,0.0179,0.00489,0.00107,0.00019,3e-05,0.0,0.0,0.0,0.10296,0.13038,0.07056,0.0257,0.00702,0.00153,0.00028,4e-05,1e-05,0.0,0.0,0.08394,0.09171,0.0461,0.01845,0.00504,0.0011,0.0002,3e-05,0.0,0.0,0.0,0.04018,0.0439,0.02398,0.00804,0.00241,0.00053,0.0001,2e-05,0.0,0.0,0.0,0.01442,0.01576,0.00861,0.00314,0.00079,0.00019,3e-05,1e-05,0.0,0.0,0.0,0.00414,0.00453,0.00247,0.0009,0.00025,5e-05,1e-05,0.0,0.0,0.0,0.0,0.00099,0.00108,0.00059,0.00021,6e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0002,0.00022,0.00012,4e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,4e-05,4e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.08396,0.07601,0.05321,0.02099,0.00621,0.00147,0.00029,5e-05,1e-05,0.0,0.0,0.0931,0.13188,0.07531,0.02971,0.00879,0.00208,0.00041,7e-05,1e-05,0.0,0.0,0.07567,0.08957,0.0498,0.02103,0.00622,0.00147,0.00029,5e-05,1e-05,0.0,0.0,0.0357,0.04226,0.02501,0.00927,0.00294,0.00069,0.00014,2e-05,0.0,0.0,0.0,0.01263,0.01495,0.00885,0.00349,0.00097,0.00025,5e-05,1e-05,0.0,0.0,0.0,0.00358,0.00423,0.0025,0.00099,0.00029,6e-05,1e-05,0.0,0.0,0.0,0.0,0.00084,0.001,0.00059,0.00023,7e-05,2e-05,0.0,0.0,0.0,0.0,0.0,0.00017,0.0002,0.00012,5e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,3e-05,4e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.09112,0.08192,0.05306,0.01948,0.00536,0.00118,0.00022,3e-05,1e-05,0.0,0.0,0.10444,0.13103,0.07276,0.02671,0.00735,0.00162,0.0003,5e-05,1e-05,0.0,0.0,0.08141,0.08965,0.0446,0.01832,0.00504,0.00111,0.0002,3e-05,0.0,0.0,0.0,0.03722,0.04099,0.02257,0.00749,0.00231,0.00051,9e-05,2e-05,0.0,0.0,0.0,0.01276,0.01405,0.00774,0.00284,0.00071,0.00017,3e-05,1e-05,0.0,0.0,0.0,0.0035,0.00385,0.00212,0.00078,0.00021,4e-05,1e-05,0.0,0.0,0.0,0.0,0.0008,0.00088,0.00049,0.00018,5e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.00016,0.00017,0.0001,3e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,3e-05,3e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.08332,0.04871,0.02278,0.0057,0.00107,0.00016,2e-05,0.0,0.0,0.0,0.0,0.12988,0.10941,0.04129,0.01033,0.00194,0.00029,4e-05,0.0,0.0,0.0,0.0,0.12821,0.09618,0.03353,0.00936,0.00176,0.00026,3e-05,0.0,0.0,0.0,0.0,0.07746,0.05811,0.0218,0.00507,0.00106,0.00016,2e-05,0.0,0.0,0.0,0.0,0.0351,0.02633,0.00988,0.00247,0.00043,7e-05,1e-05,0.0,0.0,0.0,0.0,0.01272,0.00954,0.00358,0.00089,0.00017,2e-05,0.0,0.0,0.0,0.0,0.0,0.00384,0.00288,0.00108,0.00027,5e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.001,0.00075,0.00028,7e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.00022,0.00017,6e-05,2e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5e-05,3e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.08628,0.08264,0.0591,0.02405,0.00734,0.00179,0.00036,6e-05,1e-05,0.0,0.0,0.09159,0.13267,0.07906,0.03218,0.00982,0.0024,0.00049,9e-05,1e-05,0.0,0.0,0.07069,0.08633,0.04885,0.02152,0.00657,0.00161,0.00033,6e-05,1e-05,0.0,0.0,0.03152,0.0385,0.0235,0.00887,0.00293,0.00072,0.00015,3e-05,0.0,0.0,0.0,0.01054,0.01287,0.00786,0.0032,0.0009,0.00024,5e-05,1e-05,0.0,0.0,0.0,0.00282,0.00345,0.0021,0.00086,0.00026,6e-05,1e-05,0.0,0.0,0.0,0.0,0.00063,0.00077,0.00047,0.00019,6e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.00012,0.00015,9e-05,4e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,2e-05,3e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.09749,0.08039,0.04524,0.01436,0.00342,0.00065,0.0001,1e-05,0.0,0.0,0.0,0.12288,0.12659,0.06378,0.02024,0.00482,0.00092,0.00015,2e-05,0.0,0.0,0.0,0.09668,0.09205,0.0383,0.01427,0.0034,0.00065,0.0001,1e-05,0.0,0.0,0.0,0.04543,0.04326,0.02059,0.00571,0.0016,0.0003,5e-05,1e-05,0.0,0.0,0.0,0.01601,0.01525,0.00726,0.0023,0.00048,0.00011,2e-05,0.0,0.0,0.0,0.0,0.00451,0.0043,0.00205,0.00065,0.00015,3e-05,1e-05,0.0,0.0,0.0,0.0,0.00106,0.00101,0.00048,0.00015,4e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.00021,0.0002,0.0001,3e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,4e-05,4e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.07907,0.05813,0.03597,0.01214,0.00307,0.00062,0.00011,2e-05,0.0,0.0,0.0,0.10267,0.12476,0.05981,0.02019,0.00511,0.00103,0.00017,3e-05,0.0,0.0,0.0,0.09597,0.0972,0.04735,0.01679,0.00425,0.00086,0.00015,2e-05,0.0,0.0,0.0,0.05319,0.05387,0.02728,0.00886,0.00236,0.00048,8e-05,1e-05,0.0,0.0,0.0,0.02211,0.0224,0.01134,0.00383,0.00093,0.0002,3e-05,1e-05,0.0,0.0,0.0,0.00735,0.00745,0.00377,0.00127,0.00032,6e-05,1e-05,0.0,0.0,0.0,0.0,0.00204,0.00206,0.00104,0.00035,9e-05,2e-05,0.0,0.0,0.0,0.0,0.0,0.00048,0.00049,0.00025,8e-05,2e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0001,0.0001,5e-05,2e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.08704,0.07227,0.04558,0.01606,0.00424,0.0009,0.00016,2e-05,0.0,0.0,0.0,0.10544,0.12911,0.06752,0.02379,0.00629,0.00133,0.00023,3e-05,1e-05,0.0,0.0,0.08829,0.09334,0.04557,0.01762,0.00466,0.00098,0.00017,3e-05,0.0,0.0,0.0,0.04359,0.04609,0.02436,0.00793,0.0023,0.00049,9e-05,1e-05,0.0,0.0,0.0,0.01614,0.01707,0.00902,0.00318,0.00078,0.00018,3e-05,1e-05,0.0,0.0,0.0,0.00478,0.00506,0.00267,0.00094,0.00025,5e-05,1e-05,0.0,0.0,0.0,0.0,0.00118,0.00125,0.00066,0.00023,6e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.00025,0.00026,0.00014,5e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,5e-05,5e-05,3e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.08318,0.05688,0.03131,0.00937,0.0021,0.00038,6e-05,1e-05,0.0,0.0,0.0,0.11601,0.12014,0.05295,0.01584,0.00355,0.00064,0.0001,1e-05,0.0,0.0,0.0,0.10876,0.09761,0.0411,0.0134,0.00301,0.00054,8e-05,1e-05,0.0,0.0,0.0,0.06131,0.05503,0.0247,0.00693,0.00169,0.0003,5e-05,1e-05,0.0,0.0,0.0,0.02592,0.02327,0.01044,0.00312,0.00066,0.00013,2e-05,0.0,0.0,0.0,0.0,0.00877,0.00787,0.00353,0.00106,0.00024,4e-05,1e-05,0.0,0.0,0.0,0.0,0.00247,0.00222,0.001,0.0003,7e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0006,0.00054,0.00024,7e-05,2e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.00013,0.00011,5e-05,2e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.06105,0.01721,0.00477,0.00064,6e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.13334,0.06105,0.01179,0.00159,0.00016,1e-05,0.0,0.0,0.0,0.0,0.0,0.1725,0.06974,0.01376,0.00196,0.0002,2e-05,0.0,0.0,0.0,0.0,0.0,0.14219,0.05749,0.01162,0.00153,0.00016,1e-05,0.0,0.0,0.0,0.0,0.0,0.08791,0.03554,0.00719,0.00097,0.0001,1e-05,0.0,0.0,0.0,0.0,0.0,0.04348,0.01758,0.00355,0.00048,5e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.01792,0.00725,0.00146,0.0002,2e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.00633,0.00256,0.00052,7e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.00196,0.00079,0.00016,2e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.00054,0.00022,4e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.00013,5e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.08466,0.07406,0.05005,0.01899,0.0054,0.00123,0.00023,4e-05,1e-05,0.0,0.0,0.09712,0.13103,0.07239,0.02746,0.00781,0.00178,0.00034,6e-05,1e-05,0.0,0.0,0.08021,0.09129,0.04861,0.01986,0.00565,0.00129,0.00024,4e-05,1e-05,0.0,0.0,0.03867,0.04401,0.02505,0.00889,0.00272,0.00062,0.00012,2e-05,0.0,0.0,0.0,0.01398,0.01592,0.00906,0.00344,0.00092,0.00022,4e-05,1e-05,0.0,0.0,0.0,0.00404,0.0046,0.00262,0.00099,0.00028,6e-05,1e-05,0.0,0.0,0.0,0.0,0.00097,0.00111,0.00063,0.00024,7e-05,2e-05,0.0,0.0,0.0,0.0,0.0,0.0002,0.00023,0.00013,5e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,4e-05,4e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.08228,0.03528,0.01154,0.00196,0.00025,3e-05,0.0,0.0,0.0,0.0,0.0,0.15473,0.08414,0.02317,0.00394,0.0005,5e-05,0.0,0.0,0.0,0.0,0.0,0.16456,0.08399,0.01944,0.00396,0.00051,5e-05,0.0,0.0,0.0,0.0,0.0,0.11018,0.05623,0.01435,0.00221,0.00034,3e-05,0.0,0.0,0.0,0.0,0.0,0.05533,0.02824,0.00721,0.00123,0.00014,2e-05,0.0,0.0,0.0,0.0,0.0,0.02223,0.01134,0.0029,0.00049,6e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.00744,0.0038,0.00097,0.00016,2e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.00214,0.00109,0.00028,5e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.00054,0.00027,7e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.00012,6e-05,2e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.09226,0.10557,0.08138,0.03681,0.01249,0.00339,0.00077,0.00015,3e-05,0.0,0.0,0.08346,0.13101,0.08925,0.04037,0.0137,0.00372,0.00084,0.00016,3e-05,0.0,0.0,0.05373,0.07292,0.04394,0.02214,0.00751,0.00204,0.00046,9e-05,2e-05,0.0,0.0,0.01964,0.02666,0.01809,0.00727,0.00275,0.00075,0.00017,3e-05,1e-05,0.0,0.0,0.00539,0.00731,0.00496,0.00224,0.00068,0.0002,5e-05,1e-05,0.0,0.0,0.0,0.00118,0.0016,0.00109,0.00049,0.00017,4e-05,1e-05,0.0,0.0,0.0,0.0,0.00022,0.00029,0.0002,9e-05,3e-05,1e-05,0.0,0.0,0.0,0.0,0.0,3e-05,5e-05,3e-05,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.07713,0.06032,0.04031,0.01478,0.00407,0.00089,0.00016,3e-05,0.0,0.0,0.0,0.09444,0.12761,0.06529,0.02394,0.00658,0.00145,0.00027,4e-05,1e-05,0.0,0.0,0.08692,0.09562,0.05124,0.01939,0.00533,0.00117,0.00021,3e-05,1e-05,0.0,0.0,0.04693,0.05163,0.0284,0.01014,0.00288,0.00063,0.00012,2e-05,0.0,0.0,0.0,0.019,0.0209,0.0115,0.00422,0.00113,0.00026,5e-05,1e-05,0.0,0.0,0.0,0.00615,0.00677,0.00373,0.00137,0.00038,8e-05,2e-05,0.0,0.0,0.0,0.0,0.00166,0.00183,0.00101,0.00037,0.0001,2e-05,0.0,0.0,0.0,0.0,0.0,0.00038,0.00042,0.00023,9e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,8e-05,9e-05,5e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.08506,0.05554,0.02854,0.00795,0.00166,0.00028,4e-05,1e-05,0.0,0.0,0.0,0.1235,0.11674,0.04887,0.01361,0.00284,0.00047,7e-05,1e-05,0.0,0.0,0.0,0.11635,0.09721,0.03764,0.01165,0.00243,0.00041,6e-05,1e-05,0.0,0.0,0.0,0.0664,0.05548,0.02318,0.00598,0.00139,0.00023,3e-05,0.0,0.0,0.0,0.0,0.02842,0.02375,0.00992,0.00276,0.00053,0.0001,1e-05,0.0,0.0,0.0,0.0,0.00973,0.00813,0.0034,0.00095,0.0002,3e-05,1e-05,0.0,0.0,0.0,0.0,0.00278,0.00232,0.00097,0.00027,6e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.00068,0.00057,0.00024,7e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.00015,0.00012,5e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3e-05,2e-05,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]],"metricas":[{"k":"campeao","n":"Título","de":1,"ate":1},{"k":"g6","n":"Liberta.","de":1,"ate":6},{"k":"sula","n":"Sul-Am.","de":7,"ate":12},{"k":"z4","n":"Z4","de":17,"ate":20,"ruim":1}],"zonas":[[1,1,"p1"],[2,6,"g6"],[7,12,"sula"],[17,20,"z4"]]},"proximos":[]};
+const T = D.times, ORD = D.ordem;
+const $ = s => document.querySelector(s);
+/* escudos: arquivo escudos/<slug>.png (ou .svg) quando existir; enquanto não existe, círculo com a sigla */
+const SLUG = {'Flamengo':'flamengo','Palmeiras':'palmeiras','Athletico-PR':'athletico-pr','Fluminense':'fluminense','Bahia':'bahia','Cruzeiro':'cruzeiro','Atlético-MG':'atletico-mg','Santos':'santos','Bragantino':'bragantino','São Paulo':'sao-paulo','Coritiba':'coritiba','Vitória':'vitoria','Botafogo':'botafogo','Vasco':'vasco','Mirassol':'mirassol','Corinthians':'corinthians','Internacional':'internacional','Grêmio':'gremio','Remo':'remo','Chapecoense':'chapecoense'};
+const SIGLA = {'Flamengo':'FLA','Palmeiras':'PAL','Athletico-PR':'CAP','Fluminense':'FLU','Bahia':'BAH','Cruzeiro':'CRU','Atlético-MG':'CAM','Santos':'SAN','Bragantino':'RBB','São Paulo':'SAO','Coritiba':'CFC','Vitória':'VIT','Botafogo':'BOT','Vasco':'VAS','Mirassol':'MIR','Corinthians':'COR','Internacional':'INT','Grêmio':'GRE','Remo':'REM','Chapecoense':'CHA'};
+const ESC_DIR = '../escudos/';
+// cores dos clubes para o círculo provisório: [fundo, anel]; texto branco se o fundo for escuro
+const CORES = {'Flamengo':['#C3002F','#111111'],'Palmeiras':['#006437','#FFFFFF'],'Athletico-PR':['#C8102E','#111111'],'Fluminense':['#7A1130','#006B3F'],'Bahia':['#0A3B8C','#D52B1E'],'Cruzeiro':['#0033A0','#FFFFFF'],'Atlético-MG':['#111111','#FFFFFF'],'Santos':['#FFFFFF','#111111'],'Bragantino':['#FFFFFF','#E10600'],'São Paulo':['#C8102E','#111111'],'Coritiba':['#006E4C','#FFFFFF'],'Vitória':['#E30613','#111111'],'Botafogo':['#111111','#FFFFFF'],'Vasco':['#FFFFFF','#111111'],'Mirassol':['#FFD200','#008A3E'],'Corinthians':['#111111','#FFFFFF'],'Internacional':['#E30613','#FFFFFF'],'Grêmio':['#0099DC','#111111'],'Remo':['#0A2A6B','#FFFFFF'],'Chapecoense':['#008A3E','#FFFFFF']};
+const claro = hex => { const n = parseInt(hex.slice(1), 16); return (0.299 * (n >> 16) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255)) > 160; };
+const corTxt = t => claro(CORES[t][0]) ? '#15171C' : '#FFFFFF';
+const esc = t => `<span class="esc" title="${t}"><i data-anel="${CORES[t][1]}" style="background:${CORES[t][0]};color:${corTxt(t)};box-shadow:inset 0 0 0 2px ${CORES[t][1]}">${SIGLA[t]}</i><img src="${ESC_DIR}${SLUG[t]}.png" alt="" loading="lazy" onerror="this.remove()"></span>`;
+// para SVG: só desenha o escudo depois de confirmar que o arquivo carrega (evita ícone de imagem quebrada)
+const escSvg = (t, x, y, r) => { const im = new Image(); im.onload = () => { const el = document.createElementNS('http://www.w3.org/2000/svg', 'image'); el.setAttribute('href', im.src); el.setAttribute('x', x - r); el.setAttribute('y', y - r); el.setAttribute('width', 2 * r); el.setAttribute('height', 2 * r); const g = document.querySelector('#faixa svg'); if (g) g.appendChild(el); }; im.src = `${ESC_DIR}${SLUG[t]}.png`; };
+const pct = (p, casas = 1) => {
+  const v = p * 100;
+  if (v >= 100) return '100%'; if (v >= 99.95) return '>99,9%';
+  if (v > 0 && v < 0.05) return '<0,1%';
+  return v.toFixed(casas).replace('.', ',') + '%';
+};
+const rot = v => (v >= 0.0995 ? Math.round(v * 100) : (v * 100).toFixed(1).replace('.', ',')) + '%';
+const pp = d => (d > 0 ? '+' : '−') + Math.abs(d * 100).toFixed(1).replace('.', ',') + ' p.p.';
+const dataBR = iso => { const [y, m, dd] = iso.slice(0, 10).split('-'); return `${dd}/${m}/${y}`; };
+const horaBR = iso => iso.slice(11, 16).replace(':', 'h');
+
+/* tooltip */
+const tip = $('#tip');
+document.addEventListener('mousemove', e => {
+  const el = e.target.closest('[data-tip]');
+  if (!el) { tip.style.opacity = 0; return; }
+  tip.innerHTML = el.dataset.tip; tip.style.opacity = 1;
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  let x = e.clientX + 14, y = e.clientY - h - 10;
+  if (x + w > innerWidth - 8) x = e.clientX - w - 14;
+  if (y < 8) y = e.clientY + 18;
+  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+});
+
+/* selo + tiles */
+(() => {
+  const u = D.ultimo_jogo;
+  $('#selo').innerHTML = `<span>Atualizado em <b>${dataBR(D.gerado_em)} às ${horaBR(D.gerado_em)}</b></span><span>após <b>${u.m} ${u.gm}×${u.gv} ${u.v}</b> (rodada ${u.rodada})</span><span>${D.n_jogados} jogos disputados, ${D.n_restantes} a disputar</span>`;
+})();
+
+/* ===================== xG, xP e simulador da tabela ===================== */
+(() => {
+  const nf = (x, c = 1) => x.toFixed(c).replace('.', ',');
+  const tq = s => String(s).replace(/"/g, '&quot;');
+  const diaX = d => { const [y, m, dd] = d.split('-'); const w = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'][new Date(+y, m - 1, +dd).getDay()]; return `${w} ${dd}/${m}`; };
+  const hoje = D.gerado_em.slice(0, 10);
+  const quando = j => j.data < hoje ? 'adiado · data a definir' : diaX(j.data) + (j.hora ? ' · ' + j.hora.replace(':', 'h') : '');
+  const SIG = t => (typeof SIGLA !== 'undefined' && SIGLA[t]) || t.slice(0, 3).toUpperCase();
+  const seg = (p, cor) => `<i data-r="${p >= 0.005 ? rot(p) : ''}" style="width:${p * 100}%;background:${cor}"></i>`;
+  const barra = (a, b, c, cls = '') => `<div class="xb3${cls}">${seg(a, 'var(--azul)')}${seg(b, 'var(--neutro)')}${seg(c, 'var(--verm)')}</div>`;
+  // rótulo dentro de cada pedaço da barra: sempre que couber (encolhe a fonte antes de desistir)
+  function rotulos(root) {
+    (root || document).querySelectorAll('.xb3 i').forEach(i => {
+      const r = i.dataset.r; i.style.fontSize = ''; i.style.letterSpacing = ''; i.textContent = r || ''; if (!r) return;
+      if (i.scrollWidth > i.clientWidth + 1) { i.style.fontSize = '9.5px'; i.style.letterSpacing = '-.04em';
+        if (i.scrollWidth > i.clientWidth + 1) i.textContent = ''; }
+    });
+  }
+  let rz = null; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => rotulos(), 150); });
+
+  /* ---------- próxima rodada ---------- */
+  const J = (D.proximos || []).slice().sort((a, b) => a.data.localeCompare(b.data) || (a.hora || '').localeCompare(b.hora || ''));
+  if (!J.length || J[0].xgm === undefined) { const s = $('#s-rodada'); if (s) s.style.display = 'none'; }
+  else {
+    $('#sub-rodada').textContent = `Rodada ${D.rodada_atual}: a probabilidade de cada resultado e, embaixo, os gols esperados (xG) e os pontos esperados (xP) de cada time.`;
+    $('#rd-jogos').innerHTML = J.map(j => {
+      const xpm = 3 * j.vm + j.e, xpv = 3 * j.vv + j.e;
+      const t = tq(`<b>${j.m} × ${j.v}</b><br>${j.m}: ${pct(j.vm)} · empate: ${pct(j.e)} · ${j.v}: ${pct(j.vv)}<br>gols esperados ${nf(j.xgm, 2)} × ${nf(j.xgv, 2)}<br>pontos esperados ${nf(xpm, 2)} × ${nf(xpv, 2)}`);
+      return `<div class="rdj" data-tip="${t}"><div class="rdq">${quando(j)}</div>
+        <div class="rdl"><div class="rdt">${esc(j.m)}<span>${j.m}</span></div><span class="rdvs">×</span><div class="rdt v"><span>${j.v}</span>${esc(j.v)}</div></div>
+        ${barra(j.vm, j.e, j.vv, ' lg')}
+        <div class="rdn"><span></span><span class="hd">${SIG(j.m)}</span><span class="hd">${SIG(j.v)}</span>
+          <div class="rdk"><b>xG</b><span>gols esperados</span></div><div class="rdv">${nf(j.xgm)}</div><div class="rdv">${nf(j.xgv)}</div>
+          <div class="rdk"><b>xP</b><span>pontos esperados</span></div><div class="rdv">${nf(xpm)}</div><div class="rdv">${nf(xpv)}</div></div></div>`;
+    }).join('');
+    rotulos($('#rd-jogos'));
+  }
+
+  /* ---------- análise / simulador da tabela ---------- */
+  const R = D.restantes_xg || [];
+  if (!R.length) { ['#s-analise', '#s-classif'].forEach(q => { const s = $(q); if (s) s.style.display = 'none'; }); rotulos(); return; }
+  const SIM = !!(D.sim && D.sim.grades && $('#s-classif'));
+  const NG = R.length, G = 11, CT = D.cortes || {libertadores_direto: 6, sula_ate: 12, z4_de: 17};
+  const fix = new Int16Array(NG).fill(-1);                 // placar cravado: gm*11+gv, ou -1
+  const nFix = () => fix.reduce((s, x) => s + (x >= 0), 0);
+  const gols = g => [(fix[g] / G) | 0, fix[g] % G];
+  const ptsDe = (g, t) => { const [a, b] = gols(g); const [p, c] = R[g].m === t ? [a, b] : [b, a]; return p > c ? 3 : p === c ? 1 : 0; };
+
+  // memória no navegador: vale só para esta atualização do Radar (gerado_em); depois some sozinha
+  const LS = 'rn_sim_' + (SIM ? D.sim.id : 'x');
+  let guardado = null;
+  const salvar = () => { if (!SIM) return; try { const o = {}; R.forEach((j, g) => { if (fix[g] >= 0) o[j.m + '|' + j.v] = fix[g]; });
+    if (Object.keys(o).length) { guardado = guardado || new Date().toISOString(); localStorage.setItem(LS, JSON.stringify({v: D.gerado_em, desde: guardado, fix: o})); }
+    else { guardado = null; localStorage.removeItem(LS); } } catch (e) {} };
+  if (SIM) try { const s = JSON.parse(localStorage.getItem(LS) || 'null');
+    if (s && s.v === D.gerado_em) { R.forEach((j, g) => { const x = s.fix[j.m + '|' + j.v]; if (x !== undefined) fix[g] = x; }); guardado = s.desde; }
+    else if (s) localStorage.removeItem(LS); } catch (e) {}
+
+  // motor: Monte Carlo no navegador com sorteios fixos (semente fixa), placares cravados substituem o sorteio
+  let M = null, POS0 = null, POSF = null;
+  function montaMotor() {
+    const NS = D.sim.n, NT = ORD.length, TI = {}; ORD.forEach((t, k) => TI[t] = k);
+    const HI = Uint8Array.from(R, j => TI[j.m]), AI = Uint8Array.from(R, j => TI[j.v]);
+    let st = D.sim.seed >>> 0;
+    const rnd = () => { st = (st + 0x6D2B79F5) >>> 0; let t = st; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+    const CDF = D.sim.grades.map(gr => { let s = 0; const c = Float64Array.from(gr, p => (s += p)); for (let i = 0; i < c.length; i++) c[i] /= s; c[c.length - 1] = Infinity; return c; });
+    const S = new Uint8Array(NS * NG);
+    for (let s = 0; s < NS; s++) for (let g = 0; g < NG; g++) { const u = rnd(), c = CDF[g]; let i = 0; while (u >= c[i]) i++; S[s * NG + g] = i; }
+    const TB = new Float32Array(NS * NT); for (let i = 0; i < TB.length; i++) TB[i] = rnd();
+    const P0 = Int16Array.from(ORD, t => T[t].Pts), V0 = Int16Array.from(ORD, t => T[t].V), GP0 = Int16Array.from(ORD, t => T[t].GP), GC0 = Int16Array.from(ORD, t => T[t].GC);
+    function rodar(fx) {
+      const pos = new Float64Array(NT * NT), P = new Int16Array(NT), V = new Int16Array(NT), GP = new Int16Array(NT), GC = new Int16Array(NT), K = new Float64Array(NT), O = Array.from({length: NT}, (_, k) => k);
+      for (let s = 0; s < NS; s++) {
+        P.set(P0); V.set(V0); GP.set(GP0); GC.set(GC0);
+        const o = s * NG;
+        for (let g = 0; g < NG; g++) {
+          const x = fx[g] >= 0 ? fx[g] : S[o + g], gh = (x / G) | 0, ga = x % G, h = HI[g], a = AI[g];
+          GP[h] += gh; GC[h] += ga; GP[a] += ga; GC[a] += gh;
+          if (gh > ga) { P[h] += 3; V[h]++; } else if (ga > gh) { P[a] += 3; V[a]++; } else { P[h]++; P[a]++; }
+        }
+        const ot = s * NT;   // desempate: pontos > vitórias > saldo > gols pró > sorteio (igual ao modelo)
+        for (let k = 0; k < NT; k++) K[k] = P[k] * 1e9 + V[k] * 1e6 + (GP[k] - GC[k] + 500) * 1e3 + GP[k] + TB[ot + k] * 0.5;
+        O.sort((x, y) => K[y] - K[x]);
+        for (let r = 0; r < NT; r++) pos[O[r] * NT + r]++;
+      }
+      return pos;
+    }
+    return {NS, NT, TI, rodar};
+  }
+  const MET = SIM ? D.sim.metricas : [], ZON = SIM ? D.sim.zonas : [];
+  function resumo(pos, t) {
+    const NT = M.NT, k = M.TI[t], o = {}; let best = -1, bi = 0;
+    for (let r = 0; r < NT; r++) { const p = pos[k * NT + r] / M.NS; if (p > best) { best = p; bi = r; } }
+    MET.forEach(m => { if (m.de) { let s = 0; for (let r = m.de - 1; r < m.ate; r++) s += pos[k * NT + r]; o[m.k] = s / M.NS; } });
+    o.moda = bi + 1; o.pmoda = best; return o;
+  }
+  // chance mostrada = oficial + (navegador com placares − navegador sem placares); sem placar cravado = oficial
+  const lim01 = x => Math.min(1, Math.max(0, x));
+  function chance(t, k) {
+    const m = MET.find(x => x.k === k);
+    if (m.de) { const f = resumo(POSF, t)[k], b = resumo(POS0, t)[k]; return (f <= 0 || f >= 1) ? f : lim01(T[t][k] + f - b); }
+    if (m.base) { const f = resumo(POSF, t)[m.base], b = resumo(POS0, t)[m.base]; return f <= 0 ? 0 : lim01(T[t][k] + (f - b) * T[t][m.fator]); }
+    if (m.soma) return lim01(m.soma.reduce((s, q) => s + chance(t, q), 0));
+    return T[t][k];
+  }
+  const projecao = t => T[t].Pts + R.reduce((s, j, g) => (j.m !== t && j.v !== t) ? s : s + (fix[g] >= 0 ? ptsDe(g, t) : 3 * (j.m === t ? j.vm : j.vv) + j.e), 0);
+
+  /* colunas dos times */
+  const N = 4, abertos = new Set();
+  $('#at-ctrl').innerHTML = [...Array(N).keys()].map(k => `<div><label for="at-t${k}">Time ${k + 1}</label><select id="at-t${k}">${k ? '<option value="">— nenhum —</option>' : ''}${ORD.map(t => `<option value="${tq(t)}">${T[t].pos}º · ${t}</option>`).join('')}</select></div>`).join('');
+  const sels = [...Array(N).keys()].map(k => $('#at-t' + k));
+  (D.at_padrao || ORD.slice(0, N)).forEach((t, k) => { if (sels[k] && T[t]) sels[k].value = t; });
+  const editor = (g, id) => { const j = R[g], [a, b] = fix[g] >= 0 ? gols(g) : ['', ''];
+    return `<span>${SIG(j.m)}</span><input id="${id}m" type="number" inputmode="numeric" min="0" max="10" value="${a}" aria-label="gols do ${tq(j.m)}" data-g="${g}"><span>×</span><input id="${id}v" type="number" inputmode="numeric" min="0" max="10" value="${b}" aria-label="gols do ${tq(j.v)}" data-g="${g}"><span>${SIG(j.v)}</span>`; };
+  function colunas() {
+    const ts = sels.map(s => s.value).filter((t, i, a) => t && a.indexOf(t) === i);
+    const el = $('#at'); el.className = 'at n' + ts.length;
+    el.innerHTML = ts.map((t, c) => {
+      const gs = R.map((j, g) => g).filter(g => R[g].m === t || R[g].v === t)
+        .sort((x, y) => (R[x].data < hoje) - (R[y].data < hoje) || R[x].data.localeCompare(R[y].data) || (R[x].hora || '').localeCompare(R[y].hora || ''));
+      let sxp = 0, sgp = 0, sgc = 0;
+      const linhas = gs.map(g => {
+        const j = R[g], casa = j.m === t, adv = casa ? j.v : j.m, pv = casa ? j.vm : j.vv, pd = casa ? j.vv : j.vm, f = fix[g] >= 0;
+        let xp, gp, gc, meio;
+        if (f) { const [a, b] = gols(g); [gp, gc] = casa ? [a, b] : [b, a]; xp = ptsDe(g, t);
+          meio = `<div class="atfix r${xp}"><span>${['derrota', 'empate', '', 'vitória'][xp]} · seu placar</span><span>${j.m === t ? SIG(t) : SIG(adv)} ${gols(g)[0]} × ${gols(g)[1]} ${j.m === t ? SIG(adv) : SIG(t)}</span></div>`; }
+        else { xp = 3 * pv + j.e; gp = casa ? j.xgm : j.xgv; gc = casa ? j.xgv : j.xgm; meio = barra(pv, j.e, pd, ' sm'); }
+        sxp += xp; sgp += gp; sgc += gc;
+        const tip = f ? '' : ` data-tip="${tq(`<b>${j.m} × ${j.v}</b> · rodada ${j.rodada}<br>${quando(j)}<br>${t}: vitória ${pct(pv)} · empate ${pct(j.e)} · derrota ${pct(pd)}<br>gols esperados ${nf(gp, 2)} pró × ${nf(gc, 2)} contra<br>pontos esperados (xP) ${nf(xp, 2)}`)}"`;
+        const ed = SIM ? `<div class="ated"${abertos.has(c + '_' + g) ? '' : ' hidden'}>${editor(g, `fx${c}_${g}`)}<button type="button" class="lp" data-lp="${g}">limpar</button></div>` : '';
+        return `<div class="atj${SIM ? ' ed' : ''}${f ? ' fix' : ''}" data-k="${c}_${g}"${tip}><div class="atl"><span class="atr">R${j.rodada}</span>${esc(adv)}<span class="atn">${adv}</span><span class="atc">${casa ? 'casa' : 'fora'}</span><b class="atx">${nf(xp)}</b></div>${meio}${ed}</div>`;
+      }).join('');
+      const fin = M ? resumo(POSF, t) : null;
+      return `<div class="atk"><div class="ath">${esc(t)}<div><b>${t}</b><small>${T[t].pos}º · ${T[t].Pts} pts · faltam ${gs.length}</small></div></div>
+        <div class="atcab"><span>Jogo</span><span>xP (pontos esperados)</span></div>${linhas}
+        <div class="att"><div><span>xP nos ${gs.length} jogos</span><b>${nf(sxp)}</b></div><div><span>xG pró × contra</span><b>${nf(sgp)} × ${nf(sgc)}</b></div><div class="fin"><span>Projeção final</span><b>${nf(T[t].Pts + sxp)} pts</b></div>${SIM ? `<div><span>Posição mais provável</span><b>${fin ? `${fin.moda}º <small style="font-weight:600;color:var(--mute)">(${rot(fin.pmoda)})</small>` : '…'}</b></div>` : ''}</div></div>`;
+    }).join('');
+    rotulos(el);
+  }
+
+  /* todos os jogos, por rodada */
+  const rods = [...new Set(R.map(j => j.rodada))].sort((a, b) => a - b);
+  function lista() {
+    if (!SIM) return;
+    const r = +$('#sl-rod').value;
+    $('#sl').innerHTML = R.map((j, g) => g).filter(g => R[g].rodada === r).sort((x, y) => R[x].data.localeCompare(R[y].data) || (R[x].hora || '').localeCompare(R[y].hora || '')).map(g => {
+      const j = R[g], f = fix[g] >= 0, [a, b] = f ? gols(g) : ['', ''];
+      const meio = f ? `<div class="atfix ${a > b ? 'r3' : a === b ? 'r1' : 'r0'}"><span>seu placar</span><span>${a > b ? 'vitória do ' + j.m : a === b ? 'empate' : 'vitória do ' + j.v}</span></div>` : barra(j.vm, j.e, j.vv, ' sm');
+      return `<div class="slj${f ? ' fix' : ''}"><div class="slq"><span>${quando(j)}</span>${f ? `<button type="button" class="lp" data-lp="${g}">limpar</button>` : `<span>xG ${nf(j.xgm)} × ${nf(j.xgv)}</span>`}</div>
+        <div class="slt m"><span>${j.m}</span>${esc(j.m)}</div><div class="sli"><input id="sl${g}m" type="number" inputmode="numeric" min="0" max="10" value="${a}" aria-label="gols do ${tq(j.m)}" data-g="${g}">×<input id="sl${g}v" type="number" inputmode="numeric" min="0" max="10" value="${b}" aria-label="gols do ${tq(j.v)}" data-g="${g}"></div><div class="slt">${esc(j.v)}<span>${j.v}</span></div>${meio}</div>`;
+    }).join('');
+    rotulos($('#sl'));
+  }
+
+  /* classificação (com os placares cravados) */
+  function tabela() {
+    if (!SIM) return;
+    const tb = {}; ORD.forEach(t => tb[t] = {t, Pts: T[t].Pts, J: T[t].J, V: T[t].V, E: T[t].E, D: T[t].D, GP: T[t].GP, GC: T[t].GC, alt: false});
+    R.forEach((j, g) => { if (fix[g] < 0) return; const [a, b] = gols(g), m = tb[j.m], v = tb[j.v]; m.J++; v.J++; m.alt = v.alt = true; m.GP += a; m.GC += b; v.GP += b; v.GC += a;
+      if (a > b) { m.Pts += 3; m.V++; v.D++; } else if (b > a) { v.Pts += 3; v.V++; m.D++; } else { m.Pts++; v.Pts++; m.E++; v.E++; } });
+    const L = Object.values(tb).sort((x, y) => y.Pts - x.Pts || y.V - x.V || (y.GP - y.GC) - (x.GP - x.GC) || y.GP - x.GP || T[x.t].pos - T[y.t].pos);
+    const sim = nFix() > 0;
+    const cel = (t, m, ruimSobe, sep) => { if (!M) return `<td class="pj${sep ? ' sep' : ''}">…</td>`; const p = chance(t, m), d = p - T[t][m];
+      const txt = p === 0 ? '–' : p < 0.0005 ? '<0,1%' : pct(p);
+      const dl = sim && Math.abs(d) >= 0.0005 ? `<span class="dl ${(d > 0) !== ruimSobe ? 'bom' : 'ruim'}">${d > 0 ? '+' : '−'}${Math.abs(d * 100).toFixed(1).replace('.', ',')}</span>` : '';
+      return `<td${sep ? ' class="sep"' : ''}>${txt}${dl}</td>`; };
+    $('#cl').innerHTML = `<thead><tr><th>#</th><th class="l">Time</th><th>Pts</th><th>J</th><th>V</th><th>E</th><th>D</th><th>SG</th><th class="sep">Proj.</th>${MET.map((m, i) => `<th${i ? '' : ' class="sep"'}>${m.n}</th>`).join('')}</tr></thead><tbody>` +
+      L.map((r, i) => { const t = r.t, p = i + 1, zz = ZON.find(x => p >= x[0] && p <= x[1]), z = zz ? zz[2] : '', dv = T[t].pos - p;
+        const mv = sim && dv ? `<span class="mv ${dv > 0 ? 's' : 'd'}">${dv > 0 ? '▲' : '▼'}${Math.abs(dv)}</span>` : '';
+        const a = r.alt ? ' alt' : '';
+        return `<tr class="${z}"><td class="ps">${p}º${mv}</td><td class="tm">${esc(t)}${t}</td><td class="pt${a}">${r.Pts}</td><td class="${a.trim()}">${r.J}</td><td>${r.V}</td><td>${r.E}</td><td>${r.D}</td><td>${r.GP - r.GC}</td><td class="pj sep">${nf(projecao(t))}</td>${MET.map((m, i) => cel(t, m.k, !!m.ruim, !i)).join('')}</tr>`; }).join('') + '</tbody>';
+  }
+
+  /* aviso "placares simulados por você" */
+  function aviso() {
+    if (!SIM) return;
+    const n = nFix(), quando_ = guardado ? new Date(guardado) : null;
+    const txt = n ? `<div><b>Placares simulados por você: ${n} ${n === 1 ? 'jogo' : 'jogos'}.</b><small>A projeção, a classificação e as chances levam esses placares em conta. Eles ficam guardados neste navegador${quando_ ? ` desde ${String(quando_.getDate()).padStart(2, '0')}/${String(quando_.getMonth() + 1).padStart(2, '0')} às ${String(quando_.getHours()).padStart(2, '0')}h${String(quando_.getMinutes()).padStart(2, '0')}` : ''} e somem sozinhos na próxima atualização do Radar.</small></div><button type="button" class="btn" data-zerar="1">Zerar simulação</button>` : '';
+    ['#sim-aviso', '#cl-aviso'].forEach(q => { const e = $(q); e.hidden = !n; e.innerHTML = txt; });
+  }
+
+  function tudo() { colunas(); lista(); tabela(); aviso(); }
+  let tmr = null;
+  function atualizar(rapido) {
+    clearTimeout(tmr);
+    tmr = setTimeout(() => {
+      const a = document.activeElement, id = a && a.id, ss = a && a.tagName === 'INPUT' ? [a.value.length] : null;
+      if (M) POSF = nFix() ? M.rodar(fix) : POS0;
+      salvar(); tudo();
+      if (id) { const e = document.getElementById(id); if (e) { e.focus(); try { if (ss) e.setSelectionRange(ss[0], ss[0]); } catch (x) {} } }
+    }, rapido ? 0 : 450);
+  }
+  function lerPlacar(inp) {
+    const g = +inp.dataset.g, cx = inp.parentNode, [im, iv] = cx.querySelectorAll('input');
+    const lim = v => Math.max(0, Math.min(10, Math.round(+v)));
+    if (im.value !== '' && iv.value !== '') { fix[g] = lim(im.value) * G + lim(iv.value); atualizar(); }
+    else if (im.value === '' && iv.value === '' && fix[g] >= 0) { fix[g] = -1; atualizar(); }
+  }
+  sels.forEach(s => s.addEventListener('change', () => colunas()));
+  if (SIM) {
+    $('#sl-rod').innerHTML = rods.map(r => `<option value="${r}">Rodada ${r}${R.some(j => j.rodada === r && j.data < hoje) && r < D.rodada_atual ? ' (jogo adiado)' : ''}</option>`).join('');
+    $('#sl-rod').value = rods.includes(D.rodada_atual) ? D.rodada_atual : rods[0];
+    $('#sl-rod').addEventListener('change', lista);
+    const sec = $('#s-analise'), cl = $('#s-classif');
+    sec.addEventListener('input', e => { if (e.target.matches('input[data-g]')) lerPlacar(e.target); });
+    sec.addEventListener('click', e => {
+      const lp = e.target.closest('[data-lp]'); if (lp) { fix[+lp.dataset.lp] = -1; atualizar(true); return; }
+      if (e.target.closest('input,select,button,.ated')) return;
+      const row = e.target.closest('.atj.ed'); if (!row) return;
+      const k = row.dataset.k, ed = row.querySelector('.ated'); ed.hidden = !ed.hidden;
+      if (ed.hidden) abertos.delete(k); else { abertos.add(k); ed.querySelector('input').focus(); }
+    });
+    [sec, cl].forEach(s => s.addEventListener('click', e => { if (e.target.closest('[data-zerar]')) { fix.fill(-1); abertos.clear(); atualizar(true); } }));
+  }
+  tudo();
+  // o motor roda depois que a página aparece (alguns décimos de segundo no celular)
+  if (SIM) setTimeout(() => { const t0 = performance.now(); M = montaMotor(); POS0 = M.rodar(new Int16Array(NG).fill(-1)); POSF = nFix() ? M.rodar(fix) : POS0;
+    window.RN_SIM_MS = Math.round(performance.now() - t0); tudo(); }, 30);
+})();
+
+/* ===================== compartilhar (WhatsApp / Story) ===================== */
+(() => {
+  const SITE_URL = 'https://radarnumerico.com.br/futebol/brasileirao/simulador/';
+  const toastEl = $('#toast'); let tt = null;
+  const toast = m => { toastEl.textContent = m; toastEl.style.opacity = 1; clearTimeout(tt); tt = setTimeout(() => toastEl.style.opacity = 0, 3200); };
+  const icoWa = '<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.1.6 2.8.5a2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.5-.3z"/></svg>';
+  const icoIg = '<svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM21.9 7.9c-.1-1.6-.4-3-1.6-4.2S17.7 2.2 16.1 2.1C14.5 2 9.5 2 7.9 2.1 6.3 2.2 4.9 2.5 3.7 3.7S2.2 6.3 2.1 7.9C2 9.5 2 14.5 2.1 16.1c.1 1.6.4 3 1.6 4.2s2.6 1.5 4.2 1.6c1.6.1 6.6.1 8.2 0 1.6-.1 3-.4 4.2-1.6s1.5-2.6 1.6-4.2c.1-1.6.1-6.6 0-8.2zm-2.2 10a3.3 3.3 0 0 1-1.9 1.9c-1.3.5-4.4.4-5.8.4s-4.5.1-5.8-.4a3.3 3.3 0 0 1-1.9-1.9c-.5-1.3-.4-4.4-.4-5.8s-.1-4.5.4-5.8a3.3 3.3 0 0 1 1.9-1.9c1.3-.5 4.4-.4 5.8-.4s4.5-.1 5.8.4a3.3 3.3 0 0 1 1.9 1.9c.5 1.3.4 4.4.4 5.8s.1 4.5-.4 5.8z"/></svg>';
+  async function capturar(sec) {
+    const svgOrig = sec.querySelectorAll('svg *');
+    // captura na largura de celular (560 px) para a imagem preencher o story
+    return html2canvas(sec, {backgroundColor: getComputedStyle(document.body).backgroundColor, scale: 2, useCORS: true, logging: false, windowWidth: 600,
+      ignoreElements: e => e.classList && (e.classList.contains('share') || e.classList.contains('fonte') || e.classList.contains('racectl') || e.classList.contains('simlink')),
+      onclone: doc => { const el = doc.getElementById(sec.id); el.style.width = '560px'; el.style.paddingTop = '8px';
+        const okSrc = new Set([...sec.querySelectorAll('.esc img')].filter(i => i.complete && i.naturalWidth > 0).map(i => i.src));
+        el.querySelectorAll('.esc img').forEach(i => { if (!okSrc.has(i.src)) i.remove(); });
+        // html2canvas pinta box-shadow inset como preenchimento: na cópia, o anel do círculo vira borda
+        el.querySelectorAll('.esc i').forEach(i => { i.style.boxShadow = 'none'; i.style.border = '2px solid ' + i.dataset.anel; i.style.lineHeight = (i.closest('.cartao') ? 20 : i.closest('.ath') ? 26 : i.closest('.rdt,.slt') ? 18 : 14) + 'px'; });
+        // ajustes só na cópia que vira imagem: sem rolagem nos SVGs, nomes inteiros nas barras, selects viram texto
+        const st = doc.createElement('style'); st.textContent = '.svgwrap{overflow:visible!important}.svgwrap svg{min-width:0!important}.barras{grid-template-columns:150px 1fr 58px!important}.ctrl select{display:none}.ctrl .fake{font-weight:600;font-size:14.5px;padding:9px 12px;border:1.5px solid #DCE1E8;background:#fff;color:#16243A}'; doc.head.appendChild(st);
+        el.querySelectorAll('svg[viewBox]').forEach(sv => { const vb = sv.getAttribute('viewBox').split(' ').map(Number); const w = 528; sv.setAttribute('width', w); sv.setAttribute('height', Math.round(w * vb[3] / vb[2])); sv.style.width = w + 'px'; sv.style.height = Math.round(w * vb[3] / vb[2]) + 'px'; });
+        el.querySelectorAll('.ctrl select').forEach(se => { const f = doc.createElement('div'); f.className = 'fake'; f.textContent = se.options[se.selectedIndex] ? se.options[se.selectedIndex].text : ''; se.parentNode.appendChild(f); });
+        const cl = el.querySelectorAll('svg *');
+        svgOrig.forEach((o, i) => { const c = cl[i]; if (!c) return; const st = getComputedStyle(o);
+          ['fill', 'stroke', 'stroke-width', 'stroke-dasharray', 'font-size', 'font-weight', 'font-family', 'opacity'].forEach(pr => c.style.setProperty(pr, st.getPropertyValue(pr))); }); }});
+  }
+  function montar(c, formato) {
+    const [W, H] = formato === 'story' ? [1080, 1920] : [1080, 1350];
+    const out = document.createElement('canvas'); out.width = W; out.height = H; const g = out.getContext('2d');
+    g.fillStyle = '#FFFFFF'; g.fillRect(0, 0, W, H);
+    g.fillStyle = '#16243A'; g.font = '800 46px Archivo, Arial, sans-serif'; g.fillText('Radar Numérico', 72, 120);
+    g.fillStyle = '#6B7686'; g.font = '500 27px Archivo, Arial, sans-serif'; g.fillText(`Brasileirão 2026 · atualizado em ${dataBR(D.gerado_em)}, após ${D.ultimo_jogo.m} ${D.ultimo_jogo.gm}×${D.ultimo_jogo.gv} ${D.ultimo_jogo.v}`, 72, 164);
+    const top = 220, maxH = (formato === 'story' ? 1920 - 300 : 1350 - 220) - top - 40;
+    const s = Math.min(936 / c.width, maxH / c.height); const w = c.width * s, h = c.height * s;
+    g.drawImage(c, (W - w) / 2, top + (formato === 'story' ? (maxH - h) / 2 : 0), w, h);
+    g.fillStyle = '#16243A'; g.font = '700 30px Archivo, Arial, sans-serif'; g.fillText('radarnumerico.com.br/futebol/brasileirao/simulador', 72, H - 110);
+    g.fillStyle = '#6B7686'; g.font = '26px Archivo, Arial, sans-serif'; g.fillText('@radarnumerico · probabilidades atualizadas a cada jogo', 72, H - 68);
+    return out;
+  }
+  const baixar = (blob, nome) => { const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = nome; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000); };
+  async function compartilhar(sec, modo, btn) {
+    const titulo = sec.querySelector('h2').textContent.trim();
+    const texto = `${titulo} — Brasileirão 2026, pelo Radar Numérico`;
+    btn.disabled = true; const rot = btn.innerHTML; btn.innerHTML = 'gerando…';
+    try { window.gtag && gtag('event', 'share', {method: modo, content_type: 'grafico', item_id: sec.id}); } catch (e) {}
+    try {
+      if (typeof html2canvas !== 'function') throw new Error('sem html2canvas');
+      const c = await capturar(sec);
+      const img = montar(c, modo === 'story' ? 'story' : 'post');
+      const blob = await new Promise(r => img.toBlob(r, 'image/png'));
+      const file = new File([blob], modo === 'story' ? 'radar-numerico-story.png' : 'radar-numerico.png', {type: 'image/png'});
+      const movel = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || matchMedia('(pointer: coarse)').matches;
+      if (movel && navigator.canShare && navigator.canShare({files: [file]})) {
+        try { await navigator.share({files: [file], title: texto, text: `${texto} ${SITE_URL}`}); return; }
+        catch (e) { if (e && e.name === 'AbortError') return; console.warn('share falhou, baixando a imagem', e); }
+      }
+      if (modo === 'whats') { baixar(blob, file.name); window.open(`https://wa.me/?text=${encodeURIComponent(`${texto} ${SITE_URL}`)}`, '_blank'); toast('Imagem salva e WhatsApp aberto: anexe a imagem na conversa.'); return; }
+      baixar(blob, file.name); toast('Imagem do story salva. Abra o Instagram e poste no Story.');
+    } catch (e) {
+      if (e && e.name === 'AbortError') return;
+      console.warn('compartilhar', e);
+      toast('Não deu para gerar a imagem neste navegador.');
+    } finally { btn.disabled = false; btn.innerHTML = rot; }
+  }
+  window.RN = {capturar, montar, compartilhar};
+  document.querySelectorAll('section.g').forEach(sec => {
+    const fonte = document.createElement('p'); fonte.className = 'fonte';
+    const u = D.ultimo_jogo;  /* data, hora e último jogo em todo gráfico (24/10/2026) */
+    fonte.style.whiteSpace = 'pre-line';  /* 2ª linha: última partida computada (24/10/2026) */
+    const L = D.ultimos || [`${u.m} ${u.gm}×${u.gv} ${u.v}`];
+    const lista = L.length === 1 ? L[0] : L.slice(0, -1).join(', ') + ' e ' + L[L.length - 1];
+    fonte.textContent = `Fonte: radarnumerico.com.br\n${L.length === 1 ? 'Última partida computada' : 'Últimas partidas computadas'}: ${lista}, às ${u.hora} do dia ${dataBR(u.data)}`;
+    sec.appendChild(fonte);  /* fonte em todo gráfico, para os prints (24/10/2026) */
+    const row = document.createElement('div'); row.className = 'share';
+    row.innerHTML = `<span>Compartilhar:</span><button type="button" class="wa">${icoWa}WhatsApp</button><button type="button" class="ig">${icoIg}Story do Instagram</button>`;
+    row.querySelector('.wa').addEventListener('click', e => compartilhar(sec, 'whats', e.currentTarget));
+    row.querySelector('.ig').addEventListener('click', e => compartilhar(sec, 'story', e.currentTarget));
+    sec.appendChild(row);
+  });
+})();
+
+$('#rodape').textContent = `Probabilidades do Campeonato Brasileiro Série A 2026 atualizadas em ${dataBR(D.gerado_em)} às ${horaBR(D.gerado_em)}, após ${D.ultimo_jogo.m} ${D.ultimo_jogo.gm}×${D.ultimo_jogo.gv} ${D.ultimo_jogo.v} (rodada ${D.ultimo_jogo.rodada}). Atualizamos depois de cada jogo.`;
+</script>
+</body>
+</html>
