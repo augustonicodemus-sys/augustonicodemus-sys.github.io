@@ -307,7 +307,8 @@ footer.site a{color:var(--ink2)}
 .simaviso .btn{margin-left:auto;background:var(--bg)}
 .slh{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:10px 16px;margin:26px 0 12px}
 .slh h3{margin:0}
-.slh select{min-width:200px;font-size:14.5px;padding:8px 34px 8px 12px}
+.slh select{min-width:200px;max-width:100%;font-size:14.5px;padding:8px 34px 8px 12px}
+.slh>div{min-width:0;max-width:100%}
 .sl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px}
 .slj{border:1.5px solid var(--hair);padding:8px 10px;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:6px 8px;align-items:center;min-width:0}
 .slj.fix{border-color:var(--azul)}
@@ -1059,8 +1060,8 @@ renderTime(sel.value);
   if (SIM) {
     const ops = rods.map(r => ({v: String(r), d: R.filter(j => j.rodada === r && j.data >= hoje).map(j => j.data).sort()[0] || '0',
       t: `Rodada ${r}${R.some(j => j.rodada === r && j.data < hoje) && r < D.rodada_atual ? ' (jogo adiado)' : ''}`}));
-    if (CPS) CQ.forEach(q => { if (CPS[q].times.length > 1) ops.push({v: 'cup:' + q, d: CPS[q].data || '9', t: `${CPS[q].nome}${CPS[q].data ? ' · ' + CPS[q].data.slice(8, 10) + '/' + CPS[q].data.slice(5, 7) : ''}`}); });
-    ops.sort((a, b) => a.d.localeCompare(b.d));
+    ops.sort((a, b) => +a.v - +b.v);   // rodadas em ordem; as finais das copas vão no fim (pedido do Augusto, 09/11)
+    if (CPS) ['sul', 'lib'].forEach(q => { if (CPS[q].times.length > 1) ops.push({v: 'cup:' + q, t: `${CPS[q].nome} (+1 vaga na Libertadores)`}); });
     $('#sl-rod').innerHTML = ops.map(o => `<option value="${o.v}">${o.t}</option>`).join('');
     $('#sl-rod').value = String(rods.includes(D.rodada_atual) ? D.rodada_atual : rods[0]);
     $('#sl-rod').addEventListener('change', lista);
