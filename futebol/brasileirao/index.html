@@ -555,12 +555,15 @@ document.addEventListener('mousemove', e => {
   $('#selo').innerHTML = `<span>Atualizado em <b>${dataBR(D.gerado_em)} às ${horaBR(D.gerado_em)}</b></span><span>após <b>${u.m} ${u.gm}×${u.gv} ${u.v}</b> (rodada ${u.rodada})</span><span>${D.n_jogados} jogos disputados, ${D.n_restantes} a disputar</span>`;
 })();
 
-/* chance matemática (condições suficientes, usadas só para dizer "sem chance matemática") */
-const maxPts = t => T[t].Pts + 3 * (38 - T[t].J);
+/* chance matemática (condições suficientes, usadas só para dizer "sem chance matemática")
+   22/11/2026: além dos pontos, o 1º desempate (vitórias). Se o rival fica exatamente nos pontos de hoje, não venceu mais nenhuma.
+   Regra de exibição: provado impossível -> sai do gráfico (0%); zero simulações mas ainda possível -> "<0,1%". */
+const maxPts = t => T[t].Pts + 3 * (38 - T[t].J), maxV = t => T[t].V + (38 - T[t].J);
+const naFrente = (o, t) => T[o].Pts > maxPts(t) || (T[o].Pts === maxPts(t) && T[o].V > maxV(t));   // o termina à frente de t com certeza
 const vivo = {
-  campeao: t => !ORD.some(o => o !== t && T[o].Pts > maxPts(t)),
-  g6: t => ORD.filter(o => o !== t && T[o].Pts > maxPts(t)).length < 10,   // até G9 pela tabela (+1 se finalista da Copa do Brasil cair)
-  z4: t => ORD.filter(o => o !== t && maxPts(o) >= T[t].Pts).length >= 17,
+  campeao: t => !ORD.some(o => o !== t && naFrente(o, t)),
+  g6: t => ORD.filter(o => o !== t && naFrente(o, t)).length < 10,   // até G9 pela tabela (+1 se finalista da Copa do Brasil cair)
+  z4: t => ORD.filter(o => o !== t && !naFrente(t, o)).length >= 16,   // 16 ou mais ainda podem terminar à frente -> pode ser 17º
 };
 /* componente A */
 function barras(el, chave, {neg = false} = {}) {
